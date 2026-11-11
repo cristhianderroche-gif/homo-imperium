@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#16120e">
+<link rel="icon" href="icon-192.png">
+<title>Privacidad y términos · Homo Imperium</title>
+<style>
+body{margin:0;background:#16120e;color:#f3e9d8;font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:20px 16px 48px}
+main{max-width:720px;margin:0 auto}
+h1{color:#e09a35;font-size:26px;margin:0 0 4px}
+h2{font-size:19px;margin:28px 0 8px;color:#f0c27a}
+p,li{color:#e6dcc8}
+small,.mut{color:#b4a690}
+a{color:#e09a35}
+ul{padding-left:20px}
+</style></head>
+<body><main>
+<h1>Homo Imperium</h1>
+<p class="mut">Política de privacidad y términos de uso · Actualizada el 11 de noviembre de 2026</p>
+
+<h2>Quién es el responsable</h2>
+<p>Homo Imperium © 2026 Cristhian Camilo Cardona Londoño, Colombia. Todos los derechos reservados. Contacto: el formulario <a href="#contacto">Contacto y borrado de cuenta</a> de esta página o el botón de opinión dentro del juego.</p>
+
+<h2>Qué datos se usan</h2>
+<ul>
+<li><b>Jugar solo:</b> no necesitas cuenta. Tus partidas, tu Ámbar y tus ajustes se guardan solo en tu teléfono.</li>
+<li><b>Mundo global (opcional):</b> si creas una cuenta, guardamos tu correo (o el que te dan Google o Apple), el nombre de tu imperio, tu país en el juego, tus tropas, recursos, alianza y batallas. Si entras con tu cuenta, también guardamos tu Ámbar, tus compras, tu campaña y tu avance en la historia, para que no los pierdas al cambiar de teléfono.</li>
+<li><b>Estadísticas anónimas:</b> para mejorar el juego se envía cuántos días y minutos juegas, cuántas veces lo abres, cuántas partidas empiezas, terminas y ganas, hasta qué época llegas, cuántos videos con premio ves o cierras y qué compras haces dentro del juego. Tu teléfono se identifica con un número al azar creado por el juego: no se envía tu nombre, tu correo, tu ubicación ni tus contactos. Puedes apagarlo en el juego: <i>Créditos, licencias y privacidad → Enviar estadísticas anónimas del juego</i>.</li>
+<li><b>Opiniones por WhatsApp:</b> si mandas una opinión, el mensaje lo envías tú desde tu WhatsApp e incluye lo que escribas, tu nombre si lo pones y datos técnicos del juego (versión, tamaño de pantalla, calidad gráfica y un resumen corto de tu avance).</li>
+</ul>
+
+<h2>Dónde se guardan y para qué</h2>
+<p>Los datos del Mundo global y las estadísticas se guardan en los servidores de Supabase en Estados Unidos y solo se usan para que el juego funcione y para mejorarlo. No se venden ni se comparten con terceros para publicidad.</p>
+
+<h2>Anuncios y compras</h2>
+<p>En la versión de tienda, los videos con premio y las compras los manejan Google Play (o la App Store) y su red de anuncios, con sus propias políticas de privacidad. En la versión de prueba los videos y las compras son simulados y no se cobra nada.</p>
+
+<h2>Tus derechos</h2>
+<p>Puedes borrar tu cuenta y sus datos cuando quieras en <i>Mundo global → Mi cuenta</i>. Las estadísticas anónimas no se pueden asociar a ti; si quieres que no se envíen más, apágalas en el juego. Si ya no tienes el juego instalado, pide el borrado con el formulario de abajo: borramos tu cuenta, tus imperios, tu progreso en la nube y tus datos en un máximo de 30 días.</p>
+
+<h2 id="contacto">Contacto y borrado de cuenta</h2>
+<p>Escribe el correo con el que entraste al Mundo global (o el que te dio Google o Apple). No necesitas abrir el juego.</p>
+<form id="delForm" style="display:flex;flex-direction:column;gap:10px;max-width:460px">
+<label>Tu correo<br><input id="delMail" type="email" required maxlength="120" autocomplete="email" style="width:100%;padding:10px;border-radius:10px;border:1px solid #6b5a43;background:#221b14;color:#f3e9d8;font:inherit"></label>
+<label>¿Qué necesitas?<br><select id="delWhat" style="width:100%;padding:10px;border-radius:10px;border:1px solid #6b5a43;background:#221b14;color:#f3e9d8;font:inherit"><option value="borrar">Borrar mi cuenta y todos mis datos</option><option value="consulta">Otra consulta o reporte</option></select></label>
+<label>Mensaje (opcional)<br><textarea id="delNote" maxlength="300" rows="3" style="width:100%;padding:10px;border-radius:10px;border:1px solid #6b5a43;background:#221b14;color:#f3e9d8;font:inherit"></textarea></label>
+<button type="submit" style="padding:12px;border:0;border-radius:12px;background:#e09a35;color:#1a1208;font:700 16px inherit;cursor:pointer">Enviar</button>
+<p id="delMsg" class="mut" role="status"></p>
+</form>
+<script>
+(function(){var f=document.getElementById('delForm'),m=document.getElementById('delMsg');
+f.addEventListener('submit',function(ev){ev.preventDefault();m.textContent='Enviando…';
+ var body={p_email:document.getElementById('delMail').value,p_note:document.getElementById('delWhat').value+': '+document.getElementById('delNote').value};
+ fetch('https://lqvdquhvppzrouyfzqhz.supabase.co/rest/v1/rpc/request_deletion',{method:'POST',headers:{'apikey':'sb_publishable_WCiHxFgSxNmtk9hM_HpdcA_DSyanFfT','Content-Type':'application/json'},body:JSON.stringify(body)})
+ .then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j&&j.message||'Error');});})
+ .then(function(){m.textContent='Listo: recibimos tu solicitud. Si pediste el borrado, lo haremos en un máximo de 30 días.';f.reset();})
+ .catch(function(e){m.textContent='No se pudo enviar: '+e.message+'. Intenta de nuevo.';});});})();
+</script>
+
+<h2>Normas de convivencia</h2>
+<p>No se permiten nombres ofensivos en el Mundo global: el juego filtra palabras ofensivas. Puedes reportar o bloquear a otro jugador desde su tarjeta; con varios reportes su nombre se oculta de inmediato. Para jugar en línea debes tener 13 años o más.</p>
+
+<h2>Términos de uso</h2>
+<ul>
+<li>El Ámbar y los objetos del juego no tienen valor en dinero, no se pueden cambiar por dinero ni transferir.</li>
+<li>Prohibida la copia, distribución o modificación del juego sin autorización del autor.</li>
+<li>El juego usa Three.js (licencia MIT), las fuentes Bowlby One SC y Barlow Condensed (SIL Open Font License 1.1) y mapas de Natural Earth (dominio público). Los textos de esas licencias van incluidos dentro del juego.</li>
+</ul>
+</main></body></html>

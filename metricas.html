@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#16120e">
+<link rel="icon" href="icon-192.png">
+<title>Métricas · Homo Imperium</title>
+<style>
+:root{--bg:#16120e;--card:#221b15;--line:#3a2f25;--tx:#f3e9d8;--mut:#b4a690;--ocre:#e09a35;--ok:#4cc27a;--mid:#e6b437;--bad:#e5604e}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:16px 16px 40px}
+main{max-width:860px;margin:0 auto}
+h1{font-size:24px;margin:4px 0 2px;color:var(--ocre)}
+h2{font-size:17px;margin:26px 0 10px}
+.sub{color:var(--mut);margin:0 0 14px;font-size:13px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.k{font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:.04em}
+.v{font-size:28px;font-weight:700;margin-top:2px;font-variant-numeric:tabular-nums}
+.n{font-size:12px;color:var(--mut);margin-top:2px}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:1px}
+.ok .dot{background:var(--ok)}.mid .dot{background:var(--mid)}.bad .dot{background:var(--bad)}.na .dot{background:#6b5f50}
+.ok .v{color:var(--ok)}.mid .v{color:var(--mid)}.bad .v{color:var(--bad)}
+form{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+input[type=password],input[type=text]{flex:1 1 200px;background:#120e0b;color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:11px 12px;font-size:16px}
+button{background:var(--ocre);color:#1b1208;border:0;border-radius:10px;padding:11px 16px;font-weight:700;font-size:15px;cursor:pointer}
+button.sec{background:transparent;color:var(--mut);border:1px solid var(--line)}
+label.chk{display:flex;gap:8px;align-items:center;color:var(--mut);font-size:13px;width:100%}
+.verd{border-left:4px solid var(--ocre);padding:12px 14px;margin-top:12px;background:var(--card);border-radius:0 12px 12px 0}
+.bar{display:grid;grid-template-columns:140px 1fr 86px;gap:8px;align-items:center;font-size:13px;margin:5px 0}
+.bar .t{height:14px;background:#120e0b;border-radius:7px;overflow:hidden}.bar .t i{display:block;height:100%;background:var(--ocre);border-radius:7px}
+.bar .p{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--mut)}
+table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+th,td{padding:7px 6px;border-bottom:1px solid var(--line);text-align:right}th:first-child,td:first-child{text-align:left}
+th{color:var(--mut);font-weight:600}
+.scroll{overflow-x:auto}
+svg text{fill:var(--mut);font-size:10px}
+.err{color:var(--bad);margin-top:8px}
+.note{color:var(--mut);font-size:12px;margin-top:8px}
+@media (max-width:520px){.bar{grid-template-columns:104px 1fr 80px}.v{font-size:24px}}
+</style></head>
+<body><main>
+<h1>Métricas de prueba</h1>
+<p class="sub">Homo Imperium · datos anónimos de quienes prueban el juego</p>
+
+<div class="card">
+  <form id="f">
+    <input type="password" id="key" placeholder="Tu clave del panel" autocomplete="current-password" aria-label="Clave del panel">
+    <button type="submit">Ver métricas</button>
+    <button type="button" class="sec" id="out" hidden>Salir</button>
+    <label class="chk"><input type="checkbox" id="me"> Incluir mis propios teléfonos (los marcados como del creador)</label>
+  </form>
+  <div class="err" id="err" hidden></div>
+</div>
+
+<div id="out1" hidden>
+  <p class="sub" id="upd" style="margin-top:12px"></p>
+  <div class="grid">
+    <div class="card"><div class="k">Jugadores</div><div class="v" id="kJug">0</div><div class="n">teléfonos distintos</div></div>
+    <div class="card"><div class="k">Activos hoy</div><div class="v" id="kHoy">0</div></div>
+    <div class="card"><div class="k">Activos 7 días</div><div class="v" id="k7">0</div></div>
+  </div>
+
+  <h2>Retención: ¿vuelven a jugar?</h2>
+  <div class="grid" id="ret"></div>
+  <div class="verd" id="verd"></div>
+
+  <h2>Cuánto juegan</h2>
+  <div class="grid">
+    <div class="card"><div class="k">Minutos por día</div><div class="v" id="kMin">–</div><div class="n">en los días que juegan</div></div>
+    <div class="card"><div class="k">Veces por día</div><div class="v" id="kSes">–</div><div class="n">aperturas en los días que juegan</div></div>
+    <div class="card"><div class="k">Días jugados</div><div class="v" id="kDias">–</div><div class="n">promedio por jugador</div></div>
+  </div>
+
+  <h2>Partidas</h2>
+  <div class="card" id="par"></div>
+
+  <h2>Hasta qué época llegan</h2>
+  <div class="card" id="eras"></div>
+  <p class="note">Si muchos se quedan en una época, ahí hay algo difícil, aburrido o confuso.</p>
+
+  <h2>Videos con premio</h2>
+  <div class="grid">
+    <div class="card"><div class="k">Vistos completos</div><div class="v" id="kVo">0</div></div>
+    <div class="card"><div class="k">Cerrados antes</div><div class="v" id="kVc">0</div></div>
+    <div class="card"><div class="k">Videos por día</div><div class="v" id="kVd">–</div><div class="n">por jugador activo</div></div>
+    <div class="card"><div class="k">Ven videos</div><div class="v" id="kVj">–</div><div class="n">de los jugadores</div></div>
+  </div>
+
+  <h2>Tienda y compras</h2>
+  <div class="grid">
+    <div class="card"><div class="k">Abrieron la tienda</div><div class="v" id="kSh">–</div><div class="n">de los jugadores</div></div>
+    <div class="card"><div class="k">Compraron</div><div class="v" id="kCo">–</div><div class="n" id="kCoN"></div></div>
+    <div class="card"><div class="k">Ingresos</div><div class="v" id="kIn">–</div><div class="n">en dólares</div></div>
+    <div class="card"><div class="k">Por jugador</div><div class="v" id="kAr">–</div><div class="n">ingreso promedio</div></div>
+  </div>
+  <p class="note">En la versión de prueba las compras son simuladas (no se cobra nada). Sirven para ver qué tanto les interesaría comprar.</p>
+
+  <h2>Últimos 30 días</h2>
+  <div class="card scroll"><svg id="ch" viewBox="0 0 600 170" width="100%" role="img" aria-label="Jugadores activos y nuevos por día"></svg>
+    <div class="note"><span class="dot" style="background:var(--ocre)"></span>activos · <span class="dot" style="background:var(--ok)"></span>nuevos</div></div>
+
+  <h2>Por día de llegada</h2>
+  <div class="card scroll"><table id="coh"><thead><tr><th>Llegaron</th><th>Nuevos</th><th>Volvieron día 1</th><th>Día 7</th><th>Día 30</th></tr></thead><tbody></tbody></table></div>
+
+  <h2>Teléfonos</h2>
+  <div class="card" id="pla"></div>
+  <p class="note" id="mios"></p>
+</div>
+</main>
+<script>
+const SB_URL='https://lqvdquhvppzrouyfzqhz.supabase.co',SB_KEY='sb_publishable_WCiHxFgSxNmtk9hM_HpdcA_DSyanFfT';
+const ERAS={1:'Paleolítico Medio',2:'Paleolítico Superior',3:'Mesolítico',4:'Neolítico',5:'Edad del Bronce',6:'Edad del Hierro',7:'Edad Media',8:'Edad de la Pólvora',9:'Era Industrial',10:'Era Moderna'};
+const META={1:35,3:20,7:12,14:8,30:4};
+const $=id=>document.getElementById(id);
+const pct=(a,b)=>b?Math.round(a/b*100):0;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function fdate(s){const p=String(s).split('-');return p[2]+'/'+p[1];}
+function lsG(k){try{return localStorage.getItem(k);}catch(_){return null;}}
+function lsS(k,v){try{v==null?localStorage.removeItem(k):localStorage.setItem(k,v);}catch(_){}}
+function bar(lbl,a,b){const p=pct(a,b);return '<div class="bar"><span>'+esc(lbl)+'</span><span class="t"><i style="width:'+p+'%"></i></span><span class="p">'+p+' % · '+a+'</span></div>';}
+
+async function load(){
+  const key=$('key').value.trim();if(!key)return;
+  $('err').hidden=true;
+  let r,d;
+  try{r=await fetch(SB_URL+'/rest/v1/rpc/hi_metrics',{method:'POST',headers:{'apikey':SB_KEY,'Content-Type':'application/json'},body:JSON.stringify({p_key:key,p_incl_me:$('me').checked})});d=await r.json();}
+  catch(_){return fail('No hay conexión con el servidor. Revisa tu internet e intenta otra vez.');}
+  if(!r.ok){const m=(d&&d.message)||'';return fail(/clave/.test(m)?'La clave no es correcta.':/hi_metrics/.test(m)?'El servidor todavía no tiene activadas las métricas.':'El servidor respondió con un error: '+m);}
+  lsS('hi_panel_key',key);$('out').hidden=false;render(d);
+}
+function fail(m){$('err').textContent=m;$('err').hidden=false;$('out1').hidden=true;}
+function render(d){
+  $('out1').hidden=false;
+  $('upd').textContent='Actualizado: '+new Date().toLocaleString('es-CO',{dateStyle:'medium',timeStyle:'short'});
+  const J=d.jugadores||0;
+  $('kJug').textContent=J;$('kHoy').textContent=d.activos_hoy||0;$('k7').textContent=d.activos_7d||0;
+  // retención con meta y semáforo
+  let h='';const R={};
+  for(const x of d.retencion||[]){R[x.dia]=x;const m=META[x.dia];
+    if(!x.elegibles){h+='<div class="card na"><div class="k"><span class="dot"></span>Día '+x.dia+'</div><div class="v">–</div><div class="n">aún nadie lleva '+x.dia+(x.dia===1?' día':' días')+' · meta '+m+' %</div></div>';continue;}
+    const p=pct(x.volvieron,x.elegibles),c=p>=m?'ok':p>=m*.7?'mid':'bad';
+    h+='<div class="card '+c+'"><div class="k"><span class="dot"></span>Día '+x.dia+'</div><div class="v">'+p+' %</div><div class="n">'+x.volvieron+' de '+x.elegibles+' · meta '+m+' %</div></div>';}
+  $('ret').innerHTML=h;
+  // veredicto en palabras
+  const v=[];const r1=R[1],r7=R[7],r30=R[30];
+  const minS=Math.max(r1?r1.elegibles:0,0);
+  if(!r1||!r1.elegibles)v.push('Todavía no hay jugadores con un día de antigüedad. Comparte el juego y vuelve mañana.');
+  else{
+    if(minS<20)v.push('Ojo: con '+minS+' jugadores los porcentajes cambian mucho con cada persona. Busca al menos 20 a 30 testers antes de sacar conclusiones.');
+    const p1=pct(r1.volvieron,r1.elegibles);
+    v.push(p1>=35?'Día 1 va bien ('+p1+' %): el inicio engancha.':'Día 1 está bajo ('+p1+' %, meta 35 %): revisa los primeros 10 minutos (tutorial, claridad, ritmo de la primera época).');
+    if(r7&&r7.elegibles){const p7=pct(r7.volvieron,r7.elegibles);v.push(p7>=12?'Día 7 va bien ('+p7+' %): hay razones para volver.':'Día 7 está bajo ('+p7+' %, meta 12 %): faltan motivos para volver (regalo diario, metas, avance que se note).');}
+    if(r30&&r30.elegibles){const p30=pct(r30.volvieron,r30.elegibles);v.push(p30>=4?'Día 30 va bien ('+p30+' %).':'Día 30 está bajo ('+p30+' %, meta 4 %): el juego se agota; hace falta contenido de largo plazo (Mundo global, conquista).');}
+    const ok1=pct(r1.volvieron,r1.elegibles)>=35,ok7=!r7||!r7.elegibles||pct(r7.volvieron,r7.elegibles)>=12;
+    v.push(ok1&&ok7&&minS>=20?'👉 Con estos números vale la pena probar con un poco de publicidad en un mercado pequeño.':'👉 Antes de pagar publicidad, mejora lo que está en rojo o amarillo.');}
+  $('verd').innerHTML=v.map(t=>'<p style="margin:4px 0">'+esc(t)+'</p>').join('');
+  $('kMin').textContent=d.minutos_por_dia!=null?d.minutos_por_dia:'–';
+  $('kSes').textContent=d.sesiones_por_dia!=null?d.sesiones_por_dia:'–';
+  $('kDias').textContent=d.dias_activos_prom!=null?d.dias_activos_prom:'–';
+  const P=d.partidas||{};
+  $('par').innerHTML=bar('Empezaron una partida',P.empezaron||0,J)+bar('Terminaron una',P.terminaron||0,J)+bar('Ganaron una',P.ganaron||0,J)+'<p class="note">'+(P.total||0)+' partidas empezadas en total.</p>';
+  $('eras').innerHTML=(d.epocas||[]).map(x=>bar(ERAS[x.era]||('Época '+x.era),x.llegaron,J)).join('');
+  const V=d.videos||{};
+  $('kVo').textContent=V.completos||0;$('kVc').textContent=V.cortados||0;
+  $('kVd').textContent=V.por_dia_activo!=null?V.por_dia_activo:'–';$('kVj').textContent=pct(V.jugadores_que_ven||0,J)+' %';
+  const C=d.compras||{};const usd=(C.centavos||0)/100;
+  $('kSh').textContent=pct(C.abrieron_tienda||0,J)+' %';
+  $('kCo').textContent=pct(C.compradores||0,J)+' %';$('kCoN').textContent=(C.compradores||0)+' jugadores · '+(C.compras||0)+' compras';
+  $('kIn').textContent='US$ '+usd.toFixed(2);$('kAr').textContent='US$ '+(J?usd/J:0).toFixed(2);
+  chart(d.diario||[]);
+  $('coh').querySelector('tbody').innerHTML=(d.cohortes||[]).map(c=>{const td=new Date(d.hoy+'T00:00:00'),fd=new Date(c.dia+'T00:00:00'),age=Math.round((td-fd)/864e5);
+    const cell=(n,k)=>age<k?'<td style="color:#6b5f50">–</td>':'<td>'+n+' ('+pct(n,c.nuevos)+' %)</td>';
+    return '<tr><td>'+fdate(c.dia)+'</td><td>'+c.nuevos+'</td>'+cell(c.d1,1)+cell(c.d7,7)+cell(c.d30,30)+'</tr>';}).join('')||'<tr><td colspan="5">Sin datos todavía</td></tr>';
+  const pl=d.plataformas||{};$('pla').innerHTML=Object.keys(pl).sort((a,b)=>pl[b]-pl[a]).map(k=>bar(k,pl[k],J)).join('')||'<p class="note">Sin datos todavía</p>';
+  $('mios').textContent=d.mios?(d.mios+(d.mios===1?' teléfono marcado':' teléfonos marcados')+' como tuyo'+(d.mios===1?'':'s')+(  $('me').checked?' (incluidos arriba).':' (no se cuentan arriba).')):'';
+}
+function chart(L){const W=600,H=170,pad=22,n=L.length||1,mx=Math.max(1,...L.map(x=>Math.max(x.activos,x.nuevos)));
+  const bw=(W-pad*2)/n;let s='';
+  for(let i=0;i<=2;i++){const y=H-pad-(H-pad*2)*i/2;s+='<line x1="'+pad+'" x2="'+(W-4)+'" y1="'+y+'" y2="'+y+'" stroke="#3a2f25"/><text x="2" y="'+(y+3)+'">'+Math.round(mx*i/2)+'</text>';}
+  L.forEach((x,i)=>{const h=(H-pad*2)*x.activos/mx,X=pad+i*bw;s+='<rect x="'+(X+1)+'" y="'+(H-pad-h)+'" width="'+Math.max(1,bw-2)+'" height="'+h+'" rx="2" fill="#e09a35"><title>'+fdate(x.dia)+': '+x.activos+' activos, '+x.nuevos+' nuevos</title></rect>';
+    if(x.nuevos){const hn=(H-pad*2)*x.nuevos/mx;s+='<circle cx="'+(X+bw/2)+'" cy="'+(H-pad-hn)+'" r="3.5" fill="#4cc27a"/>';}
+    if(i%5===0||i===n-1)s+='<text x="'+(X+bw/2)+'" y="'+(H-6)+'" text-anchor="middle">'+fdate(x.dia)+'</text>';});
+  $('ch').innerHTML=s;}
+$('f').addEventListener('submit',e=>{e.preventDefault();load();});
+$('me').addEventListener('change',()=>{if($('key').value.trim())load();});
+$('out').addEventListener('click',()=>{lsS('hi_panel_key',null);$('key').value='';$('out').hidden=true;$('out1').hidden=true;});
+{const k=lsG('hi_panel_key');if(k){$('key').value=k;load();}}
+</script>
+</body></html>
