@@ -935,6 +935,26 @@ b.popN{font-size:15px;color:#fff;font-variant-numeric:tabular-nums}
 #onBody .ageChk{display:flex;gap:10px;align-items:flex-start;font-size:14px;color:#f5efe4;padding:10px 12px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12)}
 #onBody .ageChk input{width:20px;height:20px;flex:none;margin-top:1px;accent-color:#f08a2c}
 
+/* ================= v59 · panel del dueño y tienda "Muy pronto" ================= */
+#owner{z-index:33}#ownBody{display:flex;flex-direction:column;gap:10px}
+#ownBody h3{margin:8px 0 0;color:var(--n-cy2,#38bdf8);font-size:16px;letter-spacing:.05em;text-transform:uppercase}
+#owner input{background:rgba(255,255,255,.05)!important;border:1px solid var(--n-line,rgba(255,255,255,.14))!important;border-radius:16px!important;color:#fff!important}
+#owner input:focus{outline:none!important;border-color:var(--n-cy2,#38bdf8)!important;box-shadow:0 0 0 3px rgba(56,189,248,.22)}
+#ownBody .owP{width:100%;text-align:left;cursor:pointer;font:inherit;color:inherit}
+#ownBody .owP.on{border-color:#facc15!important;box-shadow:0 0 0 2px rgba(250,204,21,.35)}
+#ownBody .owP .sct b{word-break:break-all}
+#ownBody .owForm{flex-direction:column;align-items:stretch;gap:10px;margin-top:-4px;border-color:rgba(250,204,21,.45)!important}
+#ownBody .owForm .big{align-self:stretch}
+#ownBody .orow2{flex-wrap:wrap}
+#ownBody .ownLink{text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+#ownBody .sc.on{border-color:#4ade80!important}
+.ownBtn{border-color:rgba(250,204,21,.6)!important;color:#fde68a!important}
+#onBody .ownCard{border-color:rgba(250,204,21,.6)!important}
+#shopBody .big.soon{background:rgba(255,255,255,.08)!important;color:rgba(255,255,255,.75)!important;box-shadow:none!important;border:1px dashed rgba(255,255,255,.3)!important}
+#shopBody .sbtn.pack.soon span:not(.amb){color:rgba(255,255,255,.7);font-weight:700}
+#shopBody .ownFree{outline:2px solid rgba(250,204,21,.6)}
+#shopBody .sbtn.pack.soon span:not(.amb){background:rgba(255,255,255,.1)!important;color:rgba(255,255,255,.8)!important;box-shadow:none!important;border:1px dashed rgba(255,255,255,.3)!important}
+
 </style>
 
 <div id="app" class="menu">
@@ -7778,7 +7798,7 @@ function frameBody(now){
 function boot(){init3D();resize();applyQuality();showTitle();requestAnimationFrame(frame);}
 boot();
 /* ---------- opiniones de quienes prueban el juego: llegan por WhatsApp al creador ---------- */
-const FB_TO='573044272520',FB_VER='v58';let fbCat='Error',fbFrom=null;
+const FB_TO='573044272520',FB_VER='v59';let fbCat='Error',fbFrom=null;
 function fbContext(){const d=(()=>{const u=navigator.userAgent||'';return /iPhone|iPad/.test(u)?'iPhone/iPad':/Android/.test(u)?'Android':/Mac/.test(u)?'Mac':/Windows/.test(u)?'Windows':'otro';})();
   const g=G&&!$('title').hidden?null:G;const where=g&&PROF?PROF.c.n+' · era '+ROMAN[g.era[0]]+' · '+fmtT(g.t)+(g.camp?' · conquista':''):'menú de inicio';
   return 'Versión '+FB_VER+' · '+d+' '+innerWidth+'×'+innerHeight+' · '+where+(typeof QSET!=='undefined'?' · calidad '+QSET+' nivel '+QUAL.lvl+(QUAL.fps?' · '+QUAL.fps+' fps':'')+(GPU_NAME?' · '+GPU_NAME:''):'');}
@@ -8860,8 +8880,165 @@ function sepMove(u,mx,my,nv){const nx=u.x+mx,ny=u.y+my;if(!nv&&typeof landOk==='
 /* casas con vida: desde el Mesolítico sale humo de las casas habitadas */
 {const _ub=updB;updB=function(b,dt){const r=_ub.apply(this,arguments);try{if(b.type==='choza'&&b.prog>=1&&G.era[b.o]>=3&&Math.random()<dt*.55&&isVis(b.x,b.y))fx('smoke',b.x+b.r*.25+(Math.random()-.5)*3,b.y-b.r*.95,{vx:4+Math.random()*3,vy:-10-Math.random()*5,life:2.6,sz:3,seed:Math.random()*6});}catch(_){}return r;};}
 
+/* ================= v59 · dueño del juego, regalos y "Muy pronto" en la tienda web =================
+   - En la web las compras con dinero dicen "Muy pronto" (no se simula ningún pago).
+   - El dueño (cuenta marcada en el servidor, tabla hi_admins) ve "👑 Panel del dueño": Ámbar y recursos sin límite para él
+     y un buscador para regalar Ámbar, reservas y recursos/tropas en línea a cualquier jugador.
+   - Probadores: regalo de bienvenida una vez por teléfono, y regalo en línea una vez por imperio.
+   - Buzón: lo que manda el dueño llega al jugador la próxima vez que abre el juego con su cuenta. */
+const OWN={admin:false,checked:'',list:null,q:'',sel:null,f:{amb:2000,camp:0,emp:'',onl:0,inf:0,ran:0,note:''},busy:false,msg:''};
+function isOwner(){return !!(typeof ON!=='undefined'&&ON.sess&&OWN.admin===true);}
+function webNoPay(){return !storeMode()&&!(window.HIPay&&typeof window.HIPay.buy==='function');}
+const TESTER=()=>!storeMode();
+const OWN_INF_KEY='hi_own_inf',TGIFT_KEY='hi_tgift',GIFT_PEND_KEY='hi_gift_pend';
+function ownFmt(n){return typeof cnN==='function'?cnN(n):String(n);}
+
+/* ---------- tienda web: "Muy pronto" ---------- */
+{const _p=priceOf;priceOf=function(id){if(webNoPay())return isOwner()?'Gratis (dueño)':'Muy pronto';return _p.apply(this,arguments);};}
+{const _ab=askBuy;askBuy=function(id){if(webNoPay()){if(!PRODUCTS[id])return;
+    if(isOwner()){grant(id);toast('Como dueño lo recibes gratis: '+PRODUCTS[id].n,false,'gold');return;}
+    toast('Muy pronto: las compras llegarán con la app en Google Play y App Store. Mientras tanto gana Ámbar gratis con el regalo diario.',false,'gold');return;}
+  return _ab.apply(this,arguments);};}
+{const _rs=renderShop;renderShop=function(){const r=_rs.apply(this,arguments);try{if(!webNoPay())return r;const box=$('shopBody');if(!box||!box.querySelectorAll)return r;
+    for(const b of box.querySelectorAll('[data-sh^="buy:"]')){b.classList.add(isOwner()?'ownFree':'soon');if(!isOwner()&&b.classList.contains('big'))b.textContent='Muy pronto';}
+    if(!isOwner())for(const x of box.querySelectorAll('.x2b,.x2note,.x2'))x.remove();
+    for(const p of box.querySelectorAll('.sfoot'))p.textContent='Las compras con dinero llegan muy pronto, con la app en Google Play y App Store. Mientras tanto gana Ámbar gratis con el regalo diario y los videos. Entra con tu cuenta (En línea) para guardar tu progreso en la nube.';}catch(err){if(typeof console!=='undefined')console.error(err);}return r;};}
+{const _pw=productWhat;productWhat=function(id){const s=_pw.apply(this,arguments);return webNoPay()&&!isOwner()?s.replace(/ <b class="x2">[\s\S]*$/,''):s;};}
+
+/* ---------- ¿soy el dueño? (lo decide el servidor) ---------- */
+async function ownCheck(force){if(typeof ON==='undefined'||!ON.sess){OWN.admin=false;ownUI();return;}
+  const tok=ON.sess.rt||ON.sess.at;if(!force&&OWN.checked===tok)return;OWN.checked=tok;
+  try{OWN.admin=(await rpc('am_i_admin'))===true;}catch(_){OWN.admin=false;}
+  ownUI();giftsClaim();}
+{const _ss=sessSave;sessSave=function(d){const had=!!(ON&&ON.sess);const r=_ss.apply(this,arguments);try{if(!d||!d.access_token){OWN.admin=false;OWN.checked='';ownUI();}else if(!had)setTimeout(()=>ownCheck(true),300);}catch(_){}return r;};}
+
+/* ---------- buzón: regalos del dueño ---------- */
+let giftBusy=false;
+async function giftsClaim(){if(giftBusy||typeof ON==='undefined'||!ON.sess)return;giftBusy=true;
+  try{const L=await rpc('claim_gifts');if(Array.isArray(L)&&L.length){let amb=0;const res={};let note='';
+      for(const g of L){amb+=+g.amber||0;for(const k in (g.res||{}))res[k]=(res[k]||0)+(+g.res[k]||0);if(g.note)note=g.note;}
+      if(amb>0)addAmber(amb,'regalo del dueño');
+      if(Object.keys(res).length){let p={};try{p=JSON.parse(lsGet(GIFT_PEND_KEY)||'{}')||{};}catch(_){p={};}for(const k in res)p[k]=(p[k]||0)+res[k];lsSet(GIFT_PEND_KEY,JSON.stringify(p));giftResApply();}
+      const parts=[];if(amb>0)parts.push(ownFmt(amb)+' de Ámbar');for(const k of ['food','wood','stone','gold'])if(res[k])parts.push(ownFmt(res[k])+' de '+RES_N[k]);
+      announce('🎁 Regalo del dueño del juego','Recibiste '+parts.join(', ')+(Object.keys(res).length?' (los recursos van a las reservas de tu imperio en Conquistar el mundo)':'')+'.'+(note?' Mensaje: "'+note+'"':''),{kind:'good'});}}
+  catch(_){}giftBusy=false;}
+/* las reservas regaladas se guardan hasta que tengas un imperio en Conquistar el mundo */
+function giftResApply(){let p={};try{p=JSON.parse(lsGet(GIFT_PEND_KEY)||'{}')||{};}catch(_){return;}if(!Object.keys(p).length||!CAMP||!CAMP.res)return;
+  for(const k in p)if(RES4.indexOf(k)>=0&&p[k]>0)resAdd(k,p[k],true);lsDel(GIFT_PEND_KEY);campSave();try{renderCampBar();}catch(_){}}
+{const _rcb=renderCampBar;renderCampBar=function(){try{if(CAMP&&CAMP.res&&lsGet(GIFT_PEND_KEY)){const p=lsGet(GIFT_PEND_KEY);lsDel(GIFT_PEND_KEY);const o=JSON.parse(p||'{}')||{};for(const k in o)if(RES4.indexOf(k)>=0&&o[k]>0)resAdd(k,o[k],true);campSave();}}catch(_){}return _rcb.apply(this,arguments);};}
+
+/* ---------- regalo de probador (una vez por teléfono) ---------- */
+function testerGift(){if(!TESTER()||lsGet(TGIFT_KEY))return;lsSet(TGIFT_KEY,String(Date.now()));const w=wallet();
+  w.own.pass=Math.max(Date.now(),w.own.pass||0)+30*864e5;w.own.novid=1;wSave();addAmber(2000,'regalo de probador');
+  if(typeof renderShop==='function')renderShop();if(typeof renderShopBar==='function')renderShopBar();
+  announce('🎁 Regalo de probador','¡Gracias por probar Homo Imperium! Te regalamos 2.000 de Ámbar, el Pase del Imperio por 30 días y los premios de los videos al instante. Si entras En línea, en tu imperio te espera otro regalo de recursos.',{kind:'good'});}
+/* en línea: regalo de recursos una vez por imperio */
+{const _ro=renderOnlineHTML;renderOnlineHTML=function(){let h=_ro.apply(this,arguments);try{
+    if(ON.sess&&isOwner())h=card('gold ownCard','<div class="sct"><b>👑 Eres el dueño del juego</b><span>Regala Ámbar y recursos a cualquier jugador, y ten todo lo que quieras.</span></div><button class="big" data-on="own">Abrir panel</button>')+h;
+    const e=ON.emp;if(TESTER()&&e&&e.gift_claimed===false){const c=card('hot gold','<div class="sct"><b>🎁 Regalo de probador</b><span>+10.000 de comida y madera, +6.000 de piedra y +5.000 de oro para tu imperio en este mundo.</span><small>Una sola vez por imperio</small></div><button class="big" data-on="tg">Recibir</button>');
+      const j=h.indexOf('<div class="ostats">');h=j>=0?h.slice(0,j)+c+h.slice(j):c+h;}}catch(err){if(typeof console!=='undefined')console.error(err);}return h;};}
+{const _oa=onAct;onAct=async function(a){const k=String(a).split(':')[0];
+  if(k==='own'){ownOpen();return;}
+  if(k==='tg'&&ON.emp)return busy(async()=>{ON.emp=await rpc('claim_tester_gift',{p_world:ON.emp.world});ON.msg='¡Regalo recibido! Ya tienes los recursos en tu imperio.';if(typeof sfx==='function')sfx('ok');});
+  return _oa.apply(this,arguments);};}
+
+/* ---------- recursos infinitos para el dueño ---------- */
+function ownInfOn(){return isOwner()&&lsGet(OWN_INF_KEY)==='1';}
+function ownInfTick(){if(!ownInfOn())return;try{
+    if(G&&!G.over&&G.res&&G.res[0]){let ch=0;for(const k of ['food','wood','stone','gold'])if((G.res[0][k]||0)<50000){G.res[0][k]=99999;ch=1;}if(ch&&typeof updateHud==='function')updateHud();}
+    if(CAMP&&CAMP.res){let ch=0;for(const k of RES4)if((CAMP.res[k]||0)<50000){CAMP.res[k]=99999;ch=1;}if(ch){campSave();try{renderCampBar();}catch(_){}}}
+    if(amber()<5000){const w=wallet();w.a=99999;wSave();updAmber();}}catch(_){}}
+setInterval(ownInfTick,1000);
+
+/* ---------- botones del panel ---------- */
+function ownUI(){const show=isOwner();
+  let b=$('ownBtn');const row=$('miniRow');
+  if(show&&!b&&row&&row.appendChild&&document.createElement){b=document.createElement('button');b.id='ownBtn';b.className='ghostbtn ownBtn';b.textContent='👑 Dueño';b.addEventListener('click',ownOpen);row.appendChild(b);}
+  if(b)b.hidden=!show;
+  let p=$('ownPause');const sp=$('shopPause');
+  if(show&&!p&&sp&&sp.parentNode&&document.createElement){p=document.createElement('button');p.id='ownPause';p.className='ghostbtn ownBtn';p.textContent='👑 Panel del dueño';p.addEventListener('click',()=>{ownOpen();});sp.parentNode.insertBefore(p,sp.nextSibling);}
+  if(p)p.hidden=!show;
+  if($('shop')&&!$('shop').hidden)renderShop();}
+
+/* ---------- panel del dueño ---------- */
+(function ownMount(){if(typeof document==='undefined'||!document.createElement||!document.body)return;if($('owner'))return;
+  const d=document.createElement('div');d.className='screen';d.id='owner';d.hidden=true;
+  d.innerHTML='<div class="screen-inner"><div class="shead"><h2 class="brand" style="font-size:34px">Panel del dueño<small>Solo tú lo ves</small></h2></div><div id="ownBody"></div><button class="big" id="ownClose">Volver</button></div>';
+  const app=$('app')||document.body;app.appendChild(d);
+  d.addEventListener('click',ev=>{const b=ev.target.closest&&ev.target.closest('[data-ow]');if(b&&!b.disabled)ownAct(b.dataset.ow);});
+  d.addEventListener('keydown',ev=>{if(ev.key==='Enter'&&ev.target&&ev.target.id==='owQ')ownAct('find');});
+  $('ownClose').addEventListener('click',ownClose);})();
+let ownPrev=null;
+function ownOpen(){if(!isOwner())return;ownPrev=['pause','online','shop'].find(id=>$(id)&&!$(id).hidden)||null;if(ownPrev)$(ownPrev).hidden=true;$('owner').hidden=false;ownRender();if(OWN.list===null)ownAct('find');}
+function ownClose(){$('owner').hidden=true;if(ownPrev&&$(ownPrev)){$(ownPrev).hidden=false;if(ownPrev==='online')renderOnline();if(ownPrev==='shop')renderShop();}ownPrev=null;}
+function ownSaveF(){for(const id of ['owQ','owNote']){const el=$(id);if(el&&el.value!=null){if(id==='owQ')OWN.q=el.value;else OWN.f.note=el.value;}}}
+function owChips(key,vals,fmt){return vals.map(v=>'<button class="ochip'+(OWN.f[key]===v?' on':'')+'" data-ow="f:'+key+':'+v+'">'+(fmt?fmt(v):ownFmt(v))+'</button>').join('');}
+function ownRender(){const box=$('ownBody');if(!box)return;ownSaveF();let h='';
+  if(OWN.msg)h+='<p class="onmsg'+(OWN.msg[0]==='!'?' bad':'')+'">'+esc(OWN.msg[0]==='!'?OWN.msg.slice(1):OWN.msg)+'</p>';
+  if(OWN.busy)h+='<p class="onwait">Conectando…</p>';
+  // para ti
+  h+='<h3>Para ti</h3>';
+  h+=card(ownInfOn()?'on':'','<div class="sct"><b>♾️ Recursos infinitos</b><span>Tus recursos en las partidas, las reservas de tu imperio y tu Ámbar nunca se acaban (se rellenan solos).</span><small>Solo en este teléfono y con tu cuenta de dueño</small></div><button class="big" data-ow="inf">'+(ownInfOn()?'Apagar':'Encender')+'</button>');
+  h+=card('','<div class="sct"><b>Ámbar</b><span>Tienes '+AMB_IC+'<b>'+ownFmt(amber())+'</b>. En la tienda todo te sale gratis.</span></div><div class="scb"><button class="ghostbtn" data-ow="me:amb:10000">+10.000</button><button class="big" data-ow="me:amb:100000">+100.000</button></div>');
+  const inM=G&&!G.over&&$('title')&&$('title').hidden;
+  if(inM)h+=card('','<div class="sct"><b>Partida en curso</b><span>Suma 100.000 de comida, madera, piedra y oro ahora mismo.</span></div><button class="big" data-ow="me:match">+100.000</button>');
+  if(CAMP&&CAMP.res)h+=card('','<div class="sct"><b>Reservas de tu imperio</b><span>'+RES4.map(k=>ICON[k]+' '+ownFmt(CAMP.res[k]||0)).join(' · ')+'</span></div><button class="big" data-ow="me:camp">+100.000</button>');
+  // regalar
+  h+='<h3>Regalar a un jugador</h3>';
+  h+=card('','<div class="sct ofrm svSearch"><input class="oin" id="owQ" maxlength="60" placeholder="Correo, imperio, país o n.º de mundo" value="'+esc(OWN.q)+'"><button class="ghostbtn" data-ow="find">Buscar</button></div>');
+  if(OWN.list===null)h+='<p class="snote">Cargando jugadores…</p>';
+  else if(!OWN.list.length)h+='<p class="snote">No encontré jugadores con eso.</p>';
+  else{h+='<p class="snote">'+OWN.list.length+' jugador'+(OWN.list.length===1?'':'es')+' · los más recientes primero. Toca uno para regalarle.</p>';
+    for(const p of OWN.list){const on=OWN.sel===p.user;const em=(p.empires||[]);
+      h+='<button class="sc owP'+(on?' on':'')+'" data-ow="sel:'+p.user+'"><div class="sct"><b>'+esc(p.email)+(p.admin?' · 👑 tú':'')+'</b><span>'+(em.length?em.map(e=>esc(e.name)+' ('+esc(typeof cname==='function'?cname(e.country):e.country)+') en '+esc(e.world_name)).join(' · '):'Sin imperio en línea todavía')+'</span><small>Cuenta desde '+new Date(p.since).toLocaleDateString()+(p.last?' · entró el '+new Date(p.last).toLocaleDateString():'')+(p.pending?' · '+p.pending+' regalo(s) sin abrir':'')+'</small></div></button>';
+      if(on)h+=ownForm(p);}}
+  h+='<h3>Más</h3>'+card('','<div class="sct"><b>📊 Métricas del juego</b><span>Cuántos juegan, cuántos vuelven y cuánto juegan. Pide la clave de tu panel.</span></div><a class="big ownLink" href="metricas.html" target="_blank" rel="noopener">Abrir</a>');
+  box.innerHTML=h;}
+function ownForm(p){const F=OWN.f,em=p.empires||[];if(F.emp&&!em.some(e=>String(e.id)===String(F.emp)))F.emp='';
+  let h='<div class="sc owForm"><div class="sct ofrm">';
+  h+='<div class="orow2"><span>'+AMB_IC+' Ámbar</span>'+owChips('amb',[0,500,2000,10000,50000])+'</div>';
+  h+='<div class="orow2"><span>Reservas de su imperio (cada recurso)</span>'+owChips('camp',[0,5000,20000,100000])+'</div>';
+  h+='<p class="snote">El Ámbar y las reservas le llegan la próxima vez que abra el juego con su cuenta.</p>';
+  if(em.length){h+='<div class="orow2"><span>Imperio en línea</span><button class="ochip'+(!F.emp?' on':'')+'" data-ow="f:emp:">Ninguno</button>'+em.map(e=>'<button class="ochip'+(String(F.emp)===String(e.id)?' on':'')+'" data-ow="f:emp:'+e.id+'">'+esc(e.name)+' · '+esc(e.world_name)+'</button>').join('')+'</div>';
+    if(F.emp){const e=em.find(x=>String(x.id)===String(F.emp));h+='<p class="snote">Tiene '+RES4.map(k=>ICON[k]+' '+ownFmt((e.res||{})[k]||0)).join(' · ')+' · poder '+ownFmt(e.power||0)+'</p>';
+      h+='<div class="orow2"><span>Recursos en línea (cada uno)</span>'+owChips('onl',[0,5000,20000,100000])+'</div>';
+      h+='<div class="orow2"><span>Infantería</span>'+owChips('inf',[0,50,200,1000])+'</div>';
+      h+='<div class="orow2"><span>Arqueros</span>'+owChips('ran',[0,50,200,1000])+'</div>';
+      h+='<p class="snote">Lo del imperio en línea se suma al instante.</p>';}}
+  h+='<label>Mensaje (opcional)<input class="oin" id="owNote" maxlength="120" placeholder="Ej. Gracias por probar el juego" value="'+esc(F.note)+'"></label>';
+  h+='</div><button class="big" data-ow="send">🎁 Enviar regalo</button></div>';return h;}
+async function ownAct(code){const [a,x,y]=String(code).split(':');ownSaveF();
+  if(a==='inf'){lsSet(OWN_INF_KEY,ownInfOn()?'0':'1');ownInfTick();OWN.msg=ownInfOn()?'Recursos infinitos encendidos.':'Recursos infinitos apagados.';return ownRender();}
+  if(a==='me'){if(!isOwner())return;
+    if(x==='amb'){addAmber(+y,'dueño');}
+    else if(x==='match'&&G&&!G.over){for(const k of ['food','wood','stone','gold'])G.res[0][k]=(G.res[0][k]||0)+100000;if(typeof updateHud==='function')updateHud();toast('+100.000 de cada recurso',false,'gold');}
+    else if(x==='camp'&&CAMP&&CAMP.res){for(const k of RES4)resAdd(k,100000,true);campSave();try{renderCampBar();}catch(_){}toast('+100.000 de cada recurso en tus reservas',false,'gold');}
+    OWN.msg='';return ownRender();}
+  if(a==='f'){const v=y===undefined||y===''?'':(x==='emp'?y:+y);OWN.f[x]=v;return ownRender();}
+  if(a==='sel'){OWN.sel=OWN.sel===x?null:x;OWN.f.emp='';OWN.msg='';return ownRender();}
+  if(OWN.busy)return;
+  if(a==='find'){OWN.busy=true;OWN.msg='';ownRender();try{OWN.list=await rpc('admin_find_players',{p_q:(OWN.q||'').trim()});if(!Array.isArray(OWN.list))OWN.list=[];}
+    catch(err){OWN.list=OWN.list||[];OWN.msg='!'+(/admin_find_players|function/i.test(err&&err.message||'')?'Falta activar el panel en Supabase (archivo Homo_Imperium_dueno_v59.sql).':(err&&err.message||'Error'));}
+    OWN.busy=false;return ownRender();}
+  if(a==='send'){const F=OWN.f,p=(OWN.list||[]).find(q=>q.user===OWN.sel);if(!p)return;
+    const camp={},onl={},army={};if(F.camp>0)for(const k of RES4)camp[k]=F.camp;if(F.emp&&F.onl>0)for(const k of RES4)onl[k]=F.onl;if(F.emp&&F.inf>0)army.inf=F.inf;if(F.emp&&F.ran>0)army.ran=F.ran;
+    if(!(F.amb>0)&&!Object.keys(camp).length&&!Object.keys(onl).length&&!Object.keys(army).length){OWN.msg='!Elige qué regalarle';return ownRender();}
+    OWN.busy=true;ownRender();
+    try{await rpc('admin_gift',{p_user:p.user,p_amber:+F.amb||0,p_camp:camp,p_empire:F.emp?+F.emp:null,p_online:onl,p_army:army,p_note:(F.note||'').trim()});
+      const parts=[];if(F.amb>0)parts.push(ownFmt(F.amb)+' de Ámbar');if(F.camp>0)parts.push(ownFmt(F.camp)+' de cada recurso en sus reservas');if(Object.keys(onl).length)parts.push(ownFmt(F.onl)+' de cada recurso en línea');if(army.inf)parts.push(army.inf+' de infantería');if(army.ran)parts.push(army.ran+' arqueros');
+      OWN.msg='Regalo enviado a '+p.email+': '+parts.join(', ')+'.';if(typeof sfx==='function')sfx('ok');
+      if(p.user===OWN_me())setTimeout(giftsClaim,400);
+      OWN.busy=false;OWN.f.note='';const n=$('owNote');if(n)n.value='';
+      try{OWN.list=await rpc('admin_find_players',{p_q:(OWN.q||'').trim()});}catch(_){}}
+    catch(err){OWN.msg='!'+(err&&err.message||'No se pudo enviar');}
+    OWN.busy=false;return ownRender();}}
+function OWN_me(){try{const t=ON.sess.at.split('.')[1];return JSON.parse(atob(t.replace(/-/g,'+').replace(/_/g,'/'))).sub;}catch(_){return '';}}
+
+/* al abrir el juego: regalo de probador, ¿soy dueño?, buzón */
+setTimeout(()=>{try{testerGift();}catch(err){if(typeof console!=='undefined')console.error(err);}try{ownCheck(true);}catch(_){}},1500);
+
 {const bf=document.getElementById('bFleet');if(bf&&bf.querySelector){const s=bf.querySelector('[data-icon]');if(s)s.innerHTML=ICON.galera||ICON.trans||'';}}
-window.__HI={get QUAL(){return QUAL;},sepPass,get landOk(){return landOk;},resCap,resAdd,funds,hacFund,stoTotal,gdMaxAfford,get canAffordC(){return canAffordC;},get payC(){return payC;},get ceCap(){return ceCap;},SV,svLoad,get ON(){return ON;},get onAct(){return onAct;},get renderOnlineHTML(){return renderOnlineHTML;},gdProv,gdRest,invChance,get popC(){return popC;},get cePow(){return cePow;},get ceTgtDef(){return ceTgtDef;},get popCap(){return popCap;},shOn,shLeft,shGive,shBuy,shCan,shDealToday,shDealOff,shW,get hit(){return hit;},openShopTab,popC,popWorld,popEmpire,popHurt,puOf,puAvg,puTarget,popTurn,popBomb,bombNow,repCost,popE,gwTick,gwWave,gwStrike,gwPlayerBomb,get imTrib(){return imTrib;},imOpen,imClose,imRender,imE,imMine,imProd,imTrib,imSto,imAsg,imStr,imTurn,cwEval,cwTargets,cwLaunch,cwDeclare,imCouncilOk,imCanRecruit,imRecruitDefend,ceSt,ceDefend,ceConquer,ceAskDefense,ceAskConquer,ceRecruit,ceOpen,ceTurn,get CAMP(){return CAMP;},worldTurn:()=>worldTurn(),campaignEnd:(w,h)=>campaignEnd(w,h),startBattle:(a,b)=>startBattle(a,b),renderCampBar:()=>renderCampBar(),cnTick,cnRecruit,openCouncil,closeCouncil,cnCfg,cnSt,cnHired,dipAnswer,announce,declareWar,setSt:(a,b,v)=>setSt(a,b,v),autoDefend,garChance,garDef,garReinforce,templeLv,templeEraMul,blessNow,blessOn,gardenGather,leaderLabel,leaderTick,lTitle,rushVid,rushLeft,rushMul,musicTick,AUD,faunaEra,STORY,storyTick,atk,buildPort,canExpedite,sendExpedition,expLeft,expLand,expBuy,expDraw,worldPulse,chapters,storyStart,goalProg,stGet,renderStoryCard,setMode:m=>setMode(m),get MODE(){return MODE;},contOf,hasPort,DEV_TIER,setLevel,setQuality,wallet,amber,addAmber,grant,accel,accCost,canAccel,claimDaily,dailyState,freeVideo,buyRes,vidRes,buyEraPack,shopEra,pickBanner,openShop,closeShop,adClose,mon,eraPack,resAmt,BANNERS,get TEAM(){return TEAM;},shopEnd,retryBonus,CBY,COUNTRIES,newGame,endGame,selectCountry,doTrade,proposePact,breakPact,answerOffer,resistOf,incomeOf,tradeQuote,campaignEnd,doAct,get selR(){return selR;},UTT:UT,BTT:BT,get AUD(){return typeof AUD!=="undefined"?AUD:null;},step,get G(){return G;},trainAt,startPlacing,confirmPlace,tap,setSel,orderAt,render,renderMini,refreshTray,drawPortrait,cam,setRunning(v){running=v;},setDiff(k){DK=k;},setNP(n){NP=n;},FAUNA,addB,addU,addAnimal,centerOn,updFog,eraCheck,get PROF(){return PROF;},get USE3D(){return USE3D;},pickScreen,screenToWorld,proj3,get R3(){return R3;},get POST(){return POST;},get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},zoomAt,clampCam,get terrain(){return terrain;},get BASES(){return BASES;},get FORDS(){return FORDS;},get RIVERS(){return RIVERS;},findPath,seaD,setBridge,waterNear:(x,y,r)=>waterNear(x,y,r),riverAt:(x,y)=>riverAt(x,y),guideSay,guideFor,kill,newCampaign,startBattle,reachable,worldTurn,get CAMP(){return CAMP;},countOf,saveGame,loadGame,savedInfo,continueGame,selectBuilding,teamBlock:t=>teamBlock(t),get BLOCKERS(){return BLOCKERS;},get BLOCKV(){return BLOCKV;},lineClear,get PBUDGET(){return PBUDGET;},render3D:dt=>render3D(dt),renderOverlay:dt=>renderOverlay(dt),resize,freeze(v){frozen=v;},get acc(){return acc;},mountainAt:(x,y)=>mountainAt(x,y),heightAt:(x,y)=>heightAt(x,y),reveal(){explored.fill(1);visible.fill(1);G.revealAll=true;updFog();}};
+window.__HI={get QUAL(){return QUAL;},OWN,isOwner,ownCheck,ownOpen,ownAct,giftsClaim,testerGift,webNoPay,ownInfTick,get ON(){return ON;},sepPass,get landOk(){return landOk;},resCap,resAdd,funds,hacFund,stoTotal,gdMaxAfford,get canAffordC(){return canAffordC;},get payC(){return payC;},get ceCap(){return ceCap;},SV,svLoad,get ON(){return ON;},get onAct(){return onAct;},get renderOnlineHTML(){return renderOnlineHTML;},gdProv,gdRest,invChance,get popC(){return popC;},get cePow(){return cePow;},get ceTgtDef(){return ceTgtDef;},get popCap(){return popCap;},shOn,shLeft,shGive,shBuy,shCan,shDealToday,shDealOff,shW,get hit(){return hit;},openShopTab,popC,popWorld,popEmpire,popHurt,puOf,puAvg,puTarget,popTurn,popBomb,bombNow,repCost,popE,gwTick,gwWave,gwStrike,gwPlayerBomb,get imTrib(){return imTrib;},imOpen,imClose,imRender,imE,imMine,imProd,imTrib,imSto,imAsg,imStr,imTurn,cwEval,cwTargets,cwLaunch,cwDeclare,imCouncilOk,imCanRecruit,imRecruitDefend,ceSt,ceDefend,ceConquer,ceAskDefense,ceAskConquer,ceRecruit,ceOpen,ceTurn,get CAMP(){return CAMP;},worldTurn:()=>worldTurn(),campaignEnd:(w,h)=>campaignEnd(w,h),startBattle:(a,b)=>startBattle(a,b),renderCampBar:()=>renderCampBar(),cnTick,cnRecruit,openCouncil,closeCouncil,cnCfg,cnSt,cnHired,dipAnswer,announce,declareWar,setSt:(a,b,v)=>setSt(a,b,v),autoDefend,garChance,garDef,garReinforce,templeLv,templeEraMul,blessNow,blessOn,gardenGather,leaderLabel,leaderTick,lTitle,rushVid,rushLeft,rushMul,musicTick,AUD,faunaEra,STORY,storyTick,atk,buildPort,canExpedite,sendExpedition,expLeft,expLand,expBuy,expDraw,worldPulse,chapters,storyStart,goalProg,stGet,renderStoryCard,setMode:m=>setMode(m),get MODE(){return MODE;},contOf,hasPort,DEV_TIER,setLevel,setQuality,wallet,amber,addAmber,grant,accel,accCost,canAccel,claimDaily,dailyState,freeVideo,buyRes,vidRes,buyEraPack,shopEra,pickBanner,openShop,closeShop,adClose,mon,eraPack,resAmt,BANNERS,get TEAM(){return TEAM;},shopEnd,retryBonus,CBY,COUNTRIES,newGame,endGame,selectCountry,doTrade,proposePact,breakPact,answerOffer,resistOf,incomeOf,tradeQuote,campaignEnd,doAct,get selR(){return selR;},UTT:UT,BTT:BT,get AUD(){return typeof AUD!=="undefined"?AUD:null;},step,get G(){return G;},trainAt,startPlacing,confirmPlace,tap,setSel,orderAt,render,renderMini,refreshTray,drawPortrait,cam,setRunning(v){running=v;},setDiff(k){DK=k;},setNP(n){NP=n;},FAUNA,addB,addU,addAnimal,centerOn,updFog,eraCheck,get PROF(){return PROF;},get USE3D(){return USE3D;},pickScreen,screenToWorld,proj3,get R3(){return R3;},get POST(){return POST;},get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},zoomAt,clampCam,get terrain(){return terrain;},get BASES(){return BASES;},get FORDS(){return FORDS;},get RIVERS(){return RIVERS;},findPath,seaD,setBridge,waterNear:(x,y,r)=>waterNear(x,y,r),riverAt:(x,y)=>riverAt(x,y),guideSay,guideFor,kill,newCampaign,startBattle,reachable,worldTurn,get CAMP(){return CAMP;},countOf,saveGame,loadGame,savedInfo,continueGame,selectBuilding,teamBlock:t=>teamBlock(t),get BLOCKERS(){return BLOCKERS;},get BLOCKV(){return BLOCKV;},lineClear,get PBUDGET(){return PBUDGET;},render3D:dt=>render3D(dt),renderOverlay:dt=>renderOverlay(dt),resize,freeze(v){frozen=v;},get acc(){return acc;},mountainAt:(x,y)=>mountainAt(x,y),heightAt:(x,y)=>heightAt(x,y),reveal(){explored.fill(1);visible.fill(1);G.revealAll=true;updFog();}};
 })();
 
 </script>
