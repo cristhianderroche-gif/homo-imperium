@@ -1,5 +1,5 @@
 <!doctype html><html lang="es"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#16120e">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -1020,6 +1020,47 @@ b.popN{font-size:15px;color:#fff;font-variant-numeric:tabular-nums}
 #coachRing{position:fixed;z-index:59;pointer-events:none;border-radius:50%;border:3px solid #ffd27a;box-shadow:0 0 0 4px rgba(255,180,80,.25),0 0 24px rgba(255,190,90,.8);animation:cPulse 1.1s ease-in-out infinite;display:none}
 @keyframes cPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.18);opacity:.7}}
 @media (max-width:360px){#title.v60 #modes button{font-size:11.5px!important}#title.v60 #modes button::before{font-size:19px}}
+
+/* ================= v61 · comprar por cantidades ================= */
+#shopBody .shQty{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:6px 0 8px;padding:6px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}
+#shopBody .shQty>span{font-size:13px;font-weight:700;color:rgba(255,255,255,.7);padding:0 6px}
+#shopBody .shQty button{flex:1 1 0;min-width:52px;display:flex;flex-direction:column;align-items:center;gap:1px;padding:7px 4px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:#fff;font-weight:800;font-size:15px;cursor:pointer}
+#shopBody .shQty button small{font-size:10.5px;font-weight:700;color:#4ade80}
+#shopBody .shQty button[aria-pressed="true"]{background:linear-gradient(180deg,rgba(255,180,90,.3),rgba(255,140,60,.15));border-color:rgba(255,190,110,.75)}
+#shopBody .shqAsk{background:linear-gradient(180deg,#22c55e,#16a34a)!important;color:#fff!important;display:flex!important;flex-direction:column;align-items:center;line-height:1.1}
+#shopBody .shqAsk small{font-size:11px;opacity:.9}
+
+/* ================= v62 · presupuesto de los ministros ================= */
+.ecBox{margin:10px 0 12px;padding:12px;border-radius:16px;background:rgba(250,204,21,.06);border:1px solid rgba(250,204,21,.35)}
+.ecBox.war{background:rgba(248,113,113,.06);border-color:rgba(248,113,113,.35)}
+.ecBox.dip{background:rgba(56,189,248,.06);border-color:rgba(56,189,248,.35)}
+.ecHead{font-weight:800;font-size:15px;color:#fff;display:flex;flex-direction:column;gap:2px;margin-bottom:10px}
+.ecHead small{font-weight:600;font-size:12px;color:rgba(255,255,255,.6)}
+.ecKpi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:10px}
+.ecKpi>div{background:rgba(0,0,0,.25);border-radius:12px;padding:8px 6px;text-align:center;display:flex;flex-direction:column;gap:2px;min-width:0}
+.ecKpi span{font-size:11px;color:rgba(255,255,255,.65);font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+.ecKpi b{font-size:17px;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ecKpi small{font-size:11px;color:rgba(255,255,255,.6);line-height:1.2}
+.ecKpi .ok b{color:#4ade80}.ecKpi .bad b{color:#f87171}
+.ecT{width:100%;border-collapse:collapse;font-size:13px}
+.ecT th{font-size:11.5px;color:rgba(255,255,255,.6);font-weight:700;text-align:right;padding:4px 4px 6px}
+.ecT th:first-child{text-align:left}
+.ecT td{padding:5px 4px;border-top:1px solid rgba(255,255,255,.07);text-align:right;white-space:nowrap}
+.ecT td:first-child{text-align:left;white-space:normal;color:rgba(255,255,255,.88)}
+.ecT .up{color:#4ade80;font-weight:700}.ecT .dn{color:#fca5a5;font-weight:700}.ecT .mut{color:rgba(255,255,255,.45);text-align:center}
+.ecT .ecSec td{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:rgba(255,255,255,.55);padding-top:9px;border-top:none}
+.ecT .ecTot td{border-top:2px solid rgba(255,255,255,.2);font-weight:800;font-size:14px;color:#fff}
+.ecTips{margin-top:8px;display:flex;flex-direction:column;gap:5px}
+.ecTips p{margin:0;font-size:12.5px;line-height:1.4;color:rgba(255,255,255,.82)}
+.ecBox svg.i{display:inline-block!important;width:1.05em!important;height:1.05em!important;vertical-align:-.17em;margin:0 2px 0 0!important;flex:none}
+.ecKpi small svg.i{width:.95em!important;height:.95em!important}
+.ecT th svg.i{margin-right:3px!important}
+
+/* ================= v63 · sin zoom de página ================= */
+html,body{touch-action:pan-x pan-y;-webkit-text-size-adjust:100%;text-size-adjust:100%;-ms-touch-action:pan-x pan-y}
+button,a,[data-act],[data-sh],[data-on],[data-cn],[data-ce],[data-ow],[data-im]{touch-action:manipulation}
+/* el iPhone hace zoom al tocar una casilla con letra menor a 16 px */
+@media (pointer:coarse){input,select,textarea{font-size:16px!important}}
 
 </style>
 
@@ -7864,7 +7905,7 @@ function frameBody(now){
 function boot(){init3D();resize();applyQuality();showTitle();requestAnimationFrame(frame);}
 boot();
 /* ---------- opiniones de quienes prueban el juego: llegan por WhatsApp al creador ---------- */
-const FB_TO='573044272520',FB_VER='v60';let fbCat='Error',fbFrom=null;
+const FB_TO='573044272520',FB_VER='v63';let fbCat='Error',fbFrom=null;
 function fbContext(){const d=(()=>{const u=navigator.userAgent||'';return /iPhone|iPad/.test(u)?'iPhone/iPad':/Android/.test(u)?'Android':/Mac/.test(u)?'Mac':/Windows/.test(u)?'Windows':'otro';})();
   const g=G&&!$('title').hidden?null:G;const where=g&&PROF?PROF.c.n+' · era '+ROMAN[g.era[0]]+' · '+fmtT(g.t)+(g.camp?' · conquista':''):'menú de inicio';
   return 'Versión '+FB_VER+' · '+d+' '+innerWidth+'×'+innerHeight+' · '+where+(typeof QSET!=='undefined'?' · calidad '+QSET+' nivel '+QUAL.lvl+(QUAL.fps?' · '+QUAL.fps+' fps':'')+(GPU_NAME?' · '+GPU_NAME:''):'');}
@@ -8157,7 +8198,7 @@ CN_TAX[3].d='Mucho oro, pero nacen menos niños y en el imperio puede haber rebe
 function ceSt(){if(!CAMP)return null;const E=CAMP.cn||(CAMP.cn={guard:0,names:{},log:[]});for(const k in CN_DEF)if(!E.names[k]){const L=CN_DEF[k].names;E.names[k]=L[Math.floor(Math.random()*L.length)];}if(!isFinite(E.guard))E.guard=0;return E;}
 function ceWho(k){const E=ceSt();return cnTitle(k,CAMP.era)+(E?' '+E.names[k]:'');}
 function ceCap(){return 500*CAMP.era+100*Math.min(20,countOf('P'));}
-function ceCost(n){const m=(1+.12*(CAMP.era-1))*(1-.15*cnSk('guerra','leva'))*n/100;return {food:Math.round(100*m),gold:Math.round(50*m)};}
+function ceCost(n){const m=(1+.12*(CAMP.era-1))*(1-.15*cnSk('guerra','leva'))*n/100;return {food:Math.round(100*m),gold:Math.round(30*m)};}
 function cePow(n){return (n==null?ceSt().guard:n)/100*1.5*garEraF(CAMP.era)*(1+.25*cnSk('guerra','disc'));}
 function ceDefChance(id,o){const d=garDef(id)+(cnHired('guerra')?cePow():0),a=garAtk(o);return Math.max(.05,Math.min(.95,d*d/(d*d+a*a)));}
 function ceTgtDef(id){const o=ownerOf(id),c=CBY[id]||{};return (garAtk(o)*(o===id?1:.9)*1.6+4*garEraF(nEra(o))*(1+Math.log10((c.a||1)+1)*.25))*(1+.22*(nEra(o)-1))*(nEra(o)<=1?.8:1);}
@@ -8210,11 +8251,11 @@ function ceTurn(prevPending){const E=ceSt();if(!E)return;const cfg=cnCfg();const
   if(cnHired('hacienda')){const n=countOf('P');let g=Math.round(n*[0,20,40,70][cfg.tax]*(1+.25*cnSk('hacienda','recau')));const tr=cnSk('hacienda','trib');
     if(tr)for(const o of owners){const pk=pactOf(o);if(pk==='paz')g+=20*tr;else if(pk==='alianza')g+=40*tr;}
     if(cfg.perm.hacienda.vender)for(const k of ['food','wood','stone'])if((CAMP.res[k]||0)>8000){CAMP.res[k]-=1000;g+=400;}
-    if(g>0){CAMP.res.gold=Math.min(20000,(CAMP.res.gold||0)+g);E.inc=g;}
+    if(g>0){resAdd('gold',g);E.inc=g;}
     if(cfg.tax===3&&n>2&&Math.random()<.07&&(typeof puAvg!=='function'||puAvg()<45)){const L=COUNTRIES.filter(c=>ownerOf(c.id)==='P'&&c.id!==CAMP.home&&!(CAMP.pending&&CAMP.pending.id===c.id));if(L.length){const c=rnd(L);CAMP.own[c.id]=c.id;if(!CAMP.nations[c.id])CAMP.nations[c.id]=mkNation(c);if(CAMP.gar)delete CAMP.gar[c.id];
       ceLog('El pueblo de '+c.n+' se rebeló por los impuestos altos y se declaró independiente.','rebel');announce('¡Rebelión en '+c.n+'!','Los impuestos altos de '+ceWho('hacienda')+' cansaron al pueblo: '+c.n+' se declaró independiente. Baja los impuestos o recupéralo.',{kind:'war'});}}}
   // paga de la Guardia Imperial
-  if(E.guard>0){const disc=cnHired('hacienda')&&cfg.perm.hacienda.paga?.7:1,f=Math.ceil(E.guard/100*20*disc),gd=Math.ceil(E.guard/100*8*disc);
+  if(E.guard>0){const disc=cnHired('hacienda')&&cfg.perm.hacienda.paga?.7:1,f=Math.ceil(E.guard/100*20*disc),gd=Math.ceil(E.guard/100*5*disc);
     if(typeof hacFund==='function'?hacFund({food:f,gold:gd}):((CAMP.res.food||0)>=f&&(CAMP.res.gold||0)>=gd)){CAMP.res.food-=f;CAMP.res.gold-=gd;}
     else{const gone=Math.max(1,Math.round(E.guard*.06));E.guard-=gone;ceLog(cnN(gone)+' soldados de la Guardia Imperial desertaron por falta de paga.','war');if(!E.warnPay||CAMP.turn-E.warnPay>3){E.warnPay=CAMP.turn;announce('La Guardia no recibe paga','Las reservas no alcanzan para mantener la Guardia Imperial ('+f+' de comida y '+gd+' de oro por turno): '+cnN(gone)+' soldados se fueron.',{kind:'war'});}}}
   // GUERRA: reclutar solo, proponer campañas, declarar guerras
@@ -8260,7 +8301,7 @@ function ceRender(){const box=$('cnBody');if(!box||!CAMP)return;const E=ceSt(),c
     if(k==='guerra'){const pct=Math.min(100,E.guard/ceCap()*100),c1=ceCost(100);
       h+='<div class="cnArmy"><div class="cnBig"><span>Guardia Imperial del imperio</span><b>'+cnN(E.guard)+'</b><small>de '+cnN(ceCap())+' · va contigo a cada batalla</small></div><div class="cnBar"><i style="width:'+pct+'%"></i></div>'+
         '<div class="cnRec">'+[100,500,1000].map(n=>{const c=ceCost(n);return '<button data-ce="rec:'+n+'"'+(canAffordC(c)&&E.guard<ceCap()?'':' disabled')+'><b>+'+cnN(n)+'</b><small>'+c.food+' comida · '+c.gold+' oro</small></button>';}).join('')+'<button data-ce="rec:max"><b>Máximo</b><small>con las reservas</small></button></div>'+
-        '<p class="cnNote">Cada 100 soldados cuestan '+c1.food+' de comida y '+c1.gold+' de oro de las reservas, y cobran '+(cnHired('hacienda')&&cfg.perm.hacienda.paga?'14 de comida y 6 de oro':'20 de comida y 8 de oro')+' por turno.</p></div>';
+        '<p class="cnNote">Cada 100 soldados cuestan '+c1.food+' de comida y '+c1.gold+' de oro de las reservas, y cobran '+(cnHired('hacienda')&&cfg.perm.hacienda.paga?'14 de comida y 3,5 de oro':'20 de comida y 5 de oro')+' por turno.</p></div>';
       h+='<div class="cnLbl">Nivel de hostilidad</div><div class="cnSeg c5">'+CN_HOST.map((x,i)=>'<button data-cn="host:'+i+'" aria-pressed="'+(cfg.host===i)+'">'+x.n+'</button>').join('')+'</div><p class="cnNote">'+['Solo defiende.','Defiende tu imperio y tus batallas.','Defiende y frena a los invasores.','Te propone tomar países enemigos con la Guardia.','Propone campañas seguido y, si le das permiso, declara guerras a los más débiles.'][cfg.host]+'</p>';}
     if(k==='hacienda'){h+='<div class="cnLbl">Impuestos</div><div class="cnSeg c4">'+CN_TAX.map((x,i)=>'<button data-cn="tax:'+i+'" aria-pressed="'+(cfg.tax===i)+'">'+x.n+'</button>').join('')+'</div><p class="cnNote">'+CN_TAX[cfg.tax].d+'. Último turno: <b>'+cnN(E.inc||0)+' de oro</b>.</p>'+(typeof imHacHTML==='function'?imHacHTML():'');}
     if(k==='estado'){const near=[...new Set(Object.values(CAMP.own))].filter(o=>o!=='P'&&CAMP.nations[o]&&COUNTRIES.some(c=>ownerOf(c.id)===o&&reachable('P',c.id))).slice(0,8);
@@ -8296,7 +8337,7 @@ function imTrib(id){const p=imProd(id),rt=IM_STR[imStr(id)].rate,r={};for(const 
 function imVal(r){let v=0;for(const k of RES4)v+=(r[k]||0)*(RES_V[k]||1);return v;}
 function imSoldPow(n){return n/100*1.5*garEraF(CAMP.era)*(1+.25*cnSk('guerra','disc'));}
 function imFrontier(id){for(const o of Object.keys(CAMP.nations)){if(pactOf(o)!=='guerra')continue;if(COUNTRIES.some(c=>ownerOf(c.id)===o&&bbGap(c,CBY[id])<2.6))return o;}return null;}
-function imUpk(n){const d=cnHired('hacienda')&&cnCfg().perm.hacienda.paga?.7:1;return {food:Math.ceil(n/100*20*d),gold:Math.ceil(n/100*8*d)};}
+function imUpk(n){const d=cnHired('hacienda')&&cnCfg().perm.hacienda.paga?.7:1;return {food:Math.ceil(n/100*20*d),gold:Math.ceil(n/100*5*d)};}
 /* el imperio cobra el tributo de cada país (y no su producción completa) */
 {const _io=incomeOf;incomeOf=function(o){if(o!=='P'||!CAMP||!CAMP.own)return _io.apply(this,arguments);const r={food:0,wood:0,stone:0,gold:0};for(const id of imMine()){const t=imTrib(id);for(const k of RES4)r[k]+=t[k];}return r;};}
 /* la defensa de un país suma sus soldados asignados y su estrategia */
@@ -8354,7 +8395,7 @@ function cwFront(id){let n=0,adj=false;for(const m of imMine()){if(bbGap(CBY[m],
 function cwEval(id,n,strat){const E=imE(),o=ownerOf(id),N=CAMP.nations[o]||{res:{},rel:0},pk=pactOf(o),c=CBY[id];strat=strat||'asalto';const S=CW_STRAT[strat];if(n==null)n=E.guard;
   const fr=cwFront(id),pow=imSoldPow(n+fr.n*.5)*S.pow*(fr.n?1.15:1),def=ceTgtDef(id),chance=Math.max(.03,Math.min(.95,pow*pow/(pow*pow+def*def)));
   const lf=Math.min(.5,(.06+.3*def/(def+Math.max(.01,pow)))*S.loss),expLoss=Math.round(n*(chance*lf+(1-chance)*.32));
-  const per=imVal(ceCost(100))/100,siege=strat==='asedio'?{food:150*CAMP.era,gold:80*CAMP.era}:null;
+  const per=imVal(ceCost(100))/100,siege=strat==='asedio'?{food:150*CAMP.era,gold:50*CAMP.era}:null;
   const upk=imUpk(n),cost=Math.round(expLoss*per+(siege?imVal(siege):0)+imVal(upk)*2);
   const lootShare=strat==='saqueo'?.5:.25,loot={};for(const k of RES4)loot[k]=Math.round((N.res[k]||0)*lootShare);const prod=imBase(id);
   const gain=Math.round(chance*(imVal(loot)+(strat==='saqueo'?0:imVal(prod)*8)));
@@ -8480,7 +8521,7 @@ function puName(p){return p>=75?'Te adoran':p>=55?'Contentos':p>=40?'Inquietos':
 function puCol(p){return p>=55?'#4ade80':p>=40?'#facc15':p>=25?'#fb923c':'#f87171';}
 function repTxt(){const c=repCost();return c.food||c.gold?'Cuesta '+c.food+' de comida'+(c.gold?' y '+c.gold+' de oro':'')+' por turno':'No cuesta nada';}
 function repLv(){return cnHired('hacienda')?popE().rep:0;}
-function repCost(){const n=countOf('P'),m=1+.15*(CAMP.era-1),lv=repLv();return {food:Math.round(n*[0,35,80][lv]*m),gold:Math.round(n*[0,0,25][lv]*m)};}
+function repCost(){const n=countOf('P'),m=1+.15*(CAMP.era-1),lv=repLv();return {food:Math.round(n*[0,35,80][lv]*m),gold:Math.round(n*[0,0,15][lv]*m)};}
 function puTarget(id){const cfg=cnCfg(),E=popE();let t=50;
   const tax=cnHired('hacienda')?cfg.tax:1;t+=[12,4,-8,-20][tax]||0;
   const lv=repLv();t+=[-6,8,18][lv];if(E.famine)t-=18;
@@ -8528,7 +8569,7 @@ function warCiv(id,won,attacker){const o=attacker||ownerOf(id),era=Math.max(CAMP
 {const _ev=cwEval;cwEval=function(id,n,strat){const t=_ev.apply(this,arguments);const era=Math.max(CAMP.era,nEra(t.o));t.civ=Math.round(popC(id)*(.02*WAR_INT[era])*(strat==='asedio'?1.4:strat==='saqueo'?.7:1));t.pop=popC(id);
   if(t.V.estado&&t.civ>0&&era>=8&&t.V.estado.v>-2){t.V.estado={v:t.V.estado.v-(t.V.estado.v>0?1:0),t:t.V.estado.t+' Habrá muchas bajas civiles (unos '+popNum(t.civ)+'): el mundo lo verá.'};}
   return t;};}
-function bombCost(){return CAMP.era>=9?{gold:500,wood:300}:{gold:300,stone:300};}
+function bombCost(){return CAMP.era>=9?{gold:320,wood:300}:{gold:200,stone:300};}
 function bombNow(id){const E=popE(),o=ownerOf(id),c=CBY[id];if(CAMP.era<8)return toast('Los bombardeos llegan en la Edad de la Pólvora',true);if(!cnHired('guerra'))return toast('Necesitas al ministro de guerra',true);
   const w=E.weak[id];if(w&&w.until>=CAMP.turn)return toast(c.n+' ya está debilitado por el último bombardeo',true);const cost=bombCost();if(!canAffordC(cost))return toast('El bombardeo cuesta '+Object.keys(cost).map(k=>cost[k]+' de '+RES_N[k]).join(' y '),true);
   payC(cost);if(pactOf(o)!=='guerra')cwDeclare(o);const air=CAMP.era>=9;E.weak[id]={until:CAMP.turn+3,f:air?.6:.75};const dead=popHurt(id,air?.035:.018);relAdj(o,-15);if(air)for(const k in CAMP.nations)if(k!==o)relAdj(k,-3);
@@ -8758,7 +8799,7 @@ let shTabForce=false;
    - Las naciones defienden mejor (su tamaño y su época pesan); 100 soldados valen menos que antes.
    - Las invasiones contra ti tienen pausa: como mucho una cada 4 turnos, y con menos probabilidad.
    - Las casas y granjas que dejas en un país hacen crecer su población. */
-function gdProv(n){const m=1+.12*(CAMP.era-1);return {food:Math.round(n/100*50*m),gold:Math.round(n/100*20*m)};}
+function gdProv(n){const m=1+.12*(CAMP.era-1);return {food:Math.round(n/100*50*m),gold:Math.round(n/100*12*m)};}
 function gdRest(){const E=ceSt();return E&&E.rest&&E.rest>CAMP.turn?E.rest-CAMP.turn:0;}
 function invChance(){const E=CAMP&&CAMP.cn;if(!E)return .3;if(CAMP.turn-(E.lastInv==null?-99:E.lastInv)<4)return 0;const wars=Object.keys(CAMP.nations).filter(o=>pactOf(o)==='guerra'&&countOf(o)>0).length;return Math.min(.24,.1+.03*wars);}
 {const _wt5=worldTurn;worldTurn=function(){const had=!!(CAMP&&CAMP.pending);const r=_wt5.apply(this,arguments);try{if(CAMP&&!had&&CAMP.pending){CAMP.cn.lastInv=CAMP.turn;}}catch(_){}return r;};}
@@ -9225,8 +9266,172 @@ function tutEnd(how){TUT.on=false;lsSet(TUT_KEY,how||'done');ringAt(null);const 
 
 setTimeout(()=>{try{v60Menu();}catch(err){if(typeof console!=='undefined')console.error(err);}try{if(tutNeeded())tutOffer(false);}catch(_){}},400);
 
+/* ================= v61 · comprar recursos (sobre todo oro) por cantidades =================
+   Tienda: selector ×1 ×5 ×10 ×25 con descuento por volumen, en la partida y en las reservas del imperio.
+   Mercado de la partida: comprar y vender de a 100, 500 o 1.000 de un toque.
+   Compras grandes (300 Ámbar o más) piden un segundo toque para confirmar. */
+const SHQ_OPTS=[1,5,10,25],SHQ_OFF={1:0,5:5,10:10,25:15};let SHQ=1;
+function shqPrice(base){return Math.max(1,Math.round(base*SHQ*(1-SHQ_OFF[SHQ]/100)));}
+function shqRow(){return '<div class="shQty"><span>Cantidad</span>'+SHQ_OPTS.map(q=>'<button type="button" data-sh="q:'+q+'" aria-pressed="'+(SHQ===q)+'">×'+q+(SHQ_OFF[q]?'<small>-'+SHQ_OFF[q]+'%</small>':'')+'</button>').join('')+'</div>';}
+/* confirmación de compras grandes */
+const SHQ_BIG=300;let shqPend={code:'',t:0};
+function shqNeedConfirm(code,price,btn){if(price<SHQ_BIG)return false;const now=Date.now();if(shqPend.code===code&&now-shqPend.t<4000){shqPend={code:'',t:0};return false;}
+  shqPend={code,t:now};if(btn){btn.classList.add('shqAsk');const old=btn.innerHTML;btn.innerHTML='¿Seguro? Toca otra vez<small>'+AMB_IC+cnN(price)+'</small>';setTimeout(()=>{if(btn.isConnected&&btn.classList.contains('shqAsk')){btn.classList.remove('shqAsk');btn.innerHTML=old;}},4000);}
+  return true;}
+
+/* ---------- en la partida: recursos para esta batalla ---------- */
+{const _br=buyRes;buyRes=function(k){if(!G||G.over)return;const n=SHQ,price=shqPrice(30),amt=resAmt(k)*n;
+  const btn=document.querySelector('#shopBody [data-sh="res:'+k+'"]');if(shqNeedConfirm('res:'+k,price,btn))return;
+  if(!spendAmber(price))return;giveRes(k,amt);toast('+'+cnN(amt)+' de '+RES_NAME[k]+(n>1?' (×'+n+')':''),false,'gold');if(typeof sfx==='function')sfx('ok');renderShop();};}
+/* ---------- reservas del imperio (Conquistar el mundo) ---------- */
+{const _sb=shBuy;shBuy=function(id,deal){if(!SH_RES[id]||deal)return _sb.apply(this,arguments);
+  const why=shCan(id);if(why)return toast(why,true);const I=SH_ITEMS[id],[k,a]=SH_RES[id],n=SHQ,price=shqPrice(I.amb),amt=a*n;
+  const btn=document.querySelector('#shopBody [data-sh="sh:'+id+'"]');if(shqNeedConfirm('sh:'+id,price,btn))return;
+  if(!spendAmber(price))return;resAdd(k,amt,true);campSave();toast('+'+cnN(amt)+' de '+RES_N[k]+' en tus reservas'+(n>1?' (×'+n+')':''),false,'gold');if(typeof sfx==='function')sfx('ok');try{renderCampBar();}catch(_){}renderShop();};}
+{const _sa=shopAct;shopAct=function(code){const p=String(code).split(':');if(p[0]==='q'){const q=+p[1];if(SHQ_OPTS.indexOf(q)>=0){SHQ=q;shqPend={code:'',t:0};renderShop();}return;}return _sa.apply(this,arguments);};}
+/* pintar cantidades y precios en la tienda */
+{const _rs=renderShop;renderShop=function(){const r=_rs.apply(this,arguments);try{const box=$('shopBody');if(!box||!box.querySelectorAll)return r;
+    // partida
+    const grid=[...box.querySelectorAll('.sgrid')].find(g=>g.querySelector('[data-sh^="res:"]'));
+    if(grid){if(!grid.previousElementSibling||!grid.previousElementSibling.classList||!grid.previousElementSibling.classList.contains('shQty')){const d=document.createElement('div');d.innerHTML=shqRow();grid.parentNode.insertBefore(d.firstChild,grid);}
+      for(const b of grid.querySelectorAll('[data-sh^="res:"]')){const k=b.dataset.sh.split(':')[1];const bb=b.querySelector('b');if(bb)bb.textContent='+'+cnN(resAmt(k)*SHQ);const sp=b.querySelector('span:last-child');if(sp)sp.innerHTML=AMB_IC+cnN(shqPrice(30));}}
+    // imperio
+    const ids=Object.keys(SH_RES);let first=null;
+    for(const id of ids){const b=box.querySelector('[data-sh="sh:'+id+'"]');if(!b)continue;const card=b.closest('.sc');if(!card)continue;if(!first)first=card;
+      const I=SH_ITEMS[id],[k,a]=SH_RES[id];const t=card.querySelector('.sct span');if(t)t.textContent='+'+cnN(a*SHQ)+' de '+RES_N[k]+' a las reservas de tu imperio.';
+      if(!b.disabled||!shCan(id))b.innerHTML=(SHQ>1?'<s>'+cnN(I.amb*SHQ)+'</s> ':'')+AMB_IC+cnN(shqPrice(I.amb));}
+    if(first&&!(first.previousElementSibling&&first.previousElementSibling.classList&&first.previousElementSibling.classList.contains('shQty'))){const d=document.createElement('div');d.innerHTML=shqRow();first.parentNode.insertBefore(d.firstChild,first);}
+    for(const p of box.querySelectorAll('.snote'))if(/máximo 20\.000 de cada uno/.test(p.textContent))p.innerHTML=p.innerHTML.replace('(máximo 20.000 de cada uno)','· lo que compras no tiene tope');
+  }catch(err){if(typeof console!=='undefined')console.error(err);}return r;};}
+
+/* ---------- mercado de la partida: de a 100, 500 o 1.000 ---------- */
+let MKQ=1;
+function mkTotal(kind,k,n){const m=mkt(0),save=m[k];let tot=0,v=save;for(let i=0;i<n;i++){if(kind==='buy'){tot+=Math.round(v*1.18);v=Math.min(MK_BASE[k]*4,v*1.07);}else{tot+=Math.round(v*.82);v=Math.max(MK_BASE[k]*.3,v*.93);}}return tot;}
+{const _da=doAct;doAct=function(code){const [act,arg]=String(code).split(':');
+  if(act==='mkq'){MKQ=+arg||1;refreshTray(true);return;}
+  if((act==='buy'||act==='sell')&&MKQ>1){let done=0,err='';for(let i=0;i<MKQ;i++){const r=act==='buy'?mktBuy(0,arg):mktSell(0,arg);if(r){err=r;break;}done++;}
+    if(done){if(typeof sfx==='function')sfx('ok');toast((act==='buy'?'Compraste ':'Vendiste ')+cnN(done*100)+' de '+RES_NAME[arg]+(err?' · '+err:''),false,'gold');updateHud();}else if(err)toast(err,true);
+    refreshTray(true);return;}
+  return _da.apply(this,arguments);};}
+{const _rt=refreshTray;refreshTray=function(force){const r=_rt.apply(this,arguments);try{if(!G||!selB)return r;const b=get(selB);if(!b||b.type!=='mercado'||b.o!==0||b.prog<1)return r;const acts=$('acts');if(!acts||!acts.querySelector)return r;
+    if(!acts.querySelector('.mkq')){const d=document.createElement('div');d.className='qty mkq';d.innerHTML='De a '+[1,5,10].map(n=>'<button data-act="mkq:'+n+'" aria-pressed="'+(MKQ===n)+'">'+cnN(n*100)+'</button>').join('');const fb=acts.querySelector('button[data-act^="buy:"]');acts.insertBefore(d,fb||acts.firstChild);}
+    for(const x of acts.querySelectorAll('.mkq button'))x.setAttribute('aria-pressed',x.dataset.act==='mkq:'+MKQ);
+    for(const btn of acts.querySelectorAll('button[data-act^="buy:"],button[data-act^="sell:"]')){const [kind,k]=btn.dataset.act.split(':');const lab=btn.querySelector('.row span:last-child');if(lab)lab.textContent=(kind==='buy'?'Comprar ':'Vender ')+cnN(MKQ*100);
+      const c=btn.querySelector('.cost b');const tot=mkTotal(kind,k,MKQ);if(c)c.innerHTML=(kind==='sell'?'+':'')+ICON.gold+cnN(tot);
+      if(kind==='buy')btn.disabled=G.res[0].gold<Math.round(mkt(0)[k]*1.18);else btn.disabled=G.res[0][k]<100;}}catch(err){if(typeof console!=='undefined')console.error(err);}return r;};}
+/* cada vez que abres la tienda, la cantidad vuelve a ×1 */
+{const _os=openShop;openShop=function(){SHQ=1;shqPend={code:'',t:0};return _os.apply(this,arguments);};}
+
+/* ================= v62 · economía del imperio más justa + presupuesto de cada ministro =================
+   - Todos los países producen algo de oro (antes solo desiertos y montañas), y bajan los costos en oro
+     (reclutar, paga de la Guardia, provisiones, asedio, bombardeos y reparto) — esos cambios van en build62.py.
+   - Hacienda: presupuesto por turno (1 turno = 1 mes del imperio): lo que tienes, lo que entra, lo que sale y la proyección.
+   - Guerra: cuánto cuesta el ejército, cuánto puedes sostener y cuánto cuesta cada operación.
+   - Estado: tratados, lo que dejan, guerras abiertas y riesgo de invasión. */
+
+const ECON_GPAY=5,ECON_SIEGE=50; // paga de la Guardia (oro por 100 soldados) y asedio (oro por época)
+/* oro base de cada país: comercio, minas pequeñas y tributos locales; crece con la época */
+function goldBase(id){const c=CBY[id];if(!c)return 0;const m=1+Math.log10((c.a||1)+1)*.3;return Math.round(18*m*(1+.08*((CAMP&&CAMP.era||1)-1)));}
+{const _ip=imProd;imProd=function(id){const r=_ip.apply(this,arguments);if(CAMP&&ownerOf(id)==='P'){let g=goldBase(id);if(imStr(id)==='com')g=Math.round(g*1.25);r.gold=(r.gold||0)+g;}return r;};}
+
+/* ---------- el presupuesto, calculado igual que el turno ---------- */
+const ECON_TAX=[0,20,40,70];
+function econ(){const R={inc:[],exp:[],net:{food:0,wood:0,stone:0,gold:0},res:{},sto:{food:0,wood:0,stone:0,gold:0}};if(!CAMP)return R;
+  const cfg=cnCfg(),E=ceSt(),add=(L,n,v)=>{if(!v)return;const z={n,food:0,wood:0,stone:0,gold:0};for(const k of RES4)z[k]=Math.round(v[k]||0);if(RES4.some(k=>z[k]))L.push(z);};
+  const n=countOf('P'),owners=[...new Set(Object.values(CAMP.own))].filter(x=>x!=='P'&&CAMP.nations[x]);
+  // entra
+  add(R.inc,'Tributo de tus '+n+' país'+(n===1?'':'es'),incomeOf('P'));
+  if(cnHired('hacienda')){const g=Math.round(n*ECON_TAX[cfg.tax]*(1+.25*cnSk('hacienda','recau')));if(g)add(R.inc,'Impuestos ('+CN_TAX[cfg.tax].n.toLowerCase()+')',{gold:g});
+    const tr=cnSk('hacienda','trib');if(tr){let t=0;for(const o of owners){const pk=pactOf(o);if(pk==='paz')t+=20*tr;else if(pk==='alianza')t+=40*tr;}if(t)add(R.inc,'Tributo de tratados',{gold:t});}
+    if(cfg.perm.hacienda.vender){const v={food:0,wood:0,stone:0,gold:0};for(const k of ['food','wood','stone'])if((CAMP.res[k]||0)>8000){v[k]-=1000;v.gold+=400;}if(v.gold)add(R.inc,'Venta de excedentes',v);}}
+  // sale
+  if(E.guard>0){const d=cnHired('hacienda')&&cfg.perm.hacienda.paga?.7:1;add(R.exp,'Paga de la Guardia ('+cnN(E.guard)+')',{food:Math.ceil(E.guard/100*20*d),gold:Math.ceil(E.guard/100*ECON_GPAY*d)});}
+  {let a=0,f=0,g=0;for(const id of imMine()){const s=imAsg(id);if(!s)continue;a+=s;const u=imUpk(s);f+=u.food;g+=u.gold;}if(a)add(R.exp,'Soldados en tus países ('+cnN(a)+')',{food:f,gold:g});}
+  if(typeof repLv==='function'&&repLv()>0){const c=repCost();add(R.exp,'Reparto de comida al pueblo',c);}
+  for(const z of R.inc)for(const k of RES4)R.net[k]+=z[k];for(const z of R.exp)for(const k of RES4)R.net[k]-=z[k];
+  for(const k of RES4)R.res[k]=Math.round(CAMP.res[k]||0);
+  for(const id of imMine()){const s=imSto(id);for(const k of RES4)R.sto[k]+=s[k];}
+  return R;}
+function econVal(r){return Math.round(imVal(r)/RES_V.gold);}
+function eSign(v){return (v>0?'+':v<0?'−':'')+cnN(Math.abs(Math.round(v)));}
+function econRows(L,sign){return L.map(z=>'<tr><td>'+esc(z.n)+'</td><td class="'+(sign>0?'up':'dn')+'">'+(z.gold?eSign(sign*z.gold):'—')+'</td><td class="'+(sign>0?'up':'dn')+'">'+(z.food?eSign(sign*z.food):'—')+'</td></tr>').join('');}
+function econRunway(cur,net){if(net>=0)return null;return Math.floor(cur/(-net));}
+
+/* ---------- HACIENDA ---------- */
+function econHacHTML(){const B=econ(),R=B.res,ng=B.net.gold,nf=B.net.food,hac=typeof hacOn==='function'&&hacOn();
+  const goldAll=R.gold+(hac?B.sto.gold:0),foodAll=R.food+(hac?B.sto.food:0);
+  let h='<div class="ecBox"><div class="ecHead">📊 Presupuesto del imperio<small>por turno · cada turno es un mes del imperio</small></div>';
+  h+='<div class="ecKpi"><div><span>Tesoro</span><b>'+ICON.gold+cnN(R.gold)+'</b><small>'+(B.sto.gold?'+ '+cnN(B.sto.gold)+' en almacenes':'oro en reservas')+'</small></div>'+
+     '<div class="'+(ng>=0?'ok':'bad')+'"><span>Oro al mes</span><b>'+eSign(ng)+'</b><small>'+(ng>=0?'te sobra':'te falta')+'</small></div>'+
+     '<div><span>Valor del imperio</span><b>'+ICON.gold+cnN(econVal({food:R.food+B.sto.food,wood:R.wood+B.sto.wood,stone:R.stone+B.sto.stone,gold:R.gold+B.sto.gold}))+'</b><small>todo lo guardado, en oro</small></div></div>';
+  h+='<table class="ecT"><thead><tr><th></th><th>'+ICON.gold+' Oro</th><th>'+ICON.food+' Comida</th></tr></thead><tbody>'+
+     '<tr class="ecSec"><td colspan="3">Lo que entra</td></tr>'+(B.inc.length?econRows(B.inc,1):'<tr><td colspan="3" class="mut">Nada todavía</td></tr>')+
+     '<tr class="ecSec"><td colspan="3">Lo que sale</td></tr>'+(B.exp.length?econRows(B.exp,-1):'<tr><td colspan="3" class="mut">Sin gastos fijos</td></tr>')+
+     '<tr class="ecTot"><td>Balance del mes</td><td class="'+(ng>=0?'up':'dn')+'">'+eSign(ng)+'</td><td class="'+(nf>=0?'up':'dn')+'">'+eSign(nf)+'</td></tr></tbody></table>';
+  const rg=econRunway(goldAll,ng),rf=econRunway(foodAll,nf);
+  const tips=[];
+  if(rg!=null)tips.push('⚠️ El oro alcanza para <b>'+rg+' mes'+(rg===1?'':'es')+'</b>. Sube los impuestos, pon países en <b>Comercio</b> o reduce la Guardia.');
+  else tips.push('✅ En 12 meses tendrás unos <b>'+ICON.gold+cnN(R.gold+ng*12)+'</b> de oro si nada cambia.');
+  if(rf!=null&&rf<12)tips.push('⚠️ La comida alcanza para <b>'+rf+' mes'+(rf===1?'':'es')+'</b>: baja el reparto o la Guardia.');
+  if(ECON_TAX[cnCfg().tax]<40&&ng<0)tips.push('💡 Con impuestos <b>medios</b> entrarían unos '+ICON.gold+cnN(countOf('P')*(40-ECON_TAX[cnCfg().tax])*(1+.25*cnSk('hacienda','recau')))+' más al mes.');
+  h+='<div class="ecTips">'+tips.map(t=>'<p>'+t+'</p>').join('')+'</div></div>';return h;}
+
+/* ---------- GUERRA ---------- */
+function econWarHTML(){const B=econ(),E=ceSt(),cfg=cnCfg(),d=cnHired('hacienda')&&cfg.perm.hacienda.paga?.7:1,asg=imAsgTotal(),tot=E.guard+asg;
+  const payG=Math.ceil(tot/100*ECON_GPAY*d),payF=Math.ceil(tot/100*20*d);
+  const freeG=B.net.gold+payG,freeF=B.net.food+payF; // lo que sobraría sin ejército
+  const per100G=ECON_GPAY*d,per100F=20*d,susG=Math.max(0,Math.floor(freeG/per100G)*100),susF=Math.max(0,Math.floor(freeF/per100F)*100),sust=Math.min(susG,susF);
+  const c1=ceCost(1000),prov=E.guard>=100?gdProv(E.guard):null,sg={food:150*CAMP.era,gold:ECON_SIEGE*CAMP.era},bc=bombCost();
+  let h='<div class="ecBox war"><div class="ecHead">💸 Lo que cuesta el ejército<small>por turno · cada turno es un mes</small></div>';
+  h+='<div class="ecKpi"><div><span>Soldados</span><b>'+cnN(tot)+'</b><small>'+cnN(E.guard)+' en la Guardia · '+cnN(asg)+' en países</small></div>'+
+     '<div class="bad"><span>Paga al mes</span><b>'+ICON.gold+cnN(payG)+'</b><small>y '+cnN(payF)+' de comida</small></div>'+
+     '<div class="'+(sust>=tot?'ok':'bad')+'"><span>Puedes sostener</span><b>'+cnN(sust)+'</b><small>'+ICON.gold+cnN(susG)+' · '+ICON.food+cnN(susF)+'</small></div></div>';
+  h+='<table class="ecT"><thead><tr><th>Operación</th><th>'+ICON.gold+' Oro</th><th>'+ICON.food+' Comida</th></tr></thead><tbody>'+
+     '<tr><td>Reclutar 1.000 soldados</td><td class="dn">'+cnN(c1.gold)+'</td><td class="dn">'+cnN(c1.food)+'</td></tr>'+
+     (prov?'<tr><td>Provisiones: atacar con toda la Guardia</td><td class="dn">'+cnN(prov.gold)+'</td><td class="dn">'+cnN(prov.food)+'</td></tr>':'')+
+     '<tr><td>Asedio (en el Consejo de guerra)</td><td class="dn">'+cnN(sg.gold)+'</td><td class="dn">'+cnN(sg.food)+'</td></tr>'+
+     (CAMP.era>=8?'<tr><td>'+(CAMP.era>=9?'Ataque aéreo':'Bombardeo de artillería')+'</td><td class="dn">'+cnN(bc.gold)+'</td><td class="mut">—</td></tr>':'')+
+     '</tbody></table>';
+  const tips=[];if(tot>susG)tips.push('⚠️ El oro no alcanza para pagar a '+cnN(tot)+' soldados: el tesoro baja cada mes. Sube impuestos, pon países en Comercio o no reclutes más.');
+  if(tot>susF)tips.push('⚠️ La comida no alcanza para tantos soldados'+(typeof repLv==='function'&&repLv()>0?' y el reparto':'')+': '+(B.net.food<0?'pierdes '+cnN(-B.net.food)+' de comida al mes. ':'')+'Baja el reparto, pon países con granjas en Producción o reduce la Guardia.');
+  else if(sust-tot>=500)tips.push('✅ Te alcanza para unos <b>'+cnN(sust-tot)+'</b> soldados más sin perder oro.');
+  h+=tips.length?'<div class="ecTips">'+tips.map(t=>'<p>'+t+'</p>').join('')+'</div>':'';return h+'</div>';}
+
+/* ---------- ESTADO ---------- */
+function econDipHTML(){const owners=[...new Set(Object.values(CAMP.own))].filter(o=>o!=='P'&&CAMP.nations[o]&&countOf(o)>0);const near=owners.filter(o=>COUNTRIES.some(c=>ownerOf(c.id)===o&&reachable('P',c.id)));
+  const cnt={paz:0,alianza:0,guerra:0,none:0};for(const o of near){const p=pactOf(o);cnt[p==='paz'||p==='alianza'||p==='guerra'?p:'none']++;}
+  const tr=cnHired('hacienda')?cnSk('hacienda','trib'):0,trib=near.reduce((s,o)=>s+(pactOf(o)==='paz'?20:pactOf(o)==='alianza'?40:0),0)*tr;
+  const inv=typeof invChance==='function'?Math.round(invChance()*100):null;
+  let h='<div class="ecBox dip"><div class="ecHead">🌐 Relaciones y lo que dejan<small>naciones vecinas</small></div>';
+  h+='<div class="ecKpi"><div class="ok"><span>En paz o aliadas</span><b>'+(cnt.paz+cnt.alianza)+'</b><small>'+cnt.alianza+' aliada'+(cnt.alianza===1?'':'s')+'</small></div>'+
+     '<div class="'+(cnt.guerra?'bad':'ok')+'"><span>En guerra</span><b>'+cnt.guerra+'</b><small>'+(inv!=null&&cnt.guerra?'riesgo de invasión '+inv+' %':'sin frentes abiertos')+'</small></div>'+
+     '<div><span>Tratados al mes</span><b>'+ICON.gold+cnN(trib)+'</b><small>'+(tr?'tributo de paz':'activa «Tributos» en Hacienda')+'</small></div></div>';
+  const tips=[];if(!tr&&(cnt.paz+cnt.alianza))tips.push('💡 Con la habilidad <b>Tributos</b> de Hacienda, tus '+(cnt.paz+cnt.alianza)+' tratados te darían '+ICON.gold+cnN(near.reduce((s,o)=>s+(pactOf(o)==='paz'?20:pactOf(o)==='alianza'?40:0),0))+' al mes.');
+  if(cnt.guerra)tips.push('🕊️ Cada paz que firmes baja el riesgo de invasión y los gastos de defensa.');
+  if(cnt.none)tips.push('🤝 '+cnt.none+' vecino'+(cnt.none===1?'':'s')+' sin tratado: proponer la paz no cuesta oro.');
+  h+=tips.length?'<div class="ecTips">'+tips.map(t=>'<p>'+t+'</p>').join('')+'</div>':'';return h+'</div>';}
+
+/* ---------- se pintan dentro de cada ministro ---------- */
+{const _cr=ceRender;ceRender=function(){const r=_cr.apply(this,arguments);try{const box=$('cnBody');if(!box||!box.querySelectorAll||!CAMP)return r;const cards=[...box.querySelectorAll('.cnCard')];const keys=Object.keys(CN_DEF);
+    cards.forEach((card,i)=>{const k=keys[i];if(!cnHired(k)||card.querySelector('.ecBox'))return;const head=card.querySelector('.cnHead');const html=k==='hacienda'?econHacHTML():k==='guerra'?econWarHTML():econDipHTML();
+      const d=document.createElement('div');d.innerHTML=html;head.parentNode.insertBefore(d.firstChild,head.nextSibling);});
+    // texto viejo de la paga
+    for(const p of box.querySelectorAll('.cnNote'))if(/cobran \d+ de comida y \d+ de oro por turno/.test(p.textContent)){const d=cnHired('hacienda')&&cnCfg().perm.hacienda.paga?.7:1;p.innerHTML=p.innerHTML.replace(/cobran \d+ de comida y \d+ de oro por turno/,'cobran '+Math.ceil(20*d)+' de comida y '+(Math.round(ECON_GPAY*d*10)/10).toString().replace('.',',')+' de oro por turno');}
+  }catch(err){if(typeof console!=='undefined')console.error(err);}return r;};}
+
+/* ================= v63 · la pantalla ya no se agranda ni se achica sola en el celular =================
+   El zoom del navegador (doble toque o pellizco sobre la página) queda bloqueado; el mapa del juego conserva su propio zoom. */
+(function noPageZoom(){if(typeof document==='undefined'||!document.addEventListener)return;
+  // iPhone/iPad: pellizcar la página
+  for(const ev of ['gesturestart','gesturechange','gestureend'])document.addEventListener(ev,e=>{e.preventDefault();},{passive:false});
+  // doble toque o doble clic sobre la página (no afecta los toques del juego, que usan su propio temporizador)
+  document.addEventListener('dblclick',e=>{e.preventDefault();},{passive:false});
+  // si el navegador quedó con zoom de antes, se restablece al girar o volver a la app
+  const fix=()=>{const m=document.querySelector('meta[name="viewport"]');if(m){const c='width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover';if(m.getAttribute('content')!==c)m.setAttribute('content',c);}};
+  fix();window.addEventListener('orientationchange',()=>setTimeout(fix,300));document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')fix();});})();
+
 {const bf=document.getElementById('bFleet');if(bf&&bf.querySelector){const s=bf.querySelector('[data-icon]');if(s)s.innerHTML=ICON.galera||ICON.trans||'';}}
-window.__HI={get QUAL(){return QUAL;},TUT,tutStart,tutOffer,tutNeeded,tutTick,v60Sync,dockTarget,orderAt,setSel,selectBuilding,startPlacing,confirmPlace,doAct,get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},get cam(){return cam;},OWN,isOwner,ownCheck,ownOpen,ownAct,giftsClaim,testerGift,webNoPay,ownInfTick,get ON(){return ON;},sepPass,get landOk(){return landOk;},resCap,resAdd,funds,hacFund,stoTotal,gdMaxAfford,get canAffordC(){return canAffordC;},get payC(){return payC;},get ceCap(){return ceCap;},SV,svLoad,get ON(){return ON;},get onAct(){return onAct;},get renderOnlineHTML(){return renderOnlineHTML;},gdProv,gdRest,invChance,get popC(){return popC;},get cePow(){return cePow;},get ceTgtDef(){return ceTgtDef;},get popCap(){return popCap;},shOn,shLeft,shGive,shBuy,shCan,shDealToday,shDealOff,shW,get hit(){return hit;},openShopTab,popC,popWorld,popEmpire,popHurt,puOf,puAvg,puTarget,popTurn,popBomb,bombNow,repCost,popE,gwTick,gwWave,gwStrike,gwPlayerBomb,get imTrib(){return imTrib;},imOpen,imClose,imRender,imE,imMine,imProd,imTrib,imSto,imAsg,imStr,imTurn,cwEval,cwTargets,cwLaunch,cwDeclare,imCouncilOk,imCanRecruit,imRecruitDefend,ceSt,ceDefend,ceConquer,ceAskDefense,ceAskConquer,ceRecruit,ceOpen,ceTurn,get CAMP(){return CAMP;},worldTurn:()=>worldTurn(),campaignEnd:(w,h)=>campaignEnd(w,h),startBattle:(a,b)=>startBattle(a,b),renderCampBar:()=>renderCampBar(),cnTick,cnRecruit,openCouncil,closeCouncil,cnCfg,cnSt,cnHired,dipAnswer,announce,declareWar,setSt:(a,b,v)=>setSt(a,b,v),autoDefend,garChance,garDef,garReinforce,templeLv,templeEraMul,blessNow,blessOn,gardenGather,leaderLabel,leaderTick,lTitle,rushVid,rushLeft,rushMul,musicTick,AUD,faunaEra,STORY,storyTick,atk,buildPort,canExpedite,sendExpedition,expLeft,expLand,expBuy,expDraw,worldPulse,chapters,storyStart,goalProg,stGet,renderStoryCard,setMode:m=>setMode(m),get MODE(){return MODE;},contOf,hasPort,DEV_TIER,setLevel,setQuality,wallet,amber,addAmber,grant,accel,accCost,canAccel,claimDaily,dailyState,freeVideo,buyRes,vidRes,buyEraPack,shopEra,pickBanner,openShop,closeShop,adClose,mon,eraPack,resAmt,BANNERS,get TEAM(){return TEAM;},shopEnd,retryBonus,CBY,COUNTRIES,newGame,endGame,selectCountry,doTrade,proposePact,breakPact,answerOffer,resistOf,incomeOf,tradeQuote,campaignEnd,doAct,get selR(){return selR;},UTT:UT,BTT:BT,get AUD(){return typeof AUD!=="undefined"?AUD:null;},step,get G(){return G;},trainAt,startPlacing,confirmPlace,tap,setSel,orderAt,render,renderMini,refreshTray,drawPortrait,cam,setRunning(v){running=v;},setDiff(k){DK=k;},setNP(n){NP=n;},FAUNA,addB,addU,addAnimal,centerOn,updFog,eraCheck,get PROF(){return PROF;},get USE3D(){return USE3D;},pickScreen,screenToWorld,proj3,get R3(){return R3;},get POST(){return POST;},get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},zoomAt,clampCam,get terrain(){return terrain;},get BASES(){return BASES;},get FORDS(){return FORDS;},get RIVERS(){return RIVERS;},findPath,seaD,setBridge,waterNear:(x,y,r)=>waterNear(x,y,r),riverAt:(x,y)=>riverAt(x,y),guideSay,guideFor,kill,newCampaign,startBattle,reachable,worldTurn,get CAMP(){return CAMP;},countOf,saveGame,loadGame,savedInfo,continueGame,selectBuilding,teamBlock:t=>teamBlock(t),get BLOCKERS(){return BLOCKERS;},get BLOCKV(){return BLOCKV;},lineClear,get PBUDGET(){return PBUDGET;},render3D:dt=>render3D(dt),renderOverlay:dt=>renderOverlay(dt),resize,freeze(v){frozen=v;},get acc(){return acc;},mountainAt:(x,y)=>mountainAt(x,y),heightAt:(x,y)=>heightAt(x,y),reveal(){explored.fill(1);visible.fill(1);G.revealAll=true;updFog();}};
+window.__HI={get QUAL(){return QUAL;},econ,econHacHTML,econWarHTML,econDipHTML,goldBase,get ceCost(){return ceCost;},bombCost,imUpk,cnSk,imAsgTotal,newCampaign,addB,showTitle,get MKQ2(){return MKQ;},get SHQ(){return SHQ;},get MKQ(){return MKQ;},shqPrice,mkTotal,shopAct,refreshTray,giveRes,resAmt,get CAMP(){return CAMP;},TUT,tutStart,tutOffer,tutNeeded,tutTick,v60Sync,dockTarget,orderAt,setSel,selectBuilding,startPlacing,confirmPlace,doAct,get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},get cam(){return cam;},OWN,isOwner,ownCheck,ownOpen,ownAct,giftsClaim,testerGift,webNoPay,ownInfTick,get ON(){return ON;},sepPass,get landOk(){return landOk;},resCap,resAdd,funds,hacFund,stoTotal,gdMaxAfford,get canAffordC(){return canAffordC;},get payC(){return payC;},get ceCap(){return ceCap;},SV,svLoad,get ON(){return ON;},get onAct(){return onAct;},get renderOnlineHTML(){return renderOnlineHTML;},gdProv,gdRest,invChance,get popC(){return popC;},get cePow(){return cePow;},get ceTgtDef(){return ceTgtDef;},get popCap(){return popCap;},shOn,shLeft,shGive,shBuy,shCan,shDealToday,shDealOff,shW,get hit(){return hit;},openShopTab,popC,popWorld,popEmpire,popHurt,puOf,puAvg,puTarget,popTurn,popBomb,bombNow,repCost,popE,gwTick,gwWave,gwStrike,gwPlayerBomb,get imTrib(){return imTrib;},imOpen,imClose,imRender,imE,imMine,imProd,imTrib,imSto,imAsg,imStr,imTurn,cwEval,cwTargets,cwLaunch,cwDeclare,imCouncilOk,imCanRecruit,imRecruitDefend,ceSt,ceDefend,ceConquer,ceAskDefense,ceAskConquer,ceRecruit,ceOpen,ceTurn,get CAMP(){return CAMP;},worldTurn:()=>worldTurn(),campaignEnd:(w,h)=>campaignEnd(w,h),startBattle:(a,b)=>startBattle(a,b),renderCampBar:()=>renderCampBar(),cnTick,cnRecruit,openCouncil,closeCouncil,cnCfg,cnSt,cnHired,dipAnswer,announce,declareWar,setSt:(a,b,v)=>setSt(a,b,v),autoDefend,garChance,garDef,garReinforce,templeLv,templeEraMul,blessNow,blessOn,gardenGather,leaderLabel,leaderTick,lTitle,rushVid,rushLeft,rushMul,musicTick,AUD,faunaEra,STORY,storyTick,atk,buildPort,canExpedite,sendExpedition,expLeft,expLand,expBuy,expDraw,worldPulse,chapters,storyStart,goalProg,stGet,renderStoryCard,setMode:m=>setMode(m),get MODE(){return MODE;},contOf,hasPort,DEV_TIER,setLevel,setQuality,wallet,amber,addAmber,grant,accel,accCost,canAccel,claimDaily,dailyState,freeVideo,buyRes,vidRes,buyEraPack,shopEra,pickBanner,openShop,closeShop,adClose,mon,eraPack,resAmt,BANNERS,get TEAM(){return TEAM;},shopEnd,retryBonus,CBY,COUNTRIES,newGame,endGame,selectCountry,doTrade,proposePact,breakPact,answerOffer,resistOf,incomeOf,tradeQuote,campaignEnd,doAct,get selR(){return selR;},UTT:UT,BTT:BT,get AUD(){return typeof AUD!=="undefined"?AUD:null;},step,get G(){return G;},trainAt,startPlacing,confirmPlace,tap,setSel,orderAt,render,renderMini,refreshTray,drawPortrait,cam,setRunning(v){running=v;},setDiff(k){DK=k;},setNP(n){NP=n;},FAUNA,addB,addU,addAnimal,centerOn,updFog,eraCheck,get PROF(){return PROF;},get USE3D(){return USE3D;},pickScreen,screenToWorld,proj3,get R3(){return R3;},get POST(){return POST;},get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},zoomAt,clampCam,get terrain(){return terrain;},get BASES(){return BASES;},get FORDS(){return FORDS;},get RIVERS(){return RIVERS;},findPath,seaD,setBridge,waterNear:(x,y,r)=>waterNear(x,y,r),riverAt:(x,y)=>riverAt(x,y),guideSay,guideFor,kill,newCampaign,startBattle,reachable,worldTurn,get CAMP(){return CAMP;},countOf,saveGame,loadGame,savedInfo,continueGame,selectBuilding,teamBlock:t=>teamBlock(t),get BLOCKERS(){return BLOCKERS;},get BLOCKV(){return BLOCKV;},lineClear,get PBUDGET(){return PBUDGET;},render3D:dt=>render3D(dt),renderOverlay:dt=>renderOverlay(dt),resize,freeze(v){frozen=v;},get acc(){return acc;},mountainAt:(x,y)=>mountainAt(x,y),heightAt:(x,y)=>heightAt(x,y),reveal(){explored.fill(1);visible.fill(1);G.revealAll=true;updFog();}};
 })();
 
 </script>
