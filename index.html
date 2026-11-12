@@ -1062,6 +1062,42 @@ button,a,[data-act],[data-sh],[data-on],[data-cn],[data-ce],[data-ow],[data-im]{
 /* el iPhone hace zoom al tocar una casilla con letra menor a 16 px */
 @media (pointer:coarse){input,select,textarea{font-size:16px!important}}
 
+/* ================= v64 · Hacienda maneja el tesoro ================= */
+.ecBox .ecBtn{width:100%;margin-top:10px;display:flex!important;flex-direction:column;align-items:center;gap:3px;padding:10px!important;border-radius:14px!important;font-weight:800}
+.ecBox .ecBtn small{font-size:12px;font-weight:600;opacity:.85}
+.ecDid{margin-top:10px;padding:10px;border-radius:12px;background:rgba(74,222,128,.08);border:1px solid rgba(74,222,128,.3)}
+.ecDid b{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:#86efac;margin-bottom:4px}
+.ecDid p{margin:3px 0 0;font-size:12.5px;line-height:1.4;color:rgba(255,255,255,.85)}
+.ecMode{margin:10px 0 0;font-size:12.5px;color:rgba(255,255,255,.75)}
+
+/* ================= v65 · mando del imperio ================= */
+.trBox,.wrBox{margin-bottom:10px}
+.trNv{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin:4px 0 8px}
+.trNv button{padding:8px 4px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.04);color:#fff;font-weight:700;font-size:12.5px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.trNv button[aria-pressed="true"]{background:rgba(248,113,113,.18);border-color:rgba(248,113,113,.7);text-decoration:line-through;text-decoration-color:rgba(255,255,255,.6)}
+.trNv svg.i,.wrNavy svg.i,.advFeast svg.i{display:inline-block!important;width:1.05em!important;height:1.05em!important;vertical-align:-.17em}
+.wrRank{display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px;border-radius:14px;background:rgba(250,204,21,.07);border:1px solid rgba(250,204,21,.35);margin-bottom:8px;text-align:center}
+.wrRank b{font-size:22px;color:#facc15;letter-spacing:2px}.wrRank b i{font-style:normal;color:rgba(255,255,255,.18)}
+.wrRank span{font-weight:800;font-size:15px;color:#fff}.wrRank small{font-size:12px;color:rgba(255,255,255,.7)}
+.wrGen{display:grid;grid-template-columns:1fr;gap:6px;margin:8px 0}
+.wrGen>div{display:flex;flex-direction:column;gap:1px;padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1)}
+.wrGen b{font-size:13.5px;color:#fff}.wrGen span{font-size:12px;color:#fca5a5;font-weight:700}.wrGen small{font-size:11.5px;color:rgba(255,255,255,.6)}
+.wrNavy{display:flex;align-items:center;gap:10px;padding:10px;border-radius:12px;background:rgba(56,189,248,.07);border:1px solid rgba(56,189,248,.3)}
+.wrNavy>div{flex:1;display:flex;flex-direction:column;gap:2px}.wrNavy b{font-size:13.5px;color:#fff}.wrNavy span{font-size:12px;color:rgba(255,255,255,.75)}
+.wrNavy button{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 12px;border-radius:12px;border:1px solid rgba(56,189,248,.6);background:rgba(56,189,248,.15);color:#fff;font-weight:800}
+.wrNavy button small{font-size:11px;font-weight:600}.wrNavy button[disabled]{opacity:.45}
+.advBox{margin:0 0 14px;padding:14px;border-radius:20px;background:linear-gradient(180deg,rgba(168,85,247,.14),rgba(168,85,247,.05));border:1px solid rgba(168,85,247,.45)}
+.advHead{display:flex;align-items:center;gap:10px;margin-bottom:8px}.advAv{font-size:34px;line-height:1}
+.advHead b{display:block;font-size:16px;color:#fff}.advHead small{font-size:12px;color:#d8b4fe;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.advSec{margin-top:8px}.advSec>b{display:block;font-size:11.5px;text-transform:uppercase;letter-spacing:.06em;color:#d8b4fe;margin-bottom:3px}
+.advSec p{margin:4px 0 0;font-size:13px;line-height:1.4;color:rgba(255,255,255,.88)}.advSec p i{font-style:normal}
+.advSec.rum p{font-style:italic;color:rgba(255,255,255,.75)}
+.advFeast{width:100%;margin-top:12px;display:flex!important;flex-direction:column;align-items:center;gap:2px}
+.advFeast small{font-size:12px;font-weight:600;opacity:.9}
+#onBody .svOpen{width:100%;margin:4px 0 10px}
+#onBody .svPick .big{width:100%;margin-top:8px}#onBody .svPick .ghostbtn{width:100%;margin-top:6px}
+#onBody .svPick .linkbtn,#onBody .svBrowse .linkbtn{margin-bottom:8px}
+
 </style>
 
 <div id="app" class="menu">
@@ -6017,7 +6053,7 @@ if(typeof window!=='undefined'&&window.addEventListener)window.addEventListener(
 /* ================= cámara y entrada ================= */
 function clampCam(){if(USE3D){const hx=VW/2/cam.z,hy=VH/2/cam.z;let tx=cam.x+hx,ty=cam.y+hy;tx=Math.max(40,Math.min(WORLD-40,tx));ty=Math.max(40,Math.min(WORLD+60,ty));cam.x=tx-hx;cam.y=ty-hy;return;}const vw=VW/cam.z,vh=VH/cam.z;cam.x=Math.max(-80,Math.min(WORLD+80-vw,cam.x));cam.y=Math.max(-80,Math.min(WORLD+80-vh,cam.y));if(vw>WORLD+160)cam.x=(WORLD-vw)/2;if(vh>WORLD+160)cam.y=(WORLD-vh)/2;}
 function centerOn(x,y){cam.x=x-VW/2/cam.z;cam.y=y-VH/2/cam.z;clampCam();}
-function zoomAt(sx,sy,f){if(USE3D&&R3){const h=heightAt(...camTarget());const a=screenToPlane(sx,sy,h);const t=camTarget();cam.z=Math.max(0.45,Math.min(2.6,cam.z*f));cam.x=t[0]-VW/2/cam.z;cam.y=t[1]-VH/2/cam.z;placeCam3D();const b=screenToPlane(sx,sy,h);cam.x+=a.x-b.x;cam.y+=a.y-b.y;clampCam();placeCam3D();return;}const wx=cam.x+sx/cam.z,wy=cam.y+sy/cam.z;cam.z=Math.max(0.45,Math.min(1.9,cam.z*f));cam.x=wx-sx/cam.z;cam.y=wy-sy/cam.z;clampCam();}
+function zoomAt(sx,sy,f){if(USE3D&&R3){const h=heightAt(...camTarget());const a=screenToPlane(sx,sy,h);const t=camTarget();cam.z=Math.max(0.32,Math.min(2.6,cam.z*f));cam.x=t[0]-VW/2/cam.z;cam.y=t[1]-VH/2/cam.z;placeCam3D();const b=screenToPlane(sx,sy,h);cam.x+=a.x-b.x;cam.y+=a.y-b.y;clampCam();placeCam3D();return;}const wx=cam.x+sx/cam.z,wy=cam.y+sy/cam.z;cam.z=Math.max(0.45,Math.min(1.9,cam.z*f));cam.x=wx-sx/cam.z;cam.y=wy-sy/cam.z;clampCam();}
 const ptrs=new Map();let gesture=null;
 function rel(e){const r=cv.getBoundingClientRect();return{x:e.clientX-r.left,y:e.clientY-r.top};}
 const PAN={vx:0,vy:0};
@@ -7578,7 +7614,7 @@ function bindGar(){const on=(i,f)=>{const e=$(i);if(e&&e.addEventListener)e.addE
 const ISO2={"ZWE":"ZW","ZMB":"ZM","YEM":"YE","VNM":"VN","VEN":"VE","VAT":"VA","VUT":"VU","UZB":"UZ","URY":"UY","FSM":"FM","MHL":"MH","PRI":"PR","USA":"US","GBR":"GB","ARE":"AE","UKR":"UA","UGA":"UG","TKM":"TM","TUR":"TR","TUN":"TN","TTO":"TT","TON":"TO","TGO":"TG","TLS":"TL","THA":"TH","TZA":"TZ","TJK":"TJ","TWN":"CN-TW","SYR":"SY","CHE":"CH","SWE":"SE","SWZ":"SZ","SUR":"SR","SSD":"SS","SDN":"SD","LKA":"LK","ESP":"ES","KOR":"KR","ZAF":"ZA","SOM":"SO","SLB":"SB","SVK":"SK","SVN":"SI","SGP":"SG","SLE":"SL","SYC":"SC","SRB":"RS","SEN":"SN","SAU":"SA","STP":"ST","SMR":"SM","WSM":"WS","VCT":"VC","LCA":"LC","KNA":"KN","RWA":"RW","RUS":"RU","ROU":"RO","QAT":"QA","PRT":"PT","POL":"PL","PHL":"PH","PER":"PE","PRY":"PY","PNG":"PG","PAN":"PA","PLW":"PW","PAK":"PK","OMN":"OM","NOR":"NO","PRK":"KP","NGA":"NG","NER":"NE","NIC":"NI","NZL":"NZ","NLD":"NL","NPL":"NP","NRU":"NR","NAM":"NA","MOZ":"MZ","MAR":"MA","ESH":"EH","MNE":"ME","MNG":"MN","MDA":"MD","MCO":"MC","MEX":"MX","MUS":"MU","MRT":"MR","MLT":"MT","MLI":"ML","MDV":"MV","MYS":"MY","MWI":"MW","MDG":"MG","MKD":"MK","LUX":"LU","LTU":"LT","LIE":"LI","LBY":"LY","LBR":"LR","LSO":"LS","LBN":"LB","LVA":"LV","LAO":"LA","KGZ":"KG","KWT":"KW","KIR":"KI","KEN":"KE","KAZ":"KZ","JOR":"JO","JPN":"JP","JAM":"JM","ITA":"IT","ISR":"IL","PSE":"PS","IRL":"IE","IRQ":"IQ","IRN":"IR","IDN":"ID","IND":"IN","ISL":"IS","HUN":"HU","HND":"HN","HTI":"HT","GUY":"GY","GNB":"GW","GIN":"GN","GTM":"GT","GRD":"GD","GRC":"GR","GHA":"GH","DEU":"DE","GEO":"GE","GMB":"GM","GAB":"GA","FRA":"FR","FIN":"FI","FJI":"FJ","ETH":"ET","EST":"EE","ERI":"ER","GNQ":"GQ","SLV":"SV","EGY":"EG","ECU":"EC","DOM":"DO","DMA":"DM","DJI":"DJ","GRL":"GL","DNK":"DK","CZE":"CZ","CYP":"CY","CUB":"CU","HRV":"HR","CIV":"CI","CRI":"CR","COD":"CD","COG":"CG","COM":"KM","COL":"CO","CHN":"CN","CHL":"CL","TCD":"TD","CAF":"CF","CPV":"CV","CAN":"CA","CMR":"CM","KHM":"KH","MMR":"MM","BDI":"BI","BFA":"BF","BGR":"BG","BRN":"BN","BRA":"BR","BWA":"BW","BIH":"BA","BOL":"BO","BTN":"BT","BEN":"BJ","BLZ":"BZ","BEL":"BE","BLR":"BY","BRB":"BB","BGD":"BD","BHR":"BH","BHS":"BS","AZE":"AZ","AUT":"AT","AUS":"AU","ARM":"AM","ARG":"AR","ATG":"AG","AGO":"AO","AND":"AD","DZA":"DZ","ALB":"AL","AFG":"AF","TUV":"TV","XKX":"XK"};
 function flagOf(id){const a=ISO2[id];if(!a||a.length!==2)return '🏳';return String.fromCodePoint(...[...a.toUpperCase()].map(c=>0x1F1E6+c.charCodeAt(0)-65));}
 const GLB={on:false,dirty:true,rx:0,ry:0,trx:0,try_:0,auto:true,drag:null,last:0,inited:false,touched:false,noFocus:false,z:5.3,tz:5.3,pt:new Map(),pinch:null};
-const GLB_ZMIN=2.15,GLB_ZMAX=7.5;function globeZoom(f){GLB.tz=Math.max(GLB_ZMIN,Math.min(GLB_ZMAX,GLB.tz*f));GLB.touched=true;GLB.auto=false;clearTimeout(GLB.zs);GLB.zs=setTimeout(globeSave,400);}
+const GLB_ZMIN=2.15,GLB_ZMAX=9.5;function globeZoom(f){GLB.tz=Math.max(GLB_ZMIN,Math.min(GLB_ZMAX,GLB.tz*f));GLB.touched=true;GLB.auto=false;clearTimeout(GLB.zs);GLB.zs=setTimeout(globeSave,400);}
 /* el globo se queda donde el jugador lo deja: se guarda su posición y deja de girar solo */
 function globeSaved(){try{const v=JSON.parse(localStorage.getItem('hi_globe')||'null');if(v&&isFinite(v.ry)&&isFinite(v.rx)){if(!(isFinite(v.z)&&v.z>=GLB_ZMIN&&v.z<=GLB_ZMAX))v.z=5.3;return v;}}catch(_){}return null;}
 function globeSave(){try{localStorage.setItem('hi_globe',JSON.stringify({ry:+GLB.try_.toFixed(4),rx:+GLB.trx.toFixed(4),z:+GLB.tz.toFixed(3)}));}catch(_){}}
@@ -7756,7 +7792,7 @@ function renderOnlineHTML(){let h='';const m=ON.msg;
   else if(ON.tab==='rivals'){
     h+='<p class="snote">Ataques hoy: '+e.attacks_left+'/20'+(e.cooldown?' · tus tropas descansan '+fmtS(e.cooldown):'')+'. Si ganas, te llevas el 25 % de sus recursos.</p>';
     if(!ON.rivals)h+='<p class="snote">Cargando…</p>';else if(!ON.rivals.length)h+='<p class="snote">Aún no hay más imperios en tu mundo. Invita a tus amigos.</p>';
-    else for(const r of ON.rivals){const ch=chanceVs(r);h+=card(r.fair?'':'dim','<div class="sct"><b>'+esc(r.name)+'</b><span>'+esc(cname(r.country))+' · Era '+ROMAN[r.era]+' · poder '+r.power+(r.fort?' · murallas '+r.fort:'')+(r.alliance?' · ⚑ '+esc(r.alliance):'')+'</span><small>'+(r.shield?'🛡 Protegido':'Probabilidad de ganar: '+ch+' %'+(r.fair?'':' · fuera de tu rango'))+'</small><span class="omod"><button class="linkbtn" data-on="rep:'+r.id+'">'+(ON.repArm===r.id?'¿Reportar nombre ofensivo? Toca otra vez':'⚑ Reportar')+'</button><button class="linkbtn" data-on="blk:'+r.id+'">'+(ON.blkArm===r.id?'¿Bloquear? Toca otra vez':'⊘ Bloquear')+'</button></span></div><button class="big" data-on="a:'+r.id+'" '+(r.shield||e.cooldown||!e.attacks_left?'disabled':'')+'>Atacar</button>');}}
+    else for(const r of ON.rivals){const ch=chanceVs(r);h+=card(r.fair?'':'dim','<div class="sct"><b>'+esc(r.name)+'</b><span>'+esc(cname(r.country))+' · Era '+ROMAN[r.era]+' · poder '+r.power+(r.fort?' · murallas '+r.fort:'')+(r.alliance?' · ⚑ '+esc(r.alliance):'')+'</span><small>'+(r.revenge?'⚔️ Venganza: te saqueó hace poco. Puedes atacarlo aunque tenga escudo, con 15 % más de fuerza':r.shield?'🛡 Protegido':'Probabilidad de ganar: '+ch+' %'+(r.fair?'':' · fuera de tu rango'))+'</small><span class="omod"><button class="linkbtn" data-on="rep:'+r.id+'">'+(ON.repArm===r.id?'¿Reportar nombre ofensivo? Toca otra vez':'⚑ Reportar')+'</button><button class="linkbtn" data-on="blk:'+r.id+'">'+(ON.blkArm===r.id?'¿Bloquear? Toca otra vez':'⊘ Bloquear')+'</button></span></div><button class="big" data-on="a:'+r.id+'" '+((r.shield&&!r.revenge)||e.cooldown||!e.attacks_left?'disabled':'')+'>'+(r.revenge?'Vengarse':'Saquear')+'</button>');}}
   else if(ON.tab==='ally'){
     if(e.alliance){h+=card('hot','<div class="sct"><b>⚑ '+esc(e.alliance.name)+'</b><span>'+(e.alliance.leader?'Eres el líder: tú aceptas a quién entra':'Los miembros no pueden atacarse entre sí')+'</span></div><button class="ghostbtn" data-on="leave">Salir</button>');
       if(ON.pend&&ON.pend.length){h+='<h3>Quieren entrar</h3>';for(const p of ON.pend)h+=card('','<div class="sct"><b>'+esc(p.name)+'</b><span>'+esc(cname(p.country))+' · poder '+p.power+'</span></div><div class="scb"><button class="ghostbtn" data-on="d:'+p.empire+':0">No</button><button class="big" data-on="d:'+p.empire+':1">Aceptar</button></div>');}
@@ -7905,7 +7941,7 @@ function frameBody(now){
 function boot(){init3D();resize();applyQuality();showTitle();requestAnimationFrame(frame);}
 boot();
 /* ---------- opiniones de quienes prueban el juego: llegan por WhatsApp al creador ---------- */
-const FB_TO='573044272520',FB_VER='v63';let fbCat='Error',fbFrom=null;
+const FB_TO='573044272520',FB_VER='v65';let fbCat='Error',fbFrom=null;
 function fbContext(){const d=(()=>{const u=navigator.userAgent||'';return /iPhone|iPad/.test(u)?'iPhone/iPad':/Android/.test(u)?'Android':/Mac/.test(u)?'Mac':/Windows/.test(u)?'Windows':'otro';})();
   const g=G&&!$('title').hidden?null:G;const where=g&&PROF?PROF.c.n+' · era '+ROMAN[g.era[0]]+' · '+fmtT(g.t)+(g.camp?' · conquista':''):'menú de inicio';
   return 'Versión '+FB_VER+' · '+d+' '+innerWidth+'×'+innerHeight+' · '+where+(typeof QSET!=='undefined'?' · calidad '+QSET+' nivel '+QUAL.lvl+(QUAL.fps?' · '+QUAL.fps+' fps':'')+(GPU_NAME?' · '+GPU_NAME:''):'');}
@@ -9430,8 +9466,239 @@ function econDipHTML(){const owners=[...new Set(Object.values(CAMP.own))].filter
   const fix=()=>{const m=document.querySelector('meta[name="viewport"]');if(m){const c='width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover';if(m.getAttribute('content')!==c)m.setAttribute('content',c);}};
   fix();window.addEventListener('orientationchange',()=>setTimeout(fix,300));document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')fix();});})();
 
+/* ================= v64 · Hacienda maneja los recursos del imperio (con tu permiso) =================
+   Permisos nuevos en Conquistar el mundo:
+   💰 Hacienda: usar los almacenes de tus países · equilibrar comida y oro (cambia lo que sobra por lo que falta) · impuestos inteligentes
+   ⚔️ Guerra: no gastar más de lo que entra (licencia soldados antes de que el tesoro quede en rojo)
+   Además: informe de lo que hizo Hacienda en el mes y botón para traer los almacenes al tesoro. */
+Object.assign(CN_DEF.hacienda.perms,{
+  almacenes:{n:'Usar los almacenes de tus países',d:'Si falta comida u oro para pagar, los trae de los almacenes de tus países',def:1,camp:1},
+  equilibrar:{n:'Equilibrar comida y oro',d:'Si la comida o el oro alcanzan para menos de 3 meses, cambia madera, piedra o lo que sobre (cobra 15 %)',def:0,camp:1},
+  autoimp:{n:'Impuestos inteligentes',d:'Sube los impuestos cuando falta oro y el pueblo está contento; los baja si el pueblo se enoja',def:0,camp:1}});
+Object.assign(CN_DEF.guerra.perms,{
+  ajustar:{n:'No gastar más de lo que entra',d:'Si la paga deja el tesoro en rojo, licencia soldados antes de que deserten',def:0,camp:1}});
+cnCfg.c=null; // vuelve a leer la configuración para que aparezcan los permisos nuevos con su valor inicial
+function permOn(k,p){try{return !!cnCfg().perm[k][p];}catch(_){return false;}}
+function campPerm(k,p){return !!(CN_DEF[k]&&CN_DEF[k].perms[p]&&CN_DEF[k].perms[p].camp);}
+
+/* ---------- almacenes: solo si das permiso ---------- */
+function stoOn(){return hacOn()&&permOn('hacienda','almacenes');}
+funds=function(k){return (CAMP.res[k]||0)+(stoOn()?stoTotal(k):0);};
+{const _hf=hacFund;hacFund=function(c){if(!stoOn()){for(const k in c)if((CAMP.res[k]||0)<c[k])return false;return true;}return _hf.apply(this,arguments);};}
+
+/* ---------- lo que hizo Hacienda este mes ---------- */
+function hacE(){const E=ceSt();if(!E)return null;E.hac=E.hac||{turn:-1,lines:[]};return E.hac;}
+function hacNote(t){const H=hacE();if(!H)return;if(H.turn!==CAMP.turn){H.turn=CAMP.turn;H.lines=[];}H.lines.push(t);if(H.lines.length>6)H.lines.shift();ceLog(ceWho('hacienda')+': '+t);}
+
+/* ---------- equilibrar comida y oro ---------- */
+const BAL_KEEP=1000,BAL_FEE=.85;
+function balTargets(){const B=econ();let eg=0,ef=0;for(const z of B.exp){eg+=z.gold;ef+=z.food;}
+  return {gold:Math.max(300,Math.round(3*Math.max(eg,-B.net.gold,0))),food:Math.max(500,Math.round(3*Math.max(ef,-B.net.food,0)))};}
+function hacBalance(){if(!hacOn()||!permOn('hacienda','equilibrar'))return;const T=balTargets();
+  for(const k of ['gold','food']){let need=T[k]-(CAMP.res[k]||0);if(need<=0)continue;const done=[];
+    // 1) almacenes del mismo recurso
+    if(stoOn()&&stoTotal(k)>0){const before=CAMP.res[k]||0;hacFundQuiet(k,Math.min(need,stoTotal(k)));const got=(CAMP.res[k]||0)-before;if(got>0){need-=got;done.push(cnN(got)+' de '+RES_N[k]+' traída'+(k==='food'?'':'s')+' de los almacenes');}}
+    // 2) lo que sobra: madera, piedra y el otro de comida/oro si tiene de más
+    const other=k==='gold'?'food':'gold';
+    for(const src of ['wood','stone',other]){if(need<=0)break;const keep=src===other?Math.round(T[other]*1.5):BAL_KEEP;const spare=Math.max(0,Math.floor((CAMP.res[src]||0)-keep));if(spare<50)continue;
+      const rate=RES_V[src]/RES_V[k]*BAL_FEE;let use=Math.min(spare,Math.ceil(need/rate));use=Math.max(0,Math.floor(use/10)*10);if(use<10)continue;const get=Math.floor(use*rate);
+      CAMP.res[src]-=use;resAdd(k,get,true);need-=get;done.push(cnN(use)+' de '+RES_N[src]+' → '+cnN(get)+' de '+RES_N[k]);}
+    if(done.length)hacNote((k==='gold'?'para que no falte oro: ':'para que no falte comida: ')+done.join(' · ')+'.');
+    else if((CAMP.res[k]||0)<T[k]/3)hacNote('no tengo con qué cubrir '+(k==='food'?'la comida':'el oro')+': no sobra madera, piedra ni '+(other==='food'?'comida':'oro')+'.');}}
+function hacFundQuiet(k,n){let need=n;const L=Object.keys(CAMP.cn.sto||{}).filter(id=>ownerOf(id)==='P').sort((a,b)=>(CAMP.cn.sto[b][k]||0)-(CAMP.cn.sto[a][k]||0));
+  for(const id of L){if(need<=0)break;const s=CAMP.cn.sto[id],t=Math.min(need,Math.max(0,s[k]||0));s[k]-=t;CAMP.res[k]=(CAMP.res[k]||0)+t;need-=t;}return n-need;}
+
+/* ---------- impuestos inteligentes ---------- */
+function hacAutoTax(){if(!hacOn()||!permOn('hacienda','autoimp'))return;const cfg=cnCfg(),B=econ(),pu=typeof puAvg==='function'?puAvg():50,g=CAMP.res.gold||0;
+  const run=B.net.gold<0?g/(-B.net.gold):99;let nt=cfg.tax,why='';
+  if(pu<42&&cfg.tax>0){nt=cfg.tax-1;why='el pueblo está molesto ('+pu+' % de popularidad)';}
+  else if(B.net.gold<0&&pu>=55&&cfg.tax<2){nt=cfg.tax+1;why='el tesoro pierde '+cnN(-B.net.gold)+' de oro al mes y el pueblo está contento ('+pu+' %)';}
+  else if(run<4&&pu>=45&&cfg.tax<2){nt=cfg.tax+1;why='el oro solo alcanza para '+Math.floor(run)+' mes'+(Math.floor(run)===1?'':'es');}
+  else if(B.net.gold>0&&g>15000&&cfg.tax>1&&pu<60){nt=cfg.tax-1;why='el tesoro está lleno: así el pueblo vive mejor';}
+  if(nt!==cfg.tax){cfg.tax=nt;cnSave();hacNote('puse los impuestos en «'+CN_TAX[nt].n+'» porque '+why+'.');}}
+
+/* ---------- guerra: no gastar más de lo que entra ---------- */
+function warFit(){if(!cnHired('guerra')||!permOn('guerra','ajustar'))return;const E=ceSt();if(!E||E.guard<=0)return;const B=econ();if(B.net.gold>=0&&B.net.food>=0)return;
+  const g=funds('gold'),f=funds('food'),rg=B.net.gold<0?g/(-B.net.gold):99,rf=B.net.food<0?f/(-B.net.food):99;if(Math.min(rg,rf)>=3)return;
+  const d=cnHired('hacienda')&&cnCfg().perm.hacienda.paga?.7:1;const per100={gold:ECON_GPAY*d,food:20*d};
+  let cut=0;if(B.net.gold<0)cut=Math.max(cut,Math.ceil(-B.net.gold/per100.gold)*100);if(B.net.food<0)cut=Math.max(cut,Math.ceil(-B.net.food/per100.food)*100);
+  cut=Math.min(cut,Math.floor(E.guard*.5/100)*100);if(cut<100)return;E.guard-=cut;
+  ceLog(ceWho('guerra')+': licencié '+cnN(cut)+' soldados de la Guardia para no dejar el tesoro en rojo. Quedan '+cnN(E.guard)+'.');
+  toast('⚔️ Guerra licenció '+cnN(cut)+' soldados: la paga no alcanzaba',false,'gold');}
+
+/* cada turno, después de cobrar y pagar */
+{const _wt=worldTurn;worldTurn=function(){const r=_wt.apply(this,arguments);try{if(CAMP){hacAutoTax();hacBalance();warFit();}}catch(err){if(typeof console!=='undefined')console.error(err);}return r;};}
+
+/* ---------- traer los almacenes al tesoro (botón) ---------- */
+function stoBring(){if(!CAMP||!hacOn())return '';const moved={food:0,wood:0,stone:0,gold:0};
+  for(const id of imMine()){const s=imSto(id);for(const k of RES4){const t=Math.floor((s[k]||0)*.8);if(t>0){s[k]-=t;moved[k]+=t;resAdd(k,t,true);}}}
+  const txt=RES4.filter(k=>moved[k]).map(k=>cnN(moved[k])+' de '+RES_N[k]).join(', ');if(!txt)return 'Los almacenes están vacíos.';
+  campSave();hacNote('traje al tesoro '+txt+' (cada país se queda con el 20 % para defenderse).');return '';}
+{const _ic=imCe;imCe=function(a,x){if(a==='hacsto'){const r=stoBring();if(r)toast(r,true);else{toast('📦 Los almacenes llegaron al tesoro',false,'gold');if(typeof sfx==='function')sfx('ok');}return;}return _ic.apply(this,arguments);};}
+
+/* ---------- se muestra en el panel de Hacienda ---------- */
+{const _eh=econHacHTML;econHacHTML=function(){let h=_eh.apply(this,arguments);try{const H=hacE(),sto=RES4.reduce((s,k)=>s+stoTotal(k),0);let add='';
+    if(sto>0)add+='<button class="ghostbtn ecBtn" data-ce="hacsto">📦 Traer los almacenes al tesoro<small>'+RES4.filter(k=>stoTotal(k)).map(k=>ICON[k]+cnN(Math.floor(stoTotal(k)*.8))).join(' ')+'</small></button>';
+    if(H&&H.lines.length&&CAMP.turn-H.turn<=1)add+='<div class="ecDid"><b>Lo que hizo Hacienda este mes</b>'+H.lines.map(t=>'<p>'+esc(t)+'</p>').join('')+'</div>';
+    const on=[permOn('hacienda','equilibrar')?'equilibra comida y oro':'',permOn('hacienda','autoimp')?'maneja los impuestos':'',stoOn()?'usa los almacenes':''].filter(Boolean);
+    add+='<p class="ecMode">'+(on.length?'🤖 Hacienda '+on.join(', ')+'.':'🤖 Activa los permisos de abajo para que Hacienda maneje el tesoro sola.')+'</p>';
+    h=h.replace(/<\/div>$/,add+'</div>');}catch(err){if(typeof console!=='undefined')console.error(err);}return h;};}
+
+/* en una partida normal (fuera del imperio) los permisos del imperio no se muestran */
+{const _cr=cnRender;cnRender=function(){const r=_cr.apply(this,arguments);try{if(typeof ceOpenF!=='undefined'&&ceOpenF)return r;const box=$('cnBody');if(!box||!box.querySelectorAll)return r;
+    for(const b of box.querySelectorAll('[data-cn^="perm:"]')){const [,k,p]=b.dataset.cn.split(':');if(campPerm(k,p))b.remove();}}catch(_){}return r;};}
+/* en el imperio, «Vender excedentes» dice la regla real del imperio */
+{const _cr2=ceRender;ceRender=function(){const r=_cr2.apply(this,arguments);try{const b=document.querySelector('#cnBody [data-cn="perm:hacienda:vender"] small');if(b)b.textContent='Si la comida, la madera o la piedra pasan de 8.000, vende 1.000 por 400 de oro cada mes';}catch(_){}return r;};}
+
+/* ================= v65 · mando del imperio: comercio con reglas, mando militar, consejero y en línea más justo =================
+   💰 Hacienda: reglas de comercio (qué nunca se entrega y qué trueques se aceptan).
+   ⚔️ Guerra: doctrina, generales y armada que suben de rango con las victorias.
+   🦉 Consejero del imperio: qué hacer, lo que dicen tus ministros, rumores y banquetes.
+   🌍 Al tocar un país en Conquistar el mundo, su información sube a la vista.
+   🌐 En línea: ver otros servidores y decidir si entrar; saqueo entre jugadores con bóveda, escudo, venganza y milicia. */
+
+/* ===================== 💰 REGLAS DE COMERCIO ===================== */
+function trCfg(){const c=cnCfg();c.trade=c.trade||{};const t=c.trade;t.nv=t.nv||{};for(const k of RES4)t.nv[k]=t.nv[k]?1:0;if(['conv','ask','no'].indexOf(t.md)<0)t.md='ask';return t;}
+const TR_MD={conv:{n:'Aceptar si conviene',d:'Hacienda acepta los trueques justos que no toquen lo prohibido'},ask:{n:'Lo decide Estado',d:'Como antes: el ministro de Estado decide con su permiso de trueques'},no:{n:'Rechazar todos',d:'Hacienda rechaza todas las propuestas de trueque'}};
+let TRADE_AUTO=false;
+{const _ct=ceTurn;ceTurn=function(){TRADE_AUTO=true;try{return _ct.apply(this,arguments);}finally{TRADE_AUTO=false;}};}
+{const _dt=doTrade;doTrade=function(o,give,gn,want){if(TRADE_AUTO&&cnHired('hacienda')&&trCfg().nv[give])return 'Hacienda no permite entregar '+RES_N[give]+' en el comercio';return _dt.apply(this,arguments);};}
+{const _ao=answerOffer;answerOffer=function(ok){const f=CAMP&&CAMP.offer;if(ok&&TRADE_AUTO&&f&&f.kind==='trato'&&cnHired('hacienda')){const T=trCfg();if(T.nv[f.want]||T.md==='no'){const r=_ao.call(this,false);hacTradeNote('rechacé el trueque de '+nationName(f.by)+': '+(T.nv[f.want]?'pedía '+RES_N[f.want]+', que no se entrega':'las reglas dicen rechazar todos')+'.');return r;}}return _ao.apply(this,arguments);};}
+function hacTradeNote(t){if(typeof hacNote==='function')hacNote(t);else ceLog(ceWho('hacienda')+': '+t,'trade');}
+function tradeFair(f){return f.gn*RES_V[f.give]>=f.wn*RES_V[f.want]*.95;}
+function hacTrade(){const f=CAMP&&CAMP.offer;if(!f||f.kind!=='trato'||!cnHired('hacienda'))return;const T=trCfg();
+  if(T.nv[f.want]){answerOffer(false);hacTradeNote('rechacé el trueque de '+nationName(f.by)+': pedía '+RES_N[f.want]+', que no se entrega.');return;}
+  if(T.md==='no'){answerOffer(false);hacTradeNote('rechacé el trueque de '+nationName(f.by)+' (rechazo todos los trueques).');return;}
+  if(T.md==='conv'){if(tradeFair(f)&&(CAMP.res[f.want]||0)>=f.wn*2){answerOffer(true);hacTradeNote('acepté el trueque de '+nationName(f.by)+': dimos '+cnN(f.wn)+' de '+RES_N[f.want]+' y recibimos '+cnN(f.gn)+' de '+RES_N[f.give]+'.');}
+    else{answerOffer(false);hacTradeNote('rechacé el trueque de '+nationName(f.by)+': '+(tradeFair(f)?'nos dejaba sin '+RES_N[f.want]:'no era justo')+'.');}}}
+function trHTML(){const T=trCfg();return '<div class="cnLbl">Reglas de comercio</div><div class="trBox"><p class="cnNote">Nunca entregar en un trueque:</p><div class="trNv">'+RES4.map(k=>'<button data-ce="tnv:'+k+'" aria-pressed="'+(!!T.nv[k])+'">'+ICON[k]+' '+RES_N[k]+'</button>').join('')+'</div>'+
+  '<p class="cnNote">Propuestas de trueque de otras naciones:</p><div class="cnSeg c3">'+Object.keys(TR_MD).map(k=>'<button data-ce="tmd:'+k+'" aria-pressed="'+(T.md===k)+'">'+TR_MD[k].n+'</button>').join('')+'</div><p class="cnNote">'+TR_MD[T.md].d+'.'+(RES4.some(k=>T.nv[k])?' Nunca se entrega: <b>'+RES4.filter(k=>T.nv[k]).map(k=>RES_N[k]).join(', ')+'</b>.':'')+'</p></div>';}
+
+/* ===================== ⚔️ MANDO MILITAR ===================== */
+const WAR_DOC={eq:{n:'Equilibrada',d:'Sin ventajas ni desventajas',atk:1,def:1},of:{n:'Ofensiva',d:'+15 % al atacar, −10 % al defender tus países',atk:1.15,def:.9},de:{n:'Defensiva',d:'+20 % de defensa en tus países, −10 % al atacar',atk:.9,def:1.2},na:{n:'Naval',d:'La armada vale el doble al cruzar el mar; −5 % en tierra',atk:.95,def:1}};
+const WAR_RANK=[[0,'Recluta'],[2,'Veterano'],[5,'Estratega'],[10,'Gran estratega'],[18,'Conquistador'],[30,'Leyenda']];
+const GEN_RANK=[[0,'Capitán'],[1,'Coronel'],[3,'General'],[6,'General de división'],[10,'Mariscal']];
+const ADM_RANK=[[0,'Capitán de navío'],[1,'Comodoro'],[3,'Contraalmirante'],[6,'Vicealmirante'],[10,'Almirante']];
+const GEN_NAMES=['Rumiñahui','Tupac','Lautaro','Nzinga','Bolívar','Anacaona','Caupolicán','Jaguar Rojo','Itzel','Galvarino','Juana Azurduy','Sucre'];
+function warE(){const E=ceSt();if(!E)return null;const W=E.war||(E.war={doc:'eq',xp:0,navy:0,gen:{}});const used=Object.values(W.gen).map(g=>g.n);
+  for(const k of ['asalto','asedio','alm'])if(!W.gen[k]){const free=GEN_NAMES.filter(n=>used.indexOf(n)<0);const n=free[Math.floor(Math.random()*free.length)]||'Anónimo';used.push(n);W.gen[k]={n,xp:0};}
+  if(!WAR_DOC[W.doc])W.doc='eq';return W;}
+function rankOf(L,xp){let i=0;for(let j=0;j<L.length;j++)if(xp>=L[j][0])i=j;return i;}
+function warRank(){const W=warE();return W?rankOf(WAR_RANK,W.xp):0;}
+function genLv(k){const W=warE();if(!W)return 0;return rankOf(k==='alm'?ADM_RANK:GEN_RANK,W.gen[k].xp);}
+function overseas(id){const t=CBY[id];if(!t)return false;return !imMine().some(m=>bbGap(CBY[m],t)<1.5);}
+function navyCost(){const W=warE(),L=(W?W.navy:0)+1,m=1+.15*((CAMP&&CAMP.era||1)-1);return {wood:Math.round(500*L*m),gold:Math.round(200*L*m)};}
+function navyBonus(){const W=warE();if(!W)return 0;return W.navy*.08*(W.doc==='na'?2:1)*(1+.05*genLv('alm'));}
+let WAR_CTX=null;
+function warAtkMul(id,strat){const W=warE();if(!W||!cnHired('guerra'))return 1;let m=WAR_DOC[W.doc].atk*(1+.04*warRank())*(1+.05*genLv(strat==='asedio'?'asedio':'asalto'));if(id&&overseas(id))m*=1+navyBonus();return m;}
+function warDefMul(){const W=warE();if(!W||!cnHired('guerra'))return 1;return WAR_DOC[W.doc].def*(1+.03*warRank());}
+{const _sp=imSoldPow;imSoldPow=function(n){const r=_sp.apply(this,arguments);if(!WAR_CTX)return r;return r*(WAR_CTX.atk?warAtkMul(WAR_CTX.id,WAR_CTX.strat):warDefMul());};}
+{const _ev=cwEval;cwEval=function(id,n,strat){const prev=WAR_CTX;WAR_CTX={atk:1,id,strat:strat||'asalto'};try{return _ev.apply(this,arguments);}finally{WAR_CTX=prev;}};}
+{const _gd=garDef;garDef=function(id){const prev=WAR_CTX;WAR_CTX=null;let d;try{d=_gd.apply(this,arguments);}finally{WAR_CTX=prev;}return CAMP&&ownerOf(id)==='P'?d*warDefMul():d;};}
+/* la Guardia también rinde según la doctrina y el rango cuando lanzas el ataque */
+{const _cl=cwLaunch;cwLaunch=function(id,strat,n){const top=CAMP&&CAMP.log[0],sea=overseas(id),prev=WAR_CTX;WAR_CTX={atk:1,id,strat:strat||'asalto'};let r;try{r=_cl.apply(this,arguments);}finally{WAR_CTX=prev;}
+  try{let won=false;for(const l of (CAMP&&CAMP.log)||[]){if(l===top)break;if(/conquistó|saqueó/.test(l.t)){won=true;break;}}if(won)warWin(strat==='asedio'?'asedio':'asalto',sea);}catch(_){}return r;};}
+{const _cd=ceDefend;ceDefend=function(){const P=CAMP&&CAMP.pending?Object.assign({},CAMP.pending):null;const r=_cd.apply(this,arguments);try{if(P&&ownerOf(P.id)==='P'&&!(CAMP.pending&&CAMP.pending.id===P.id))warWin(null,false);}catch(_){}return r;};}
+{const _ce=campaignEnd;campaignEnd=function(win){const r=_ce.apply(this,arguments);try{if(win&&CAMP)warWin(null,false);}catch(_){}return r;};}
+function warWin(gen,sea){const W=warE();if(!W||!cnHired('guerra'))return;const r0=warRank(),g0=gen?genLv(gen):0,a0=sea?genLv('alm'):0;W.xp++;if(gen)W.gen[gen].xp++;if(sea)W.gen.alm.xp++;
+  const msgs=[];if(warRank()>r0)msgs.push(ceWho('guerra')+' sube a «'+WAR_RANK[warRank()][1]+'»: +'+(4*warRank())+' % al atacar y +'+(3*warRank())+' % al defender');
+  if(gen&&genLv(gen)>g0)msgs.push('El general '+W.gen[gen].n+' asciende a '+GEN_RANK[genLv(gen)][0+1]+' de '+(gen==='asedio'?'asedio':'asalto'));
+  if(sea&&genLv('alm')>a0)msgs.push(W.gen.alm.n+' asciende a '+ADM_RANK[genLv('alm')][1]);
+  if(msgs.length){announce('⭐ ¡Ascenso en el ejército!',msgs.join('. ')+'.',{kind:'good'});ceLog(msgs.join('. ')+'.','war');}campSave();}
+function warHTML(){const W=warE(),rk=warRank(),nx=WAR_RANK[rk+1];const nc=navyCost();
+  let h='<div class="cnLbl">Mando militar</div><div class="wrBox"><div class="wrRank"><b>'+'★'.repeat(rk)+'<i>'+'★'.repeat(5-rk)+'</i></b><span>'+WAR_RANK[rk][1]+'</span><small>'+W.xp+' victoria'+(W.xp===1?'':'s')+(nx?' · faltan '+(nx[0]-W.xp)+' para «'+nx[1]+'»':' · rango máximo')+' · +'+(4*rk)+' % ataque · +'+(3*rk)+' % defensa</small></div>';
+  h+='<p class="cnNote">Directriz para tus generales:</p><div class="cnSeg c4">'+Object.keys(WAR_DOC).map(k=>'<button data-ce="doc:'+k+'" aria-pressed="'+(W.doc===k)+'">'+WAR_DOC[k].n+'</button>').join('')+'</div><p class="cnNote">'+WAR_DOC[W.doc].d+'.</p>';
+  h+='<div class="wrGen">'+[['asalto','⚔️','Asalto y saqueo',GEN_RANK],['asedio','🏰','Asedio',GEN_RANK],['alm','⚓','Armada',ADM_RANK]].map(([k,ic,lb,L])=>{const g=W.gen[k],lv=rankOf(L,g.xp),nxt=L[lv+1];return '<div><b>'+ic+' '+L[lv][1]+' '+esc(g.n)+'</b><span>'+lb+' · +'+(5*lv)+' %</span><small>'+(nxt?(nxt[0]-g.xp)+' victoria'+(nxt[0]-g.xp===1?'':'s')+' para '+nxt[1]:'rango máximo')+'</small></div>';}).join('')+'</div>';
+  h+='<div class="wrNavy"><div><b>⚓ Armada · nivel '+W.navy+'</b><span>'+(W.navy?'+'+Math.round(navyBonus()*100)+' % al atacar países al otro lado del mar · cuesta '+cnN(10*W.navy)+' de oro al mes':'Sin barcos: los ataques por mar no tienen apoyo')+'</span></div>'+
+     (W.navy<5?'<button data-ce="navy"'+(canAffordC(nc)?'':' disabled')+'><b>'+(W.navy?'Ampliar':'Construir')+'</b><small>'+ICON.wood+cnN(nc.wood)+' '+ICON.gold+cnN(nc.gold)+'</small></button>':'<i class="cnOn">Máxima</i>')+'</div></div>';return h;}
+/* la armada cobra su mantenimiento cada mes */
+{const _wt=worldTurn;worldTurn=function(){const r=_wt.apply(this,arguments);try{if(CAMP){hacTrade();const W=warE();if(W&&W.navy>0){const c=10*W.navy;if((CAMP.res.gold||0)>=c)CAMP.res.gold-=c;else if(W.navy>0){W.navy--;ceLog('Sin oro para la armada: se desarmó un nivel de barcos.','war');}}}}catch(err){if(typeof console!=='undefined')console.error(err);}return r;};}
+{const _ec=econ;econ=function(){const B=_ec.apply(this,arguments);try{const W=CAMP&&warE();if(W&&W.navy>0){const z={n:'Armada (nivel '+W.navy+')',food:0,wood:0,stone:0,gold:10*W.navy};B.exp.push(z);B.net.gold-=z.gold;}}catch(_){}return B;};}
+
+/* ===================== 🦉 CONSEJERO DEL IMPERIO ===================== */
+const ADV_NAMES=['Amaru el sabio','Ixchel la vidente','Tomás el cronista','Nayra la astuta','Kuntur el viejo'];
+function advE(){const E=ceSt();if(!E)return null;E.adv=E.adv||{name:ADV_NAMES[Math.floor(Math.random()*ADV_NAMES.length)],feast:-99};return E.adv;}
+function feastCost(){const n=Math.max(1,countOf('P')),e=CAMP.era||1;return {food:Math.round(60*n*(1+.2*(e-1))),gold:Math.round(15*n*(1+.2*(e-1)))};}
+function feastReady(){const A=advE();return CAMP.turn-A.feast>=4;}
+function feastNow(){const A=advE(),c=feastCost();if(!feastReady())return 'El pueblo todavía recuerda el último banquete: espera '+(4-(CAMP.turn-A.feast))+' turno(s).';if(!canAffordC(c))return 'El banquete necesita '+cnN(c.food)+' de comida y '+cnN(c.gold)+' de oro.';
+  payC(c);const E=popE();for(const id of imMine())E.pu[id]=Math.min(100,(E.pu[id]==null?50:E.pu[id])+10);A.feast=CAMP.turn;campSave();
+  ceLog('🍖 Gran banquete en todo el imperio: la popularidad sube 10 puntos.','crown');return '';}
+function advTips(){const tips=[],B=econ(),pu=puAvg(),E=ceSt(),wars=Object.keys(CAMP.nations).filter(o=>pactOf(o)==='guerra'&&countOf(o)>0);
+  const rg=B.net.gold<0?(CAMP.res.gold||0)/(-B.net.gold):99,rf=B.net.food<0?(CAMP.res.food||0)/(-B.net.food):99;
+  if(pu<45)tips.push({t:'😠 El pueblo está molesto ('+pu+' %). Un banquete lo alegra al instante; también ayuda bajar impuestos o subir el reparto.',b:'feast'});
+  else if(pu<60&&feastReady())tips.push({t:'🙂 El pueblo está tranquilo ('+pu+' %). Un banquete ahora lo dejaría contento y tributaría más.',b:'feast'});
+  if(rg<6)tips.push({t:'💰 '+(rg<1?'El oro se acaba este mes':'El oro alcanza para '+Math.floor(rg)+' mes'+(Math.floor(rg)===1?'':'es'))+'. En Hacienda enciende «Equilibrar comida y oro» e «Impuestos inteligentes».'});
+  if(rf<6)tips.push({t:'🌾 '+(rf<1?'La comida se acaba este mes':'La comida alcanza para '+Math.floor(rf)+' mes'+(Math.floor(rf)===1?'':'es'))+'. Baja el reparto o pon países con granjas en Producción.'});
+  if(wars.length>=2)tips.push({t:'⚔️ Tienes '+wars.length+' guerras abiertas. Firma la paz con '+nationName(wars.sort((a,b)=>countOf(a)-countOf(b))[0])+' y concentra la Guardia en una sola.'});
+  if(wars.length&&E.guard<500)tips.push({t:'🛡️ Estás en guerra y la Guardia es pequeña ('+cnN(E.guard)+'). Recluta antes de que te invadan.'});
+  const sto=RES4.reduce((s,k)=>s+stoTotal(k),0);if(sto>3000)tips.push({t:'📦 Tus almacenes guardan '+cnN(sto)+' recursos. Hacienda puede traerlos al tesoro con un botón.'});
+  if(!tips.length){const tg=cwTargets?cwTargets().slice().sort((a,b)=>(b.chance||0)-(a.chance||0))[0]:null;tips.push({t:'👑 Todo marcha bien, majestad.'+(tg?' '+tg.n+' parece la presa más fácil para crecer.':' Es buen momento para crecer.')});}
+  return tips.slice(0,3);}
+function advSay(){const out=[],B=econ(),E=ceSt(),W=warE();
+  if(cnHired('hacienda'))out.push({k:'hacienda',t:B.net.gold>=0?'«Las arcas suenan, majestad: '+eSign(B.net.gold)+' de oro al mes.»':'«Si seguimos así, en '+Math.max(1,Math.floor((CAMP.res.gold||0)/(-B.net.gold)))+' meses vamos a pagar con piedras.»'});
+  if(cnHired('guerra')){const wars=Object.keys(CAMP.nations).filter(o=>pactOf(o)==='guerra'&&countOf(o)>0);out.push({k:'guerra',t:E.guard?'«Mis '+cnN(E.guard)+' soldados esperan órdenes'+(wars.length?'; '+nationName(wars[0])+' no nos asusta.»':'. Denme un objetivo.»'):'«Sin soldados no hay imperio, majestad. Reclutemos.»'});}
+  if(cnHired('estado')){const owners=[...new Set(Object.values(CAMP.own))].filter(o=>o!=='P'&&CAMP.nations[o]&&countOf(o)>0&&COUNTRIES.some(c=>ownerOf(c.id)===o&&reachable('P',c.id)));const peace=owners.filter(o=>pactOf(o)==='paz'||pactOf(o)==='alianza').length;out.push({k:'estado',t:peace?'«Tenemos '+peace+' tratado'+(peace===1?'':'s')+' con los vecinos. La paz es más barata que la guerra.»':'«Nadie nos ha firmado la paz. Déjenme negociar.»'});}
+  return out;}
+const ADV_FUN=['Un juglar compuso una canción sobre tus conquistas; dicen que desafina.','En el mercado venden pan con la forma de tu corona.','Los niños juegan a ser tu Guardia Imperial con palos de escoba.','Un astrólogo asegura que las estrellas están de tu lado este mes.','Un poeta te comparó con un jaguar; el jaguar no ha opinado.','Dicen que tu cocinero inventó un guiso tan bueno que firmó la paz con los vecinos.'];
+function advRumors(){const L=(CAMP.log||[]).filter(l=>/^(war|trade|rebel|era|broke)$/.test(l.k)&&CAMP.turn-(l.n||0)<=6).slice(0,2).map(l=>'Dicen que '+l.t.charAt(0).toLowerCase()+l.t.slice(1));
+  const wars=Object.keys(CAMP.nations).filter(o=>pactOf(o)==='guerra'&&countOf(o)>=3);if(wars.length)L.push('Se rumora que '+nationName(wars[0])+' junta tropas en la frontera.');
+  L.push(ADV_FUN[(CAMP.turn||0)%ADV_FUN.length]);return L.slice(0,3);}
+function advHTML(){const A=advE(),c=feastCost(),tips=advTips();
+  let h='<div class="advBox"><div class="advHead"><span class="advAv">🦉</span><div><b>'+esc(A.name)+'</b><small>Consejero del imperio</small></div></div>';
+  h+='<div class="advSec"><b>Te aconsejo</b>'+tips.map(x=>'<p>'+x.t+(x.b==='feast'?'':'')+'</p>').join('')+'</div>';
+  const say=advSay();if(say.length)h+='<div class="advSec"><b>Lo que dicen tus ministros</b>'+say.map(s=>'<p><i>'+CN_DEF[s.k].ic+'</i> '+esc(s.t)+'</p>').join('')+'</div>';
+  h+='<div class="advSec rum"><b>Rumores de la corte</b>'+advRumors().map(t=>'<p>'+esc(t)+'</p>').join('')+'</div>';
+  h+='<button class="big advFeast" data-ce="feast"'+(feastReady()&&canAffordC(c)?'':' disabled')+'><b>🍖 Hacer un banquete</b><small>+10 de popularidad en todo el imperio · '+ICON.food+cnN(c.food)+' '+ICON.gold+cnN(c.gold)+(feastReady()?'':' · otra vez en '+(4-(CAMP.turn-A.feast))+' turno(s)')+'</small></button></div>';return h;}
+
+/* ===================== botones nuevos del consejo ===================== */
+{const _ic=imCe;imCe=function(a,x){const T=trCfg(),W=warE();
+  if(a==='tnv'){T.nv[x]=T.nv[x]?0:1;cnSave();return;}
+  if(a==='tmd'){if(TR_MD[x]){T.md=x;cnSave();}return;}
+  if(a==='doc'){if(WAR_DOC[x]){W.doc=x;campSave();ceLog(ceWho('guerra')+' ordenó a sus generales la directriz '+WAR_DOC[x].n.toLowerCase()+'.','war');}return;}
+  if(a==='navy'){if(W.navy>=5)return;const c=navyCost();if(!canAffordC(c))return toast('La armada necesita '+cnN(c.wood)+' de madera y '+cnN(c.gold)+' de oro',true);payC(c);W.navy++;campSave();toast('⚓ La armada sube a nivel '+W.navy,false,'gold');if(typeof sfx==='function')sfx('ok');return;}
+  if(a==='feast'){const r=feastNow();if(r)toast(r,true);else{toast('🍖 ¡Banquete! El pueblo celebra: +10 de popularidad',false,'gold');if(typeof sfx==='function')sfx('ok');}return;}
+  return _ic.apply(this,arguments);};}
+{const _cr=ceRender;ceRender=function(){const r=_cr.apply(this,arguments);try{const box=$('cnBody');if(!box||!box.querySelectorAll||!CAMP)return r;
+    if(!box.querySelector('.advBox')){const d=document.createElement('div');d.innerHTML=advHTML();const first=box.querySelector('.cnCard');box.insertBefore(d.firstChild,first||null);}
+    const cards=[...box.querySelectorAll('.cnCard')],keys=Object.keys(CN_DEF);
+    cards.forEach((card,i)=>{const k=keys[i];if(!cnHired(k))return;const perms=[...card.querySelectorAll('.cnLbl')].find(x=>/Permisos/.test(x.textContent));if(!perms)return;
+      if(k==='hacienda'&&!card.querySelector('.trBox')){const d=document.createElement('div');d.innerHTML=trHTML();for(const n of [...d.childNodes])card.insertBefore(n,perms);}
+      if(k==='guerra'&&!card.querySelector('.wrBox')){const d=document.createElement('div');d.innerHTML=warHTML();for(const n of [...d.childNodes])card.insertBefore(n,perms);}});
+  }catch(err){if(typeof console!=='undefined')console.error(err);}return r;};}
+
+/* ===================== 🌍 la información del país sube a la vista ===================== */
+{const _sc=selectCountry;selectCountry=function(id){const r=_sc.apply(this,arguments);try{if(MODE==='mundo'&&CAMP&&$('title')&&!$('title').hidden&&selectCountry.ready){const c=$('regionCard');if(c&&c.scrollIntoView)setTimeout(()=>{try{c.scrollIntoView({block:'start',behavior:'smooth'});}catch(_){c.scrollIntoView(true);}},60);}}catch(_){}return r;};}
+setTimeout(()=>{selectCountry.ready=true;},2500);
+
+/* ===================== 🌐 EN LÍNEA: ver servidores y decidir ===================== */
+{const _ro=renderOnlineHTML;renderOnlineHTML=function(){let h=_ro.apply(this,arguments);try{
+    if(ON.sess&&ON.pick){const w=(SV.list||[]).find(q=>q.id===ON.pick);if(w){const d=svDays(w.ends_at);
+      return '<div class="svPick"><button class="linkbtn" data-on="pick:no">← Volver a la lista</button>'+card(w.official?'gold':'','<div class="sct"><b>'+esc(w.name)+'</b><span>'+w.players+' de '+w.capacity+' imperios · '+(w.speed>1?'velocidad ×'+w.speed:'velocidad normal')+' · era media '+(w.avg_era||1)+' · '+(w.alliances||0)+' alianzas</span><small>'+(w.official?'Mundo oficial · ':'Creado por un jugador · ')+(w.shield_h?w.shield_h+' h de escudo al entrar · ':'sin escudo al entrar · ')+(d!=null?'termina en '+d+' días':'sin fin')+(w.descr?' · «'+esc(w.descr)+'»':'')+'</small></div>')+
+        '<p class="snote">'+(w.joined?'Ya tienes un imperio aquí: puedes ir a verlo.':'Al entrar, tu país ocupa un lugar en este mundo. Puedes tener imperios en varios mundos y cambiar entre ellos cuando quieras.')+'</p>'+
+        '<button class="big" data-on="pick:yes">'+(w.joined?'Ir a mi imperio en este mundo':'Entrar a este mundo')+'</button><button class="ghostbtn" data-on="pick:no">No, gracias</button></div>';}}
+    if(ON.sess&&ON.emp&&ON.browse)return '<div class="svBrowse"><button class="linkbtn" data-on="browse:off">← Volver a mi imperio</button><p class="snote">Otros servidores: mira cuántos juegan, su era y si tienen temporada. Toca uno para ver detalles; tú decides si entras.</p>'+svListHTML()+'</div>';
+    if(ON.sess&&ON.emp&&!ON.browse){const b='<button class="ghostbtn svOpen" data-on="browse:on">🌐 Ver otros servidores</button>';const j=h.indexOf('<div class="ostats">');h=j>=0?h.slice(0,j)+b+h.slice(j):b+h;}
+  }catch(err){if(typeof console!=='undefined')console.error(err);}return h;};}
+{const _oa=onAct;onAct=async function(a){const [k,x]=String(a).split(':');
+  if(k==='browse'){ON.browse=x==='on';ON.pick=null;ON.msg='';if(ON.browse&&SV.list===null)svLoad();return renderOnline();}
+  if(k==='jid'&&!ON.pickOk){ON.pick=+x;ON.msg='';return renderOnline();}
+  if(k==='pick'){if(x==='no'){ON.pick=null;return renderOnline();}const id=ON.pick;ON.pick=null;ON.pickOk=true;try{await _oa.call(this,'jid:'+id);}finally{ON.pickOk=false;}ON.browse=false;return renderOnline();}
+  if(k==='a'){const w=ON.emp&&ON.emp.world;return busy(async()=>{const r=await rpc('attack',{p_world:w,p_target:+x});ON.emp=r.me;ON.rivals=await rpc('rivals',{p_world:w});
+      const lo=Object.keys(r.loot||{}).filter(q=>r.loot[q]).map(q=>cnN(r.loot[q])+' de '+RES_NAME[q].toLowerCase()).join(', ');
+      if(r.won)ON.msg='⚔️ ¡Saqueo exitoso contra '+r.rival+'!'+(r.revenge?' ¡Venganza cumplida!':'')+(lo?' Botín: '+lo+'.':'')+(r.vault?' Su bóveda protegió '+cnN(r.vault)+' de cada recurso.':'')+(r.bully?' El botín fue la mitad: es mucho más débil que tú.':'')+' Su país sigue siendo suyo: entre jugadores se saquea, no se conquista.'+(r.reborn?' Su ejército cayó y su pueblo levantó una milicia: queda protegido 8 horas.':'');
+      else ON.msg='!Derrota contra '+r.rival+'. Recluta más tropas o sube tus murallas. (Tu poder '+r.att_power+' contra '+r.def_power+')';
+      if(typeof sfx==='function')sfx(r.won?'era':'bad');});}
+  return _oa.apply(this,arguments);};}
+/* entrar a otro mundo desde tu imperio: usa tu nombre y tu país; si tu país ya tiene dueño allá, elige el libre más cercano */
+{const _ji=joinInfo;joinInfo=function(){if(!$('onName')&&ON.emp&&ON.joinAs)return {nm:ON.joinAs.nm,cc:ON.joinAs.cc,c:campInfo()};return _ji.apply(this,arguments);};}
+{const _oa2=onAct;onAct=async function(a){const [k]=String(a).split(':');
+  if(k==='pick'&&String(a)==='pick:yes'&&ON.emp&&!$('onName')){const wid=ON.pick,w=(SV.list||[]).find(q=>q.id===wid);ON.joinAs={nm:ON.emp.name,cc:ON.emp.country};
+    try{if(w&&!w.joined){const taken=await rpc('world_taken',{p_world:wid}).catch(()=>[]);if(Array.isArray(taken)&&taken.indexOf(ON.joinAs.cc)>=0){const ref=CBY[ON.joinAs.cc];const free=COUNTRIES.filter(q=>taken.indexOf(q.id)<0).sort((p,q)=>ref?bbGap(p,ref)-bbGap(q,ref):0)[0];if(free){ON.joinAs.cc=free.id;toast('Tu país ya tiene dueño en ese mundo: entras con '+free.n,false,'gold');}}}
+      return await _oa2.apply(this,arguments);}finally{ON.joinAs=null;}}
+  return _oa2.apply(this,arguments);};}
+
 {const bf=document.getElementById('bFleet');if(bf&&bf.querySelector){const s=bf.querySelector('[data-icon]');if(s)s.innerHTML=ICON.galera||ICON.trans||'';}}
-window.__HI={get QUAL(){return QUAL;},econ,econHacHTML,econWarHTML,econDipHTML,goldBase,get ceCost(){return ceCost;},bombCost,imUpk,cnSk,imAsgTotal,newCampaign,addB,showTitle,get MKQ2(){return MKQ;},get SHQ(){return SHQ;},get MKQ(){return MKQ;},shqPrice,mkTotal,shopAct,refreshTray,giveRes,resAmt,get CAMP(){return CAMP;},TUT,tutStart,tutOffer,tutNeeded,tutTick,v60Sync,dockTarget,orderAt,setSel,selectBuilding,startPlacing,confirmPlace,doAct,get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},get cam(){return cam;},OWN,isOwner,ownCheck,ownOpen,ownAct,giftsClaim,testerGift,webNoPay,ownInfTick,get ON(){return ON;},sepPass,get landOk(){return landOk;},resCap,resAdd,funds,hacFund,stoTotal,gdMaxAfford,get canAffordC(){return canAffordC;},get payC(){return payC;},get ceCap(){return ceCap;},SV,svLoad,get ON(){return ON;},get onAct(){return onAct;},get renderOnlineHTML(){return renderOnlineHTML;},gdProv,gdRest,invChance,get popC(){return popC;},get cePow(){return cePow;},get ceTgtDef(){return ceTgtDef;},get popCap(){return popCap;},shOn,shLeft,shGive,shBuy,shCan,shDealToday,shDealOff,shW,get hit(){return hit;},openShopTab,popC,popWorld,popEmpire,popHurt,puOf,puAvg,puTarget,popTurn,popBomb,bombNow,repCost,popE,gwTick,gwWave,gwStrike,gwPlayerBomb,get imTrib(){return imTrib;},imOpen,imClose,imRender,imE,imMine,imProd,imTrib,imSto,imAsg,imStr,imTurn,cwEval,cwTargets,cwLaunch,cwDeclare,imCouncilOk,imCanRecruit,imRecruitDefend,ceSt,ceDefend,ceConquer,ceAskDefense,ceAskConquer,ceRecruit,ceOpen,ceTurn,get CAMP(){return CAMP;},worldTurn:()=>worldTurn(),campaignEnd:(w,h)=>campaignEnd(w,h),startBattle:(a,b)=>startBattle(a,b),renderCampBar:()=>renderCampBar(),cnTick,cnRecruit,openCouncil,closeCouncil,cnCfg,cnSt,cnHired,dipAnswer,announce,declareWar,setSt:(a,b,v)=>setSt(a,b,v),autoDefend,garChance,garDef,garReinforce,templeLv,templeEraMul,blessNow,blessOn,gardenGather,leaderLabel,leaderTick,lTitle,rushVid,rushLeft,rushMul,musicTick,AUD,faunaEra,STORY,storyTick,atk,buildPort,canExpedite,sendExpedition,expLeft,expLand,expBuy,expDraw,worldPulse,chapters,storyStart,goalProg,stGet,renderStoryCard,setMode:m=>setMode(m),get MODE(){return MODE;},contOf,hasPort,DEV_TIER,setLevel,setQuality,wallet,amber,addAmber,grant,accel,accCost,canAccel,claimDaily,dailyState,freeVideo,buyRes,vidRes,buyEraPack,shopEra,pickBanner,openShop,closeShop,adClose,mon,eraPack,resAmt,BANNERS,get TEAM(){return TEAM;},shopEnd,retryBonus,CBY,COUNTRIES,newGame,endGame,selectCountry,doTrade,proposePact,breakPact,answerOffer,resistOf,incomeOf,tradeQuote,campaignEnd,doAct,get selR(){return selR;},UTT:UT,BTT:BT,get AUD(){return typeof AUD!=="undefined"?AUD:null;},step,get G(){return G;},trainAt,startPlacing,confirmPlace,tap,setSel,orderAt,render,renderMini,refreshTray,drawPortrait,cam,setRunning(v){running=v;},setDiff(k){DK=k;},setNP(n){NP=n;},FAUNA,addB,addU,addAnimal,centerOn,updFog,eraCheck,get PROF(){return PROF;},get USE3D(){return USE3D;},pickScreen,screenToWorld,proj3,get R3(){return R3;},get POST(){return POST;},get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},zoomAt,clampCam,get terrain(){return terrain;},get BASES(){return BASES;},get FORDS(){return FORDS;},get RIVERS(){return RIVERS;},findPath,seaD,setBridge,waterNear:(x,y,r)=>waterNear(x,y,r),riverAt:(x,y)=>riverAt(x,y),guideSay,guideFor,kill,newCampaign,startBattle,reachable,worldTurn,get CAMP(){return CAMP;},countOf,saveGame,loadGame,savedInfo,continueGame,selectBuilding,teamBlock:t=>teamBlock(t),get BLOCKERS(){return BLOCKERS;},get BLOCKV(){return BLOCKV;},lineClear,get PBUDGET(){return PBUDGET;},render3D:dt=>render3D(dt),renderOverlay:dt=>renderOverlay(dt),resize,freeze(v){frozen=v;},get acc(){return acc;},mountainAt:(x,y)=>mountainAt(x,y),heightAt:(x,y)=>heightAt(x,y),reveal(){explored.fill(1);visible.fill(1);G.revealAll=true;updFog();}};
+window.__HI={get QUAL(){return QUAL;},ownerOf,countOf,cwTargets,pactOf,trCfg,hacTrade,warE,warRank,genLv,warWin,warAtkMul,warDefMul,overseas,navyCost,navyBonus,advE,advTips,advSay,advRumors,feastNow,feastCost,get cwEval(){return cwEval;},get cwLaunch(){return cwLaunch;},get answerOffer(){return answerOffer;},get doTrade(){return doTrade;},get garDef(){return garDef;},imCe:(a,x)=>imCe(a,x),get selectCountry(){return selectCountry;},hacBalance,hacAutoTax,warFit,stoBring,balTargets,hacE,permOn,stoOn,get funds(){return funds;},get cnRender(){return cnRender;},openCouncil2:()=>openCouncil(),econ,econHacHTML,econWarHTML,econDipHTML,goldBase,get ceCost(){return ceCost;},bombCost,imUpk,cnSk,imAsgTotal,newCampaign,addB,showTitle,get MKQ2(){return MKQ;},get SHQ(){return SHQ;},get MKQ(){return MKQ;},shqPrice,mkTotal,shopAct,refreshTray,giveRes,resAmt,get CAMP(){return CAMP;},TUT,tutStart,tutOffer,tutNeeded,tutTick,v60Sync,dockTarget,orderAt,setSel,selectBuilding,startPlacing,confirmPlace,doAct,get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},get cam(){return cam;},OWN,isOwner,ownCheck,ownOpen,ownAct,giftsClaim,testerGift,webNoPay,ownInfTick,get ON(){return ON;},sepPass,get landOk(){return landOk;},resCap,resAdd,funds,hacFund,stoTotal,gdMaxAfford,get canAffordC(){return canAffordC;},get payC(){return payC;},get ceCap(){return ceCap;},SV,svLoad,get ON(){return ON;},get onAct(){return onAct;},get renderOnlineHTML(){return renderOnlineHTML;},gdProv,gdRest,invChance,get popC(){return popC;},get cePow(){return cePow;},get ceTgtDef(){return ceTgtDef;},get popCap(){return popCap;},shOn,shLeft,shGive,shBuy,shCan,shDealToday,shDealOff,shW,get hit(){return hit;},openShopTab,popC,popWorld,popEmpire,popHurt,puOf,puAvg,puTarget,popTurn,popBomb,bombNow,repCost,popE,gwTick,gwWave,gwStrike,gwPlayerBomb,get imTrib(){return imTrib;},imOpen,imClose,imRender,imE,imMine,imProd,imTrib,imSto,imAsg,imStr,imTurn,cwEval,cwTargets,cwLaunch,cwDeclare,imCouncilOk,imCanRecruit,imRecruitDefend,ceSt,ceDefend,ceConquer,ceAskDefense,ceAskConquer,ceRecruit,ceOpen,ceTurn,get CAMP(){return CAMP;},worldTurn:()=>worldTurn(),campaignEnd:(w,h)=>campaignEnd(w,h),startBattle:(a,b)=>startBattle(a,b),renderCampBar:()=>renderCampBar(),cnTick,cnRecruit,openCouncil,closeCouncil,cnCfg,cnSt,cnHired,dipAnswer,announce,declareWar,setSt:(a,b,v)=>setSt(a,b,v),autoDefend,garChance,garDef,garReinforce,templeLv,templeEraMul,blessNow,blessOn,gardenGather,leaderLabel,leaderTick,lTitle,rushVid,rushLeft,rushMul,musicTick,AUD,faunaEra,STORY,storyTick,atk,buildPort,canExpedite,sendExpedition,expLeft,expLand,expBuy,expDraw,worldPulse,chapters,storyStart,goalProg,stGet,renderStoryCard,setMode:m=>setMode(m),get MODE(){return MODE;},contOf,hasPort,DEV_TIER,setLevel,setQuality,wallet,amber,addAmber,grant,accel,accCost,canAccel,claimDaily,dailyState,freeVideo,buyRes,vidRes,buyEraPack,shopEra,pickBanner,openShop,closeShop,adClose,mon,eraPack,resAmt,BANNERS,get TEAM(){return TEAM;},shopEnd,retryBonus,CBY,COUNTRIES,newGame,endGame,selectCountry,doTrade,proposePact,breakPact,answerOffer,resistOf,incomeOf,tradeQuote,campaignEnd,doAct,get selR(){return selR;},UTT:UT,BTT:BT,get AUD(){return typeof AUD!=="undefined"?AUD:null;},step,get G(){return G;},trainAt,startPlacing,confirmPlace,tap,setSel,orderAt,render,renderMini,refreshTray,drawPortrait,cam,setRunning(v){running=v;},setDiff(k){DK=k;},setNP(n){NP=n;},FAUNA,addB,addU,addAnimal,centerOn,updFog,eraCheck,get PROF(){return PROF;},get USE3D(){return USE3D;},pickScreen,screenToWorld,proj3,get R3(){return R3;},get POST(){return POST;},get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},zoomAt,clampCam,get terrain(){return terrain;},get BASES(){return BASES;},get FORDS(){return FORDS;},get RIVERS(){return RIVERS;},findPath,seaD,setBridge,waterNear:(x,y,r)=>waterNear(x,y,r),riverAt:(x,y)=>riverAt(x,y),guideSay,guideFor,kill,newCampaign,startBattle,reachable,worldTurn,get CAMP(){return CAMP;},countOf,saveGame,loadGame,savedInfo,continueGame,selectBuilding,teamBlock:t=>teamBlock(t),get BLOCKERS(){return BLOCKERS;},get BLOCKV(){return BLOCKV;},lineClear,get PBUDGET(){return PBUDGET;},render3D:dt=>render3D(dt),renderOverlay:dt=>renderOverlay(dt),resize,freeze(v){frozen=v;},get acc(){return acc;},mountainAt:(x,y)=>mountainAt(x,y),heightAt:(x,y)=>heightAt(x,y),reveal(){explored.fill(1);visible.fill(1);G.revealAll=true;updFog();}};
 })();
 
 </script>
