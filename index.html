@@ -955,6 +955,72 @@ b.popN{font-size:15px;color:#fff;font-variant-numeric:tabular-nums}
 #shopBody .ownFree{outline:2px solid rgba(250,204,21,.6)}
 #shopBody .sbtn.pack.soon span:not(.amb){background:rgba(255,255,255,.1)!important;color:rgba(255,255,255,.8)!important;box-shadow:none!important;border:1px dashed rgba(255,255,255,.3)!important}
 
+/* ================= v60 · menú del siglo 21 ================= */
+#title.v60.docked .screen-inner{padding-bottom:calc(108px + env(safe-area-inset-bottom,0px))}
+#title.v60 .v60hidden{display:none!important}
+#title.v60 .v60dock{display:none!important}
+/* tienda compacta */
+#title.v60 #shopBar{margin:-6px 0 4px}
+#title.v60 #shopBar .shopBar{padding:8px 10px!important;gap:8px!important;min-height:0!important;border-radius:999px!important}
+#title.v60 #shopBar .shopBar .big{padding:8px 16px!important;min-height:0!important;font-size:14px!important}
+#title.v60 #shopBar .shopBar .gift{padding:7px 12px!important;font-size:13px!important}
+/* selector de modos */
+#title.v60 .screen-inner #modes.modes{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:6px!important;padding:5px!important;border-radius:20px!important;background:rgba(255,255,255,.05)!important;border:1px solid rgba(255,255,255,.1)!important}
+#title.v60 #modes button{min-height:0!important;height:auto!important;padding:10px 4px 9px!important;border-radius:15px!important;display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:3px;font-size:13px!important;line-height:1.1!important;background:transparent!important;border:1px solid transparent!important;box-shadow:none!important;color:rgba(255,255,255,.75)!important}
+#title.v60 #modes button small{display:none!important}
+#title.v60 #modes button::before{font-size:22px;line-height:1;display:block;margin:0 0 2px!important}
+#title.v60 #modes .modeOn::before{content:'🌐'}
+#title.v60 #modes button[aria-pressed="true"]{background:linear-gradient(180deg,rgba(255,180,90,.28),rgba(255,140,60,.14))!important;border-color:rgba(255,190,110,.65)!important;color:#fff!important}
+#title.v60 #modes .modeOn{color:#bae6fd!important}
+#modeTxt{order:2;margin:2px 4px 4px;text-align:center;font-size:13.5px;line-height:1.35;color:rgba(255,255,255,.72)}
+/* lupa junto a Al azar */
+#heroFind{left:16px!important;right:auto!important;width:44px!important;height:36px!important;padding:0!important;font-size:17px!important;display:flex!important;align-items:center;justify-content:center;top:auto!important;bottom:20px!important}
+/* ajustes plegados */
+#regionCard .v60opts{display:block!important;width:100%!important;grid-column:1/-1!important;flex:1 1 100%!important;max-width:none!important;align-self:stretch!important;box-sizing:border-box;margin-top:10px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:rgba(255,255,255,.03);padding:0 12px}
+#regionCard .v60opts summary{cursor:pointer;list-style:none;padding:12px 0;font-weight:700;font-size:14px;display:flex;justify-content:space-between;gap:8px;align-items:center}
+#regionCard .v60opts summary::-webkit-details-marker{display:none}
+#regionCard .v60opts summary span{font-weight:600;color:rgba(255,255,255,.6);font-size:13px}
+#regionCard .v60opts summary span::after{content:' ▾'}
+#regionCard .v60opts[open] summary span::after{content:' ▴'}
+#regionCard .v60opts .diff{margin-bottom:12px}
+/* fila secundaria */
+#miniRow.v60row{display:flex!important;flex-wrap:wrap;gap:8px!important;justify-content:center}
+#miniRow.v60row>button{flex:0 1 auto!important;width:auto!important;min-height:0!important;padding:9px 14px!important;font-size:13.5px!important;border-radius:999px!important}
+#miniRow.v60row #onlineBtn{display:none!important}
+/* botón Jugar fijo */
+#playDock{position:fixed;left:0;right:0;bottom:0;z-index:12;padding:12px 16px calc(14px + env(safe-area-inset-bottom,0px));background:linear-gradient(0deg,rgba(6,8,18,.96) 55%,rgba(6,8,18,0));display:flex;justify-content:center;pointer-events:none}
+#playDock[hidden]{display:none}
+#dockPlay{pointer-events:auto;width:min(520px,100%);min-height:62px;border-radius:20px!important;display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:10px 18px!important;box-shadow:0 10px 30px rgba(255,140,40,.35)!important}
+#dockPlay b{font-size:21px;letter-spacing:.02em}
+#dockPlay small{font-size:12.5px;opacity:.85;font-weight:600}
+/* bienvenida */
+#welcome{position:fixed;inset:0;z-index:150;display:flex;align-items:flex-end;justify-content:center;background:radial-gradient(120% 80% at 50% 0%,rgba(30,40,90,.55),rgba(4,6,14,.92));padding:16px 16px calc(18px + env(safe-area-inset-bottom,0px));-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+#welcome[hidden]{display:none}
+#welcome .wcard{width:min(460px,100%);background:linear-gradient(180deg,rgba(28,32,58,.97),rgba(14,16,30,.98));border:1px solid rgba(255,255,255,.14);border-radius:28px;padding:26px 22px 18px;box-shadow:0 20px 60px rgba(0,0,0,.6);display:flex;flex-direction:column;gap:12px;animation:wUp .45s cubic-bezier(.2,.9,.3,1.1)}
+@keyframes wUp{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
+#welcome .wlogo{font-family:inherit;font-weight:900;font-size:34px;text-align:center;background:linear-gradient(180deg,#fff3d6,#ffb057);-webkit-background-clip:text;background-clip:text;color:transparent;letter-spacing:.01em}
+#welcome .wtag{margin:0;text-align:center;color:rgba(255,255,255,.8);font-size:15.5px;line-height:1.4}
+#welcome .wpts{list-style:none;margin:4px 0;padding:0;display:flex;flex-direction:column;gap:8px}
+#welcome .wpts li{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.05);border-radius:14px;padding:10px 12px;font-size:15px;color:#fff}
+#welcome .wpts span{font-size:22px;width:28px;text-align:center}
+#welcome #wPlay{min-height:64px;border-radius:20px!important;display:flex!important;flex-direction:column;align-items:center;gap:2px}
+#welcome #wPlay b{font-size:20px}#welcome #wPlay small{font-size:12.5px;opacity:.85}
+#welcome #wSkip{align-self:center;border:none!important;background:none!important;color:rgba(255,255,255,.6)!important;font-size:14px!important;padding:8px!important}
+/* guía en la partida */
+#coach{position:fixed;left:50%;transform:translateX(-50%);top:calc(64px + env(safe-area-inset-top,0px));z-index:60;width:min(440px,calc(100% - 24px));background:rgba(12,16,32,.94);border:1px solid rgba(255,200,120,.55);border-radius:20px;box-shadow:0 12px 34px rgba(0,0,0,.5);padding:12px 12px 12px 16px;display:flex;align-items:center;gap:10px;overflow:hidden;-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+#coach[hidden]{display:none}
+#coach .cbar{position:absolute;left:0;right:0;top:0;height:4px;background:rgba(255,255,255,.08)}
+#coach .cbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ffb057,#ff7a3d);transition:width .4s}
+#coach .ctxt{flex:1;display:flex;flex-direction:column;gap:3px;min-width:0}
+#coach .ctxt b{font-size:16.5px;color:#fff;line-height:1.25}
+#coach .ctxt span{font-size:13.5px;color:rgba(255,255,255,.75);line-height:1.35}
+#coach #cSkip{flex:0 0 auto;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.75);border-radius:999px;padding:7px 12px;font-size:12.5px}
+#coach.fin{flex-direction:column;align-items:stretch;border-color:rgba(74,222,128,.6)}
+#coach.fin #cGo{min-height:52px;border-radius:16px!important}
+#coachRing{position:fixed;z-index:59;pointer-events:none;border-radius:50%;border:3px solid #ffd27a;box-shadow:0 0 0 4px rgba(255,180,80,.25),0 0 24px rgba(255,190,90,.8);animation:cPulse 1.1s ease-in-out infinite;display:none}
+@keyframes cPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.18);opacity:.7}}
+@media (max-width:360px){#title.v60 #modes button{font-size:11.5px!important}#title.v60 #modes button::before{font-size:19px}}
+
 </style>
 
 <div id="app" class="menu">
@@ -7798,7 +7864,7 @@ function frameBody(now){
 function boot(){init3D();resize();applyQuality();showTitle();requestAnimationFrame(frame);}
 boot();
 /* ---------- opiniones de quienes prueban el juego: llegan por WhatsApp al creador ---------- */
-const FB_TO='573044272520',FB_VER='v59';let fbCat='Error',fbFrom=null;
+const FB_TO='573044272520',FB_VER='v60';let fbCat='Error',fbFrom=null;
 function fbContext(){const d=(()=>{const u=navigator.userAgent||'';return /iPhone|iPad/.test(u)?'iPhone/iPad':/Android/.test(u)?'Android':/Mac/.test(u)?'Mac':/Windows/.test(u)?'Windows':'otro';})();
   const g=G&&!$('title').hidden?null:G;const where=g&&PROF?PROF.c.n+' · era '+ROMAN[g.era[0]]+' · '+fmtT(g.t)+(g.camp?' · conquista':''):'menú de inicio';
   return 'Versión '+FB_VER+' · '+d+' '+innerWidth+'×'+innerHeight+' · '+where+(typeof QSET!=='undefined'?' · calidad '+QSET+' nivel '+QUAL.lvl+(QUAL.fps?' · '+QUAL.fps+' fps':'')+(GPU_NAME?' · '+GPU_NAME:''):'');}
@@ -9037,8 +9103,130 @@ function OWN_me(){try{const t=ON.sess.at.split('.')[1];return JSON.parse(atob(t.
 /* al abrir el juego: regalo de probador, ¿soy dueño?, buzón */
 setTimeout(()=>{try{testerGift();}catch(err){if(typeof console!=='undefined')console.error(err);}try{ownCheck(true);}catch(_){}},1500);
 
+/* ================= v60 · menú del siglo 21 + aprender jugando =================
+   Portada: un solo botón grande "Jugar" fijo abajo, modos como selector simple (con En línea), ajustes plegados,
+   tienda arriba en una fila compacta y búsqueda escondida tras la lupa.
+   Primera vez: bienvenida de un toque y partida guiada paso a paso con un anillo que señala qué tocar. */
+
+/* ---------- portada ---------- */
+const MODE_TXT={libre:'Una partida rápida: crece desde la cueva y vence a las tribus vecinas.',mundo:'Tu país contra el planeta: conquista, comercia y gobierna 200 naciones.',historia:'Capítulos cortos con la historia de tu país.'};
+function v60Menu(){const T=$('title');if(!T||!T.querySelector||!document.createElement)return;const inner=T.querySelector('.screen-inner');if(!inner||inner.dataset.v60)return;inner.dataset.v60='1';
+  T.classList.add('v60');
+  const hero=$('hero'),modes=$('modes'),sb=$('shopBar'),fd=inner.querySelector('.finder');
+  // tienda compacta justo debajo del globo
+  if(hero&&sb&&hero.parentNode===inner)inner.insertBefore(sb,hero.nextSibling);
+  // modos: selector + En línea
+  if(modes){if(!modes.querySelector('.modeOn')){const b=document.createElement('button');b.className='modeOn';b.type='button';b.innerHTML='En línea<small>contra otros jugadores</small>';b.addEventListener('click',()=>{if(typeof openOnline==='function')openOnline();});modes.appendChild(b);}
+    let d=$('modeTxt');if(!d){d=document.createElement('p');d.id='modeTxt';modes.parentNode.insertBefore(d,modes.nextSibling);}}
+  // lupa: la búsqueda solo aparece si la pides
+  if(fd){fd.classList.add('v60hidden');const r=$('heroRand');if(r&&!$('heroFind')){const b=document.createElement('button');b.id='heroFind';b.className='heroRand heroFind';b.type='button';b.setAttribute('aria-label','Buscar país');b.textContent='🔍';
+      b.addEventListener('click',()=>{fd.classList.toggle('v60hidden');if(!fd.classList.contains('v60hidden')){const q=$('q');if(q&&q.focus)q.focus();}});r.parentNode.insertBefore(b,r);}
+    if(!fd.dataset.v60){fd.dataset.v60='1';fd.addEventListener('click',ev=>{if(ev.target&&ev.target.closest&&ev.target.closest('#results [data-id],#results button,#results li'))setTimeout(()=>fd.classList.add('v60hidden'),50);});}}
+  // fila secundaria compacta
+  const mr=$('miniRow');if(mr){mr.classList.add('v60row');const g=inner.querySelector('details.guide');if(g&&!$('rowGuide')){const b=document.createElement('button');b.id='rowGuide';b.className='ghostbtn';b.type='button';b.textContent='📖 Cómo se juega';b.addEventListener('click',()=>{if(typeof tutOffer==='function')tutOffer(true);});mr.insertBefore(b,mr.firstChild);}}
+  // botón Jugar fijo
+  if(!$('playDock')){const d=document.createElement('div');d.id='playDock';d.innerHTML='<button id="dockPlay" class="big" type="button"><b>▶ Jugar</b><small id="dockSub"></small></button>';T.appendChild(d);
+    $('dockPlay').addEventListener('click',()=>{const t=dockTarget();if(t)t.click();});}
+  v60Sync();}
+function dockTarget(){for(const id of ['playBtn','campStart','chPlay']){const b=$(id);if(b&&!b.hidden&&!b.disabled&&b.closest&&b.closest('#title'))return b;}return null;}
+function v60Sync(){try{const T=$('title');if(!T||!T.classList||!T.classList.contains('v60'))return;
+    const d=$('modeTxt');if(d)d.textContent=MODE_TXT[MODE]||'';
+    if(v60Sync.lc&&v60Sync.lc!==selCountry){const fd=document.querySelector('#title .finder');if(fd&&fd.classList)fd.classList.add('v60hidden');const q=$('q');if(q)q.value='';const rs=$('results');if(rs)rs.innerHTML='';}v60Sync.lc=selCountry;
+    // ajustes de partida plegados
+    const card=$('regionCard');if(card&&card.querySelectorAll){const ds=[...card.querySelectorAll('.diff')].filter(x=>!(x.parentNode&&x.parentNode.classList&&x.parentNode.classList.contains('v60opts')));
+      if(ds.length){const det=document.createElement('details');det.className='v60opts';if(v60Sync.open)det.open=true;det.addEventListener('toggle',()=>{v60Sync.open=det.open;});
+        const sm=document.createElement('summary');det.appendChild(sm);ds[0].parentNode.insertBefore(det,ds[0]);for(const x of ds)det.appendChild(x);}
+      const sm=card.querySelector('.v60opts summary');if(sm)sm.innerHTML='⚙️ Ajustes de partida <span>'+(DIFF[DK]?DIFF[DK].name:'')+' · '+(NP-1===1?'1 rival':(NP-1)+' rivales')+'</span>';
+      for(const id of ['playBtn','campStart','chPlay']){const b=$(id);if(b&&b.classList)b.classList.add('v60dock');}}
+    const t=dockTarget(),dk=$('playDock');if(dk){dk.hidden=!t;const c=CBY[selCountry];
+      const lbl=t?(t.id==='campStart'?'▶ Empezar conquista':t.id==='chPlay'?'▶ '+(t.textContent||'Jugar'):'▶ Jugar'):'';
+      const b=$('dockPlay');if(b){b.querySelector('b').textContent=lbl;const s=$('dockSub');if(s)s.textContent=c?(FLAG_OF?FLAG_OF(c)+' ':'')+c.n+' · '+({libre:'Partida rápida',mundo:'Conquistar el mundo',historia:'Historia'}[MODE]||''):'';}}
+    T.classList.toggle('docked',!!t);}catch(err){if(typeof console!=='undefined')console.error(err);}}
+const FLAG_OF=()=>{try{return typeof flagOf==='function'?flagOf(selCountry):'';}catch(_){return '';}};
+{const _rc=renderCountryCard;renderCountryCard=function(){const r=_rc.apply(this,arguments);v60Sync();return r;};}
+{const _sm=setMode;setMode=function(){const r=_sm.apply(this,arguments);v60Sync();return r;};}
+{const _st=showTitle;showTitle=function(){const r=_st.apply(this,arguments);v60Sync();return r;};}
+
+/* ---------- primera vez: bienvenida ---------- */
+const TUT_KEY='hi_tut';
+function tutNeeded(){if(lsGet(TUT_KEY))return false;for(const k of ['hi_camp','hi_story','hi_conq',SAVE_KEY])if(lsGet(k))return false;return true;}
+(function welcomeMount(){if(typeof document==='undefined'||!document.createElement||!document.body)return;if($('welcome'))return;
+  const d=document.createElement('div');d.id='welcome';d.hidden=true;
+  d.innerHTML='<div class="wcard"><div class="wlogo">Homo Imperium</div><p class="wtag">Lleva a tu tribu de la cueva a conquistar el mundo.</p>'+
+    '<ul class="wpts"><li><span>🪓</span>Recolecta comida, madera y piedra</li><li><span>🏠</span>Construye tu aldea y crece</li><li><span>⚔️</span>Vence a las tribus rivales</li></ul>'+
+    '<button class="big" id="wPlay" type="button"><b>▶ Aprender jugando</b><small>3 minutos · te guío paso a paso</small></button>'+
+    '<button class="ghostbtn" id="wSkip" type="button">Ya sé jugar</button></div>';
+  ($('app')||document.body).appendChild(d);
+  $('wPlay').addEventListener('click',()=>{d.hidden=true;tutStart();});
+  $('wSkip').addEventListener('click',()=>{d.hidden=true;lsSet(TUT_KEY,'skip');afterTut();});})();
+function tutOffer(force){if(!force&&!tutNeeded())return;const w=$('welcome');if(w){w.hidden=false;const s=$('wSkip');if(s)s.textContent=force?'Ahora no':'Ya sé jugar';}}
+function afterTut(){try{testerGift();}catch(_){}}
+
+/* ---------- partida guiada ---------- */
+const TUT={on:false,i:0,base:0,cave:0,t:0,done:false};
+function tutStart(){try{setMode('libre');}catch(_){}DK='facil';NP=2;try{localStorage.setItem('hi_diff','facil');localStorage.setItem('hi_rivals','1');}catch(_){}
+  TUT.on=true;TUT.i=0;TUT.done=false;TUT.gathered=false;TUT.full=false;startGame();
+  const c=G&&G.ents.find(e=>e.k==='b'&&e.o===0&&e.type==='cueva');TUT.cave=c?c.id:0;TUT.base=tutHouses();
+  coachMount();tutGo(0);}
+function tutHouses(){return G?G.ents.filter(e=>e.k==='b'&&e.o===0&&e.type==='choza'&&!e.dead).length:0;}
+function tutVill(){const c=get(TUT.cave);let best=null,bd=1e18;for(const e of G.ents)if(e.k==='u'&&e.o===0&&e.type==='rec'&&!e.dead&&e.hp>0){const d=c?(e.x-c.x)**2+(e.y-c.y)**2:0;if(d<bd){bd=d;best=e;}}return best;}
+function tutBerry(){const u=(sel.length&&get(sel[0]))||tutVill()||get(TUT.cave);if(!u)return null;let best=null,bd=1e18;for(const e of G.ents)if(e.k==='r'&&e.sub==='berry'&&(e.amt||0)>0){const d=(e.x-u.x)**2+(e.y-u.y)**2;if(d<bd){bd=d;best=e;}}
+  if(!best)for(const e of G.ents)if(e.k==='r'&&(e.sub==='tree'||e.sub==='berry')&&(e.amt||0)>0){const d=(e.x-u.x)**2+(e.y-u.y)**2;if(d<bd){bd=d;best=e;}}return best;}
+function selRec(){return sel.map(id=>get(id)).filter(u=>u&&u.type==='rec');}
+/* cada paso: texto, a qué apuntar y cuándo está cumplido */
+const TUT_STEPS=[
+  {t:'👆 Toca a uno de tus aldeanos',s:'Son tu gente: recolectan, construyen y pelean.',aim:()=>tutVill(),ok:()=>selRec().length>0,cam:1},
+  {t:'🫐 Ahora toca el arbusto de bayas',s:'Tu aldeano irá a recoger comida solo.',aim:()=>selRec().length?tutBerry():tutVill(),hint:()=>selRec().length?'':'Primero toca un aldeano',ok:()=>TUT.gathered,cam:1},
+  {t:'🏛️ Toca tu centro',s:'Es la cueva: ahí nace tu gente y avanzas de época.',aim:()=>get(TUT.cave),ok:()=>selB===TUT.cave,cam:1,enter:()=>{if(sel.length)setSel([]);}},
+  {t:'👶 Entrena un aldeano',s:'Toca «Aldeano». Más gente = más recursos.',aim:()=>selB===TUT.cave?'[data-act="train:rec"]':get(TUT.cave),hint:()=>selB===TUT.cave?'':'Toca tu centro (la cueva)',
+    ok:()=>{const c=get(TUT.cave);if(c&&c.q&&c.q.some(q=>q.type==='rec'))return true;if(popUsed(0)>=popCap(0)){TUT.full=true;return true;}return false;}},
+  {t:'🏠 Construye una casa',s:'Cada casa da espacio a 5 personas más.',aim:()=>selRec().length?'[data-act="build:choza"]':tutVill(),hint:()=>selRec().length?'Toca «Casa» abajo':(TUT.full?'Tu aldea está llena. Toca un aldeano para construir una casa':'Toca un aldeano'),ok:()=>!!(placing&&placing.type==='choza')||tutHouses()>TUT.base,cam:1},
+  {t:'📍 Toca un lugar libre cerca',s:'Cuando se vea verde, toca «Construir».',aim:()=>placing&&placing.ok?'[data-act="confirm"]':null,ok:()=>tutHouses()>TUT.base,back:()=>!placing&&tutHouses()<=TUT.base?4:-1},
+];
+function tutGo(i){TUT.i=i;TUT.t=0;const S=TUT_STEPS[i];if(!S)return tutFinish();
+  if(S.enter)try{S.enter();}catch(_){}
+  if(S.cam){const a=S.aim();if(a&&a.x!=null)tutCenter(a.x,a.y);}
+  coachText();}
+/* centra la cámara en algo, un poco arriba del centro para que no lo tape la barra de abajo (sirve con la cámara 3D inclinada) */
+function tutCenter(x,y){try{centerOn(x,y);for(let k=0;k<4;k++){const c=screenToWorld(VW/2,VH*.42);if(!c||!isFinite(c.x))break;cam.x+=x-c.x;cam.y+=y-c.y;if(typeof clampCam==='function')clampCam();}}catch(_){}}
+function coachMount(){if($('coach'))return;const d=document.createElement('div');d.id='coach';d.innerHTML='<div class="cbar"><i></i></div><div class="ctxt"><b id="cT"></b><span id="cS"></span></div><button id="cSkip" type="button">Saltar</button>';
+  ($('app')||document.body).appendChild(d);const r=document.createElement('div');r.id='coachRing';($('app')||document.body).appendChild(r);
+  $('cSkip').addEventListener('click',()=>{tutEnd('skip');});}
+function coachText(){const S=TUT_STEPS[TUT.i];if(!S||!$('cT'))return;$('cT').textContent=S.t;const h=S.hint&&S.hint();$('cS').textContent=h||S.s;
+  const bar=$('coach').querySelector('.cbar i');if(bar)bar.style.width=Math.round(TUT.i/TUT_STEPS.length*100)+'%';}
+function ringAt(x,y,r){const R=$('coachRing');if(!R)return;if(x==null){R.style.display='none';return;}R.style.display='block';R.style.left=(x-r)+'px';R.style.top=(y-r)+'px';R.style.width=R.style.height=(2*r)+'px';}
+function tutTick(){if(!TUT.on)return;const C=$('coach');if(!G||G.over||!running||($('title')&&!$('title').hidden)){if(C)C.hidden=true;ringAt(null);return;}if(C)C.hidden=false;
+  const S=TUT_STEPS[TUT.i];if(!S)return;
+  if(S.back){const b=S.back();if(b>=0){tutGo(b);return;}}
+  if(S.ok()){if(typeof sfx==='function')sfx('ok');tutGo(TUT.i+1);return;}
+  coachText();
+  const a=S.aim();
+  if(typeof a==='string'){const el=document.querySelector(a);if(el&&el.getBoundingClientRect){const acts=$('acts');if(acts&&el.scrollIntoView&&!tutTick.sc){try{el.scrollIntoView({block:'nearest',inline:'center'});}catch(_){}tutTick.sc=1;setTimeout(()=>{tutTick.sc=0;},900);}
+      const r=el.getBoundingClientRect();ringAt(r.left+r.width/2,r.top+r.height/2,Math.max(r.width,r.height)/2+10);}else ringAt(null);}
+  else if(a&&a.x!=null){const p=tutScreen(a.x,a.y);if(p){const rr=Math.max(26,(a.r||12)*(cam.z||1)*1.6);ringAt(p.x,p.y,rr);}else ringAt(null);}
+  else ringAt(null);}
+function tutScreen(x,y){try{const cr=cv.getBoundingClientRect();let p;if(typeof proj3==='function'&&typeof R3!=='undefined'&&R3&&R3.camera&&USE3D){p=proj3(x,y,6);if(!p.ok)return null;}else p={x:(x-cam.x)*cam.z,y:(y-cam.y)*cam.z};
+  if(p.x<-20||p.y<-20||p.x>cr.width+20||p.y>cr.height+20)return null;return {x:cr.left+p.x,y:cr.top+p.y};}catch(_){return null;}}
+setInterval(tutTick,250);
+/* el paso 2 se cumple cuando el jugador manda a un aldeano a recolectar */
+{const _oa2=orderAt;orderAt=function(wx,wy,e){const r=_oa2.apply(this,arguments);try{if(TUT.on&&TUT.i===1&&e&&(e.k==='r'||isFarm(e))&&selRec().length)TUT.gathered=true;}catch(_){}return r;};}
+function tutFinish(){ringAt(null);TUT.done=true;const C=$('coach');if(!C)return;
+  C.classList.add('fin');C.innerHTML='<div class="ctxt"><b>🎉 ¡Ya sabes lo básico!</b><span>Más aldeanos traen más recursos · las casas suben la población · en tu centro avanzas de época · para ganar destruye el centro rival. Tienes 15 minutos de paz.</span></div><button id="cGo" class="big" type="button">¡A jugar!</button>';
+  $('cGo').addEventListener('click',()=>tutEnd('done'));}
+function tutEnd(how){TUT.on=false;lsSet(TUT_KEY,how||'done');ringAt(null);const C=$('coach');if(C)C.remove();const R=$('coachRing');if(R)R.remove();
+  toast(how==='skip'?'Tutorial saltado. Puedes verlo otra vez en «Cómo se juega».':'¡A conquistar! El chamán te seguirá dando consejos.',false,'gold');setTimeout(afterTut,600);}
+/* mientras guío, el chamán no habla encima */
+{const _gs=guideSay;guideSay=function(){if(TUT.on)return;return _gs.apply(this,arguments);};}
+/* al terminar una partida guiada, lo damos por visto */
+{const _sht=showTitle;showTitle=function(){if(TUT.on){TUT.on=false;lsSet(TUT_KEY,'done');const C=$('coach');if(C)C.remove();const R=$('coachRing');if(R)R.remove();setTimeout(afterTut,600);}return _sht.apply(this,arguments);};}
+
+/* el regalo de probador llega después de la bienvenida */
+{const _tg=testerGift;testerGift=function(){if(!lsGet(TUT_KEY))return;return _tg.apply(this,arguments);};}
+
+setTimeout(()=>{try{v60Menu();}catch(err){if(typeof console!=='undefined')console.error(err);}try{if(tutNeeded())tutOffer(false);}catch(_){}},400);
+
 {const bf=document.getElementById('bFleet');if(bf&&bf.querySelector){const s=bf.querySelector('[data-icon]');if(s)s.innerHTML=ICON.galera||ICON.trans||'';}}
-window.__HI={get QUAL(){return QUAL;},OWN,isOwner,ownCheck,ownOpen,ownAct,giftsClaim,testerGift,webNoPay,ownInfTick,get ON(){return ON;},sepPass,get landOk(){return landOk;},resCap,resAdd,funds,hacFund,stoTotal,gdMaxAfford,get canAffordC(){return canAffordC;},get payC(){return payC;},get ceCap(){return ceCap;},SV,svLoad,get ON(){return ON;},get onAct(){return onAct;},get renderOnlineHTML(){return renderOnlineHTML;},gdProv,gdRest,invChance,get popC(){return popC;},get cePow(){return cePow;},get ceTgtDef(){return ceTgtDef;},get popCap(){return popCap;},shOn,shLeft,shGive,shBuy,shCan,shDealToday,shDealOff,shW,get hit(){return hit;},openShopTab,popC,popWorld,popEmpire,popHurt,puOf,puAvg,puTarget,popTurn,popBomb,bombNow,repCost,popE,gwTick,gwWave,gwStrike,gwPlayerBomb,get imTrib(){return imTrib;},imOpen,imClose,imRender,imE,imMine,imProd,imTrib,imSto,imAsg,imStr,imTurn,cwEval,cwTargets,cwLaunch,cwDeclare,imCouncilOk,imCanRecruit,imRecruitDefend,ceSt,ceDefend,ceConquer,ceAskDefense,ceAskConquer,ceRecruit,ceOpen,ceTurn,get CAMP(){return CAMP;},worldTurn:()=>worldTurn(),campaignEnd:(w,h)=>campaignEnd(w,h),startBattle:(a,b)=>startBattle(a,b),renderCampBar:()=>renderCampBar(),cnTick,cnRecruit,openCouncil,closeCouncil,cnCfg,cnSt,cnHired,dipAnswer,announce,declareWar,setSt:(a,b,v)=>setSt(a,b,v),autoDefend,garChance,garDef,garReinforce,templeLv,templeEraMul,blessNow,blessOn,gardenGather,leaderLabel,leaderTick,lTitle,rushVid,rushLeft,rushMul,musicTick,AUD,faunaEra,STORY,storyTick,atk,buildPort,canExpedite,sendExpedition,expLeft,expLand,expBuy,expDraw,worldPulse,chapters,storyStart,goalProg,stGet,renderStoryCard,setMode:m=>setMode(m),get MODE(){return MODE;},contOf,hasPort,DEV_TIER,setLevel,setQuality,wallet,amber,addAmber,grant,accel,accCost,canAccel,claimDaily,dailyState,freeVideo,buyRes,vidRes,buyEraPack,shopEra,pickBanner,openShop,closeShop,adClose,mon,eraPack,resAmt,BANNERS,get TEAM(){return TEAM;},shopEnd,retryBonus,CBY,COUNTRIES,newGame,endGame,selectCountry,doTrade,proposePact,breakPact,answerOffer,resistOf,incomeOf,tradeQuote,campaignEnd,doAct,get selR(){return selR;},UTT:UT,BTT:BT,get AUD(){return typeof AUD!=="undefined"?AUD:null;},step,get G(){return G;},trainAt,startPlacing,confirmPlace,tap,setSel,orderAt,render,renderMini,refreshTray,drawPortrait,cam,setRunning(v){running=v;},setDiff(k){DK=k;},setNP(n){NP=n;},FAUNA,addB,addU,addAnimal,centerOn,updFog,eraCheck,get PROF(){return PROF;},get USE3D(){return USE3D;},pickScreen,screenToWorld,proj3,get R3(){return R3;},get POST(){return POST;},get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},zoomAt,clampCam,get terrain(){return terrain;},get BASES(){return BASES;},get FORDS(){return FORDS;},get RIVERS(){return RIVERS;},findPath,seaD,setBridge,waterNear:(x,y,r)=>waterNear(x,y,r),riverAt:(x,y)=>riverAt(x,y),guideSay,guideFor,kill,newCampaign,startBattle,reachable,worldTurn,get CAMP(){return CAMP;},countOf,saveGame,loadGame,savedInfo,continueGame,selectBuilding,teamBlock:t=>teamBlock(t),get BLOCKERS(){return BLOCKERS;},get BLOCKV(){return BLOCKV;},lineClear,get PBUDGET(){return PBUDGET;},render3D:dt=>render3D(dt),renderOverlay:dt=>renderOverlay(dt),resize,freeze(v){frozen=v;},get acc(){return acc;},mountainAt:(x,y)=>mountainAt(x,y),heightAt:(x,y)=>heightAt(x,y),reveal(){explored.fill(1);visible.fill(1);G.revealAll=true;updFog();}};
+window.__HI={get QUAL(){return QUAL;},TUT,tutStart,tutOffer,tutNeeded,tutTick,v60Sync,dockTarget,orderAt,setSel,selectBuilding,startPlacing,confirmPlace,doAct,get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},get cam(){return cam;},OWN,isOwner,ownCheck,ownOpen,ownAct,giftsClaim,testerGift,webNoPay,ownInfTick,get ON(){return ON;},sepPass,get landOk(){return landOk;},resCap,resAdd,funds,hacFund,stoTotal,gdMaxAfford,get canAffordC(){return canAffordC;},get payC(){return payC;},get ceCap(){return ceCap;},SV,svLoad,get ON(){return ON;},get onAct(){return onAct;},get renderOnlineHTML(){return renderOnlineHTML;},gdProv,gdRest,invChance,get popC(){return popC;},get cePow(){return cePow;},get ceTgtDef(){return ceTgtDef;},get popCap(){return popCap;},shOn,shLeft,shGive,shBuy,shCan,shDealToday,shDealOff,shW,get hit(){return hit;},openShopTab,popC,popWorld,popEmpire,popHurt,puOf,puAvg,puTarget,popTurn,popBomb,bombNow,repCost,popE,gwTick,gwWave,gwStrike,gwPlayerBomb,get imTrib(){return imTrib;},imOpen,imClose,imRender,imE,imMine,imProd,imTrib,imSto,imAsg,imStr,imTurn,cwEval,cwTargets,cwLaunch,cwDeclare,imCouncilOk,imCanRecruit,imRecruitDefend,ceSt,ceDefend,ceConquer,ceAskDefense,ceAskConquer,ceRecruit,ceOpen,ceTurn,get CAMP(){return CAMP;},worldTurn:()=>worldTurn(),campaignEnd:(w,h)=>campaignEnd(w,h),startBattle:(a,b)=>startBattle(a,b),renderCampBar:()=>renderCampBar(),cnTick,cnRecruit,openCouncil,closeCouncil,cnCfg,cnSt,cnHired,dipAnswer,announce,declareWar,setSt:(a,b,v)=>setSt(a,b,v),autoDefend,garChance,garDef,garReinforce,templeLv,templeEraMul,blessNow,blessOn,gardenGather,leaderLabel,leaderTick,lTitle,rushVid,rushLeft,rushMul,musicTick,AUD,faunaEra,STORY,storyTick,atk,buildPort,canExpedite,sendExpedition,expLeft,expLand,expBuy,expDraw,worldPulse,chapters,storyStart,goalProg,stGet,renderStoryCard,setMode:m=>setMode(m),get MODE(){return MODE;},contOf,hasPort,DEV_TIER,setLevel,setQuality,wallet,amber,addAmber,grant,accel,accCost,canAccel,claimDaily,dailyState,freeVideo,buyRes,vidRes,buyEraPack,shopEra,pickBanner,openShop,closeShop,adClose,mon,eraPack,resAmt,BANNERS,get TEAM(){return TEAM;},shopEnd,retryBonus,CBY,COUNTRIES,newGame,endGame,selectCountry,doTrade,proposePact,breakPact,answerOffer,resistOf,incomeOf,tradeQuote,campaignEnd,doAct,get selR(){return selR;},UTT:UT,BTT:BT,get AUD(){return typeof AUD!=="undefined"?AUD:null;},step,get G(){return G;},trainAt,startPlacing,confirmPlace,tap,setSel,orderAt,render,renderMini,refreshTray,drawPortrait,cam,setRunning(v){running=v;},setDiff(k){DK=k;},setNP(n){NP=n;},FAUNA,addB,addU,addAnimal,centerOn,updFog,eraCheck,get PROF(){return PROF;},get USE3D(){return USE3D;},pickScreen,screenToWorld,proj3,get R3(){return R3;},get POST(){return POST;},get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},zoomAt,clampCam,get terrain(){return terrain;},get BASES(){return BASES;},get FORDS(){return FORDS;},get RIVERS(){return RIVERS;},findPath,seaD,setBridge,waterNear:(x,y,r)=>waterNear(x,y,r),riverAt:(x,y)=>riverAt(x,y),guideSay,guideFor,kill,newCampaign,startBattle,reachable,worldTurn,get CAMP(){return CAMP;},countOf,saveGame,loadGame,savedInfo,continueGame,selectBuilding,teamBlock:t=>teamBlock(t),get BLOCKERS(){return BLOCKERS;},get BLOCKV(){return BLOCKV;},lineClear,get PBUDGET(){return PBUDGET;},render3D:dt=>render3D(dt),renderOverlay:dt=>renderOverlay(dt),resize,freeze(v){frozen=v;},get acc(){return acc;},mountainAt:(x,y)=>mountainAt(x,y),heightAt:(x,y)=>heightAt(x,y),reveal(){explored.fill(1);visible.fill(1);G.revealAll=true;updFog();}};
 })();
 
 </script>
