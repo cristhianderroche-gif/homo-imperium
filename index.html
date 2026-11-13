@@ -1,4 +1,6 @@
 <!doctype html><html lang="es"><head><meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' data: blob: https://lqvdquhvppzrouyfzqhz.supabase.co wss://lqvdquhvppzrouyfzqhz.supabase.co; media-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#16120e">
 <meta name="mobile-web-app-capable" content="yes">
@@ -1097,6 +1099,95 @@ button,a,[data-act],[data-sh],[data-on],[data-cn],[data-ce],[data-ow],[data-im]{
 #onBody .svOpen{width:100%;margin:4px 0 10px}
 #onBody .svPick .big{width:100%;margin-top:8px}#onBody .svPick .ghostbtn{width:100%;margin-top:6px}
 #onBody .svPick .linkbtn,#onBody .svBrowse .linkbtn{margin-bottom:8px}
+
+/* ================= v67 · ÉPICO ================= */
+#hiRank{display:flex;align-items:center;gap:10px;margin:2px auto 10px;padding:7px 10px 7px 7px;border-radius:999px;border:1px solid rgba(255,200,90,.35);
+  background:linear-gradient(135deg,rgba(40,22,60,.85),rgba(20,14,34,.85));color:#fff;font:inherit;cursor:pointer;max-width:min(420px,100%);width:100%;
+  box-shadow:0 6px 24px rgba(255,90,140,.18),inset 0 0 0 1px rgba(255,255,255,.04);-webkit-tap-highlight-color:transparent}
+#hiRank:active{transform:scale(.98)}
+#hiRank .rkB,.rkBadge{flex:none;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;font:900 17px/1 'Bowlby One SC',system-ui,sans-serif;color:#1b0f05;
+  background:conic-gradient(from 210deg,#ffe07a,#ff8a3d,#ff3d7f,#ffe07a);box-shadow:0 0 0 2px rgba(255,255,255,.5),0 0 18px rgba(255,140,60,.55)}
+#hiRank .rkT{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;text-align:left}
+#hiRank .rkT b{font-size:14px;letter-spacing:.04em;text-transform:uppercase}
+.rkBar{display:block;height:7px;border-radius:9px;background:rgba(255,255,255,.12);overflow:hidden}
+.rkBar i{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#ffd34d,#ff7a3d,#ff3d7f);box-shadow:0 0 10px rgba(255,120,80,.7);transition:width .5s}
+.rkBar.sm{height:6px;margin:5px 0 3px}
+#hiRank .rkM{flex:none;position:relative;padding:8px 11px;border-radius:999px;background:rgba(255,255,255,.08);font-weight:700;font-size:13px;white-space:nowrap}
+#hiRank .rkM em{position:absolute;top:-6px;right:-6px;min-width:20px;height:20px;padding:0 5px;border-radius:10px;background:#ff3d5a;color:#fff;font:800 12px/20px system-ui,sans-serif;font-style:normal;text-align:center;box-shadow:0 0 0 2px #1a0f22;animation:hiPulse 1.4s infinite}
+@keyframes hiPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+
+#playDock{gap:10px}
+#playDock #dockQuick.big{pointer-events:auto;flex:none;width:76px;min-height:62px;border-radius:20px!important;display:flex!important;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:6px!important;
+  background:linear-gradient(160deg,#ff4d6d,#c21d5a)!important;color:#fff!important;box-shadow:0 10px 28px rgba(255,60,110,.45)!important;border:0!important}
+#playDock #dockQuick b{font-size:24px;line-height:1}
+#playDock #dockQuick small{font-size:11.5px;font-weight:800;letter-spacing:.02em;white-space:nowrap}
+#playDock #dockPlay{width:min(440px,100%)}
+
+#hiMis{position:fixed;inset:0;z-index:60;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(5,4,12,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+#hiMis[hidden]{display:none}
+#hiMis .msCard{position:relative;width:min(460px,100%);max-height:calc(100vh - 32px);overflow:auto;padding:18px 16px 16px;border-radius:24px;color:#fff;
+  background:linear-gradient(170deg,#2a1640,#150e24 60%);border:1px solid rgba(255,190,90,.3);box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 40px rgba(255,80,140,.15)}
+.msX{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;border:0;background:rgba(255,255,255,.1);color:#fff;font-size:22px;cursor:pointer}
+.rkBig{display:flex;align-items:center;gap:12px;margin:0 36px 12px 0}
+.rkBig .rkBadge{width:56px;height:56px;font-size:24px}
+.rkBig .rkInfo{flex:1;display:flex;flex-direction:column;gap:5px;text-align:left}
+.rkBig .rkInfo b{font-size:18px;text-transform:uppercase;letter-spacing:.05em}
+.rkBig .rkInfo small{opacity:.75;font-size:12.5px}
+.rkBig.end{margin:14px auto 6px;max-width:360px}
+#hiMis h3{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin:6px 0 10px;font-size:17px}
+#hiMis h3 span{font-size:12px;font-weight:600;opacity:.65}
+.msItem{display:flex;align-items:center;gap:11px;padding:11px;margin-bottom:9px;border-radius:16px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.07)}
+.msItem.ready{border-color:rgba(255,200,80,.7);box-shadow:0 0 18px rgba(255,170,60,.25);background:rgba(255,190,80,.1)}
+.msItem.got{opacity:.55}
+.msIc{flex:none;width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:rgba(255,255,255,.08);font-size:22px}
+.msTx{flex:1;min-width:0;text-align:left}
+.msTx b{font-size:14.5px}
+.msTx small{font-size:12px;opacity:.7}
+.msGet{flex:none;padding:9px 12px!important;min-height:0!important;font-size:14px!important;border-radius:12px!important}
+.msOk{flex:none;width:32px;height:32px;display:grid;place-items:center;border-radius:50%;background:#2fbf71;color:#fff;font-weight:900}
+.msChest{width:100%;margin-top:4px;animation:hiPulse 1.6s infinite}
+.msHint,.msDone{margin:6px 0 10px;text-align:center;font-size:13.5px;opacity:.8}
+.msQuick{width:100%;margin-top:6px}
+
+#hiTrack{position:fixed;top:calc(136px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:9;display:flex;align-items:center;gap:8px;max-width:min(300px,calc(100vw - 100px));
+  padding:6px 6px 6px 12px;border-radius:999px;background:rgba(14,10,24,.82);border:1px solid rgba(255,190,90,.35);color:#fff;font-size:12.5px;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.35);pointer-events:auto}
+#hiTrack[hidden]{display:none}
+#hiTrack #htTx{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#htGo{flex:none;padding:7px 11px;border:0;border-radius:999px;background:linear-gradient(160deg,#ff4d6d,#c21d5a);color:#fff;font:800 12.5px/1 inherit;cursor:pointer;box-shadow:0 0 14px rgba(255,60,110,.55);animation:hiPulse 1.6s infinite}
+#htGo[hidden]{display:none}
+@media (min-width:900px){#hiTrack{top:calc(76px + env(safe-area-inset-top,0px));max-width:360px;font-size:14px}}
+
+.hiFloat{position:fixed;left:50%;top:38%;z-index:70;transform:translate(-50%,0);padding:8px 14px;border-radius:999px;background:rgba(20,12,30,.9);border:1px solid rgba(255,200,90,.5);
+  color:#ffe08a;font:800 14px/1.2 system-ui,sans-serif;white-space:nowrap;pointer-events:none;animation:hiUp 2.6s ease-out forwards;max-width:calc(100vw - 32px);overflow:hidden;text-overflow:ellipsis}
+@keyframes hiUp{0%{opacity:0;transform:translate(-50%,10px) scale(.9)}12%{opacity:1;transform:translate(-50%,0) scale(1.05)}20%{transform:translate(-50%,0) scale(1)}80%{opacity:1}100%{opacity:0;transform:translate(-50%,-40px)}}
+.hiConf{position:fixed;inset:0;z-index:80;pointer-events:none}
+.hiCele{position:fixed;left:50%;top:30%;z-index:81;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:6px;padding:18px 26px;border-radius:24px;pointer-events:none;
+  background:radial-gradient(circle at 50% 0%,rgba(255,180,60,.35),rgba(30,14,44,.95) 70%);border:1px solid rgba(255,210,110,.6);box-shadow:0 0 60px rgba(255,120,60,.45);animation:hiPop 2.9s ease-out forwards;text-align:center;max-width:calc(100vw - 32px)}
+.hiCele b{font:900 30px/1.05 'Bowlby One SC',system-ui,sans-serif;color:#ffe07a;text-shadow:0 2px 0 #7a2b00,0 0 22px rgba(255,140,40,.8)}
+.hiCele span{color:#fff;font-weight:700;font-size:14px}
+@keyframes hiPop{0%{opacity:0;transform:translate(-50%,-50%) scale(.6)}10%{opacity:1;transform:translate(-50%,-50%) scale(1.08)}18%{transform:translate(-50%,-50%) scale(1)}82%{opacity:1}100%{opacity:0;transform:translate(-50%,-60%) scale(.96)}}
+#hiEndXp{margin:4px auto 0;max-width:420px;display:flex;flex-direction:column;align-items:stretch;gap:8px}
+#hiEndXp .endGain{margin:0;text-align:center;font:900 22px/1 'Bowlby One SC',system-ui,sans-serif;color:#ffd34d;text-shadow:0 0 16px rgba(255,160,50,.6)}
+@media (prefers-reduced-motion:reduce){.hiFloat,.hiCele,#hiRank .rkM em,#htGo,.msChest{animation:none}}
+
+#hiLock{position:fixed;inset:0;z-index:2147483647;display:flex;align-items:center;justify-content:center;padding:16px;background:#0b0814}
+#hiLock .lkCard{max-width:420px;text-align:center;color:#f3e9d8;display:flex;flex-direction:column;gap:14px;align-items:center}
+#hiLock .lkLogo{font:900 34px/1 'Bowlby One SC',system-ui,sans-serif;color:#ffcf6a}
+#hiLock .lkGo{display:inline-block;padding:14px 20px;border-radius:16px;text-decoration:none}
+#hiLock small{opacity:.6}
+#hiPeek{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:14;width:min(460px,calc(100vw - 20px));padding:12px 12px 10px;border-radius:22px;color:#fff;
+  background:linear-gradient(170deg,rgba(42,22,64,.96),rgba(16,11,28,.96));border:1px solid rgba(255,190,90,.4);box-shadow:0 -6px 30px rgba(0,0,0,.5),0 0 30px rgba(255,90,140,.15);animation:pkIn .22s ease-out;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+#hiPeek[hidden]{display:none}
+#hiPeek.overDock{bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+@keyframes pkIn{from{opacity:0;transform:translate(-50%,24px)}to{opacity:1;transform:translate(-50%,0)}}
+#hiPeek .pkHead{display:flex;align-items:center;justify-content:space-between;gap:8px}
+#hiPeek .pkName{font:900 22px/1.1 'Bowlby One SC',system-ui,sans-serif;letter-spacing:.02em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#hiPeek .pkX{flex:none;width:34px;height:34px;border-radius:50%;border:0;background:rgba(255,255,255,.1);color:#fff;font-size:20px;cursor:pointer}
+#hiPeek .pkSub{margin:4px 0 9px;font-size:12.5px;opacity:.78;line-height:1.35;max-height:3.6em;overflow:hidden}
+#hiPeek .pkBtns{display:flex;flex-wrap:wrap;gap:7px}
+#hiPeek .pkBtns button{flex:1 1 40%;min-height:42px;padding:8px 10px!important;font-size:14px!important;border-radius:13px!important}
+#hiPeek .pkBtns .pkMain{flex-basis:100%;min-height:48px;font-size:16px!important}
+#hiPeek .pkMore{display:block;width:100%;margin-top:7px;padding:6px;border:0;background:none;color:#ffcf7a;font:700 12.5px/1 inherit;cursor:pointer}
 
 </style>
 
@@ -7941,7 +8032,7 @@ function frameBody(now){
 function boot(){init3D();resize();applyQuality();showTitle();requestAnimationFrame(frame);}
 boot();
 /* ---------- opiniones de quienes prueban el juego: llegan por WhatsApp al creador ---------- */
-const FB_TO='573044272520',FB_VER='v66';let fbCat='Error',fbFrom=null;
+const FB_TO='573044272520',FB_VER='v67';let fbCat='Error',fbFrom=null;
 function fbContext(){const d=(()=>{const u=navigator.userAgent||'';return /iPhone|iPad/.test(u)?'iPhone/iPad':/Android/.test(u)?'Android':/Mac/.test(u)?'Mac':/Windows/.test(u)?'Windows':'otro';})();
   const g=G&&!$('title').hidden?null:G;const where=g&&PROF?PROF.c.n+' · era '+ROMAN[g.era[0]]+' · '+fmtT(g.t)+(g.camp?' · conquista':''):'menú de inicio';
   return 'Versión '+FB_VER+' · '+d+' '+innerWidth+'×'+innerHeight+' · '+where+(typeof QSET!=='undefined'?' · calidad '+QSET+' nivel '+QUAL.lvl+(QUAL.fps?' · '+QUAL.fps+' fps':'')+(GPU_NAME?' · '+GPU_NAME:''):'');}
@@ -8870,7 +8961,7 @@ const SV_SORT=[['rec','⭐ Recomendados'],['new','🆕 Nuevos'],['full','🔥 M�
 const SV_LANG=[['','🌍 Todos'],['es','Español'],['en','English'],['pt','Português']];
 async function svLoad(){if(SV.loading)return;SV.loading=true;try{SV.list=await rpc('list_worlds2',{p_sort:SV.sort,p_q:SV.q,p_lang:SV.lang,p_offset:0});SV.err=false;}
   catch(e){SV.err=true;try{const r=await rpc('list_worlds');SV.list=(r||[]).map(w=>Object.assign({lang:'es',official:false,joined:false},w));}catch(_){SV.list=[];}}
-  SV.loading=false;renderOnline();}
+  if(!Array.isArray(SV.list))SV.list=[];SV.loading=false;renderOnline();}
 function svDays(iso){if(!iso)return null;return Math.max(0,Math.ceil((Date.parse(iso)-Date.now())/864e5));}
 function svCard(w){const full=w.players>=w.capacity,ended=!!w.ended,pct=Math.min(100,Math.round(w.players/Math.max(1,w.capacity)*100)),d=svDays(w.ends_at),isNew=w.created&&Date.now()-Date.parse(w.created)<3*864e5;
   const tags=[w.official?'<i class="svT of">OFICIAL</i>':'',w.mine?'<i class="svT me">TU MUNDO</i>':'',w.joined?'<i class="svT in">YA ESTÁS</i>':'',ended?'<i class="svT end">TERMINADO</i>':full?'<i class="svT full">LLENO</i>':'',isNew&&!ended?'<i class="svT new">NUEVO</i>':'',w.lang&&w.lang!=='es'?'<i class="svT">'+w.lang.toUpperCase()+'</i>':''].join('');
@@ -9667,7 +9758,7 @@ function advHTML(){const A=advE(),c=feastCost(),tips=advTips();
   }catch(err){if(typeof console!=='undefined')console.error(err);}return r;};}
 
 /* ===================== 🌍 la información del país sube a la vista ===================== */
-{const _sc=selectCountry;selectCountry=function(id){const r=_sc.apply(this,arguments);try{if(MODE==='mundo'&&CAMP&&$('title')&&!$('title').hidden&&selectCountry.ready){const c=$('regionCard');if(c&&c.scrollIntoView)setTimeout(()=>{try{c.scrollIntoView({block:'start',behavior:'smooth'});}catch(_){c.scrollIntoView(true);}},60);}}catch(_){}return r;};}
+{const _sc=selectCountry;selectCountry=function(id){const r=_sc.apply(this,arguments);try{if(MODE==='mundo'&&CAMP&&$('title')&&!$('title').hidden&&selectCountry.ready){const c=$('regionCard');setTimeout(()=>{try{hiPeek();}catch(_){}},60);}}catch(_){}return r;};}
 setTimeout(()=>{selectCountry.ready=true;},2500);
 
 /* ===================== 🌐 EN LÍNEA: ver servidores y decidir ===================== */
@@ -9715,8 +9806,260 @@ setTimeout(()=>{selectCountry.ready=true;},2500);
   try{if(sessionStorage.getItem('hi_updmsg')){sessionStorage.removeItem('hi_updmsg');setTimeout(()=>{try{toast('✨ Juego actualizado a la versión más nueva',false,'gold');}catch(_){}},1800);}}catch(_){}
 })();
 
+/* ================= v67 · ÉPICO: rango, misiones del día, Batalla ya, director de dificultad, celebración y blindaje =================
+   - Rango del jugador (XP de todas las partidas) con títulos y premio de Ámbar al subir.
+   - 3 misiones nuevas cada día (siempre una de pelear) + cofre si haces las 3.
+   - ⚔️ Batalla ya: entras con un ejército listo y el rival llega en 2 minutos. Botón «¡Al ataque!» manda a todo tu ejército.
+   - Seguimiento en la partida: qué hacer ahora y cuánto te falta.
+   - Director de dificultad: si pierdes seguido, los rivales llegan más calmados; si ganas fácil, te propone subir.
+   - Paz más corta al inicio (Fácil 9 min, Normal 7 min) para llegar antes a la acción.
+   - Celebración con confeti al ganar y al subir de rango. Aviso de descanso tras jugar mucho rato.
+   - Blindaje: solo corre en su página oficial, no se deja meter en marcos de otras páginas, el Ámbar lleva firma
+     (si alguien lo edita a mano, se anula) y la consola avisa que nadie te pida pegar código ahí.
+   - Anuncios: listos para Google (videos con premio, siempre opcionales). Se encienden poniendo HI_ADS_CLIENT. */
+
+/* ---------- blindaje del cliente ---------- */
+const HI_HOSTS=[2484641008,906931598,1532542490]; // página oficial, localhost, 127.0.0.1 (huellas)
+function hiH(s){let h=5381;s=String(s);for(let i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))>>>0;return h;}
+const HI_OFFICIAL='https://cristhianderroche-gif.github.io/homo-imperium/';
+function hiHostOk(){try{const p=location.protocol;if(p==='file:'||p==='capacitor:'||p==='ionic:')return true;return HI_HOSTS.includes(hiH(location.hostname));}catch(_){return true;}}
+let HI_LOCKED=false;
+function hiLock(why){if(HI_LOCKED)return;HI_LOCKED=true;try{const d=document.createElement('div');d.id='hiLock';
+  d.innerHTML='<div class="lkCard"><div class="lkLogo">Homo Imperium</div><p>'+why+'</p><a class="big lkGo" href="'+HI_OFFICIAL+'" target="_top" rel="noopener">▶ Jugar en la página oficial</a><small>© 2026 Camilo Cardona Londoño · Todos los derechos reservados</small></div>';
+  document.body.appendChild(d);try{running=false;}catch(_){}}catch(_){}}
+(function hiGuard(){if(typeof document==='undefined'||!document.body)return;
+  try{if(!hiHostOk())hiLock('Esta es una copia no autorizada del juego. La versión oficial es gratis y siempre está al día.');}catch(_){}
+  try{if(window.top!==window.self)hiLock('Por tu seguridad, el juego solo se abre en su propia página.');}catch(_){hiLock('Por tu seguridad, el juego solo se abre en su propia página.');}
+  try{if(typeof console!=='undefined'&&console.log){console.log('%c¡Alto!','color:#ff4d4d;font:900 40px sans-serif;-webkit-text-stroke:1px #000');
+    console.log('%cSi alguien te pidió copiar o pegar algo aquí para darte Ámbar o recursos gratis, es una trampa para robar tu cuenta. Cierra esta ventana.','font:600 15px sans-serif');}}catch(_){}})();
+/* las llamadas al servidor se cortan en una copia no oficial */
+if(typeof window!=='undefined'&&window.fetch){const _f=window.fetch.bind(window);window.fetch=function(u){try{if(HI_LOCKED&&String(u&&u.url||u).indexOf('supabase.co')>=0)return Promise.reject(new Error('copia no oficial'));}catch(_){}return _f.apply(null,arguments);};}
+
+/* firma del Ámbar: si alguien edita el guardado a mano, la firma no cuadra y se anula */
+const HI_SIGK='hi_amber_s';
+function hiSig(t){t=String(t||'');let a=0x811c9dc5,b=0x9e3779b1;const k='ΗΙ·'+t.length+'·imperium';const s=k+t+k;
+  for(let i=0;i<s.length;i++){const c=s.charCodeAt(i);a=Math.imul(a^c,16777619)>>>0;b=Math.imul(b^(c+i),2246822519)>>>0;b=(b<<13|b>>>19)>>>0;}
+  return a.toString(36)+'.'+b.toString(36);}
+(function hiSigCheck(){try{const raw=lsGet(AMB_KEY),sg=lsGet(HI_SIGK);if(raw==null)return;
+  if(sg==null){lsSet(HI_SIGK,hiSig(raw));return;}           // guardado de antes de la v67: se firma una vez
+  if(sg!==hiSig(raw)){let w=null;try{w=JSON.parse(raw);}catch(_){}
+    if(w&&typeof w==='object'){w.a=Math.min(typeof w.a==='number'?w.a:50,50);w.log=(w.log||[]).slice(-20);w.log.push({t:Date.now(),n:'Ámbar editado a mano: se anuló'});}
+    else w=null;
+    if(w)lsSet(AMB_KEY,JSON.stringify(w));else{try{localStorage.removeItem(AMB_KEY);}catch(_){}}
+    W=null;lsSet(HI_SIGK,hiSig(lsGet(AMB_KEY)));}}catch(_){}})();
+/* cualquier escritura legítima del juego (incluida la copia de la nube) lleva su firma */
+{const _ls=lsSet;lsSet=function(k,v){const r=_ls.apply(this,arguments);try{if(r&&k===AMB_KEY)_ls(HI_SIGK,hiSig(v),true);else if(r&&k==='hi_rank')_ls('hi_rank_s',hiSig(v),true);}catch(_){}return r;};}
+
+/* ---------- rango del jugador ---------- */
+const RK_KEY='hi_rank',RK_SIG='hi_rank_s';
+const RK_TIT=[[1,'Recluta'],[3,'Cazador'],[5,'Guerrero'],[8,'Capitán'],[12,'Comandante'],[16,'General'],[20,'Mariscal'],[25,'Rey'],[30,'Emperador'],[40,'Leyenda']];
+function rkNeed(l){return 100+60*(l-1);}                      // XP para pasar del nivel l al l+1
+function rkLevel(xp){let l=1,x=xp;while(x>=rkNeed(l)&&l<99){x-=rkNeed(l);l++;}return {l,cur:x,need:rkNeed(l)};}
+function rkTitle(l){let t=RK_TIT[0][1];for(const [n,s] of RK_TIT)if(l>=n)t=s;return t;}
+let RK=null;
+function rk(){if(RK)return RK;let raw=lsGet(RK_KEY),ok=raw!=null&&lsGet(RK_SIG)===hiSig(raw);
+  try{RK=ok?JSON.parse(raw):null;}catch(_){RK=null;}
+  if(!RK||typeof RK.xp!=='number')RK={xp:0,lv:1,day:'',m:[],bonus:false,login:'',dir:{l:0,w:0}};
+  RK.dir=RK.dir||{l:0,w:0};RK.m=RK.m||[];return RK;}
+try{if(typeof CL_KEYS!=='undefined'&&!CL_KEYS.includes('hi_rank'))CL_KEYS.push('hi_rank');}catch(_){} // el rango viaja con tu cuenta
+function rkSave(){try{const t=JSON.stringify(rk());lsSet(RK_KEY,t);lsSet(RK_SIG,hiSig(t));}catch(_){}}
+function rkXp(n,why){if(!n)return;const R=rk(),before=rkLevel(R.xp).l;R.xp=Math.max(0,Math.round(R.xp+n));const after=rkLevel(R.xp).l;
+  if(after>before){R.lv=after;rkSave();const gift=10+5*after;try{addAmber(gift,'¡Subiste a nivel '+after+'!');}catch(_){}
+    hiCelebrate('⭐ ¡NIVEL '+after+'!',rkTitle(after)+(rkTitle(after)!==rkTitle(before)?' · nuevo título':'')+' · +'+gift+' de Ámbar');}
+  else rkSave();
+  if(why&&n>0)hiFloat('+'+n+' XP · '+why);
+  rkPaint();}
+
+/* ---------- misiones del día ---------- */
+const MIS={
+  win:{t:'Gana una batalla',n:1,a:40,x:60,ic:'🏆'},
+  kill:{t:'Derrota a 25 enemigos',n:25,a:30,x:50,ic:'⚔️'},
+  train:{t:'Entrena 15 soldados',n:15,a:25,x:40,ic:'🛡️'},
+  build:{t:'Construye 6 edificios',n:6,a:20,x:40,ic:'🏗️'},
+  era:{t:'Avanza 1 época',n:1,a:30,x:50,ic:'🏛️'},
+  conquer:{t:'Conquista un país en «Conquistar el mundo»',n:1,a:50,x:80,ic:'🌍'},
+  play:{t:'Juega 2 partidas',n:2,a:20,x:30,ic:'🎮'}};
+const MIS_FIGHT=['win','kill'],MIS_OTHER=['train','build','era','conquer','play'];
+const MIS_BONUS=60;
+function misRoll(){const R=rk(),t=today();if(R.day===t&&R.m.length===3)return;const d=dayNum(t);
+  const f=MIS_FIGHT[d%2],o=MIS_OTHER.slice(),a=o.splice(d%o.length,1)[0],b=o[(d*7+3)%o.length];
+  R.day=t;R.bonus=false;R.m=[f,a,b].map(k=>({k,p:0,c:false}));rkSave();}
+function misBump(k,n){try{misRoll();const R=rk();let ch=false;
+  for(const m of R.m){if(m.k!==k||m.c)continue;const D=MIS[k],was=m.p;m.p=Math.min(D.n,m.p+(n||1));if(m.p!==was){ch=true;
+      if(m.p>=D.n&&was<D.n){hiFloat('✅ ¡Misión cumplida! '+D.t);try{sfx('ok');}catch(_){}}}}
+  if(ch){rkSave();rkPaint();hiTrackPaint();}}catch(err){if(typeof console!=='undefined')console.error(err);}}
+function misReady(){misRoll();return rk().m.filter(m=>!m.c&&m.p>=MIS[m.k].n).length+(rk().m.every(m=>m.c)&&!rk().bonus?1:0);}
+function misClaim(i){misRoll();const R=rk(),m=R.m[i];if(!m||m.c||m.p<MIS[m.k].n)return;m.c=true;rkSave();
+  try{addAmber(MIS[m.k].a,'misión cumplida');}catch(_){}rkXp(MIS[m.k].x,'misión');misPaint();}
+function misBonus(){const R=rk();if(R.bonus||!R.m.every(m=>m.c))return;R.bonus=true;rkSave();try{addAmber(MIS_BONUS,'¡cofre del día!');}catch(_){}
+  hiCelebrate('🎁 ¡COFRE DEL DÍA!','Hiciste las 3 misiones · +'+MIS_BONUS+' de Ámbar');rkXp(80,'cofre');misPaint();}
+function msLeft(){const n=new Date(),m=new Date(n.getFullYear(),n.getMonth(),n.getDate()+1);const s=Math.max(0,Math.floor((m-n)/1000));return Math.floor(s/3600)+' h '+Math.floor(s%3600/60)+' min';}
+
+/* ---------- pantalla de misiones ---------- */
+function misMount(){if($('hiMis')||!document.createElement)return;const d=document.createElement('div');d.id='hiMis';d.hidden=true;
+  d.innerHTML='<div class="msCard" role="dialog" aria-label="Misiones del día"><button class="msX" type="button" aria-label="Cerrar">×</button><div id="msHead"></div><div id="msList"></div><div id="msFoot"></div></div>';
+  ($('app')||document.body).appendChild(d);
+  d.addEventListener('click',ev=>{const t=ev.target;if(t===d||(t.closest&&t.closest('.msX'))){d.hidden=true;return;}
+    const c=t.closest&&t.closest('[data-ms]');if(c){const v=c.dataset.ms;if(v==='bonus')misBonus();else misClaim(+v);}
+    const q=t.closest&&t.closest('[data-msgo]');if(q){d.hidden=true;hiQuick();}});}
+function misOpen(){misMount();misRoll();misPaint();$('hiMis').hidden=false;}
+function rkHeadHTML(){const R=rk(),L=rkLevel(R.xp),pct=Math.round(L.cur/L.need*100);
+  return '<div class="rkBig"><div class="rkBadge">'+L.l+'</div><div class="rkInfo"><b>'+rkTitle(L.l)+'</b><div class="rkBar"><i style="width:'+pct+'%"></i></div><small>'+L.cur+' / '+L.need+' XP para el nivel '+(L.l+1)+'</small></div></div>';}
+function misPaint(){const H=$('msHead'),Ls=$('msList'),F=$('msFoot');if(!H||!Ls)return;misRoll();const R=rk();
+  H.innerHTML=rkHeadHTML()+'<h3>🎯 Misiones del día <span>se renuevan en '+msLeft()+'</span></h3>';
+  Ls.innerHTML=R.m.map((m,i)=>{const D=MIS[m.k],pct=Math.round(m.p/D.n*100),done=m.p>=D.n;
+    return '<div class="msItem'+(m.c?' got':done?' ready':'')+'"><div class="msIc">'+D.ic+'</div><div class="msTx"><b>'+D.t+'</b><div class="rkBar sm"><i style="width:'+pct+'%"></i></div><small>'+m.p+' / '+D.n+' · premio '+D.a+' Ámbar + '+D.x+' XP</small></div>'+
+      (m.c?'<span class="msOk">✔</span>':done?'<button class="big msGet" type="button" data-ms="'+i+'">Reclamar</button>':'')+'</div>';}).join('');
+  const all=R.m.every(m=>m.c);
+  F.innerHTML=(all?(R.bonus?'<p class="msDone">🏅 ¡Todo listo por hoy! Vuelve mañana por más.</p>':'<button class="big msChest" type="button" data-ms="bonus">🎁 Abrir el cofre del día · +'+MIS_BONUS+' Ámbar</button>')
+    :'<p class="msHint">Haz las 3 y abre el 🎁 cofre del día (+'+MIS_BONUS+' Ámbar)</p>')+
+    '<button class="ghostbtn msQuick" type="button" data-msgo="1">⚔️ Batalla ya</button>';}
+
+/* ---------- chip de rango en la portada ---------- */
+function rkPaint(){try{const T=$('title');if(!T||!T.querySelector)return;let c=$('hiRank');
+  if(!c){const br=T.querySelector('.brand');if(!br)return;c=document.createElement('button');c.id='hiRank';c.type='button';c.addEventListener('click',misOpen);br.parentNode.insertBefore(c,br.nextSibling);}
+  const R=rk(),L=rkLevel(R.xp),n=misReady(),pct=Math.round(L.cur/L.need*100);
+  c.innerHTML='<span class="rkB">'+L.l+'</span><span class="rkT"><b>'+rkTitle(L.l)+'</b><span class="rkBar"><i style="width:'+pct+'%"></i></span></span><span class="rkM">🎯 Misiones'+(n?'<em>'+n+'</em>':'')+'</span>';
+  const h=$('hiMis');if(h&&!h.hidden)misPaint();}catch(err){if(typeof console!=='undefined')console.error(err);}}
+
+/* ---------- textos que flotan y confeti ---------- */
+function hiFloat(t){try{const d=document.createElement('div');d.className='hiFloat';d.textContent=t;(document.body).appendChild(d);setTimeout(()=>d.remove(),2600);}catch(_){}}
+function hiReduced(){try{return matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(_){return false;}}
+function hiConfetti(ms){if(hiReduced())return;try{const c=document.createElement('canvas');c.className='hiConf';const W0=innerWidth,H0=innerHeight;c.width=W0;c.height=H0;document.body.appendChild(c);
+  const x=c.getContext('2d');if(!x){c.remove();return;}const col=['#ffcf4a','#ff7a3d','#ff3d7f','#5ad1ff','#7dff8a','#ffffff'];
+  const P=[];for(let i=0;i<140;i++)P.push({x:W0/2+(Math.random()-.5)*80,y:H0*.42,vx:(Math.random()-.5)*13,vy:-Math.random()*15-4,r:Math.random()*6+3,a:Math.random()*6,va:(Math.random()-.5)*.4,c:col[i%col.length]});
+  const t0=performance.now();(function f(t){const k=(t-t0)/(ms||2400);x.clearRect(0,0,W0,H0);for(const p of P){p.vy+=.38;p.vx*=.99;p.x+=p.vx;p.y+=p.vy;p.a+=p.va;x.save();x.globalAlpha=Math.max(0,1-k);x.translate(p.x,p.y);x.rotate(p.a);x.fillStyle=p.c;x.fillRect(-p.r,-p.r/2.4,p.r*2,p.r/1.2);x.restore();}
+    if(k<1)requestAnimationFrame(f);else c.remove();})(t0);}catch(_){}}
+function hiCelebrate(big,small){try{hiConfetti(2600);const d=document.createElement('div');d.className='hiCele';d.innerHTML='<b>'+big+'</b><span>'+small+'</span>';document.body.appendChild(d);setTimeout(()=>d.remove(),2900);try{sfx('ok');}catch(_){}}catch(_){}}
+
+/* ---------- ⚔️ Batalla ya ---------- */
+let QUICK=false;
+function hiQuick(){try{const h=$('hiMis');if(h)h.hidden=true;if(MODE!=='libre'&&typeof setMode==='function')setMode('libre');QUICK=true;
+  const b=$('playBtn');if(b&&!b.disabled){b.click();}else{QUICK=false;toast('Elige un país para la batalla',true);}}catch(err){QUICK=false;if(typeof console!=='undefined')console.error(err);}}
+function hiDockQuick(){const d=$('playDock');if(!d||$('dockQuick'))return;const b=document.createElement('button');b.id='dockQuick';b.type='button';b.className='big';
+  b.innerHTML='<b>⚔️</b><small>Batalla ya</small>';b.addEventListener('click',hiQuick);d.insertBefore(b,d.firstChild);}
+function hiEnemyBase(){if(!G)return null;let best=null,bd=1e9;const B=BASES[0]||[0,0];
+  for(const e of G.ents){if(e.dead||e.k!=='b'||!e.o||(G.out&&G.out[e.o]))continue;try{if(G.dip&&G.dip.st[0][e.o]!=='guerra')continue;}catch(_){}
+    const d=Math.hypot(e.x-B[0],e.y-B[1])-(e.type==='cueva'||e.type==='centro'?400:0);if(d<bd){bd=d;best=e;}}return best;}
+function hiCharge(){try{if(!G||G.over)return;const tgt=hiEnemyBase();if(!tgt){toast('No queda ninguna aldea rival a la vista',true);return;}
+  const mine=G.ents.filter(e=>!e.dead&&e.k==='u'&&e.o===0&&UT[e.type]&&UT[e.type].mil&&!e.cargo);if(!mine.length){toast('Entrena soldados primero (lanceros u honderos)',true);return;}
+  sel=mine.map(e=>e.id);orderAt(tgt.x,tgt.y,tgt);G.chargeT=G.t;try{refreshTray(true);}catch(_){}
+  toast('⚔️ ¡Al ataque! '+mine.length+' soldados van por la aldea rival',false,'gold');}catch(err){if(typeof console!=='undefined')console.error(err);}}
+function hiQuickSetup(){const Df=typeof D2==='function'?D2():null;G.quick=true;G.peaceTold=true;
+  const r=G.res[0];r.food+=300;r.wood+=250;r.stone+=120;r.gold+=40;
+  spawnNear(0,[['lan',8],['hon',6]],90);
+  // el rival: guardia pequeña y cueva más débil, para que la batalla se pueda ganar en pocos minutos
+  for(let o=1;o<G.np;o++){if(G.ai[o]){G.ai[o].attackAt=150+(o-1)*50;G.ai[o].armyGoal=4;}spawnNear(o,[['lan',2],['hon',2]],90);
+    for(const e of G.ents)if(e.k==='b'&&e.o===o&&e.type==='cueva'){e.mhp=Math.round(e.mhp*.6);e.hp=Math.min(e.hp,e.mhp);}}
+  setTimeout(()=>{try{toast('⚔️ ¡Batalla ya! Tienes 14 soldados. Toca «¡Al ataque!» arriba o espera al rival: llega en 2 minutos',false,'gold');}catch(_){}},900);}
+
+/* ---------- director de dificultad (solo Partida libre normal) ---------- */
+function hiDirSetup(){const D=rk().dir;if(D.l>=2){const k=Math.min(D.l,3);for(let o=1;o<G.np;o++)if(G.ai[o]){G.ai[o].attackAt+=90*k;G.ai[o].armyGoal=Math.max(2,G.ai[o].armyGoal-1);}
+    setTimeout(()=>{try{toast('🛡️ Los rivales vienen más calmados esta vez: ¡tú puedes!',false,'gold');}catch(_){}},2500);}
+  else if(D.w>=3&&DK==='facil')setTimeout(()=>{try{toast('🔥 ¿Muy fácil? Prueba en Normal desde ⚙️ Ajustes de partida');}catch(_){}},2500);}
+
+/* ---------- ganchos del juego ---------- */
+let HK={kill:0,era:1,killXp:0,live:false};
+{const _ng=newGame;newGame=function(){const r=_ng.apply(this,arguments);try{
+    HK={kill:0,era:G.era[0]||1,killXp:0,live:true};const plain=MODE==='libre'&&!G.camp&&!G.story;
+    if(QUICK&&plain)hiQuickSetup();else if(plain)hiDirSetup();
+    QUICK=false;misBump('play');}catch(err){QUICK=false;if(typeof console!=='undefined')console.error(err);}return r;};}
+{const _au=addU;addU=function(o,type){const u=_au.apply(this,arguments);try{if(o===0&&G&&G.t>3&&UT[type]&&UT[type].mil)misBump('train');}catch(_){}return u;};}
+{const _ab=addB;addB=function(o,type,x,y,done){const b=_ab.apply(this,arguments);try{if(o===0&&G&&G.t>3&&!done)misBump('build');}catch(_){}return b;};}
+{const _ce=campaignEnd;campaignEnd=function(win){const def=G&&G.camp?G.camp.defend:true;const r=_ce.apply(this,arguments);try{if(win&&!def){misBump('conquer');rkXp(80,'país conquistado');}}catch(_){}return r;};}
+{const _eg=endGame;endGame=function(win){const was=G&&G.over;const r=_eg.apply(this,arguments);try{if(G&&G.over&&!was){
+    const w=G.over==='win',plain=MODE==='libre'&&!G.camp&&!G.story&&!G.quick;
+    hiTick();HK.live=false;
+    let xp=w?120+({normal:60,dificil:120}[DK]||0):30;
+    if(w){misBump('win');hiConfetti(2600);}
+    if(plain){const D=rk().dir;if(w){D.w++;D.l=0;}else{D.l++;D.w=0;}rkSave();}
+    const before=rk().xp;rkXp(xp,w?'victoria':'buen intento');hiEndPaint(rk().xp-before,w);}}catch(err){if(typeof console!=='undefined')console.error(err);}return r;};}
+{const _st=showTitle;showTitle=function(){const r=_st.apply(this,arguments);try{rkPaint();hiDockQuick();hiTrackPaint();}catch(_){}return r;};}
+
+/* en Batalla ya, tras «¡Al ataque!» los soldados que quedan quietos (y los refuerzos nuevos) siguen hasta la aldea rival.
+   Si tú les das otra orden, se respeta. */
+function hiFoeNear(u,r){let best=null,bd=r*r;for(const e of G.ents){if(e.dead||e.k!=='u'||!e.o||(G.out&&G.out[e.o]))continue;try{if(G.dip&&G.dip.st[0][e.o]!=='guerra')continue;}catch(_){}
+    const dx=e.x-u.x,dy=e.y-u.y,d=dx*dx+dy*dy*1;const w=UT[e.type]&&UT[e.type].mil?d:d*1.8;if(w<bd){bd=w;best=e;}}return best;}
+function hiPress(){if(!G||!G.quick||G.chargeT==null||G.over)return;const base=hiEnemyBase();if(!base)return;
+  for(const u of G.ents){if(u.dead||u.k!=='u'||u.o!==0||!UT[u.type]||!UT[u.type].mil||u.cargo)continue;
+    if(u.st!=='idle')continue;if(u.ordT!=null&&u.ordT>G.chargeT+0.5)continue;
+    const f=hiFoeNear(u,420);const t=f||base;u.st='attack';u.tgt=t.id;u.auto=false;u.ordT=G.chargeT;}}
+/* cada segundo: bajas enemigas y épocas */
+function hiTick(){if(!G||!HK.live)return;try{hiPress();const k=(G.stats&&G.stats.kill)||0;if(k>HK.kill){const d=k-HK.kill;HK.kill=k;misBump('kill',d);
+      const give=Math.min(d*2,Math.max(0,80-HK.killXp));if(give>0){HK.killXp+=give;rkXp(give);}}
+    const e=G.era[0]||1;if(e>HK.era){HK.era=e;misBump('era');rkXp(40,'nueva época');}}catch(_){}}
+
+/* ---------- seguimiento en la partida ---------- */
+function hiTrackMount(){if($('hiTrack')||!document.createElement)return;const d=document.createElement('div');d.id='hiTrack';d.hidden=true;
+  d.innerHTML='<span id="htTx"></span><button id="htGo" type="button" hidden>¡Al ataque!</button>';($('app')||document.body).appendChild(d);
+  $('htGo').addEventListener('click',ev=>{ev.stopPropagation();hiCharge();});}
+function hiTrackPaint(){try{hiTrackMount();const d=$('hiTrack');if(!d)return;const on=!!(G&&running&&!G.over&&$('title')&&$('title').hidden&&!HI_LOCKED&&!(typeof TUT!=='undefined'&&TUT&&TUT.on));
+  d.hidden=!on;if(!on)return;const go=$('htGo'),tx=$('htTx');
+  const mil=G.ents.some(e=>!e.dead&&e.k==='u'&&e.o===0&&UT[e.type]&&UT[e.type].mil);
+  if(G.quick){tx.textContent='⚔️ Destruye al rival';go.hidden=!mil;return;}
+  misRoll();const m=rk().m.find(x=>!x.c&&x.p<MIS[x.k].n);
+  if(m){const D=MIS[m.k];tx.textContent=D.ic+' '+D.t.replace(' en «Conquistar el mundo»','')+' · '+m.p+'/'+D.n;}
+  else tx.textContent=misReady()?'🎁 Misiones listas: reclámalas en el menú':'🏅 Misiones del día completas';
+  go.hidden=!(mil&&G.t>D2().first*0.6);}catch(_){}}
+
+/* ---------- pantalla final: XP ganada ---------- */
+function hiEndPaint(gain,win){try{const E=$('end');if(!E||!E.querySelector)return;let b=$('hiEndXp');
+  if(!b){b=document.createElement('div');b.id='hiEndXp';const st=E.querySelector('.stats');if(st&&st.parentNode)st.parentNode.insertBefore(b,st.nextSibling);else return;}
+  const n=misReady();b.innerHTML=rkHeadHTML().replace('rkBig','rkBig end')+'<p class="endGain">+'+gain+' XP'+(win?' · ¡Victoria!':'')+'</p>'+
+    (n?'<button class="big msEnd" type="button">🎯 '+n+' premio'+(n>1?'s':'')+' por reclamar</button>':'')+
+    '<button class="ghostbtn qEnd" type="button">⚔️ Otra batalla ya</button>';
+  const me=b.querySelector('.msEnd');if(me)me.addEventListener('click',misOpen);const qe=b.querySelector('.qEnd');if(qe)qe.addEventListener('click',()=>{try{showTitle();}catch(_){}setTimeout(hiQuick,60);});}catch(_){}}
+
+/* ---------- descanso: aviso amable tras mucho rato ---------- */
+let HI_PLAY=0,HI_REST=false;
+
+/* ---------- anuncios de Google (videos con premio, siempre opcionales) ----------
+   Para encenderlos: poner el ID de AdSense en HI_ADS_CLIENT (ca-pub-...) y aprobar H5 Games Ads.
+   Reglas que cumple: solo videos que el jugador pide, nunca al abrir el juego, nunca en medio de la batalla ni en el tutorial. */
+const HI_ADS_CLIENT='';
+(function hiAds(){if(!HI_ADS_CLIENT||typeof document==='undefined'||!document.createElement)return;if(window.HIAds||window.HI_STORE)return;
+  try{const s=document.createElement('script');s.async=true;s.src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client='+encodeURIComponent(HI_ADS_CLIENT);s.crossOrigin='anonymous';
+    s.setAttribute('data-ad-frequency-hint','60s');document.head.appendChild(s);
+    window.adsbygoogle=window.adsbygoogle||[];window.adBreak=window.adConfig=function(o){window.adsbygoogle.push(o);};
+    window.adConfig({preloadAdBreaks:'on',sound:'on'});
+    window.HIAds={rewarded(ok,fail){let given=false;window.adBreak({type:'reward',name:'premio',
+      beforeReward:show=>show(),adViewed:()=>{given=true;},adDismissed:()=>{},
+      adBreakDone:i=>{if(given)ok();else if(i&&i.breakStatus&&i.breakStatus!=='dismissed'&&i.breakStatus!=='viewed')toast('No hay videos disponibles ahora. Intenta en un rato',true);else fail();}});}};}catch(_){}})();
+
+/* ---------- arranque ---------- */
+(function hiStart(){if(typeof document==='undefined'||!document.createElement)return;
+  try{misRoll();const R=rk(),t=today();if(R.login!==t){R.login=t;rkSave();setTimeout(()=>rkXp(20,'¡volviste hoy!'),2500);}}catch(_){}
+  misMount();hiTrackMount();rkPaint();hiDockQuick();
+  {const _vs=v60Sync;v60Sync=function(){const r=_vs.apply(this,arguments);try{hiDockQuick();if(!$('hiRank'))rkPaint();}catch(_){}return r;};}
+  setTimeout(()=>{try{hiDockQuick();rkPaint();}catch(_){}},0);
+  // paz inicial más corta para llegar antes a la acción
+  try{DIFF.facil.first=Math.min(DIFF.facil.first,540);DIFF.normal.first=Math.min(DIFF.normal.first,420);}catch(_){}
+  setInterval(()=>{try{hiTick();hiTrackPaint();if(G&&running&&!G.over&&!document.hidden){HI_PLAY++;if(HI_PLAY===100*60&&!HI_REST){HI_REST=true;toast('💧 Llevas 1 h 40 min jugando: estírate y toma agua. ¡Tu imperio te espera!',false,'gold');}}}catch(_){}},1000);})();
+
+/* ---------- Conquistar el mundo: al tocar un país, la información sube en una tarjeta flotante (sin saltar la pantalla) ---------- */
+function hiPeekMount(){if($('hiPeek')||!document.createElement)return;const d=document.createElement('div');d.id='hiPeek';d.hidden=true;
+  d.innerHTML='<div class="pkHead"><div class="pkName" id="pkName"></div><button class="pkX" type="button" aria-label="Cerrar">×</button></div><p class="pkSub" id="pkSub"></p><div class="pkBtns" id="pkBtns"></div><button class="pkMore" type="button">Ver todos los detalles ↓</button>';
+  ($('app')||document.body).appendChild(d);
+  d.addEventListener('click',ev=>{const t=ev.target;if(t.closest&&t.closest('.pkX')){d.hidden=true;return;}
+    if(t.closest&&t.closest('.pkMore')){d.hidden=true;const c=$('regionCard');if(c&&c.scrollIntoView){try{c.scrollIntoView({block:'start',behavior:'smooth'});}catch(_){c.scrollIntoView(true);}}return;}
+    const b=t.closest&&t.closest('[data-pk]');if(b){const o=document.getElementById(b.dataset.pk)||document.querySelectorAll('#regionCard button')[+b.dataset.pki];d.hidden=true;if(o)o.click();}});}
+function hiPeek(){try{hiPeekMount();const d=$('hiPeek'),card=$('regionCard');if(!d||!card)return;
+  if(MODE!=='mundo'||!CAMP||!$('title')||$('title').hidden){d.hidden=true;return;}
+  const c=CBY[selCountry];if(!c){d.hidden=true;return;}
+  let fl='';try{fl=typeof flagOf==='function'?flagOf(selCountry)+' ':'';}catch(_){}
+  $('pkName').textContent=fl+c.n;
+  const lines=(card.innerText||'').split('\n').map(x=>x.trim()).filter(Boolean);
+  const sub=lines.filter(l=>/·|Tratado|Resistencia|jef|líder|presidente|tuyo|Tu país|imperio/i.test(l)&&l.length<120&&!/^HACE/i.test(l)).slice(0,2).join(' · ');
+  $('pkSub').textContent=sub;
+  const all=[...card.querySelectorAll('button')],vis=all.filter(b=>b.offsetParent!==null&&!b.disabled&&(b.innerText||'').trim()).slice(0,4);
+  $('pkBtns').innerHTML=vis.map((b,i)=>'<button type="button" class="'+(i===0?'big pkMain':'ghostbtn')+'" '+(b.id?'data-pk="'+b.id+'"':'data-pk="" data-pki="'+all.indexOf(b)+'"')+'>'+esc((b.innerText||'').replace(/\s+/g,' ').trim())+'</button>').join('');
+  const dk=$('playDock');d.classList.toggle('overDock',!!(dk&&!dk.hidden));d.hidden=false;}catch(err){if(typeof console!=='undefined')console.error(err);}}
+{const _sm=setMode;setMode=function(){const r=_sm.apply(this,arguments);try{const d=$('hiPeek');if(d&&MODE!=='mundo')d.hidden=true;}catch(_){}return r;};}
+{const _st2=showTitle;showTitle=function(){const r=_st2.apply(this,arguments);try{const d=$('hiPeek');if(d)d.hidden=true;}catch(_){}return r;};}
+{const _sg=startGame;startGame=function(){try{const d=$('hiPeek');if(d)d.hidden=true;}catch(_){}return _sg.apply(this,arguments);};}
+
 {const bf=document.getElementById('bFleet');if(bf&&bf.querySelector){const s=bf.querySelector('[data-icon]');if(s)s.innerHTML=ICON.galera||ICON.trans||'';}}
-window.__HI={get QUAL(){return QUAL;},ownerOf,countOf,cwTargets,pactOf,trCfg,hacTrade,warE,warRank,genLv,warWin,warAtkMul,warDefMul,overseas,navyCost,navyBonus,advE,advTips,advSay,advRumors,feastNow,feastCost,get cwEval(){return cwEval;},get cwLaunch(){return cwLaunch;},get answerOffer(){return answerOffer;},get doTrade(){return doTrade;},get garDef(){return garDef;},imCe:(a,x)=>imCe(a,x),get selectCountry(){return selectCountry;},hacBalance,hacAutoTax,warFit,stoBring,balTargets,hacE,permOn,stoOn,get funds(){return funds;},get cnRender(){return cnRender;},openCouncil2:()=>openCouncil(),econ,econHacHTML,econWarHTML,econDipHTML,goldBase,get ceCost(){return ceCost;},bombCost,imUpk,cnSk,imAsgTotal,newCampaign,addB,showTitle,get MKQ2(){return MKQ;},get SHQ(){return SHQ;},get MKQ(){return MKQ;},shqPrice,mkTotal,shopAct,refreshTray,giveRes,resAmt,get CAMP(){return CAMP;},TUT,tutStart,tutOffer,tutNeeded,tutTick,v60Sync,dockTarget,orderAt,setSel,selectBuilding,startPlacing,confirmPlace,doAct,get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},get cam(){return cam;},OWN,isOwner,ownCheck,ownOpen,ownAct,giftsClaim,testerGift,webNoPay,ownInfTick,get ON(){return ON;},sepPass,get landOk(){return landOk;},resCap,resAdd,funds,hacFund,stoTotal,gdMaxAfford,get canAffordC(){return canAffordC;},get payC(){return payC;},get ceCap(){return ceCap;},SV,svLoad,get ON(){return ON;},get onAct(){return onAct;},get renderOnlineHTML(){return renderOnlineHTML;},gdProv,gdRest,invChance,get popC(){return popC;},get cePow(){return cePow;},get ceTgtDef(){return ceTgtDef;},get popCap(){return popCap;},shOn,shLeft,shGive,shBuy,shCan,shDealToday,shDealOff,shW,get hit(){return hit;},openShopTab,popC,popWorld,popEmpire,popHurt,puOf,puAvg,puTarget,popTurn,popBomb,bombNow,repCost,popE,gwTick,gwWave,gwStrike,gwPlayerBomb,get imTrib(){return imTrib;},imOpen,imClose,imRender,imE,imMine,imProd,imTrib,imSto,imAsg,imStr,imTurn,cwEval,cwTargets,cwLaunch,cwDeclare,imCouncilOk,imCanRecruit,imRecruitDefend,ceSt,ceDefend,ceConquer,ceAskDefense,ceAskConquer,ceRecruit,ceOpen,ceTurn,get CAMP(){return CAMP;},worldTurn:()=>worldTurn(),campaignEnd:(w,h)=>campaignEnd(w,h),startBattle:(a,b)=>startBattle(a,b),renderCampBar:()=>renderCampBar(),cnTick,cnRecruit,openCouncil,closeCouncil,cnCfg,cnSt,cnHired,dipAnswer,announce,declareWar,setSt:(a,b,v)=>setSt(a,b,v),autoDefend,garChance,garDef,garReinforce,templeLv,templeEraMul,blessNow,blessOn,gardenGather,leaderLabel,leaderTick,lTitle,rushVid,rushLeft,rushMul,musicTick,AUD,faunaEra,STORY,storyTick,atk,buildPort,canExpedite,sendExpedition,expLeft,expLand,expBuy,expDraw,worldPulse,chapters,storyStart,goalProg,stGet,renderStoryCard,setMode:m=>setMode(m),get MODE(){return MODE;},contOf,hasPort,DEV_TIER,setLevel,setQuality,wallet,amber,addAmber,grant,accel,accCost,canAccel,claimDaily,dailyState,freeVideo,buyRes,vidRes,buyEraPack,shopEra,pickBanner,openShop,closeShop,adClose,mon,eraPack,resAmt,BANNERS,get TEAM(){return TEAM;},shopEnd,retryBonus,CBY,COUNTRIES,newGame,endGame,selectCountry,doTrade,proposePact,breakPact,answerOffer,resistOf,incomeOf,tradeQuote,campaignEnd,doAct,get selR(){return selR;},UTT:UT,BTT:BT,get AUD(){return typeof AUD!=="undefined"?AUD:null;},step,get G(){return G;},trainAt,startPlacing,confirmPlace,tap,setSel,orderAt,render,renderMini,refreshTray,drawPortrait,cam,setRunning(v){running=v;},setDiff(k){DK=k;},setNP(n){NP=n;},FAUNA,addB,addU,addAnimal,centerOn,updFog,eraCheck,get PROF(){return PROF;},get USE3D(){return USE3D;},pickScreen,screenToWorld,proj3,get R3(){return R3;},get POST(){return POST;},get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},zoomAt,clampCam,get terrain(){return terrain;},get BASES(){return BASES;},get FORDS(){return FORDS;},get RIVERS(){return RIVERS;},findPath,seaD,setBridge,waterNear:(x,y,r)=>waterNear(x,y,r),riverAt:(x,y)=>riverAt(x,y),guideSay,guideFor,kill,newCampaign,startBattle,reachable,worldTurn,get CAMP(){return CAMP;},countOf,saveGame,loadGame,savedInfo,continueGame,selectBuilding,teamBlock:t=>teamBlock(t),get BLOCKERS(){return BLOCKERS;},get BLOCKV(){return BLOCKV;},lineClear,get PBUDGET(){return PBUDGET;},render3D:dt=>render3D(dt),renderOverlay:dt=>renderOverlay(dt),resize,freeze(v){frozen=v;},get acc(){return acc;},mountainAt:(x,y)=>mountainAt(x,y),heightAt:(x,y)=>heightAt(x,y),reveal(){explored.fill(1);visible.fill(1);G.revealAll=true;updFog();}};
+window.__HI={get QUAL(){return QUAL;},hiTickNow:()=>hiTick(),get clApply(){return clApply;},rk,rkLevel,rkXp,misRoll,misBump,misClaim,misBonus,misReady,misOpen,hiQuick,hiCharge,hiTrackPaint,hiEnemyBase,hiHostOk,hiSig,hiH,get HI_LOCKED(){return HI_LOCKED;},get RKraw(){return RK;},set RKraw(v){RK=v;},ownerOf,countOf,cwTargets,pactOf,trCfg,hacTrade,warE,warRank,genLv,warWin,warAtkMul,warDefMul,overseas,navyCost,navyBonus,advE,advTips,advSay,advRumors,feastNow,feastCost,get cwEval(){return cwEval;},get cwLaunch(){return cwLaunch;},get answerOffer(){return answerOffer;},get doTrade(){return doTrade;},get garDef(){return garDef;},imCe:(a,x)=>imCe(a,x),get selectCountry(){return selectCountry;},hacBalance,hacAutoTax,warFit,stoBring,balTargets,hacE,permOn,stoOn,get funds(){return funds;},get cnRender(){return cnRender;},openCouncil2:()=>openCouncil(),econ,econHacHTML,econWarHTML,econDipHTML,goldBase,get ceCost(){return ceCost;},bombCost,imUpk,cnSk,imAsgTotal,newCampaign,addB,showTitle,get MKQ2(){return MKQ;},get SHQ(){return SHQ;},get MKQ(){return MKQ;},shqPrice,mkTotal,shopAct,refreshTray,giveRes,resAmt,get CAMP(){return CAMP;},TUT,tutStart,tutOffer,tutNeeded,tutTick,v60Sync,dockTarget,orderAt,setSel,selectBuilding,startPlacing,confirmPlace,doAct,get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},get cam(){return cam;},OWN,isOwner,ownCheck,ownOpen,ownAct,giftsClaim,testerGift,webNoPay,ownInfTick,get ON(){return ON;},sepPass,get landOk(){return landOk;},resCap,resAdd,funds,hacFund,stoTotal,gdMaxAfford,get canAffordC(){return canAffordC;},get payC(){return payC;},get ceCap(){return ceCap;},SV,svLoad,get ON(){return ON;},get onAct(){return onAct;},get renderOnlineHTML(){return renderOnlineHTML;},gdProv,gdRest,invChance,get popC(){return popC;},get cePow(){return cePow;},get ceTgtDef(){return ceTgtDef;},get popCap(){return popCap;},shOn,shLeft,shGive,shBuy,shCan,shDealToday,shDealOff,shW,get hit(){return hit;},openShopTab,popC,popWorld,popEmpire,popHurt,puOf,puAvg,puTarget,popTurn,popBomb,bombNow,repCost,popE,gwTick,gwWave,gwStrike,gwPlayerBomb,get imTrib(){return imTrib;},imOpen,imClose,imRender,imE,imMine,imProd,imTrib,imSto,imAsg,imStr,imTurn,cwEval,cwTargets,cwLaunch,cwDeclare,imCouncilOk,imCanRecruit,imRecruitDefend,ceSt,ceDefend,ceConquer,ceAskDefense,ceAskConquer,ceRecruit,ceOpen,ceTurn,get CAMP(){return CAMP;},worldTurn:()=>worldTurn(),campaignEnd:(w,h)=>campaignEnd(w,h),startBattle:(a,b)=>startBattle(a,b),renderCampBar:()=>renderCampBar(),cnTick,cnRecruit,openCouncil,closeCouncil,cnCfg,cnSt,cnHired,dipAnswer,announce,declareWar,setSt:(a,b,v)=>setSt(a,b,v),autoDefend,garChance,garDef,garReinforce,templeLv,templeEraMul,blessNow,blessOn,gardenGather,leaderLabel,leaderTick,lTitle,rushVid,rushLeft,rushMul,musicTick,AUD,faunaEra,STORY,storyTick,atk,buildPort,canExpedite,sendExpedition,expLeft,expLand,expBuy,expDraw,worldPulse,chapters,storyStart,goalProg,stGet,renderStoryCard,setMode:m=>setMode(m),get MODE(){return MODE;},contOf,hasPort,DEV_TIER,setLevel,setQuality,wallet,amber,addAmber,grant,accel,accCost,canAccel,claimDaily,dailyState,freeVideo,buyRes,vidRes,buyEraPack,shopEra,pickBanner,openShop,closeShop,adClose,mon,eraPack,resAmt,BANNERS,get TEAM(){return TEAM;},shopEnd,retryBonus,CBY,COUNTRIES,newGame,endGame,selectCountry,doTrade,proposePact,breakPact,answerOffer,resistOf,incomeOf,tradeQuote,campaignEnd,doAct,get selR(){return selR;},UTT:UT,BTT:BT,get AUD(){return typeof AUD!=="undefined"?AUD:null;},step,get G(){return G;},trainAt,startPlacing,confirmPlace,tap,setSel,orderAt,render,renderMini,refreshTray,drawPortrait,cam,setRunning(v){running=v;},setDiff(k){DK=k;},setNP(n){NP=n;},FAUNA,addB,addU,addAnimal,centerOn,updFog,eraCheck,get PROF(){return PROF;},get USE3D(){return USE3D;},pickScreen,screenToWorld,proj3,get R3(){return R3;},get POST(){return POST;},get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},zoomAt,clampCam,get terrain(){return terrain;},get BASES(){return BASES;},get FORDS(){return FORDS;},get RIVERS(){return RIVERS;},findPath,seaD,setBridge,waterNear:(x,y,r)=>waterNear(x,y,r),riverAt:(x,y)=>riverAt(x,y),guideSay,guideFor,kill,newCampaign,startBattle,reachable,worldTurn,get CAMP(){return CAMP;},countOf,saveGame,loadGame,savedInfo,continueGame,selectBuilding,teamBlock:t=>teamBlock(t),get BLOCKERS(){return BLOCKERS;},get BLOCKV(){return BLOCKV;},lineClear,get PBUDGET(){return PBUDGET;},render3D:dt=>render3D(dt),renderOverlay:dt=>renderOverlay(dt),resize,freeze(v){frozen=v;},get acc(){return acc;},mountainAt:(x,y)=>mountainAt(x,y),heightAt:(x,y)=>heightAt(x,y),reveal(){explored.fill(1);visible.fill(1);G.revealAll=true;updFog();}};
 })();
 
 </script>

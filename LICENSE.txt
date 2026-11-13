@@ -1,0 +1,14 @@
+Homo Imperium
+Copyright (c) 2026 Cristhian Camilo Cardona Londoño. Todos los derechos reservados.
+
+Este juego, su código, sus textos, su diseño y sus gráficos son obra protegida por la Ley 23 de 1982
+(derechos de autor de Colombia) y por los tratados internacionales de derechos de autor.
+
+Se permite jugarlo gratis en su página oficial: https://cristhianderroche-gif.github.io/homo-imperium/
+NO se permite copiarlo, publicarlo en otra página, modificarlo, venderlo ni usar su código o sus gráficos
+sin autorización escrita del autor.
+
+Componentes de terceros incluidos dentro del juego, con sus propias licencias:
+- Three.js (licencia MIT)
+- Fuentes Bowlby One SC y Barlow Condensed (SIL Open Font License 1.1)
+- Mapas de Natural Earth (dominio público)
