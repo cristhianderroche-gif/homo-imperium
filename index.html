@@ -1149,7 +1149,7 @@ button,a,[data-act],[data-sh],[data-on],[data-cn],[data-ce],[data-ow],[data-im]{
 .msHint,.msDone{margin:6px 0 10px;text-align:center;font-size:13.5px;opacity:.8}
 .msQuick{width:100%;margin-top:6px}
 
-#hiTrack{position:fixed;top:calc(136px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:9;display:flex;align-items:center;gap:8px;max-width:min(300px,calc(100vw - 100px));
+#hiTrack{position:fixed;top:calc(136px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);width:max-content;z-index:9;display:flex;align-items:center;gap:8px;max-width:min(320px,calc(100vw - 24px));
   padding:6px 6px 6px 12px;border-radius:999px;background:rgba(14,10,24,.82);border:1px solid rgba(255,190,90,.35);color:#fff;font-size:12.5px;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,.35);pointer-events:auto}
 #hiTrack[hidden]{display:none}
 #hiTrack #htTx{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -1188,6 +1188,93 @@ button,a,[data-act],[data-sh],[data-on],[data-cn],[data-ce],[data-ow],[data-im]{
 #hiPeek .pkBtns button{flex:1 1 40%;min-height:42px;padding:8px 10px!important;font-size:14px!important;border-radius:13px!important}
 #hiPeek .pkBtns .pkMain{flex-basis:100%;min-height:48px;font-size:16px!important}
 #hiPeek .pkMore{display:block;width:100%;margin-top:7px;padding:6px;border:0;background:none;color:#ffcf7a;font:700 12.5px/1 inherit;cursor:pointer}
+
+/* ================= v68 · Crónica + tema Siglo XXII ================= */
+#hiChron{position:fixed;inset:0;z-index:61;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(5,4,12,.74);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+#hiChron[hidden]{display:none}
+#hiChron .chCard{position:relative;width:min(480px,100%);max-height:calc(100vh - 32px);display:flex;flex-direction:column;padding:18px 16px 14px;border-radius:24px;color:#fff;
+  background:linear-gradient(170deg,#24183a,#120d20 65%);border:1px solid rgba(255,200,110,.32);box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#hiChron h3{margin:0 40px 10px 0;font-size:18px}
+#hiChron #chSum{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:10px}
+.chStats{display:flex;flex-direction:column;align-items:center;padding:8px 4px;border-radius:12px;background:rgba(255,255,255,.06)}
+.chStats b{font:900 20px/1 'Bowlby One SC',system-ui,sans-serif;color:#ffd34d}
+.chStats small{font-size:11px;opacity:.7;margin-top:3px;text-align:center}
+#chList{flex:1;min-height:120px;overflow:auto;padding:0 4px 0 30px;background:linear-gradient(rgba(255,200,110,.28),rgba(255,200,110,.28)) 13px 0/2px 100% no-repeat}
+.chDay{margin:10px 0 6px -30px;padding:3px 0 3px 30px;background:linear-gradient(90deg,rgba(18,13,32,1) 60%,transparent);font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#ffcf7a}
+.chItem{position:relative;display:flex;gap:9px;align-items:flex-start;padding:7px 4px 7px 0}
+.chItem .chIc{position:absolute;left:-29px;top:6px;width:24px;height:24px;display:grid;place-items:center;border-radius:50%;background:#1d1430;border:1px solid rgba(255,200,110,.4);font-size:12px}
+.chItem .chTx{font-size:13.5px;line-height:1.35}
+.chItem .chTx small{display:block;opacity:.55;font-size:11px;margin-top:2px}
+.chItem.k-win .chTx,.chItem.k-conq .chTx,.chItem.k-def .chTx{color:#fff4d6}
+.chItem.k-lose .chTx,.chItem.k-lost .chTx{color:#ffc9c9}
+.chAct{display:flex;gap:8px;margin-top:10px}
+.chAct button{flex:1}
+.msFoot .chOpen,#msFoot .chOpen,#hiEndXp .chEnd{width:100%;margin-top:6px}
+#hiTheme{position:absolute;top:calc(64px + env(safe-area-inset-top,0px));right:10px;padding:6px 9px!important;font-size:11px!important;z-index:5;padding:7px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(10,8,20,.55);color:#fff;font:700 12px/1 inherit;cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+
+/* tema Siglo XXII: azul abismo, cian cuántico y dorado */
+body.th22{--n-bg:#050912;--n-cy:#43D9F5;--n-cy2:#9BEBFA;--n-vi:#2563EB;--n-or:#D6B15E;--n-gold:#F4D58A;--n-ok:#35C98A;--n-txt:#DCE6F0;--n-mut:rgba(220,230,240,.66);--n-line:rgba(67,217,245,.18)}
+body.th22,body.th22 #app{background:radial-gradient(ellipse at 50% -10%,#16334D 0%,#081321 45%,#050912 100%)!important}
+body.th22 .screen .big,body.th22 #title .big,body.th22 #hiPeek .pkMain{background:linear-gradient(135deg,#43D9F5,#2563EB)!important;color:#04101c!important;box-shadow:0 10px 30px rgba(67,217,245,.35)!important}
+body.th22 #playDock #dockQuick.big{background:linear-gradient(160deg,#F4D58A,#D6B15E)!important;color:#1a1204!important;box-shadow:0 10px 28px rgba(214,177,94,.45)!important}
+body.th22 .brand,body.th22 h1.brand{color:#F4D58A!important;text-shadow:0 0 24px rgba(67,217,245,.45),0 3px 0 #0D1B2A!important}
+body.th22 #hiRank,body.th22 #hiMis .msCard,body.th22 #hiChron .chCard,body.th22 #hiPeek{background:linear-gradient(170deg,rgba(13,27,42,.96),rgba(5,9,18,.96))!important;border-color:rgba(67,217,245,.35)!important;box-shadow:0 10px 40px rgba(37,99,235,.25)!important}
+body.th22 .rkBar i{background:linear-gradient(90deg,#43D9F5,#2563EB,#F4D58A)!important;box-shadow:0 0 10px rgba(67,217,245,.6)!important}
+body.th22 #hiRank .rkB,body.th22 .rkBadge{background:conic-gradient(from 210deg,#F4D58A,#43D9F5,#2563EB,#F4D58A)!important}
+body.th22 #htGo{background:linear-gradient(160deg,#43D9F5,#2563EB)!important;color:#04101c!important}
+body.th22 #hiTrack{border-color:rgba(67,217,245,.4)!important;background:rgba(5,9,18,.85)!important}
+body.th22 .chStats b,body.th22 #hiEndXp .endGain{color:#43D9F5!important;text-shadow:0 0 16px rgba(67,217,245,.55)!important}
+body.th22 .hiCele{background:radial-gradient(circle at 50% 0%,rgba(67,217,245,.35),rgba(5,9,18,.96) 70%)!important;border-color:rgba(67,217,245,.6)!important}
+body.th22 .hiCele b{color:#F4D58A!important;text-shadow:0 2px 0 #0D1B2A,0 0 22px rgba(67,217,245,.8)!important}
+
+/* ================= v68 · Acontecimientos + toques holográficos del tema Siglo XXII ================= */
+#hiEv{position:fixed;inset:0;z-index:62;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(5,4,12,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+#hiEv[hidden]{display:none}
+#hiEv .evCard{width:min(460px,100%);max-height:calc(100vh - 32px);overflow:auto;padding:20px 16px 16px;border-radius:24px;color:#fff;text-align:center;
+  background:linear-gradient(170deg,#2c1a3f,#130d22 65%);border:1px solid rgba(255,200,110,.4);box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 40px rgba(255,140,60,.18);animation:pkIn .25s ease-out}
+#hiEv .evIc{font-size:44px;line-height:1;margin-bottom:6px}
+#hiEv h3{margin:0 0 8px;font:900 22px/1.15 'Bowlby One SC',system-ui,sans-serif;color:#ffd27a}
+#hiEv .evWhy{margin:0 0 14px;font-size:14.5px;line-height:1.4;opacity:.9}
+#hiEv .evOpt{display:flex;flex-direction:column;align-items:flex-start;gap:3px;width:100%;margin-bottom:8px;padding:11px 13px!important;text-align:left;border-radius:14px!important}
+#hiEv .evOpt b{font-size:15.5px}
+#hiEv .evOpt small{font-size:12.5px;opacity:.8;font-weight:500;line-height:1.3}
+#hiEv .evOpt[disabled]{opacity:.42;filter:grayscale(.6)}
+/* Siglo XXII: paneles holográficos discretos (borde con esquinas, retícula tenue, cifras legibles) */
+body.th22 #hiEv .evCard,body.th22 #hiMis .msCard,body.th22 #hiChron .chCard,body.th22 #hiPeek{position:relative;
+  background-image:linear-gradient(170deg,rgba(13,27,42,.97),rgba(5,9,18,.97)),repeating-linear-gradient(0deg,rgba(67,217,245,.05) 0 1px,transparent 1px 4px)!important;background-blend-mode:normal,screen!important}
+body.th22 #hiEv .evCard::before,body.th22 #hiMis .msCard::before,body.th22 #hiChron .chCard::before{content:'';position:absolute;inset:6px;border-radius:18px;pointer-events:none;
+  background:linear-gradient(#43D9F5,#43D9F5) top left/18px 2px no-repeat,linear-gradient(#43D9F5,#43D9F5) top left/2px 18px no-repeat,
+             linear-gradient(#43D9F5,#43D9F5) bottom right/18px 2px no-repeat,linear-gradient(#43D9F5,#43D9F5) bottom right/2px 18px no-repeat;opacity:.8}
+body.th22 #hiEv h3{color:#F4D58A!important;text-shadow:0 0 18px rgba(67,217,245,.45)}
+body.th22 #hiEv .evOpt.big{background:linear-gradient(135deg,#43D9F5,#2563EB)!important;color:#04101c!important}
+body.th22 .chStats,body.th22 .msItem{background:rgba(67,217,245,.06)!important;border-color:rgba(67,217,245,.18)!important}
+body.th22 #hiRank .rkT b,body.th22 .chStats b{font-variant-numeric:tabular-nums;letter-spacing:.06em}
+#hiEv .evOpt small svg,#hiTrack svg{display:inline-block!important;width:1.05em;height:1.05em;vertical-align:-3px;margin:0 1px}
+.hiCele.sad{background:radial-gradient(circle at 50% 0%,rgba(255,80,80,.35),rgba(30,10,16,.96) 70%)!important;border-color:rgba(255,120,120,.6)!important;box-shadow:0 0 60px rgba(255,60,60,.4)!important}
+.hiCele.sad b{color:#ffb3b3!important;text-shadow:0 2px 0 #5a0b0b,0 0 22px rgba(255,80,80,.7)!important;font-size:24px!important}
+#hiPeek .pkMem{margin:-4px 0 9px;font-size:12.5px;color:#ffd9a8;line-height:1.35}
+body.th22 #hiPeek .pkMem{color:#9BEBFA}
+
+/* ================= v68 · ayudas ================= */
+#hiTip{position:fixed;left:50%;top:calc(58px + env(safe-area-inset-top,0px));transform:translateX(-50%);z-index:95;display:flex;gap:10px;align-items:flex-start;width:max-content;max-width:min(440px,calc(100vw - 20px));
+  padding:11px 12px 11px 14px;border-radius:16px;background:rgba(18,12,30,.96);border:1px solid rgba(255,200,110,.55);color:#fff;font-size:14px;line-height:1.35;box-shadow:0 10px 30px rgba(0,0,0,.5);cursor:pointer}
+#hiTip[hidden]{display:none}
+#hiTip.in{animation:pkIn .25s ease-out}
+#hiTip b{color:#ffd27a}
+#hiTip>b{flex:none;color:#fff;opacity:.6;font-size:18px;line-height:1}
+#hiIntro{position:fixed;inset:0;z-index:63;display:flex;align-items:flex-end;justify-content:center;padding:16px;background:rgba(5,4,12,.55)}
+#hiIntro[hidden]{display:none}
+#hiIntro .inCard{width:min(460px,100%);padding:18px 16px 14px;border-radius:24px;color:#fff;background:linear-gradient(170deg,#2a1640,#150e24 65%);border:1px solid rgba(255,190,90,.4);box-shadow:0 -10px 40px rgba(0,0,0,.5);animation:pkIn .25s ease-out}
+#hiIntro h3{margin:0 0 10px;font:900 21px/1.15 'Bowlby One SC',system-ui,sans-serif;color:#ffd27a}
+#hiIntro ol{margin:0 0 14px;padding-left:22px;display:flex;flex-direction:column;gap:8px;font-size:15px;line-height:1.35}
+#hiIntro li::marker{color:#ffcf6a;font-weight:800}
+#hiIntro .big{width:100%}
+#hiIntro small{display:block;margin-top:8px;text-align:center;opacity:.6;font-size:11.5px}
+#msFoot .hpAgain{width:100%;margin-top:6px}
+body.th22 #hiTip{background:rgba(5,9,18,.96);border-color:rgba(67,217,245,.55)}
+body.th22 #hiTip b{color:#9BEBFA}
+body.th22 #hiIntro .inCard{background:linear-gradient(170deg,rgba(13,27,42,.98),rgba(5,9,18,.98));border-color:rgba(67,217,245,.4)}
+body.th22 #hiIntro h3{color:#F4D58A}
 
 </style>
 
@@ -8032,7 +8119,7 @@ function frameBody(now){
 function boot(){init3D();resize();applyQuality();showTitle();requestAnimationFrame(frame);}
 boot();
 /* ---------- opiniones de quienes prueban el juego: llegan por WhatsApp al creador ---------- */
-const FB_TO='573044272520',FB_VER='v67';let fbCat='Error',fbFrom=null;
+const FB_TO='573044272520',FB_VER='v68';let fbCat='Error',fbFrom=null;
 function fbContext(){const d=(()=>{const u=navigator.userAgent||'';return /iPhone|iPad/.test(u)?'iPhone/iPad':/Android/.test(u)?'Android':/Mac/.test(u)?'Mac':/Windows/.test(u)?'Windows':'otro';})();
   const g=G&&!$('title').hidden?null:G;const where=g&&PROF?PROF.c.n+' · era '+ROMAN[g.era[0]]+' · '+fmtT(g.t)+(g.camp?' · conquista':''):'menú de inicio';
   return 'Versión '+FB_VER+' · '+d+' '+innerWidth+'×'+innerHeight+' · '+where+(typeof QSET!=='undefined'?' · calidad '+QSET+' nivel '+QUAL.lvl+(QUAL.fps?' · '+QUAL.fps+' fps':'')+(GPU_NAME?' · '+GPU_NAME:''):'');}
@@ -10058,8 +10145,291 @@ function hiPeek(){try{hiPeekMount();const d=$('hiPeek'),card=$('regionCard');if(
 {const _st2=showTitle;showTitle=function(){const r=_st2.apply(this,arguments);try{const d=$('hiPeek');if(d)d.hidden=true;}catch(_){}return r;};}
 {const _sg=startGame;startGame=function(){try{const d=$('hiPeek');if(d)d.hidden=true;}catch(_){}return _sg.apply(this,arguments);};}
 
+/* ================= v68 · Crónica del imperio (memoria histórica) + tema «Siglo XXII» =================
+   Crónica: guarda los hechos REALES de tus partidas (victorias, derrotas, conquistas, épocas, rangos, cofres)
+   con fecha y datos del motor. Nada se inventa: cada línea sale de un evento del juego.
+   Se ve como línea de tiempo, viaja con tu cuenta y se puede compartir o descargar como texto.
+   Tema «Siglo XXII»: opción de colores azul profundo, cian y dorado. El diseño clásico sigue siendo el de siempre. */
+
+const CH_KEY='hi_chron',CH_MAX=300;
+try{if(typeof CL_KEYS!=='undefined'&&!CL_KEYS.includes(CH_KEY))CL_KEYS.push(CH_KEY);}catch(_){}
+let CH=null;
+function chList(){if(CH)return CH;try{const v=JSON.parse(lsGet(CH_KEY)||'[]');CH=Array.isArray(v)?v.filter(e=>e&&typeof e.t==='number'&&typeof e.x==='string'):[];}catch(_){CH=[];}return CH;}
+function chSave(){try{lsSet(CH_KEY,JSON.stringify(chList().slice(-CH_MAX)));}catch(_){}}
+const CH_IC={start:'📜',win:'🏆',lose:'🛡️',conq:'🌍',def:'🏰',lost:'🔥',era:'🏛️',rank:'⭐',chest:'🎁',quick:'⚔️',story:'📖'};
+function chAdd(k,x,d){try{const L=chList();if(!L.length&&k!=='start')L.push({t:Date.now()-1,k:'start',x:'Comienza la crónica de tu pueblo.'});
+  L.push({t:Date.now(),k,x:String(x).slice(0,220),d:d||null});if(L.length>CH_MAX)L.splice(0,L.length-CH_MAX);chSave();}catch(_){}}
+function chCountry(){try{return (CBY[selCountry]||{}).n||'tu pueblo';}catch(_){return 'tu pueblo';}}
+function chMin(t){const m=Math.max(1,Math.round((t||0)/60));return m+' min';}
+const CH_DIF={facil:'Fácil',normal:'Normal',dificil:'Difícil'};
+
+/* ganchos: solo hechos del motor */
+{const _eg=endGame;endGame=function(win){const was=G&&G.over;const r=_eg.apply(this,arguments);try{if(G&&G.over&&!was&&!G.camp){
+    const w=G.over==='win',kills=(G.stats&&G.stats.kill)||0,lost=(G.stats&&G.stats.lost)||0;
+    const modo=G.story?'el modo Historia':G.quick?'Batalla ya':'Partida libre ('+(CH_DIF[DK]||DK)+')';
+    chAdd(G.quick?'quick':G.story?'story':(w?'win':'lose'),(w?'Victoria':'Derrota')+' en '+modo+' con '+chCountry()+' · '+chMin(G.t)+' · '+kills+' enemigos derrotados, '+lost+' caídos.',{w,kills,lost,t:Math.round(G.t),m:G.story?'historia':G.quick?'batalla':'libre',dk:DK});}}catch(_){}return r;};}
+{const _ce=campaignEnd;campaignEnd=function(win){let id=null,defend=false,turn=null;try{id=G&&G.camp?G.camp.target:null;defend=!!(G&&G.camp&&G.camp.defend);turn=CAMP?CAMP.turn:null;}catch(_){}
+  const r=_ce.apply(this,arguments);try{if(id){const n=(CBY[id]||{}).n||id;
+    if(defend)chAdd(win?'def':'lost',win?'Defendiste '+n+' de una invasión'+(turn!=null?' (mes '+(turn+1)+')':'')+'.':'Perdiste '+n+' ante una invasión'+(turn!=null?' (mes '+(turn+1)+')':'')+'.',{id,win,defend:true,turn});
+    else chAdd(win?'conq':'lose',win?'Conquistaste '+n+(turn!=null?' en el mes '+(turn+1):'')+'.':'Tu ejército fue rechazado en '+n+'.',{id,win,turn});}}catch(_){}return r;};}
+{let lastEra=0;const _tick=hiTick;hiTick=function(){try{if(G&&HK.live){const e=G.era[0]||1;if(lastEra&&e>lastEra&&ERAS[e])chAdd('era',chCountry()+' entró en '+ERAS[e]+' tras '+chMin(G.t)+' de partida.',{era:e});lastEra=e;}else lastEra=0;}catch(_){}return _tick.apply(this,arguments);};}
+{const _rx=rkXp;rkXp=function(n){const b=rkLevel(rk().xp).l;const r=_rx.apply(this,arguments);try{const a=rkLevel(rk().xp).l;if(a>b)chAdd('rank','Subiste a nivel '+a+': '+rkTitle(a)+'.',{lv:a});}catch(_){}return r;};}
+{const _mb=misBonus;misBonus=function(){const had=rk().bonus;const r=_mb.apply(this,arguments);try{if(!had&&rk().bonus)chAdd('chest','Completaste las 3 misiones del día y abriste el cofre.');}catch(_){}return r;};}
+
+/* pantalla de la crónica */
+function chFmtDay(t){const d=new Date(t);return d.toLocaleDateString('es-CO',{weekday:'long',day:'numeric',month:'long',year:'numeric'});}
+function chFmtHour(t){return new Date(t).toLocaleTimeString('es-CO',{hour:'2-digit',minute:'2-digit'});}
+function chStats(){const L=chList();let w=0,l=0,c=0,k=0;for(const e of L){if(e.d&&e.d.w===true)w++;if(e.d&&e.d.w===false)l++;if(e.k==='conq')c++;if(e.d&&e.d.kills)k+=e.d.kills;}return {w,l,c,k,n:L.length};}
+function chText(){const L=chList(),S=chStats();let out='CRÓNICA DE '+chCountry().toUpperCase()+' · Homo Imperium\n'+S.w+' victorias · '+S.l+' derrotas · '+S.c+' países conquistados · '+S.k+' enemigos derrotados\n\n';
+  let day='';for(const e of L){const d=chFmtDay(e.t);if(d!==day){day=d;out+='\n'+d.toUpperCase()+'\n';}out+=chFmtHour(e.t)+'  '+e.x+'\n';}
+  return out+'\nJuega gratis: '+HI_OFFICIAL+'\n';}
+function chMount(){if($('hiChron')||!document.createElement)return;const d=document.createElement('div');d.id='hiChron';d.hidden=true;
+  d.innerHTML='<div class="chCard" role="dialog" aria-label="Crónica del imperio"><button class="msX" type="button" aria-label="Cerrar">×</button><h3>📜 Crónica de <span id="chWho"></span></h3><div id="chSum"></div><div id="chList"></div><div class="chAct"><button class="big" type="button" data-ch="share">Compartir crónica</button><button class="ghostbtn" type="button" data-ch="dl">Descargar .txt</button></div></div>';
+  ($('app')||document.body).appendChild(d);
+  d.addEventListener('click',ev=>{const t=ev.target;if(t===d||(t.closest&&t.closest('.msX'))){d.hidden=true;return;}const b=t.closest&&t.closest('[data-ch]');if(!b)return;
+    const txt=chText();if(b.dataset.ch==='share'){if(navigator.share){navigator.share({title:'Crónica de '+chCountry(),text:txt}).catch(()=>{});}
+      else if(navigator.clipboard){navigator.clipboard.writeText(txt).then(()=>toast('📋 Crónica copiada: pégala donde quieras',false,'gold')).catch(()=>chDl(txt));}else chDl(txt);}
+    else chDl(txt);});}
+function chDl(txt){try{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([txt],{type:'text/plain;charset=utf-8'}));a.download='cronica-homo-imperium.txt';document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove();},500);toast('📜 Crónica descargada',false,'gold');}catch(_){}}
+function chOpen(){chMount();const L=chList(),S=chStats();$('chWho').textContent=chCountry();
+  $('chSum').innerHTML='<div class="chStats"><b>'+S.w+'</b><small>victorias</small></div><div class="chStats"><b>'+S.l+'</b><small>derrotas</small></div><div class="chStats"><b>'+S.c+'</b><small>conquistas</small></div><div class="chStats"><b>'+S.k+'</b><small>bajas enemigas</small></div>';
+  if(!L.length){$('chList').innerHTML='<p class="msHint">Tu crónica empieza con tu primera batalla. ¡Toca ⚔️ Batalla ya!</p>';}
+  else{let h='',day='';for(const e of L.slice().reverse()){const d=chFmtDay(e.t);if(d!==day){day=d;h+='<div class="chDay">'+esc(d)+'</div>';}
+      h+='<div class="chItem k-'+esc(e.k)+'"><span class="chIc">'+(CH_IC[e.k]||'•')+'</span><span class="chTx">'+esc(e.x)+'<small>'+chFmtHour(e.t)+'</small></span></div>';}
+    $('chList').innerHTML=h;}
+  $('hiChron').hidden=false;}
+
+/* acceso: en Misiones del día y en la pantalla final */
+{const _mp=misPaint;misPaint=function(){const r=_mp.apply(this,arguments);try{const F=$('msFoot');if(F&&!F.querySelector('.chOpen')){const b=document.createElement('button');b.type='button';b.className='ghostbtn chOpen';b.textContent='📜 Ver la crónica de tu imperio';b.addEventListener('click',()=>{const m=$('hiMis');if(m)m.hidden=true;chOpen();});F.appendChild(b);}}catch(_){}return r;};}
+{const _ep=hiEndPaint;hiEndPaint=function(){const r=_ep.apply(this,arguments);try{const b=$('hiEndXp');if(b&&!b.querySelector('.chEnd')){const x=document.createElement('button');x.type='button';x.className='ghostbtn chEnd';x.textContent='📜 Crónica';x.addEventListener('click',chOpen);b.appendChild(x);}}catch(_){}return r;};}
+
+/* ---------- tema «Siglo XXII» ---------- */
+const TH_KEY='hi_theme';
+function thOn(){return lsGet(TH_KEY)==='22';}
+function thApply(){try{document.body.classList.toggle('th22',thOn());const b=$('hiTheme');if(b)b.innerHTML=thOn()?'✦ Siglo XXII':'✦ Clásico';}catch(_){}}
+function thToggle(){lsSet(TH_KEY,thOn()?'neo':'22');thApply();toast(thOn()?'✦ Tema Siglo XXII activado':'✦ Tema clásico',false,'gold');}
+function thMount(){try{const T=$('title');if(!T||$('hiTheme'))return;const b=document.createElement('button');b.id='hiTheme';b.type='button';b.setAttribute('aria-label','Cambiar el tema de colores');b.addEventListener('click',thToggle);
+  T.appendChild(b);thApply();}catch(_){}}
+(function chStart(){if(typeof document==='undefined'||!document.createElement)return;chMount();thMount();thApply();setTimeout(()=>{thMount();thApply();},0);})();
+
+/* ================= v68 · Acontecimientos con decisiones + objetivo adaptativo + nueva época =================
+   Conquistar el mundo: después de cada mes, si el estado REAL del imperio lo justifica, aparece un acontecimiento
+   (sequía, revuelta, crisis del tesoro, hallazgo, alianza inesperada, mercaderes). Cada uno muestra la causa con
+   cifras reales, 2 o 3 opciones con su costo, aplica consecuencias y queda en la crónica y en el registro.
+   Máximo uno cada 3 meses; nunca dos seguidos del mismo tipo.
+   Partida libre: el seguimiento alterna entre la misión del día y el objetivo de la próxima época (lo que falta de verdad).
+   Nueva época: celebración. */
+
+/* ---------- estado ---------- */
+function evE(){const E=ceSt();if(!E)return null;E.ev=E.ev||{last:-99,kind:'',debt:null,route:null,hist:[]};return E.ev;}
+function evPopAll(d){const P=popE();for(const id of imMine())P.pu[id]=Math.max(0,Math.min(100,(P.pu[id]==null?50:P.pu[id])+d));}
+function evNet(){try{return econ().net;}catch(_){return {food:0,gold:0};}}
+function evRun(k){const n=evNet()[k],have=funds(k);return n<0?have/(-n):99;}
+function evNear(){return Object.keys(CAMP.nations||{}).filter(k=>countOf(k)>0&&nearMe(k));}
+function evPayOk(c){try{return canAffordC(c);}catch(_){return false;}}
+function evFmt(c){return RES4.filter(k=>c[k]).map(k=>ICON[k]+' '+cnN(c[k])).join(' ');}
+
+/* cada acontecimiento: cond() → contexto con cifras reales, o null si no aplica */
+const EVS={
+  sequia:{t:'Sequía en los campos',ic:'🌾',cond(){const r=evRun('food');if(r>=2.5)return null;
+      return {why:'La comida alcanza para '+(r<1?'menos de un mes':Math.floor(r)+' mes'+(Math.floor(r)===1?'':'es'))+': el imperio gasta '+cnN(-evNet().food)+' más de lo que produce cada mes.'};},
+    opts:[
+      {n:'Abrir los graneros reales',d:'Pagas oro y llega comida de inmediato. El pueblo lo agradece.',c:{gold:400},do(){resAdd('food',1600,true);evPopAll(4);return 'Se abrieron los graneros: +1.600 de comida y el pueblo respira.';}},
+      {n:'Racionar la comida',d:'Sin costo, pero el pueblo se molesta.',c:{},do(){resAdd('food',700,true);evPopAll(-8);return 'Se racionó la comida: +700 de comida ahorrada, pero el pueblo está molesto.';}},
+      {n:'Comprar a un vecino en paz',d:'Cuesta oro y mejora la relación.',c:{gold:600},need(){return evNear().some(k=>CAMP.nations[k].pact==='paz'||CAMP.nations[k].pact==='alianza');},
+        do(){const k=evNear().find(k=>CAMP.nations[k].pact==='paz'||CAMP.nations[k].pact==='alianza');resAdd('food',2400,true);CAMP.nations[k].rel=Math.min(100,CAMP.nations[k].rel+8);return 'Compraste comida a '+nationName(k)+': +2.400 de comida y mejor relación.';}}]},
+  revuelta:{t:'El pueblo se levanta',ic:'✊',cond(){const p=puAvg();if(p>=36)return null;return {why:'La popularidad está en '+p+' % ('+puName(p).toLowerCase()+'). Si nadie hace nada, puede haber desórdenes.'};},
+    opts:[
+      {n:'Bajar los impuestos',d:'Cobras menos oro cada mes, pero el pueblo se calma.',c:{},need(){return cnCfg().tax>0;},do(){const C=cnCfg();C.tax--;cnSave();evPopAll(8);return 'Bajaste los impuestos a «'+CN_TAX[C.tax].n+'»: el pueblo se calma (+8 %).';}},
+      {n:'Fiesta del pueblo',d:'Cuesta comida y oro, sube mucho la popularidad.',c:{food:900,gold:300},do(){evPopAll(12);return 'La fiesta del pueblo fue un éxito: +12 % de popularidad.';}},
+      {n:'Mano dura',d:'La Guardia patrulla las calles. Calma por ahora, rencor después.',c:{gold:150},do(){evPopAll(3);const V=evE();V.grudge=CAMP.turn+4;return 'La Guardia impuso el orden (+3 %). El pueblo no lo olvidará pronto.';}}]},
+  tesoro:{t:'El tesoro se vacía',ic:'💰',cond(){const r=evRun('gold');if(r>=2.5||evE().debt)return null;return {why:'El oro alcanza para '+(r<1?'menos de un mes':Math.floor(r)+' mes'+(Math.floor(r)===1?'':'es'))+': salen '+cnN(-evNet().gold)+' de oro más de los que entran cada mes.'};},
+    opts:[
+      {n:'Préstamo de los mercaderes',d:'Recibes 1.800 de oro ahora y devuelves 250 cada mes durante 8 meses.',c:{},do(){resAdd('gold',1800,true);evE().debt={n:250,left:8};return 'Los mercaderes prestaron 1.800 de oro. Pagarás 250 al mes durante 8 meses.';}},
+      {n:'Vender madera y piedra',d:'Cambia 2.000 de madera y 1.000 de piedra por oro.',c:{wood:2000,stone:1000},do(){resAdd('gold',1100,true);return 'Vendiste madera y piedra: +1.100 de oro.';}},
+      {n:'Licenciar parte de la Guardia',d:'Menos soldados, menos paga.',c:{},need(){const E=ceSt();return E&&E.guard>=200;},do(){const E=ceSt();const cut=Math.floor(E.guard*.25/100)*100;E.guard-=cut;return 'Licenciaste '+cnN(cut)+' soldados de la Guardia: la paga baja desde este mes.';}}]},
+  hallazgo:{t:'Hallazgo de los exploradores',ic:'💎',cond(){if(Math.random()>.18)return null;const L=imMine();if(!L.length)return null;const id=L[(Math.random()*L.length)|0];
+      return {why:'En '+CBY[id].n+' encontraron una veta rica en piedra y oro.',id};},
+    opts:[
+      {n:'Explotarla ya',d:'Mucha piedra y oro ahora; el trabajo es duro y el pueblo se cansa un poco.',c:{},do(x){resAdd('stone',1500,true);resAdd('gold',700,true);evPopAll(-3);return 'La veta de '+CBY[x.id].n+' dio +1.500 de piedra y +700 de oro.';}},
+      {n:'Abrir una ruta comercial',d:'Menos de golpe, pero +90 de oro cada mes durante 10 meses.',c:{wood:400},do(x){evE().route={n:90,left:10,id:x.id};return 'Se abrió una ruta comercial desde '+CBY[x.id].n+': +90 de oro al mes durante 10 meses.';}}]},
+  alianza:{t:'Una alianza inesperada',ic:'🤝',cond(){const k=evNear().find(k=>{const N=CAMP.nations[k];return N.rel>=35&&N.pact!=='alianza';});if(!k)return null;
+      return {why:cap(leaderOf(k))+' de '+nationName(k)+' te tiene aprecio (relación '+Math.round(CAMP.nations[k].rel)+') y propone una alianza.',k};},
+    opts:[
+      {n:'Aceptar la alianza',d:'Ganas un aliado; si te atacan, cuenta contigo y tú con él.',c:{},do(x){const N=CAMP.nations[x.k];N.pact='alianza';N.rel=Math.min(100,N.rel+12);return 'Ahora eres aliado de '+nationName(x.k)+'.';}},
+      {n:'Rechazar con cortesía',d:'La relación baja un poco.',c:{},do(x){const N=CAMP.nations[x.k];N.rel=Math.max(-100,N.rel-10);return 'Rechazaste la alianza de '+nationName(x.k)+'. La relación se enfrió.';}}]},
+  mercaderes:{t:'Caravana de mercaderes',ic:'🐪',cond(){if(Math.random()>.2)return null;if((CAMP.res.food||0)<3000&&(CAMP.res.wood||0)<3000)return null;return {why:'Una caravana pide comida y madera para seguir su ruta y paga bien en oro.'};},
+    opts:[
+      {n:'Venderles provisiones',d:'Entregas 1.200 de comida y 800 de madera.',c:{food:1200,wood:800},do(){resAdd('gold',1000,true);return 'Vendiste provisiones a la caravana: +1.000 de oro.';}},
+      {n:'Cobrarles peaje',d:'Ganas algo de oro sin gastar nada, pero la fama de tus caminos baja.',c:{},do(){resAdd('gold',350,true);for(const k of evNear())CAMP.nations[k].rel=Math.max(-100,CAMP.nations[k].rel-3);return 'Cobraste peaje: +350 de oro. Los vecinos lo notaron.';}}]}};
+const EV_ORDER=['revuelta','sequia','tesoro','alianza','hallazgo','mercaderes'];
+
+/* ---------- motor: después de cada mes ---------- */
+function evAfterTurn(){const V=evE();if(!V)return;
+  if(V.debt){const pay=Math.min(V.debt.n,CAMP.res.gold||0);CAMP.res.gold-=pay;V.debt.left--;ceLog('💰 Pago a los mercaderes: '+cnN(pay)+' de oro'+(V.debt.left>0?' (quedan '+V.debt.left+')':' (deuda saldada)')+'.');if(V.debt.left<=0)V.debt=null;}
+  if(V.route){resAdd('gold',V.route.n,true);V.route.left--;if(V.route.left<=0){ceLog('🐪 Terminó la ruta comercial.');V.route=null;}}
+  if(V.grudge&&CAMP.turn===V.grudge){evPopAll(-6);ceLog('✊ El rencor por la mano dura volvió: −6 % de popularidad.');V.grudge=null;}
+  if(V.pending||CAMP.turn-V.last<3)return;
+  for(const k of EV_ORDER){if(k===V.kind)continue;let x=null;try{x=EVS[k].cond();}catch(_){x=null;}if(!x)continue;
+    V.pending={k,x,turn:CAMP.turn};V.last=CAMP.turn;V.kind=k;campSave();setTimeout(evShow,700);return;}}
+{const _wt=worldTurn;worldTurn=function(){const r=_wt.apply(this,arguments);try{if(CAMP)evAfterTurn();}catch(err){if(typeof console!=='undefined')console.error(err);}return r;};}
+
+/* ---------- pantalla del acontecimiento ---------- */
+function evMount(){if($('hiEv')||!document.createElement)return;const d=document.createElement('div');d.id='hiEv';d.hidden=true;
+  d.innerHTML='<div class="evCard" role="dialog" aria-label="Acontecimiento"><div class="evIc" id="evIc"></div><h3 id="evT"></h3><p class="evWhy" id="evWhy"></p><div id="evOpts"></div></div>';
+  ($('app')||document.body).appendChild(d);
+  d.addEventListener('click',ev=>{const b=ev.target.closest&&ev.target.closest('[data-evo]');if(b&&!b.disabled)evPick(+b.dataset.evo);});}
+function evShow(){try{const V=evE();if(!V||!V.pending)return;if(!$('title')||$('title').hidden)return;evMount();const D=EVS[V.pending.k];if(!D){V.pending=null;return;}
+  $('evIc').textContent=D.ic;$('evT').textContent=D.t;$('evWhy').textContent=V.pending.x.why;
+  $('evOpts').innerHTML=D.opts.map((o,i)=>{const okNeed=!o.need||o.need(),okPay=evPayOk(o.c||{});const dis=!(okNeed&&okPay);
+    return '<button type="button" class="'+(i===0?'big':'ghostbtn')+' evOpt" data-evo="'+i+'"'+(dis?' disabled':'')+'><b>'+esc(o.n)+'</b><small>'+esc(o.d)+(Object.keys(o.c||{}).length?' · Cuesta '+evFmt(o.c):'')+(dis?(okNeed?' · No te alcanza':' · No disponible ahora'):'')+'</small></button>';}).join('');
+  $('hiEv').hidden=false;try{sfx('ok');}catch(_){}}catch(err){if(typeof console!=='undefined')console.error(err);}}
+function evPick(i){const V=evE();if(!V||!V.pending)return;const D=EVS[V.pending.k],o=D&&D.opts[i];if(!o)return;
+  if(o.need&&!o.need())return;if(Object.keys(o.c||{}).length){if(!evPayOk(o.c))return;payC(o.c);}
+  let res='';try{res=o.do(V.pending.x)||'';}catch(err){if(typeof console!=='undefined')console.error(err);}
+  const kind=V.pending.k,line=D.ic+' '+D.t+': '+res;V.hist=(V.hist||[]).slice(-29);V.hist.push({turn:CAMP.turn,k:kind,o:i});V.pending=null;
+  ceLog(line);campLog('war',line);try{chAdd('ev','Mes '+(CAMP.turn+1)+' · '+D.t+': '+res,{k:kind,o:i,turn:CAMP.turn});}catch(_){}
+  campSave();$('hiEv').hidden=true;toast(res,false,'gold');try{if(typeof ceRender==='function'&&typeof ceOpenF!=='undefined'&&ceOpenF)ceRender();}catch(_){}}
+/* si cerró el juego con un acontecimiento pendiente, aparece al volver al menú del imperio */
+{const _st=showTitle;showTitle=function(){const r=_st.apply(this,arguments);try{if(MODE==='mundo'&&CAMP)setTimeout(evShow,900);}catch(_){}return r;};}
+try{CH_IC.ev='🗞️';}catch(_){}
+
+/* ---------- Partida libre: objetivo de la próxima época (lo que falta de verdad) ---------- */
+function evEraGoal(){if(!G||G.quick||G.camp)return '';const e=G.era[0]||1,R=ERA_REQ[e+1];if(!R)return '';const r=G.res[0];
+  const cost=Object.keys(R.cost).map(k=>ICON[k]+' '+Math.min(Math.floor(r[k]||0),R.cost[k])+'/'+R.cost[k]).join(' ');
+  const need=(R.need||[]).filter(([t,n])=>G.ents.filter(x=>!x.dead&&x.k==='b'&&x.o===0&&x.type===t&&x.prog>=1).length<n).map(([t,n])=>(BT[t]&&BT[t].name||t));
+  return '🏛️ '+(ERAS[e+1]||'Próxima época')+': '+cost+(need.length?' · falta '+need.join(', '):' · ¡construye y avanza!');}
+{const _tp=hiTrackPaint;hiTrackPaint=function(){const r=_tp.apply(this,arguments);try{const d=$('hiTrack');if(!d||d.hidden||!G||G.quick)return r;const g=evEraGoal();if(!g)return r;
+    if(Math.floor((G.t||0)/8)%2===0){$('htTx').innerHTML=g;}}catch(_){}return r;};}
+
+/* ---------- nueva época: que se sienta como un acontecimiento ---------- */
+{const _ht=hiTick;hiTick=function(){const before=HK&&HK.era;const r=_ht.apply(this,arguments);try{if(G&&HK.live&&HK.era>before&&ERAS[HK.era])hiCelebrate('🏛️ ¡NUEVA ÉPOCA!',ERAS[HK.era]);}catch(_){}return r;};}
+(function evStart(){if(typeof document!=='undefined'&&document.createElement)evMount();})();
+
+/* ================= v68b · más acontecimientos, memoria diplomática y peso de las acciones ================= */
+
+/* memoria diplomática: cada nación recuerda lo que le hiciste (máx. 8 recuerdos), y eso mueve la relación */
+function dmAdd(k,txt,d){try{const N=CAMP.nations[k];if(!N)return;N.mem=(N.mem||[]).slice(-7);N.mem.push({t:CAMP.turn,x:txt,d:d||0});if(d)N.rel=Math.max(-100,Math.min(100,N.rel+d));}catch(_){}}
+function dmLast(k){try{const N=CAMP.nations[k];const m=N&&N.mem&&N.mem[N.mem.length-1];return m?m:null;}catch(_){return null;}}
+
+Object.assign(EVS,{
+  migracion:{t:'Llegan familias migrantes',ic:'🧳',cond(){if(Math.random()>.3)return null;const p=puAvg();if(p<62||evRun('food')<4)return null;const nb=evNear();const k=nb[(Math.random()*nb.length)|0];if(!k)return null;
+      return {why:'Tu imperio tiene fama de próspero (popularidad '+p+' %) y familias de '+nationName(k)+' piden vivir en tus tierras.',k};},
+    opts:[
+      {n:'Acogerlas',d:'Cuesta comida al inicio; luego trabajan los campos: +80 de comida al mes durante 8 meses.',c:{food:500},do(x){evE().work={n:80,left:8};dmAdd(x.k,'acogiste a su gente',6);return 'Acogiste a las familias de '+nationName(x.k)+'. Pronto trabajarán tus campos.';}},
+      {n:'Cerrar la frontera',d:'Sin costo. A sus parientes no les gustará.',c:{},do(x){dmAdd(x.k,'cerraste la frontera a su gente',-5);return 'Cerraste la frontera. '+nationName(x.k)+' lo tomó a mal.';}}]},
+  epidemia:{t:'Fiebre de los pantanos',ic:'🤒',cond(){if(Math.random()>.12)return null;const L=imMine();if(L.length<4)return null;const id=L[(Math.random()*L.length)|0];
+      return {why:'Una fiebre (enfermedad ficticia del juego) se extiende desde '+CBY[id].n+'. Con '+L.length+' países, puede llegar lejos.',id};},
+    opts:[
+      {n:'Enviar curanderos',d:'Cuesta comida y oro; el pueblo agradece el cuidado.',c:{food:500,gold:200},do(x){evPopAll(2);return 'Los curanderos contuvieron la fiebre en '+CBY[x.id].n+'.';}},
+      {n:'Cuarentena estricta',d:'Barata, pero frena el comercio y molesta.',c:{gold:120},do(x){evPopAll(-4);evE().route=null;return 'Se cerró '+CBY[x.id].n+' en cuarentena. La fiebre se frenó; el comercio sufrió.';}},
+      {n:'No hacer nada',d:'Sin costo ahora; la fiebre se cobra su precio.',c:{},do(x){evPopAll(-9);const lost=Math.round((CAMP.res.food||0)*.15);CAMP.res.food-=lost;return 'La fiebre se extendió: −9 % de popularidad y '+cnN(lost)+' de comida perdida.';}}]},
+  desastre:{t:'Inundación',ic:'🌊',cond(){if(Math.random()>.1)return null;const L=imMine().filter(id=>coastal(CBY[id]));if(!L.length)return null;const id=L[(Math.random()*L.length)|0];
+      const lost={food:Math.round((CAMP.res.food||0)*.12),wood:Math.round((CAMP.res.wood||0)*.12)};CAMP.res.food-=lost.food;CAMP.res.wood-=lost.wood;
+      return {why:'El mar se metió en '+CBY[id].n+' y arrasó almacenes: se perdieron '+cnN(lost.food)+' de comida y '+cnN(lost.wood)+' de madera.',id};},
+    opts:[
+      {n:'Reconstruir con diques',d:'Cuesta madera y piedra; el pueblo ve que su rey responde.',c:{wood:700,stone:500},do(x){evPopAll(5);return 'Se reconstruyó '+CBY[x.id].n+' con diques nuevos.';}},
+      {n:'Que se arreglen solos',d:'Sin costo. El pueblo no lo olvida.',c:{},do(x){evPopAll(-6);return 'Nadie ayudó a '+CBY[x.id].n+'. El pueblo lo recordará.';}}]},
+  noble:{t:'Un noble ambicioso',ic:'👑',cond(){const p=puAvg();if(p>=48||p<30||Math.random()>.35)return null;return {why:'Con el pueblo inquieto ('+p+' %), un noble reúne seguidores y pide poder.'};},
+    opts:[
+      {n:'Darle un cargo',d:'Cuesta oro; calma a sus seguidores.',c:{gold:450},do(){evPopAll(4);return 'El noble aceptó un cargo en la corte. Sus seguidores se calmaron.';}},
+      {n:'Desterrarlo',d:'Sin costo. Sus seguidores se enojan, pero el poder queda claro.',c:{},do(){evPopAll(-3);return 'Desterraste al noble. Hubo murmullos, pero la corona sigue firme.';}}]}});
+EV_ORDER.splice(2,0,'noble');EV_ORDER.push('migracion','epidemia','desastre');
+
+/* consecuencias que duran: trabajadores migrantes */
+{const _at=evAfterTurn;evAfterTurn=function(){const V=evE();if(V&&V.work){resAdd('food',V.work.n,true);V.work.left--;if(V.work.left<=0){ceLog('🧳 Las familias migrantes ya son parte de tu pueblo.');V.work=null;}}return _at.apply(this,arguments);};}
+
+/* recuerdos que nacen de tus decisiones en otros acontecimientos */
+{const _pk=evPick;evPick=function(i){const V=evE(),P=V&&V.pending;const r=_pk.apply(this,arguments);try{if(P){
+    if(P.k==='alianza'&&P.x.k)dmAdd(P.x.k,i===0?'firmaron una alianza contigo':'rechazaste su alianza',0);
+    if(P.k==='sequia'&&i===2){const k=evNear().find(k=>CAMP.nations[k].pact==='paz'||CAMP.nations[k].pact==='alianza');if(k)dmAdd(k,'les compraste comida en la sequía',0);}
+    if(P.k==='mercaderes'&&i===1)for(const k of evNear())dmAdd(k,'cobraste peaje a las caravanas',0);}}catch(_){}return r;};}
+/* recuerdos de guerra: invadir, conquistar o ser rechazado */
+{const _ce=campaignEnd;campaignEnd=function(win){let def=null,defend=false,id=null;try{def=G&&G.camp?G.camp.def:null;defend=!!(G&&G.camp&&G.camp.defend);id=G&&G.camp?G.camp.target:null;}catch(_){}
+  const r=_ce.apply(this,arguments);try{if(def&&CAMP&&CAMP.nations[def]&&id){const n=(CBY[id]||{}).n||id;
+    if(defend)dmAdd(def,win?'los rechazaste cuando invadieron '+n:'les cediste '+n+' en una guerra',win?-4:0);
+    else dmAdd(def,win?'les quitaste '+n:'los atacaste en '+n,win?-15:-8);}
+  if(id&&defend&&!win)hiSad('🔥 PERDISTE '+((CBY[id]||{}).n||'UN PAÍS').toUpperCase(),'Tu imperio se achica. Refuerza la guarnición o busca aliados.');}catch(_){}return r;};}
+/* la tarjeta del país muestra lo que esa nación recuerda de ti */
+{const _pv=hiPeek;hiPeek=function(){const r=_pv.apply(this,arguments);try{const d=$('hiPeek');if(!d||d.hidden||!CAMP)return r;const ow=ownerOf(selCountry);const m=ow&&ow!=='P'?dmLast(ow):null;
+    let el=$('pkMem');if(!el){el=document.createElement('p');el.id='pkMem';el.className='pkMem';const sub=$('pkSub');if(sub&&sub.parentNode)sub.parentNode.insertBefore(el,sub.nextSibling);}
+    el.hidden=!m;if(m)el.textContent='🧠 '+nationName(ow)+' recuerda que '+m.x+' (mes '+(m.t+1)+').';}catch(_){}return r;};}
+
+/* que construir se sienta y que perder pese */
+function hiSad(big,small){try{const d=document.createElement('div');d.className='hiCele sad';d.innerHTML='<b>'+big+'</b><span>'+small+'</span>';document.body.appendChild(d);setTimeout(()=>d.remove(),3200);try{sfx('bad');}catch(_){}}catch(_){}}
+{const _ht2=hiTick;hiTick=function(){const r=_ht2.apply(this,arguments);try{if(G&&HK.live){for(const e of G.ents){if(e.k!=='b'||e.o!==0||e.dead||e._hd)continue;if((e.prog||0)>=1){e._hd=1;if(G.t>5&&BT[e.type]){hiFloat('🏗️ ¡'+BT[e.type].name+' terminada!');try{sfx('ok');}catch(_){}}}}}}catch(_){}return r;};}
+
+/* ================= v68 · Que la gente aprenda jugando =================
+   1) Primeros pasos de cada modo: la primera vez que eliges Conquistar el mundo o Historia (y al abrir En línea),
+      una tarjeta corta con 3-4 pasos concretos. Se puede volver a ver desde Misiones («❓ Cómo se juega»).
+   2) Ayuda de cada panel: la primera vez que abres la Tienda, el Consejo de guerra, los Ministros, En línea, las Misiones
+      o un Acontecimiento, una burbuja de una línea dice para qué sirve. No se repite.
+   3) Consejero atento: si en la partida pasan 90 s sin que toques nada, te sugiere el siguiente paso real
+      (aldeanos sin trabajo, soldados antes del ataque, lo que falta para la próxima época).
+   4) Métricas del aprendizaje (anónimas): paso del tutorial alcanzado, primera victoria, modos usados,
+      acontecimientos decididos y ayudas mostradas. Se guardan con las demás métricas del día. */
+
+/* ---------- métricas del aprendizaje ---------- */
+try{for(const f of ['tu','fw','ml','mm','mh','mq','mn','ev','ah'])if(!MET_FIELDS.includes(f))MET_FIELDS.push(f);}catch(_){}
+function metMax(f,v){try{const t=metToday();if((t[f]||0)<v){t[f]=v;metDirty=true;}}catch(_){}}
+{const _tg=tutGo;tutGo=function(i){const r=_tg.apply(this,arguments);try{metMax('tu',(+i||0)+1);}catch(_){}return r;};}
+{const _tf=tutFinish;tutFinish=function(){const r=_tf.apply(this,arguments);try{metMax('tu',99);}catch(_){}return r;};}
+{const _ng=newGame;newGame=function(){const r=_ng.apply(this,arguments);try{metAdd(G.quick?'mq':G.camp?'mm':G.story?'mh':'ml');}catch(_){}return r;};}
+{const _eg=endGame;endGame=function(win){const was=G&&G.over;const r=_eg.apply(this,arguments);try{if(G&&G.over==='win'&&!was&&!lsGet('hi_fw')){lsSet('hi_fw','1');metMax('fw',1);}}catch(_){}return r;};}
+{const _ep=evPick;evPick=function(){const had=!!(evE()&&evE().pending);const r=_ep.apply(this,arguments);try{if(had&&!evE().pending)metAdd('ev');}catch(_){}return r;};}
+
+/* ---------- burbuja de ayuda ---------- */
+function hpTip(html,ms){try{let d=$('hiTip');if(!d){d=document.createElement('div');d.id='hiTip';d.setAttribute('role','status');document.body.appendChild(d);
+    d.addEventListener('click',()=>{d.hidden=true;});}
+  d.innerHTML='<span>'+html+'</span><b aria-hidden="true">×</b>';d.hidden=false;d.classList.remove('in');void d.offsetWidth;d.classList.add('in');
+  clearTimeout(hpTip.t);hpTip.t=setTimeout(()=>{d.hidden=true;},ms||7500);}catch(_){}}
+const HP_PANELS={
+  shop:'💡 <b>Tienda</b>: el Ámbar se gana jugando (misiones, cofres y videos). Aquí lo cambias por recursos y mejoras.',
+  council:'💡 <b>Consejo de guerra</b>: tus generales te dicen tus probabilidades antes de invadir. Escúchalos.',
+  cnBody:'💡 <b>Ministros</b>: actívales permisos y manejan el imperio solos. Hacienda cuida el oro; Guerra, el ejército.',
+  online:'💡 <b>En línea</b>: entra con tu correo, elige un mundo y saquea a otros jugadores. Nadie pierde su país.',
+  hiMis:'💡 <b>Misiones del día</b>: cumple las 3 y abre el cofre. Mañana salen otras.',
+  hiEv:'💡 <b>Acontecimiento</b>: piensa bien; muchas decisiones tienen consecuencias que duran meses.',
+  hiChron:'💡 <b>Crónica</b>: aquí queda la historia real de tu pueblo. Compártela con tus amigos.'};
+function hpVis(e){return !!(e&&!e.hidden&&e.getClientRects().length&&getComputedStyle(e).visibility!=='hidden'&&getComputedStyle(e).display!=='none');}
+function hpSeen(k){return !!lsGet('hi_tip_'+k);}
+function hpMark(k){lsSet('hi_tip_'+k,'1');}
+function hpPanels(){for(const id in HP_PANELS){if(hpSeen(id))continue;const e=$(id);if(hpVis(e)){
+    hpMark(id);if(id==='online'&&!hpSeen('intro_online')){hpIntro('online');}else hpTip(HP_PANELS[id]);metAdd('ah');return;}}}
+
+/* ---------- primeros pasos de cada modo ---------- */
+const HP_INTRO={
+  mundo:{t:'🌍 Conquistar el mundo',s:['Gira el globo y toca un país vecino al tuyo.','En la tarjeta que sube, toca <b>Invadir</b> y gana la batalla.','El tiempo corre solo: cada mes cobras impuestos y el mundo se mueve (también al terminar cada batalla).','Abre el <b>Consejo</b>, contrata ministros y dales permisos: manejan el imperio por ti.']},
+  historia:{t:'📜 Modo Historia',s:['Cada capítulo cuenta una parte de la historia de tu país.','Al empezar, cada capítulo te dice su objetivo: cúmplelo para avanzar.','Si te atascas, el chamán te da pistas: toca su burbuja.']},
+  online:{t:'🌐 Mundo en línea',s:['Entra con tu correo: tu imperio queda guardado en la nube.','Elige un mundo de la lista (puedes mirarlo antes de entrar).','Recluta tropas y sube tus murallas.','Saquea a otros jugadores. Si te saquean, tienes 12 h para vengarte.']}};
+function hpIntro(m,force){const I=HP_INTRO[m];if(!I)return;if(!force&&hpSeen('intro_'+m))return;hpMark('intro_'+m);
+  let d=$('hiIntro');if(!d){d=document.createElement('div');d.id='hiIntro';d.innerHTML='<div class="inCard" role="dialog" aria-label="Primeros pasos"><h3 id="inT"></h3><ol id="inS"></ol><button class="big" type="button" id="inGo">¡Vamos!</button><small>Puedes volver a verlo en 🎯 Misiones ▸ ❓ Cómo se juega</small></div>';
+    ($('app')||document.body).appendChild(d);d.addEventListener('click',ev=>{if(ev.target===d||ev.target.id==='inGo')d.hidden=true;});}
+  $('inT').textContent=I.t;$('inS').innerHTML=I.s.map(x=>'<li>'+x+'</li>').join('');d.hidden=false;metAdd('ah');}
+{const _sm=setMode;setMode=function(m){const r=_sm.apply(this,arguments);try{if($('title')&&!$('title').hidden&&HP_INTRO[m])setTimeout(()=>hpIntro(m),350);}catch(_){}return r;};}
+/* volver a ver todo */
+{const _mp=misPaint;misPaint=function(){const r=_mp.apply(this,arguments);try{const F=$('msFoot');if(F&&!F.querySelector('.hpAgain')){const b=document.createElement('button');b.type='button';b.className='ghostbtn hpAgain';b.textContent='❓ Cómo se juega';
+      b.addEventListener('click',()=>{try{for(const k of Object.keys(localStorage))if(k.indexOf('hi_tip_')===0)localStorage.removeItem(k);}catch(_){}const m=$('hiMis');if(m)m.hidden=true;
+        if(HP_INTRO[MODE])hpIntro(MODE,true);else if(typeof tutOffer==='function')tutOffer(true);});F.appendChild(b);}}catch(_){}return r;};}
+
+/* ---------- consejero atento en la partida ---------- */
+const HP={last:Date.now(),hint:0};
+['pointerdown','keydown','wheel','touchstart'].forEach(ev=>{try{document.addEventListener(ev,()=>{HP.last=Date.now();},{passive:true,capture:true});}catch(_){}});
+function hpHint(){if(!G||G.over)return '';
+  const mine=G.ents.filter(e=>!e.dead&&e.k==='u'&&e.o===0);const idle=mine.filter(u=>!(UT[u.type]&&UT[u.type].mil)&&u.st==='idle').length;
+  const mil=mine.filter(u=>UT[u.type]&&UT[u.type].mil).length;
+  if(idle>=2)return '😴 Tienes <b>'+idle+' aldeanos sin trabajo</b>: tócalos y luego un árbol, un arbusto o una piedra.';
+  if(!G.quick&&!G.camp&&mil<3&&G.t>D2().first*0.6)return '⚔️ Los rivales llegarán pronto: <b>entrena soldados</b> tocando tu centro.';
+  if(G.quick&&mil>0)return '⚔️ Toca <b>¡Al ataque!</b> arriba y tu ejército irá por la aldea rival.';
+  const g=typeof evEraGoal==='function'?evEraGoal():'';return g?'🧭 Siguiente meta · '+g:'';}
+function hpIdle(){try{if(!G||!running||G.over||!$('title')||!$('title').hidden)return;if(typeof TUT!=='undefined'&&TUT&&TUT.on)return;
+  const now=Date.now();if(now-HP.last<90000||now-HP.hint<90000)return;const h=hpHint();if(!h)return;HP.hint=now;hpTip(h,9000);metAdd('ah');}catch(_){}}
+setInterval(()=>{hpPanels();hpIdle();},1000);
+/* cuántas veces se abre En línea (para el embudo) */
+{let onPrev=false;setInterval(()=>{try{const e=$('online');const vis=hpVis(e);if(vis&&!onPrev)metAdd('mn');onPrev=vis;}catch(_){}},1000);}
+
 {const bf=document.getElementById('bFleet');if(bf&&bf.querySelector){const s=bf.querySelector('[data-icon]');if(s)s.innerHTML=ICON.galera||ICON.trans||'';}}
-window.__HI={get QUAL(){return QUAL;},hiTickNow:()=>hiTick(),get clApply(){return clApply;},rk,rkLevel,rkXp,misRoll,misBump,misClaim,misBonus,misReady,misOpen,hiQuick,hiCharge,hiTrackPaint,hiEnemyBase,hiHostOk,hiSig,hiH,get HI_LOCKED(){return HI_LOCKED;},get RKraw(){return RK;},set RKraw(v){RK=v;},ownerOf,countOf,cwTargets,pactOf,trCfg,hacTrade,warE,warRank,genLv,warWin,warAtkMul,warDefMul,overseas,navyCost,navyBonus,advE,advTips,advSay,advRumors,feastNow,feastCost,get cwEval(){return cwEval;},get cwLaunch(){return cwLaunch;},get answerOffer(){return answerOffer;},get doTrade(){return doTrade;},get garDef(){return garDef;},imCe:(a,x)=>imCe(a,x),get selectCountry(){return selectCountry;},hacBalance,hacAutoTax,warFit,stoBring,balTargets,hacE,permOn,stoOn,get funds(){return funds;},get cnRender(){return cnRender;},openCouncil2:()=>openCouncil(),econ,econHacHTML,econWarHTML,econDipHTML,goldBase,get ceCost(){return ceCost;},bombCost,imUpk,cnSk,imAsgTotal,newCampaign,addB,showTitle,get MKQ2(){return MKQ;},get SHQ(){return SHQ;},get MKQ(){return MKQ;},shqPrice,mkTotal,shopAct,refreshTray,giveRes,resAmt,get CAMP(){return CAMP;},TUT,tutStart,tutOffer,tutNeeded,tutTick,v60Sync,dockTarget,orderAt,setSel,selectBuilding,startPlacing,confirmPlace,doAct,get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},get cam(){return cam;},OWN,isOwner,ownCheck,ownOpen,ownAct,giftsClaim,testerGift,webNoPay,ownInfTick,get ON(){return ON;},sepPass,get landOk(){return landOk;},resCap,resAdd,funds,hacFund,stoTotal,gdMaxAfford,get canAffordC(){return canAffordC;},get payC(){return payC;},get ceCap(){return ceCap;},SV,svLoad,get ON(){return ON;},get onAct(){return onAct;},get renderOnlineHTML(){return renderOnlineHTML;},gdProv,gdRest,invChance,get popC(){return popC;},get cePow(){return cePow;},get ceTgtDef(){return ceTgtDef;},get popCap(){return popCap;},shOn,shLeft,shGive,shBuy,shCan,shDealToday,shDealOff,shW,get hit(){return hit;},openShopTab,popC,popWorld,popEmpire,popHurt,puOf,puAvg,puTarget,popTurn,popBomb,bombNow,repCost,popE,gwTick,gwWave,gwStrike,gwPlayerBomb,get imTrib(){return imTrib;},imOpen,imClose,imRender,imE,imMine,imProd,imTrib,imSto,imAsg,imStr,imTurn,cwEval,cwTargets,cwLaunch,cwDeclare,imCouncilOk,imCanRecruit,imRecruitDefend,ceSt,ceDefend,ceConquer,ceAskDefense,ceAskConquer,ceRecruit,ceOpen,ceTurn,get CAMP(){return CAMP;},worldTurn:()=>worldTurn(),campaignEnd:(w,h)=>campaignEnd(w,h),startBattle:(a,b)=>startBattle(a,b),renderCampBar:()=>renderCampBar(),cnTick,cnRecruit,openCouncil,closeCouncil,cnCfg,cnSt,cnHired,dipAnswer,announce,declareWar,setSt:(a,b,v)=>setSt(a,b,v),autoDefend,garChance,garDef,garReinforce,templeLv,templeEraMul,blessNow,blessOn,gardenGather,leaderLabel,leaderTick,lTitle,rushVid,rushLeft,rushMul,musicTick,AUD,faunaEra,STORY,storyTick,atk,buildPort,canExpedite,sendExpedition,expLeft,expLand,expBuy,expDraw,worldPulse,chapters,storyStart,goalProg,stGet,renderStoryCard,setMode:m=>setMode(m),get MODE(){return MODE;},contOf,hasPort,DEV_TIER,setLevel,setQuality,wallet,amber,addAmber,grant,accel,accCost,canAccel,claimDaily,dailyState,freeVideo,buyRes,vidRes,buyEraPack,shopEra,pickBanner,openShop,closeShop,adClose,mon,eraPack,resAmt,BANNERS,get TEAM(){return TEAM;},shopEnd,retryBonus,CBY,COUNTRIES,newGame,endGame,selectCountry,doTrade,proposePact,breakPact,answerOffer,resistOf,incomeOf,tradeQuote,campaignEnd,doAct,get selR(){return selR;},UTT:UT,BTT:BT,get AUD(){return typeof AUD!=="undefined"?AUD:null;},step,get G(){return G;},trainAt,startPlacing,confirmPlace,tap,setSel,orderAt,render,renderMini,refreshTray,drawPortrait,cam,setRunning(v){running=v;},setDiff(k){DK=k;},setNP(n){NP=n;},FAUNA,addB,addU,addAnimal,centerOn,updFog,eraCheck,get PROF(){return PROF;},get USE3D(){return USE3D;},pickScreen,screenToWorld,proj3,get R3(){return R3;},get POST(){return POST;},get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},zoomAt,clampCam,get terrain(){return terrain;},get BASES(){return BASES;},get FORDS(){return FORDS;},get RIVERS(){return RIVERS;},findPath,seaD,setBridge,waterNear:(x,y,r)=>waterNear(x,y,r),riverAt:(x,y)=>riverAt(x,y),guideSay,guideFor,kill,newCampaign,startBattle,reachable,worldTurn,get CAMP(){return CAMP;},countOf,saveGame,loadGame,savedInfo,continueGame,selectBuilding,teamBlock:t=>teamBlock(t),get BLOCKERS(){return BLOCKERS;},get BLOCKV(){return BLOCKV;},lineClear,get PBUDGET(){return PBUDGET;},render3D:dt=>render3D(dt),renderOverlay:dt=>renderOverlay(dt),resize,freeze(v){frozen=v;},get acc(){return acc;},mountainAt:(x,y)=>mountainAt(x,y),heightAt:(x,y)=>heightAt(x,y),reveal(){explored.fill(1);visible.fill(1);G.revealAll=true;updFog();}};
+window.__HI={get QUAL(){return QUAL;},hpTip,hpIntro,hpHint,hpIdle,HP,metToday,dmAdd,dmLast,hiSad,evE,evShow,evPick,evAfterTurn,evEraGoal,EVS,chList,chAdd,chOpen,chText,chStats,thToggle,thOn,get CHraw(){return CH;},set CHraw(v){CH=v;},hiTickNow:()=>hiTick(),get clApply(){return clApply;},rk,rkLevel,rkXp,misRoll,misBump,misClaim,misBonus,misReady,misOpen,hiQuick,hiCharge,hiTrackPaint,hiEnemyBase,hiHostOk,hiSig,hiH,get HI_LOCKED(){return HI_LOCKED;},get RKraw(){return RK;},set RKraw(v){RK=v;},ownerOf,countOf,cwTargets,pactOf,trCfg,hacTrade,warE,warRank,genLv,warWin,warAtkMul,warDefMul,overseas,navyCost,navyBonus,advE,advTips,advSay,advRumors,feastNow,feastCost,get cwEval(){return cwEval;},get cwLaunch(){return cwLaunch;},get answerOffer(){return answerOffer;},get doTrade(){return doTrade;},get garDef(){return garDef;},imCe:(a,x)=>imCe(a,x),get selectCountry(){return selectCountry;},hacBalance,hacAutoTax,warFit,stoBring,balTargets,hacE,permOn,stoOn,get funds(){return funds;},get cnRender(){return cnRender;},openCouncil2:()=>openCouncil(),econ,econHacHTML,econWarHTML,econDipHTML,goldBase,get ceCost(){return ceCost;},bombCost,imUpk,cnSk,imAsgTotal,newCampaign,addB,showTitle,get MKQ2(){return MKQ;},get SHQ(){return SHQ;},get MKQ(){return MKQ;},shqPrice,mkTotal,shopAct,refreshTray,giveRes,resAmt,get CAMP(){return CAMP;},TUT,tutStart,tutOffer,tutNeeded,tutTick,v60Sync,dockTarget,orderAt,setSel,selectBuilding,startPlacing,confirmPlace,doAct,get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},get cam(){return cam;},OWN,isOwner,ownCheck,ownOpen,ownAct,giftsClaim,testerGift,webNoPay,ownInfTick,get ON(){return ON;},sepPass,get landOk(){return landOk;},resCap,resAdd,funds,hacFund,stoTotal,gdMaxAfford,get canAffordC(){return canAffordC;},get payC(){return payC;},get ceCap(){return ceCap;},SV,svLoad,get ON(){return ON;},get onAct(){return onAct;},get renderOnlineHTML(){return renderOnlineHTML;},gdProv,gdRest,invChance,get popC(){return popC;},get cePow(){return cePow;},get ceTgtDef(){return ceTgtDef;},get popCap(){return popCap;},shOn,shLeft,shGive,shBuy,shCan,shDealToday,shDealOff,shW,get hit(){return hit;},openShopTab,popC,popWorld,popEmpire,popHurt,puOf,puAvg,puTarget,popTurn,popBomb,bombNow,repCost,popE,gwTick,gwWave,gwStrike,gwPlayerBomb,get imTrib(){return imTrib;},imOpen,imClose,imRender,imE,imMine,imProd,imTrib,imSto,imAsg,imStr,imTurn,cwEval,cwTargets,cwLaunch,cwDeclare,imCouncilOk,imCanRecruit,imRecruitDefend,ceSt,ceDefend,ceConquer,ceAskDefense,ceAskConquer,ceRecruit,ceOpen,ceTurn,get CAMP(){return CAMP;},worldTurn:()=>worldTurn(),campaignEnd:(w,h)=>campaignEnd(w,h),startBattle:(a,b)=>startBattle(a,b),renderCampBar:()=>renderCampBar(),cnTick,cnRecruit,openCouncil,closeCouncil,cnCfg,cnSt,cnHired,dipAnswer,announce,declareWar,setSt:(a,b,v)=>setSt(a,b,v),autoDefend,garChance,garDef,garReinforce,templeLv,templeEraMul,blessNow,blessOn,gardenGather,leaderLabel,leaderTick,lTitle,rushVid,rushLeft,rushMul,musicTick,AUD,faunaEra,STORY,storyTick,atk,buildPort,canExpedite,sendExpedition,expLeft,expLand,expBuy,expDraw,worldPulse,chapters,storyStart,goalProg,stGet,renderStoryCard,setMode:m=>setMode(m),get MODE(){return MODE;},contOf,hasPort,DEV_TIER,setLevel,setQuality,wallet,amber,addAmber,grant,accel,accCost,canAccel,claimDaily,dailyState,freeVideo,buyRes,vidRes,buyEraPack,shopEra,pickBanner,openShop,closeShop,adClose,mon,eraPack,resAmt,BANNERS,get TEAM(){return TEAM;},shopEnd,retryBonus,CBY,COUNTRIES,newGame,endGame,selectCountry,doTrade,proposePact,breakPact,answerOffer,resistOf,incomeOf,tradeQuote,campaignEnd,doAct,get selR(){return selR;},UTT:UT,BTT:BT,get AUD(){return typeof AUD!=="undefined"?AUD:null;},step,get G(){return G;},trainAt,startPlacing,confirmPlace,tap,setSel,orderAt,render,renderMini,refreshTray,drawPortrait,cam,setRunning(v){running=v;},setDiff(k){DK=k;},setNP(n){NP=n;},FAUNA,addB,addU,addAnimal,centerOn,updFog,eraCheck,get PROF(){return PROF;},get USE3D(){return USE3D;},pickScreen,screenToWorld,proj3,get R3(){return R3;},get POST(){return POST;},get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},zoomAt,clampCam,get terrain(){return terrain;},get BASES(){return BASES;},get FORDS(){return FORDS;},get RIVERS(){return RIVERS;},findPath,seaD,setBridge,waterNear:(x,y,r)=>waterNear(x,y,r),riverAt:(x,y)=>riverAt(x,y),guideSay,guideFor,kill,newCampaign,startBattle,reachable,worldTurn,get CAMP(){return CAMP;},countOf,saveGame,loadGame,savedInfo,continueGame,selectBuilding,teamBlock:t=>teamBlock(t),get BLOCKERS(){return BLOCKERS;},get BLOCKV(){return BLOCKV;},lineClear,get PBUDGET(){return PBUDGET;},render3D:dt=>render3D(dt),renderOverlay:dt=>renderOverlay(dt),resize,freeze(v){frozen=v;},get acc(){return acc;},mountainAt:(x,y)=>mountainAt(x,y),heightAt:(x,y)=>heightAt(x,y),reveal(){explored.fill(1);visible.fill(1);G.revealAll=true;updFog();}};
 })();
 
 </script>

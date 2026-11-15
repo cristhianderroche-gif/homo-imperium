@@ -187,4 +187,20 @@ $('me').addEventListener('change',()=>{if($('key').value.trim())load();});
 $('out').addEventListener('click',()=>{lsS('hi_panel_key',null);$('key').value='';$('out').hidden=true;$('out1').hidden=true;});
 {const k=lsG('hi_panel_key');if(k){$('key').value=k;load();}}
 </script>
+<script>
+/* v68 · embudo de aprendizaje: ¿la gente aprende a jugar? */
+(function(){const _r=render;render=function(d){_r(d);funnel();};
+async function funnel(){let box=document.getElementById('fun');if(!box){box=document.createElement('div');box.className='card';box.id='fun';document.getElementById('out1').appendChild(box);}
+  box.innerHTML='<h2>¿Aprenden a jugar?</h2><p class="sub">Cargando…</p>';
+  let d;try{const r=await fetch(SB_URL+'/rest/v1/rpc/hi_funnel',{method:'POST',headers:{'apikey':SB_KEY,'Content-Type':'application/json'},body:JSON.stringify({p_key:document.getElementById('key').value.trim(),p_incl_me:document.getElementById('me').checked})});d=await r.json();if(!r.ok)throw 0;}
+  catch(_){box.innerHTML='<h2>¿Aprenden a jugar?</h2><p class="sub">Falta pegar en Supabase el archivo Homo_Imperium_aprendizaje_v68.sql.</p>';return;}
+  const T=d.telefonos||0,pc=n=>T?Math.round(n*100/T)+' %':'—',row=(t,n)=>'<div style="display:flex;justify-content:space-between;gap:10px;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.08)"><span>'+t+'</span><b>'+n+' <small style="opacity:.6">('+pc(n)+')</small></b></div>';
+  const M=d.modos||{},Tu=d.tutorial||{};
+  box.innerHTML='<h2>¿Aprenden a jugar?</h2><p class="sub">'+T+' teléfonos con datos de aprendizaje</p>'+
+    row('Empezaron el tutorial',Tu.empezaron||0)+row('Llegaron a la mitad del tutorial',Tu.mitad||0)+row('Terminaron el tutorial',Tu.terminaron||0)+
+    row('Ganaron su primera batalla',d.primera_victoria||0)+row('Jugaron 2 partidas o más',d.repiten||0)+
+    row('Probaron ⚔️ Batalla ya',M.batalla_ya||0)+row('Probaron Partida libre',M.libre||0)+row('Probaron Conquistar el mundo',M.mundo||0)+row('Probaron Historia',M.historia||0)+row('Abrieron En línea',M.en_linea||0)+
+    '<p class="sub" style="margin-top:10px">Acontecimientos decididos: '+(d.acontecimientos||0)+' · Ayudas mostradas: '+(d.ayudas||0)+'</p>'+
+    '<p class="sub">Dónde hay una caída grande entre dos filas, ahí se está atascando la gente.</p>';}})();
+</script>
 </body></html>
