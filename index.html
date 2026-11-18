@@ -1276,6 +1276,32 @@ body.th22 #hiTip b{color:#9BEBFA}
 body.th22 #hiIntro .inCard{background:linear-gradient(170deg,rgba(13,27,42,.98),rgba(5,9,18,.98));border-color:rgba(67,217,245,.4)}
 body.th22 #hiIntro h3{color:#F4D58A}
 
+
+/* ===== v69 · mundo vivo, paquetes y campo protagonista ===== */
+.mvQuick{margin:6px 0 10px}.mvQuick .mvGo{font-size:1.15em;padding:14px 10px;box-shadow:0 0 0 2px rgba(255,200,90,.35),0 8px 24px rgba(255,150,40,.25)}
+.mvHead{font-size:13px;opacity:.9;margin:6px 2px 8px}.mvHead .linkbtn{padding:0;font-size:inherit}
+.mvC .sct{min-width:0}.mvBtns{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}.mvBtns button{flex:1 1 auto;min-width:96px}
+.mvSay{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px;width:100%}.mvSay .ochip{font-size:12px}
+.mvConq{width:100%;margin-top:5px}
+.mvFeed{display:flex;justify-content:space-between;gap:8px;margin:0;padding:7px 4px;border-bottom:1px solid rgba(255,255,255,.07);font-size:13px}.mvFeed small{opacity:.6;white-space:nowrap}
+.mvDot{display:inline-block;min-width:16px;padding:0 4px;border-radius:9px;background:#e5484d;color:#fff;font-style:normal;font-size:11px;line-height:16px;margin-left:3px}
+.rpPack .sct span .i{width:15px;height:15px;vertical-align:-3px}.rpBank .scb{display:flex;gap:6px;flex-wrap:wrap}.rpH{margin-top:14px}
+#hiFightChip{position:absolute;top:52px;left:50%;transform:translateX(-50%);z-index:30;border:0;border-radius:999px;padding:8px 16px;background:linear-gradient(180deg,#e5484d,#a5262a);color:#fff;font:600 14px/1 'Barlow Condensed',system-ui,sans-serif;letter-spacing:.3px;box-shadow:0 6px 18px rgba(165,38,42,.5);animation:fgPulse 1s ease-in-out infinite}
+#hiFightChip span{background:rgba(255,255,255,.2);border-radius:999px;padding:3px 8px;margin-left:6px}
+@keyframes fgPulse{50%{box-shadow:0 6px 26px rgba(229,72,77,.85)}}
+/* la batalla manda: menos interfaz encima del campo */
+#app #side{gap:6px}#app #side>button{opacity:.72;transition:opacity .2s,transform .2s}#app #side>button:active,#app #side>button:focus-visible{opacity:1}
+#app #zoom button{opacity:.72}
+@media (max-width:560px){#app #side>button{width:38px;height:38px}#app #zoom #rotL,#app #zoom #rotR{display:none}#app #miniWrap{width:76px;height:76px;opacity:.85}}
+#app.hiFight #side>button,#app.hiFight #zoom,#app.hiFight #miniWrap{opacity:.35}
+#app.hiFight::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:5;box-shadow:inset 0 0 90px rgba(200,30,30,.28);animation:fgPulse 1.4s ease-in-out infinite}
+#app.hiFight #guide{opacity:0!important;pointer-events:none}
+#app #guide #guideBub{font-size:12.5px;line-height:1.3}
+#app #guide #guideAv{width:40px;height:40px}
+#onBody .sc.mvC{flex-wrap:wrap;align-items:stretch}#onBody .sc.mvC>.sct{flex:1 1 100%;min-width:0}
+#onBody .sc.mvC>.mvBtns,#onBody .sc.mvC>.mvSay,#onBody .sc.mvC>.mvConq{flex:1 1 100%}
+#onBody .sc.mvC>.big{flex:0 0 auto;align-self:center}
+.mvQuick .mvGo{width:100%;display:block}
 </style>
 
 <div id="app" class="menu">
@@ -1392,6 +1418,7 @@ body.th22 #hiIntro h3{color:#F4D58A}
           <h4>Lo que usa el juego</h4>
           <ul>
             <li><b>Three.js</b> (gráficos 3D) · Licencia MIT · © 2010-2021 Three.js Authors. El texto completo de esta licencia va incluido dentro del juego.</li>
+            <li><b>Suavizado de bordes FXAA 3.11</b> · © 2014-2015 NVIDIA Corporation · licencia BSD; adaptación a WebGL incluida en los ejemplos de Three.js (licencia MIT). El texto completo de esta licencia va incluido dentro del juego.</li>
             <li><b>Fuentes Bowlby One SC</b> (© 2011 Vernon Adams) <b>y Barlow Condensed</b> (© 2017 The Barlow Project Authors) · SIL Open Font License 1.1. Van incluidas dentro del juego con el texto de su licencia.</li>
             <li><b>Mapas del mundo, fronteras, ríos, lagos y cordilleras:</b> Natural Earth (naturalearthdata.com), de dominio público.</li>
             <li><b>Modelos 3D, animales, edificios, íconos, música y sonidos:</b> creados por código propio del juego.</li>
@@ -1749,6 +1776,37 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
+
+
+-----------------------------------------------------------
+FXAA 3.11 (suavizado de bordes) · usado en Homo Imperium v70
+Adaptación a WebGL de Agost Biro, incluida en los ejemplos de Three.js r128 (licencia MIT, © 2010-2021 three.js authors).
+
+Copyright (c) 2014-2015, NVIDIA CORPORATION. All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+ * Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ * Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+ * Neither the name of NVIDIA CORPORATION nor the names of its
+   contributors may be used to endorse or promote products derived
+   from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS ``AS IS'' AND ANY
+EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,
+EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY
+OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 </script>
 <script>
 /**
@@ -5219,7 +5277,7 @@ function devTier(){
 const DEV_TIER=USE3D?devTier():0;
 function init3D(){
   if(!USE3D)return;
-  const renderer=new THREE.WebGLRenderer({canvas:glc,antialias:DEV_TIER<=1&&QSET!=='baja'&&QSET!=='media',powerPreference:'high-performance'});
+  const renderer=new THREE.WebGLRenderer({canvas:glc,antialias:DEV_TIER<=3&&QSET!=='baja',powerPreference:'high-performance'});
   renderer.setPixelRatio(DPR);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.0;
   const scene=new THREE.Scene();
@@ -8119,7 +8177,7 @@ function frameBody(now){
 function boot(){init3D();resize();applyQuality();showTitle();requestAnimationFrame(frame);}
 boot();
 /* ---------- opiniones de quienes prueban el juego: llegan por WhatsApp al creador ---------- */
-const FB_TO='573044272520',FB_VER='v68';let fbCat='Error',fbFrom=null;
+const FB_TO='573044272520',FB_VER='v70';let fbCat='Error',fbFrom=null;
 function fbContext(){const d=(()=>{const u=navigator.userAgent||'';return /iPhone|iPad/.test(u)?'iPhone/iPad':/Android/.test(u)?'Android':/Mac/.test(u)?'Mac':/Windows/.test(u)?'Windows':'otro';})();
   const g=G&&!$('title').hidden?null:G;const where=g&&PROF?PROF.c.n+' · era '+ROMAN[g.era[0]]+' · '+fmtT(g.t)+(g.camp?' · conquista':''):'menú de inicio';
   return 'Versión '+FB_VER+' · '+d+' '+innerWidth+'×'+innerHeight+' · '+where+(typeof QSET!=='undefined'?' · calidad '+QSET+' nivel '+QUAL.lvl+(QUAL.fps?' · '+QUAL.fps+' fps':'')+(GPU_NAME?' · '+GPU_NAME:''):'');}
@@ -10429,7 +10487,954 @@ setInterval(()=>{hpPanels();hpIdle();},1000);
 {let onPrev=false;setInterval(()=>{try{const e=$('online');const vis=hpVis(e);if(vis&&!onPrev)metAdd('mn');onPrev=vis;}catch(_){}},1000);}
 
 {const bf=document.getElementById('bFleet');if(bf&&bf.querySelector){const s=bf.querySelector('[data-icon]');if(s)s.innerHTML=ICON.galera||ICON.trans||'';}}
-window.__HI={get QUAL(){return QUAL;},hpTip,hpIntro,hpHint,hpIdle,HP,metToday,dmAdd,dmLast,hiSad,evE,evShow,evPick,evAfterTurn,evEraGoal,EVS,chList,chAdd,chOpen,chText,chStats,thToggle,thOn,get CHraw(){return CH;},set CHraw(v){CH=v;},hiTickNow:()=>hiTick(),get clApply(){return clApply;},rk,rkLevel,rkXp,misRoll,misBump,misClaim,misBonus,misReady,misOpen,hiQuick,hiCharge,hiTrackPaint,hiEnemyBase,hiHostOk,hiSig,hiH,get HI_LOCKED(){return HI_LOCKED;},get RKraw(){return RK;},set RKraw(v){RK=v;},ownerOf,countOf,cwTargets,pactOf,trCfg,hacTrade,warE,warRank,genLv,warWin,warAtkMul,warDefMul,overseas,navyCost,navyBonus,advE,advTips,advSay,advRumors,feastNow,feastCost,get cwEval(){return cwEval;},get cwLaunch(){return cwLaunch;},get answerOffer(){return answerOffer;},get doTrade(){return doTrade;},get garDef(){return garDef;},imCe:(a,x)=>imCe(a,x),get selectCountry(){return selectCountry;},hacBalance,hacAutoTax,warFit,stoBring,balTargets,hacE,permOn,stoOn,get funds(){return funds;},get cnRender(){return cnRender;},openCouncil2:()=>openCouncil(),econ,econHacHTML,econWarHTML,econDipHTML,goldBase,get ceCost(){return ceCost;},bombCost,imUpk,cnSk,imAsgTotal,newCampaign,addB,showTitle,get MKQ2(){return MKQ;},get SHQ(){return SHQ;},get MKQ(){return MKQ;},shqPrice,mkTotal,shopAct,refreshTray,giveRes,resAmt,get CAMP(){return CAMP;},TUT,tutStart,tutOffer,tutNeeded,tutTick,v60Sync,dockTarget,orderAt,setSel,selectBuilding,startPlacing,confirmPlace,doAct,get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},get cam(){return cam;},OWN,isOwner,ownCheck,ownOpen,ownAct,giftsClaim,testerGift,webNoPay,ownInfTick,get ON(){return ON;},sepPass,get landOk(){return landOk;},resCap,resAdd,funds,hacFund,stoTotal,gdMaxAfford,get canAffordC(){return canAffordC;},get payC(){return payC;},get ceCap(){return ceCap;},SV,svLoad,get ON(){return ON;},get onAct(){return onAct;},get renderOnlineHTML(){return renderOnlineHTML;},gdProv,gdRest,invChance,get popC(){return popC;},get cePow(){return cePow;},get ceTgtDef(){return ceTgtDef;},get popCap(){return popCap;},shOn,shLeft,shGive,shBuy,shCan,shDealToday,shDealOff,shW,get hit(){return hit;},openShopTab,popC,popWorld,popEmpire,popHurt,puOf,puAvg,puTarget,popTurn,popBomb,bombNow,repCost,popE,gwTick,gwWave,gwStrike,gwPlayerBomb,get imTrib(){return imTrib;},imOpen,imClose,imRender,imE,imMine,imProd,imTrib,imSto,imAsg,imStr,imTurn,cwEval,cwTargets,cwLaunch,cwDeclare,imCouncilOk,imCanRecruit,imRecruitDefend,ceSt,ceDefend,ceConquer,ceAskDefense,ceAskConquer,ceRecruit,ceOpen,ceTurn,get CAMP(){return CAMP;},worldTurn:()=>worldTurn(),campaignEnd:(w,h)=>campaignEnd(w,h),startBattle:(a,b)=>startBattle(a,b),renderCampBar:()=>renderCampBar(),cnTick,cnRecruit,openCouncil,closeCouncil,cnCfg,cnSt,cnHired,dipAnswer,announce,declareWar,setSt:(a,b,v)=>setSt(a,b,v),autoDefend,garChance,garDef,garReinforce,templeLv,templeEraMul,blessNow,blessOn,gardenGather,leaderLabel,leaderTick,lTitle,rushVid,rushLeft,rushMul,musicTick,AUD,faunaEra,STORY,storyTick,atk,buildPort,canExpedite,sendExpedition,expLeft,expLand,expBuy,expDraw,worldPulse,chapters,storyStart,goalProg,stGet,renderStoryCard,setMode:m=>setMode(m),get MODE(){return MODE;},contOf,hasPort,DEV_TIER,setLevel,setQuality,wallet,amber,addAmber,grant,accel,accCost,canAccel,claimDaily,dailyState,freeVideo,buyRes,vidRes,buyEraPack,shopEra,pickBanner,openShop,closeShop,adClose,mon,eraPack,resAmt,BANNERS,get TEAM(){return TEAM;},shopEnd,retryBonus,CBY,COUNTRIES,newGame,endGame,selectCountry,doTrade,proposePact,breakPact,answerOffer,resistOf,incomeOf,tradeQuote,campaignEnd,doAct,get selR(){return selR;},UTT:UT,BTT:BT,get AUD(){return typeof AUD!=="undefined"?AUD:null;},step,get G(){return G;},trainAt,startPlacing,confirmPlace,tap,setSel,orderAt,render,renderMini,refreshTray,drawPortrait,cam,setRunning(v){running=v;},setDiff(k){DK=k;},setNP(n){NP=n;},FAUNA,addB,addU,addAnimal,centerOn,updFog,eraCheck,get PROF(){return PROF;},get USE3D(){return USE3D;},pickScreen,screenToWorld,proj3,get R3(){return R3;},get POST(){return POST;},get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},zoomAt,clampCam,get terrain(){return terrain;},get BASES(){return BASES;},get FORDS(){return FORDS;},get RIVERS(){return RIVERS;},findPath,seaD,setBridge,waterNear:(x,y,r)=>waterNear(x,y,r),riverAt:(x,y)=>riverAt(x,y),guideSay,guideFor,kill,newCampaign,startBattle,reachable,worldTurn,get CAMP(){return CAMP;},countOf,saveGame,loadGame,savedInfo,continueGame,selectBuilding,teamBlock:t=>teamBlock(t),get BLOCKERS(){return BLOCKERS;},get BLOCKV(){return BLOCKV;},lineClear,get PBUDGET(){return PBUDGET;},render3D:dt=>render3D(dt),renderOverlay:dt=>renderOverlay(dt),resize,freeze(v){frozen=v;},get acc(){return acc;},mountainAt:(x,y)=>mountainAt(x,y),heightAt:(x,y)=>heightAt(x,y),reveal(){explored.fill(1);visible.fill(1);G.revealAll=true;updFog();}};
+
+/* ================= v69 · MUNDO VIVO, PAQUETES EN DÓLARES Y EL CAMPO COMO PROTAGONISTA =================
+   1) En línea: «⚡ Entrar a jugar ya» te lleva al mundo donde hay gente, con un país libre cerca del tuyo.
+      Dentro, la pestaña 🗺️ Mundo muestra quién gobierna cada país vecino: saquear, conquistar países ocupados,
+      ocupar países libres, mandar señales (frases fijas, sin chat libre), ayudar a tu alianza y ver lo que pasa.
+      Si el servidor todavía no tiene las funciones nuevas, todo sigue como antes sin romperse.
+   2) Tienda: paquetes de recursos con Ámbar que se compran con dinero. Lo comprado llega a tu Almacén
+      y lo llevas cuando quieras a la batalla o a las reservas de tu imperio.
+   3) Partida: la batalla manda. Menos botones encima del campo, la cámara empieza en tu aldea,
+      aviso «⚔️ Batalla» que te lleva a la pelea y el guía habla de ti y de tu imperio, no de él. */
+
+/* ---------- 1) EN LÍNEA: MUNDO VIVO ---------- */
+const MV={busy:false,failT:0,map:null,feed:null,sig:null,old:false,unseen:0,pick:null,aid:null,tab:'near',freeN:8};
+const MV_SIG={hola:'👋 ¡Hola, vecino!',alianza:'🤝 ¿Hacemos alianza?',paz:'🕊️ Propongo paz entre nosotros',guerra:'⚔️ Prepárate: voy por ti',gracias:'🙏 Gracias',ayuda:'🆘 Necesito ayuda',bien:'👏 Bien jugado',vecino:'🏳️ Respeta mi frontera'};
+const MV_RES={food:'🍖 Comida',wood:'🪵 Madera',stone:'🪨 Piedra',gold:'🪙 Oro'};
+function mvFlag(c){try{return typeof flagOf==='function'?flagOf(c):'';}catch(_){return '';}}
+function mvMissing(err){return /function|does not exist|Could not find|schema cache|404/i.test(String(err&&err.message||err||''));}
+/* países ordenados por cercanía a los tuyos */
+function mvNear(list,refs){const R=refs.map(c=>CBY[c]).filter(Boolean);if(!R.length)return list;
+  const d=q=>{const C=CBY[q];if(!C)return 999;let m=999;for(const r of R)m=Math.min(m,bbGap(C,r));return m;};
+  return list.slice().sort((a,b)=>d(a)-d(b));}
+function mvPrefs(home){const ref=CBY[home];const all=COUNTRIES.map(q=>q.id);if(!ref)return all.slice(0,80);
+  return [home].concat(all.filter(x=>x!==home).sort((a,b)=>bbGap(CBY[a],ref)-bbGap(CBY[b],ref))).slice(0,90);}
+async function mvLoad(){const w=ON.emp&&ON.emp.world;if(!w)return;
+  try{MV.map=await rpc('world_map',{p_world:w});MV.old=false;MV.unseen=+MV.map.unseen||0;}
+  catch(e){if(mvMissing(e)){MV.old=true;MV.map=null;}else throw e;}
+  if(!MV.old){try{MV.feed=await rpc('world_feed',{p_world:w});}catch(_){MV.feed=[];}}}
+/* entrar rápido */
+async function mvQuick(){const J=joinInfo();if(!J)return;const prefs=mvPrefs(J.cc);
+  return busy(async()=>{let r=null;
+    try{r=await rpc('quick_join',{p_countries:prefs,p_name:J.nm,p_era:J.c.era,p_lands:J.c.lands,p_lang:'es'});}
+    catch(e){if(!mvMissing(e))throw e;
+      // servidor anterior: el mundo con más gente que tenga cupo, y un país libre cerca del tuyo
+      let L=[];try{L=await rpc('list_worlds2',{p_sort:'full',p_q:'',p_lang:'',p_offset:0});}catch(_){L=[];}
+      const W2=(L||[]).filter(x=>!x.ended&&x.players<x.capacity&&(x.official||x.joined||x.code)).sort((a,b)=>(b.joined-a.joined)||(b.players-a.players)||(b.official-a.official))[0];
+      if(!W2){const x=await rpc('join_world',{p_country:J.cc,p_name:J.nm,p_era:J.c.era,p_lands:J.c.lands});r=x;}
+      else{let taken=[];try{taken=await rpc('world_taken',{p_world:W2.id});}catch(_){taken=[];}
+        const cc=prefs.find(c=>taken.indexOf(c)<0)||J.cc;r=await rpc('join_world_id',{p_world:W2.id,p_country:cc,p_name:J.nm,p_era:J.c.era,p_lands:J.c.lands});}}
+    ON.emp=r;lsSet(WORLD_KEY,String(r.world));ON.worlds=await rpc('my_worlds');SV.list=null;ON.tab='mundo';MV.map=null;
+    ON.msg=(r.country!==J.cc?'Tu país ya tenía dueño: gobiernas '+cname(r.country)+', muy cerca. ':'')+'¡Entraste a '+r.world_name+'! Ya hay '+r.players+' imperios: mira quiénes son tus vecinos.';
+    await mvLoad();if(typeof sfx==='function')sfx('era');});}
+/* tarjetas */
+function mvOwnerOf(c){const M=MV.map;if(!M)return null;return (M.homes||[]).find(h=>h.c===c)||null;}
+function mvHomeCard(h,lands){const e=ON.emp,ch=typeof chanceVs==='function'?chanceVs(h):50;
+  const tags=(h.mine?'<i class="svT me">TÚ</i>':'')+(h.ally?'<i class="svT in">ALIADO</i>':'')+(h.shield&&!h.mine?'<i class="svT">🛡 ESCUDO</i>':'');
+  const own=lands.filter(l=>l.id===h.id);const ownTxt=own.length?' · también gobierna '+own.map(l=>mvFlag(l.c)+' '+esc(cname(l.c))).join(', '):'';
+  let btns='';
+  if(!h.mine){btns='<div class="mvBtns">'+(h.ally?'<button class="ghostbtn" data-on="mv:aid:'+h.id+'">🎁 Ayudar</button>':'<button class="big" data-on="a:'+h.id+'"'+(h.shield||e.cooldown||!e.attacks_left?' disabled':'')+'>⚔️ Saquear</button>')+
+    '<button class="ghostbtn" data-on="mv:say:'+h.id+'">💬 Señal</button></div>';
+    if(MV.pick===h.id)btns+='<div class="mvSay">'+Object.keys(MV_SIG).map(k=>'<button class="ochip" data-on="mv:sig:'+h.id+':'+k+'">'+MV_SIG[k]+'</button>').join('')+'</div>';
+    if(MV.aid===h.id)btns+='<div class="mvSay">'+Object.keys(MV_RES).map(k=>[500,1000,2000].map(n=>'<button class="ochip" data-on="mv:give:'+h.id+':'+k+':'+n+'">'+MV_RES[k]+' '+cnN(n)+'</button>').join('')).join('')+'<small class="snote">Le llega el 90 %. Máximo 3 ayudas al día.</small></div>';
+    for(const l of own)if(!h.ally)btns+='<button class="ghostbtn mvConq" data-on="mv:conq:'+h.id+':'+l.c+'"'+(h.shield||e.cooldown||!e.attacks_left?' disabled':'')+'>🚩 Quitarle '+mvFlag(l.c)+' '+esc(cname(l.c))+'</button>';}
+  return card((h.mine?'hot ':'')+'mvC','<div class="sct"><b>'+mvFlag(h.c)+' '+esc(cname(h.c))+' · '+esc(h.name)+'</b><div class="svTags">'+tags+'</div><span>Era '+ROMAN[h.era]+' · poder '+h.power+(h.fort?' · murallas '+h.fort:'')+(h.alliance?' · ⚑ '+esc(h.alliance):'')+ownTxt+'</span>'+
+    (!h.mine&&!h.ally?'<small>'+(h.shield?'Protegido por ahora':'Probabilidad de ganar: '+ch+' %')+'</small>':'')+'</div>'+btns);}
+function mvWorldHTML(){const e=ON.emp;let h='';
+  if(MV.old)return '<p class="snote">El mapa de tu mundo se activa con la próxima actualización del servidor. Mientras tanto usa Rivales y Alianza.</p>';
+  if(!MV.map){if(Date.now()-MV.failT<15000)return '<p class="snote">No se pudo abrir el mapa. <button class="linkbtn" data-on="mv:retry">Intentar de nuevo</button></p>';
+    if(!MV.busy){MV.busy=true;mvLoad().then(()=>{MV.busy=false;if(!MV.map&&!MV.old)MV.failT=Date.now();renderOnline();}).catch(err=>{MV.busy=false;MV.failT=Date.now();ON.msg='!'+(err&&err.message||err);renderOnline();});}
+    return '<p class="onwait">Mirando quién gobierna cada país…</p>';}
+  const M=MV.map,R=M.rules||{},homes=M.homes||[],lands=M.lands||[];
+  const mine=[e.country].concat(lands.filter(l=>l.mine).map(l=>l.c));
+  const taken={};for(const x of homes)taken[x.c]=1;for(const x of lands)taken[x.c]=1;
+  // resumen
+  h+='<div class="mvHead"><b>'+homes.length+' imperios</b> en '+esc(e.world_name)+' · gobiernas <b>'+mine.length+'</b> '+(mine.length>1?'países':'país')+(MV.unseen?' · <button class="linkbtn" data-on="mv:tab:sig">💬 '+MV.unseen+' señales nuevas</button>':'')+'</div>';
+  h+='<div class="svChips">'+[['near','🧭 Vecinos'],['free','🚩 Ocupar'],['feed','📜 Qué pasa'],['sig','💬 Señales'+(MV.unseen?' ('+MV.unseen+')':'')]].map(([k,n])=>'<button class="ochip'+(MV.tab===k?' on':'')+'" data-on="mv:tab:'+k+'">'+n+'</button>').join('')+'</div>';
+  if(MV.tab==='near'){
+    const others=mvNear(homes.filter(x=>!x.mine).map(x=>x.c),mine).map(c=>homes.find(x=>x.c===c));
+    const me=homes.find(x=>x.mine);if(me)h+=mvHomeCard(me,lands);
+    if(!others.length)h+='<p class="snote">Todavía estás solo en este mundo. Comparte el código para que tus amigos lleguen, o entra a un mundo con más gente desde «🌐 Ver otros servidores».</p>';
+    else{h+='<p class="snote">Del más cercano al más lejano. Saquear te da recursos; los países que ellos ocuparon se los puedes quitar ganando. El país de origen de cada jugador nunca se pierde.</p>';for(const x of others.slice(0,25))h+=mvHomeCard(x,lands);}}
+  else if(MV.tab==='free'){
+    const free=mvNear(COUNTRIES.map(q=>q.id).filter(c=>!taken[c]),mine).slice(0,MV.freeN);
+    const can=R.owned<R.max,res=e.res||{},enough=(res.food||0)>=R.food&&(res.gold||0)>=R.gold&&e.power>=R.power;
+    h+='<p class="snote">Manda colonos a un país sin dueño: queda en tu imperio, te da más producción y más tropas. Has ocupado <b>'+R.owned+'/'+R.max+'</b> (cada época te deja ocupar 2 más).</p>';
+    h+='<p class="snote">El próximo cuesta '+ICON.food+'<b>'+cnN(R.food)+'</b> '+ICON.gold+'<b>'+cnN(R.gold)+'</b> y poder <b>'+R.power+'</b>'+(R.wait?' · tus colonos llegan en '+fmtS(R.wait):'')+'.</p>';
+    for(const c of free)h+=card('mvC','<div class="sct"><b>'+mvFlag(c)+' '+esc(cname(c))+'</b><span>Sin dueño</span></div><button class="big" data-on="mv:claim:'+c+'"'+(!can||!enough||R.wait?' disabled':'')+'>🚩 Ocupar</button>');
+    if(free.length>=MV.freeN)h+='<button class="ghostbtn" data-on="mv:more">Ver más países libres</button>';
+    if(!can)h+='<p class="snote">Avanza de época en tu campaña para ocupar más países.</p>';}
+  else if(MV.tab==='feed'){const F=MV.feed||[];
+    if(!F.length)h+='<p class="snote">Aún no pasa nada en este mundo. ¡Sé el primero en moverte!</p>';
+    for(const x of F.slice(0,30)){const t=new Date(x.t);const when=t.toLocaleDateString()===new Date().toLocaleDateString()?t.toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'}):t.toLocaleDateString();
+      const txt={join:'🏳️ <b>'+esc(x.a)+'</b> fundó su imperio en '+mvFlag(x.c)+' '+esc(cname(x.c)),claim:'🚩 <b>'+esc(x.a)+'</b> ocupó '+mvFlag(x.c)+' '+esc(cname(x.c)),
+        seize:'🔥 <b>'+esc(x.a)+'</b> le quitó '+mvFlag(x.c)+' '+esc(cname(x.c))+' a <b>'+esc(x.b)+'</b>',win:'⚔️ <b>'+esc(x.a)+'</b> saqueó a <b>'+esc(x.b)+'</b>',lose:'🛡️ <b>'+esc(x.b)+'</b> rechazó el ataque de <b>'+esc(x.a)+'</b>',ally:'⚑ <b>'+esc(x.a)+'</b> formó una alianza'}[x.k]||'';
+      if(txt)h+='<p class="mvFeed"><span>'+txt+'</span><small>'+when+'</small></p>';}}
+  else if(MV.tab==='sig'){const S=MV.sig;
+    if(!S){rpc('my_signals',{p_world:e.world}).then(r=>{MV.sig=r||[];MV.unseen=0;renderOnline();}).catch(()=>{MV.sig=[];renderOnline();});h+='<p class="onwait">Abriendo tus señales…</p>';}
+    else if(!S.length)h+='<p class="snote">Nadie te ha escrito todavía. Manda un «👋 ¡Hola, vecino!» desde 🧭 Vecinos.</p>';
+    else for(const s of S)h+=card(s.seen?'':'hot','<div class="sct"><b>'+mvFlag(s.country)+' '+esc(s.name)+'</b><span>'+(MV_SIG[s.kind]||'')+'</span><small>'+new Date(s.t).toLocaleString()+'</small></div><button class="ghostbtn" data-on="mv:say:'+s.from+'">Responder</button>'+
+      (MV.pick===s.from?'<div class="mvSay">'+Object.keys(MV_SIG).map(k=>'<button class="ochip" data-on="mv:sig:'+s.from+':'+k+'">'+MV_SIG[k]+'</button>').join('')+'</div>':''));
+    h+='<p class="snote small">Las señales son frases fijas: nadie puede escribirte insultos. Si alguien te molesta, bloquéalo desde Rivales.</p>';}
+  return h;}
+/* pantalla: botón grande para entrar ya y pestaña Mundo */
+{const _ro=renderOnlineHTML;renderOnlineHTML=function(){let h=_ro.apply(this,arguments);try{
+    if(ON.sess&&!ON.emp&&!(typeof CL!=='undefined'&&CL.conflict)&&!ON.pick){
+      const quick='<div class="mvQuick">'+card('gold','<div class="sct"><b>🌎 Juega con gente real</b><span>Te llevamos al mundo donde hay más jugadores, con un país libre cerca del tuyo. Ahí ocupas países, haces alianzas y peleas con gente real.</span></div>')+
+        '<button class="big mvGo" data-on="mv:quick">⚡ Entrar a jugar ya</button><p class="snote small">¿Quieres elegir el mundo tú? Míralo abajo en la lista. Crear tu propio mundo es para jugar con tus amigos.</p></div>';
+      const i=h.indexOf('<div class="otabs">');
+      if(i>=0&&h.indexOf('id="onName"')>=0&&h.indexOf('id="onName"')<i){h=h.slice(0,i)+quick+h.slice(i);}
+      else if(i>=0)h=h.slice(0,i)+quick+h.slice(i);
+      h=h.replace('✨ Crear mundo','✨ Crear (amigos)');}
+    if(ON.sess&&ON.emp&&!ON.browse&&!ON.pick){
+      h=h.replace(/(<div class="otabs">)(<button data-on="t:army")/,'$1<button data-on="t:mundo" class="'+(ON.tab==='mundo'?'on':'')+'">🗺️ Mundo'+(MV.unseen?' <i class="mvDot">'+MV.unseen+'</i>':'')+'</button>$2');
+      if(ON.tab==='mundo'){const s=h.indexOf('<details class="oacc">');if(s>=0)h=h.slice(0,s)+mvWorldHTML()+h.slice(s);}}
+  }catch(err){if(typeof console!=='undefined')console.error(err);}return h;};}
+{const _lt=loadTab;loadTab=async function(t){if(t==='mundo'){ON.tab='mundo';MV.map=null;MV.sig=null;MV.pick=null;MV.aid=null;renderOnline();return;}return _lt.apply(this,arguments);};}
+/* al entrar con tu cuenta, empiezas en el mapa del mundo */
+{const _le=loadEmpire;loadEmpire=async function(){const r=await _le.apply(this,arguments);try{if(ON.emp){ON.tab='mundo';MV.map=null;MV.sig=null;}}catch(_){}return r;};}
+{const _oa=onAct;onAct=async function(a){const p=String(a).split(':');const w=ON.emp&&ON.emp.world;
+  if(p[0]==='mv'){const k=p[1];
+    if(k==='quick')return mvQuick();
+    if(k==='tab'){MV.tab=p[2];MV.pick=null;MV.aid=null;if(p[2]==='sig')MV.sig=null;if(p[2]==='feed')rpc('world_feed',{p_world:w}).then(r=>{MV.feed=r||[];renderOnline();}).catch(()=>{});return renderOnline();}
+    if(k==='retry'){MV.failT=0;MV.map=null;return renderOnline();}
+    if(k==='more'){MV.freeN+=12;return renderOnline();}
+    if(k==='say'){MV.pick=MV.pick===+p[2]?null:+p[2];MV.aid=null;return renderOnline();}
+    if(k==='aid'){MV.aid=MV.aid===+p[2]?null:+p[2];MV.pick=null;return renderOnline();}
+    if(k==='sig')return busy(async()=>{await rpc('send_signal',{p_world:w,p_to:+p[2],p_kind:p[3]});MV.pick=null;ON.msg='Señal enviada: «'+(MV_SIG[p[3]]||'')+'»';if(typeof sfx==='function')sfx('ok');});
+    if(k==='give')return busy(async()=>{const r=await rpc('send_aid',{p_world:w,p_to:+p[2],p_res:p[3],p_amount:+p[4]});ON.emp=r.me;MV.aid=null;ON.msg='Ayuda enviada: le llegaron '+cnN(r.got)+' de '+RES_NAME[p[3]].toLowerCase()+'.';if(typeof sfx==='function')sfx('ok');});
+    if(k==='claim')return busy(async()=>{const r=await rpc('claim_land',{p_world:w,p_country:p[2]});ON.emp=r.me;ON.msg='🚩 ¡'+cname(r.country)+' ya es parte de tu imperio!';await mvLoad();if(typeof sfx==='function')sfx('era');});
+    if(k==='conq')return busy(async()=>{const r=await rpc('conquer',{p_world:w,p_target:+p[2],p_country:p[3]});ON.emp=r.me;
+      ON.msg=r.won?(r.seized?'🔥 ¡Ganaste y le quitaste '+cname(r.seized)+' a '+r.rival+'!':'⚔️ Ganaste contra '+r.rival+', pero era mucho más débil: no te llevas su país, solo parte del botín.'):'!Derrota contra '+r.rival+'. Recluta más tropas o espera a que baje su defensa. (Tu poder '+r.att_power+' contra '+r.def_power+')';
+      await mvLoad();if(typeof sfx==='function')sfx(r.won?'era':'bad');});
+    return;}
+  return _oa.apply(this,arguments);};}
+/* tras saquear desde el mapa, se actualiza el mapa */
+{const _oa2=onAct;onAct=async function(a){const r=await _oa2.apply(this,arguments);try{if(String(a).indexOf('a:')===0&&ON.tab==='mundo'){await mvLoad();renderOnline();}}catch(_){}return r;};}
+/* ayudas de En línea con lo nuevo */
+try{HP_PANELS.online='💡 <b>En línea</b>: toca «⚡ Entrar a jugar ya» y llegas a un mundo con gente. Ocupa países libres, haz alianzas y quítales países a tus rivales.';
+  HP_INTRO.online={t:'🌐 Mundo en línea',s:['Entra con tu correo y toca <b>⚡ Entrar a jugar ya</b>: te llevamos donde hay más jugadores.','En <b>🗺️ Mundo</b> ves a tus vecinos: salúdalos con una señal, haz alianzas o sáquealos.','<b>🚩 Ocupa</b> países libres para crecer. Los que ocupó otro jugador se los puedes quitar ganándole.','Tu país de origen nunca se pierde: si te saquean, recupérate y véngate.']};}catch(_){}
+
+/* ---------- 2) TIENDA: PAQUETES DE RECURSOS CON DINERO ---------- */
+const RP_PACKS={
+  rp_start:{n:'Primer cofre del jefe',usd:'0,99',amb:300,bank:{food:3000,wood:3000,stone:1500,gold:1000},once:1,ic:'🎁',tag:'Solo una vez · valor ×6'},
+  rp_aldea:{n:'Saco del aldeano',usd:'1,99',amb:80,bank:{food:4000,wood:4000},ic:'🧺'},
+  rp_obra:{n:'Carreta del constructor',usd:'3,99',amb:200,bank:{wood:7000,stone:5000},ic:'🪵'},
+  rp_guerra:{n:'Botín de guerra',usd:'5,99',amb:350,bank:{food:6000,gold:5000},vsh:1,ic:'⚔️'},
+  rp_tesoro:{n:'Tesoro del imperio',usd:'9,99',amb:700,bank:{food:10000,wood:10000,stone:8000,gold:8000},ic:'💰',tag:'El más elegido'},
+  rp_boveda:{n:'Bóveda del conquistador',usd:'19,99',amb:1600,bank:{food:25000,wood:25000,stone:20000,gold:20000},vsh:2,ic:'🏛️',tag:'Mejor valor'}};
+for(const id in RP_PACKS){const P=RP_PACKS[id];PRODUCTS[id]={n:P.n,amb:P.amb,usd:P.usd,once:P.once};}
+function rpBank(){const w=wallet();w.bank=w.bank||{food:0,wood:0,stone:0,gold:0};return w.bank;}
+function rpBankTot(){const b=rpBank();return (b.food||0)+(b.wood||0)+(b.stone||0)+(b.gold||0);}
+function rpList(P){return Object.keys(P.bank).map(k=>ICON[k]+'<b>'+cnN(P.bank[k])+'</b>').join(' ');}
+{const _pw=productWhat;productWhat=function(id){const P=RP_PACKS[id];if(P)return rpList(P)+' + '+AMB_IC+'<b>'+cnN(P.amb)+'</b> de Ámbar'+(P.vsh?' + <b>'+P.vsh+' vale'+(P.vsh>1?'s':'')+' de Gran escudo</b>':'')+'. Los recursos llegan a tu <b>Almacén</b> y los usas cuando quieras: en la batalla o en tu imperio.';return _pw.apply(this,arguments);};}
+{const _gr=grant;grant=function(id){const P=RP_PACKS[id];if(P){const b=rpBank();for(const k in P.bank)b[k]=(b[k]||0)+P.bank[k];if(P.vsh){const S=shW();S.vsh=(S.vsh||0)+P.vsh;}wSave();toast('📦 Recursos guardados en tu Almacén',false,'gold');}return _gr.apply(this,arguments);};}
+function rpCard(id){const P=RP_PACKS[id],w=wallet(),done=P.once&&w.own[id];
+  return '<div class="sc rpPack'+(P.tag?' gold':'')+'"><span class="shIc">'+P.ic+'</span><div class="sct"><b>'+P.n+(P.tag?' <i class="shTag">'+P.tag+'</i>':'')+'</b><span>'+rpList(P)+'</span><small>+ '+AMB_IC+cnN(P.amb)+' de Ámbar'+(P.vsh?' · '+P.vsh+' vale'+(P.vsh>1?'s':'')+' de Gran escudo':'')+'</small></div><button class="big rpBuy" data-sh="buy:'+id+'"'+(done?' disabled':'')+'>'+(done?'Ya lo tienes':priceOf(id))+'</button></div>';}
+function rpBankHTML(){const b=rpBank(),inMatch=G&&!G.over&&$('title')&&$('title').hidden,camp=shCamp();if(!rpBankTot())return '';
+  return '<div class="sc hot rpBank"><span class="shIc">📦</span><div class="sct"><b>Tu Almacén</b><span>'+['food','wood','stone','gold'].map(k=>ICON[k]+'<b>'+cnN(b[k]||0)+'</b>').join(' ')+'</span><small>Lo que compras queda aquí hasta que lo uses.</small></div><div class="scb">'+
+    (inMatch?'<button class="big" data-sh="bk:game">Usar en esta batalla</button>':'')+(camp?'<button class="ghostbtn" data-sh="bk:camp">Llevar a mi imperio</button>':'')+(!inMatch&&!camp?'<small>Úsalo al empezar una partida o en Conquistar el mundo.</small>':'')+'</div></div>';}
+{const _sa=shopAct;shopAct=function(code){const p=String(code).split(':');if(p[0]==='bk'){const b=rpBank();let tot=0;
+    if(p[1]==='game'&&G&&!G.over){for(const k of ['food','wood','stone','gold']){const n=b[k]||0;if(n>0){giveRes(k,n);tot+=n;b[k]=0;}}}
+    else if(p[1]==='camp'&&shCamp()){for(const k of ['food','wood','stone','gold']){const n=b[k]||0;if(n>0){resAdd(k,n,true);tot+=n;b[k]=0;}}try{campSave();renderCampBar();}catch(_){}}
+    wSave();if(tot){toast('📦 +'+cnN(tot)+' recursos '+(p[1]==='game'?'en esta batalla':'en las reservas de tu imperio'),false,'gold');if(typeof sfx==='function')sfx('ok');}renderShop();return;}
+  return _sa.apply(this,arguments);};}
+{const _rs=renderShop;renderShop=function(){const r=_rs.apply(this,arguments);try{const box=$('shopBody');if(!box||!box.querySelector)return r;
+    const html='<h3 class="rpH">💰 Paquetes de recursos</h3>'+rpBankHTML()+Object.keys(RP_PACKS).map(rpCard).join('')+(webNoPay()&&!isOwner()?'<p class="snote">Las compras con dinero llegan muy pronto, con la app en Google Play y App Store.</p>':'');
+    const sec=box.querySelector('.shSec[data-tab="ofertas"]');
+    if(sec&&!sec.querySelector('.rpH')){const d=document.createElement('div');d.className='rpWrap';d.innerHTML=html;const deal=sec.querySelector('.shDeal');
+      if(deal)deal.after(d);else sec.insertBefore(d,sec.firstChild);}
+    const pt=box.querySelector('.shSec[data-tab="partida"]');if(pt&&rpBankTot()&&!pt.querySelector('.rpBank')){const d=document.createElement('div');d.innerHTML=rpBankHTML();pt.insertBefore(d.firstChild,pt.firstChild);}
+    if(webNoPay())for(const btn of box.querySelectorAll('.rpBuy:not([disabled])')){btn.classList.add(isOwner()?'ownFree':'soon');btn.textContent=isOwner()?'Gratis (dueño)':'Muy pronto';}
+  }catch(err){if(typeof console!=='undefined')console.error(err);}return r;};}
+/* al empezar una partida con recursos en el Almacén, se te recuerda */
+{const _ng=newGame;newGame=function(){const r=_ng.apply(this,arguments);try{if(rpBankTot()>0)setTimeout(()=>{if(G&&!G.over)toast('📦 Tienes recursos en tu Almacén: úsalos desde la Tienda',false,'gold');},4000);}catch(_){}return r;};}
+
+/* ---------- 3) EL CAMPO ES EL PROTAGONISTA ---------- */
+/* el guía acompaña al jugador: habla de ti y de tu imperio */
+guideName=function(){return guideChar()?'Tu consejera':'Tu chamán';};
+{const MV_TXT=[[/^Soy el chamán de tu tribu\. Toca un animal, un árbol o una construcción y te digo qué es\. Con el tiempo nacerán niños: necesitarán una escuela\.$/,'Tu tribu espera tus órdenes. Toca un animal, un árbol o una construcción y sabrás qué es.'],
+  [/^El chamán ya es anciano\. Desde ahora te aconsejo yo, la consejera de la aldea\.$/,'Tu pueblo crece y entra en otra época. Desde ahora te acompaña la consejera de tu aldea.'],
+  [/^Toca cualquier animal y te digo cuánto mide en la vida real\.$/,'Toca cualquier animal y sabrás cuánto mide en la vida real.']];
+ const _gs=guideSay;guideSay=function(txt,ms){let t=String(txt||'');for(const [re,to] of MV_TXT)if(re.test(t)){t=to;break;}
+   if(document.getElementById('app')&&document.getElementById('app').classList.contains('hiFight')&&!/ataque|enemig|cuidado|batalla|guerrer|soldad/i.test(t))return;
+   return _gs.call(this,t,Math.min(ms||4500,5500));};}
+/* la cámara empieza en tu aldea y un poco más cerca */
+function mvFocusHome(){try{if(!G)return;const c=G.ents.find(e=>e.k==='b'&&e.o===0&&(e.type==='cueva'||e.type==='centro'))||G.ents.find(e=>e.k==='b'&&e.o===0);if(!c)return;
+  if(typeof cam!=='undefined'&&cam&&cam.z<1.15)cam.z=Math.min(1.35,cam.z*1.22);centerOn(c.x,c.y);}catch(_){}}
+{const _ng=newGame;newGame=function(){const r=_ng.apply(this,arguments);try{setTimeout(mvFocusHome,60);setTimeout(mvFocusHome,900);}catch(_){}return r;};}
+/* aviso de batalla: cuando pelean los tuyos, un toque te lleva a la pelea */
+const HFG={t:-99,x:0,y:0,n:0,shown:false};
+{const _hit=hit;hit=function(t,dmg,src){const r=_hit.apply(this,arguments);try{if(G&&t&&src&&t.o!==src.o&&(t.o===0||src.o===0)&&(src.k==='u'||t.k==='u')){
+      if(G.t-HFG.t>12)HFG.n=0;HFG.n++;HFG.t=G.t;HFG.x=(t.x+src.x)/2;HFG.y=(t.y+src.y)/2;}}catch(_){}return r;};}
+function fgChip(){let d=$('hiFightChip');if(!d){d=document.createElement('button');d.id='hiFightChip';d.type='button';d.hidden=true;d.addEventListener('click',()=>{try{centerOn(HFG.x,HFG.y);if(typeof sfx==='function')sfx('click');}catch(_){}});($('app')||document.body).appendChild(d);}return d;}
+setInterval(()=>{try{const app=$('app'),d=fgChip();const cover=['shop','pause','hiEv','council','cnBody','hiMis','imPanel'].some(id=>{const e=$(id);return e&&!e.hidden&&e.offsetParent!==null;});
+    if(!G||G.over||!app||cover||($('title')&&!$('title').hidden)){d.hidden=true;if(app)app.classList.remove('hiFight');return;}
+    const live=G.t-HFG.t<6&&HFG.n>=3;app.classList.toggle('hiFight',live);
+    if(live){d.innerHTML='⚔️ <b>¡Batalla!</b> <span>Ver</span>';d.hidden=false;if(!HFG.shown){HFG.shown=true;if($('guide')&&$('guide').classList&&!$('guide').classList.contains('off'))guideHide();}}
+    else{d.hidden=true;HFG.shown=false;}}catch(_){}},500);
+
+/* ================= v70 · VISUAL NÍTIDO: bordes suaves, más resolución, texturas finas y modelos más redondos =================
+   - Suavizado de bordes en todos los teléfonos: MSAA del propio teléfono cuando lo tiene, y si no, FXAA.
+   - Más resolución en cada escalón de calidad (el control automático baja solo si el teléfono se calienta o va lento).
+   - Texturas con filtrado anisotrópico al máximo que permita el teléfono: el suelo y los techos no se ven borrosos de lejos.
+   - Cilindros y esferas con más caras: árboles, animales, torres, casas y hospitales más redondos.
+   - Sombras más finas en los teléfonos potentes y acabado de cine también en la gama media.
+
+   FXAA 3.11 de NVIDIA, adaptado a WebGL por Agost Biro e incluido en los ejemplos de Three.js r128 (licencia MIT).
+   Aviso que exige la licencia del código original de NVIDIA:
+   Copyright (c) 2014-2015, NVIDIA CORPORATION. All rights reserved.
+   Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
+    * Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
+    * Neither the name of NVIDIA CORPORATION nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
+   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
+const VX={on:true,rt:null,mat:null,w:0,h:0,aniso:4,ctxAA:false,frames:0};
+const VX_FXAA=`precision highp float;
+uniform sampler2D tDiffuse;
+uniform vec2 resolution;
+varying vec2 vUv;
+#define FXAA_PC 1
+#define FXAA_GLSL_100 1
+#define FXAA_QUALITY_PRESET 12
+#define FXAA_GREEN_AS_LUMA 1
+#ifndef FXAA_PC_CONSOLE
+#define FXAA_PC_CONSOLE 0
+#endif
+#ifndef FXAA_GLSL_120
+#define FXAA_GLSL_120 0
+#endif
+#ifndef FXAA_GLSL_130
+#define FXAA_GLSL_130 0
+#endif
+#ifndef FXAA_HLSL_3
+#define FXAA_HLSL_3 0
+#endif
+#ifndef FXAA_HLSL_4
+#define FXAA_HLSL_4 0
+#endif
+#ifndef FXAA_HLSL_5
+#define FXAA_HLSL_5 0
+#endif
+#ifndef FXAA_GREEN_AS_LUMA
+#define FXAA_GREEN_AS_LUMA 0
+#endif
+#ifndef FXAA_EARLY_EXIT
+#define FXAA_EARLY_EXIT 1
+#endif
+#ifndef FXAA_DISCARD
+#define FXAA_DISCARD 0
+#endif
+#ifndef FXAA_FAST_PIXEL_OFFSET
+#ifdef GL_EXT_gpu_shader4
+#define FXAA_FAST_PIXEL_OFFSET 1
+#endif
+#ifdef GL_NV_gpu_shader5
+#define FXAA_FAST_PIXEL_OFFSET 1
+#endif
+#ifdef GL_ARB_gpu_shader5
+#define FXAA_FAST_PIXEL_OFFSET 1
+#endif
+#ifndef FXAA_FAST_PIXEL_OFFSET
+#define FXAA_FAST_PIXEL_OFFSET 0
+#endif
+#endif
+#ifndef FXAA_GATHER4_ALPHA
+#if (FXAA_HLSL_5 == 1)
+#define FXAA_GATHER4_ALPHA 1
+#endif
+#ifdef GL_ARB_gpu_shader5
+#define FXAA_GATHER4_ALPHA 1
+#endif
+#ifdef GL_NV_gpu_shader5
+#define FXAA_GATHER4_ALPHA 1
+#endif
+#ifndef FXAA_GATHER4_ALPHA
+#define FXAA_GATHER4_ALPHA 0
+#endif
+#endif
+#ifndef FXAA_QUALITY_PRESET
+#define FXAA_QUALITY_PRESET 12
+#endif
+#if (FXAA_QUALITY_PRESET == 10)
+#define FXAA_QUALITY_PS 3
+#define FXAA_QUALITY_P0 1.5
+#define FXAA_QUALITY_P1 3.0
+#define FXAA_QUALITY_P2 12.0
+#endif
+#if (FXAA_QUALITY_PRESET == 11)
+#define FXAA_QUALITY_PS 4
+#define FXAA_QUALITY_P0 1.0
+#define FXAA_QUALITY_P1 1.5
+#define FXAA_QUALITY_P2 3.0
+#define FXAA_QUALITY_P3 12.0
+#endif
+#if (FXAA_QUALITY_PRESET == 12)
+#define FXAA_QUALITY_PS 5
+#define FXAA_QUALITY_P0 1.0
+#define FXAA_QUALITY_P1 1.5
+#define FXAA_QUALITY_P2 2.0
+#define FXAA_QUALITY_P3 4.0
+#define FXAA_QUALITY_P4 12.0
+#endif
+#if (FXAA_QUALITY_PRESET == 13)
+#define FXAA_QUALITY_PS 6
+#define FXAA_QUALITY_P0 1.0
+#define FXAA_QUALITY_P1 1.5
+#define FXAA_QUALITY_P2 2.0
+#define FXAA_QUALITY_P3 2.0
+#define FXAA_QUALITY_P4 4.0
+#define FXAA_QUALITY_P5 12.0
+#endif
+#if (FXAA_QUALITY_PRESET == 14)
+#define FXAA_QUALITY_PS 7
+#define FXAA_QUALITY_P0 1.0
+#define FXAA_QUALITY_P1 1.5
+#define FXAA_QUALITY_P2 2.0
+#define FXAA_QUALITY_P3 2.0
+#define FXAA_QUALITY_P4 2.0
+#define FXAA_QUALITY_P5 4.0
+#define FXAA_QUALITY_P6 12.0
+#endif
+#if (FXAA_QUALITY_PRESET == 15)
+#define FXAA_QUALITY_PS 8
+#define FXAA_QUALITY_P0 1.0
+#define FXAA_QUALITY_P1 1.5
+#define FXAA_QUALITY_P2 2.0
+#define FXAA_QUALITY_P3 2.0
+#define FXAA_QUALITY_P4 2.0
+#define FXAA_QUALITY_P5 2.0
+#define FXAA_QUALITY_P6 4.0
+#define FXAA_QUALITY_P7 12.0
+#endif
+#if (FXAA_QUALITY_PRESET == 20)
+#define FXAA_QUALITY_PS 3
+#define FXAA_QUALITY_P0 1.5
+#define FXAA_QUALITY_P1 2.0
+#define FXAA_QUALITY_P2 8.0
+#endif
+#if (FXAA_QUALITY_PRESET == 21)
+#define FXAA_QUALITY_PS 4
+#define FXAA_QUALITY_P0 1.0
+#define FXAA_QUALITY_P1 1.5
+#define FXAA_QUALITY_P2 2.0
+#define FXAA_QUALITY_P3 8.0
+#endif
+#if (FXAA_QUALITY_PRESET == 22)
+#define FXAA_QUALITY_PS 5
+#define FXAA_QUALITY_P0 1.0
+#define FXAA_QUALITY_P1 1.5
+#define FXAA_QUALITY_P2 2.0
+#define FXAA_QUALITY_P3 2.0
+#define FXAA_QUALITY_P4 8.0
+#endif
+#if (FXAA_QUALITY_PRESET == 23)
+#define FXAA_QUALITY_PS 6
+#define FXAA_QUALITY_P0 1.0
+#define FXAA_QUALITY_P1 1.5
+#define FXAA_QUALITY_P2 2.0
+#define FXAA_QUALITY_P3 2.0
+#define FXAA_QUALITY_P4 2.0
+#define FXAA_QUALITY_P5 8.0
+#endif
+#if (FXAA_QUALITY_PRESET == 24)
+#define FXAA_QUALITY_PS 7
+#define FXAA_QUALITY_P0 1.0
+#define FXAA_QUALITY_P1 1.5
+#define FXAA_QUALITY_P2 2.0
+#define FXAA_QUALITY_P3 2.0
+#define FXAA_QUALITY_P4 2.0
+#define FXAA_QUALITY_P5 3.0
+#define FXAA_QUALITY_P6 8.0
+#endif
+#if (FXAA_QUALITY_PRESET == 25)
+#define FXAA_QUALITY_PS 8
+#define FXAA_QUALITY_P0 1.0
+#define FXAA_QUALITY_P1 1.5
+#define FXAA_QUALITY_P2 2.0
+#define FXAA_QUALITY_P3 2.0
+#define FXAA_QUALITY_P4 2.0
+#define FXAA_QUALITY_P5 2.0
+#define FXAA_QUALITY_P6 4.0
+#define FXAA_QUALITY_P7 8.0
+#endif
+#if (FXAA_QUALITY_PRESET == 26)
+#define FXAA_QUALITY_PS 9
+#define FXAA_QUALITY_P0 1.0
+#define FXAA_QUALITY_P1 1.5
+#define FXAA_QUALITY_P2 2.0
+#define FXAA_QUALITY_P3 2.0
+#define FXAA_QUALITY_P4 2.0
+#define FXAA_QUALITY_P5 2.0
+#define FXAA_QUALITY_P6 2.0
+#define FXAA_QUALITY_P7 4.0
+#define FXAA_QUALITY_P8 8.0
+#endif
+#if (FXAA_QUALITY_PRESET == 27)
+#define FXAA_QUALITY_PS 10
+#define FXAA_QUALITY_P0 1.0
+#define FXAA_QUALITY_P1 1.5
+#define FXAA_QUALITY_P2 2.0
+#define FXAA_QUALITY_P3 2.0
+#define FXAA_QUALITY_P4 2.0
+#define FXAA_QUALITY_P5 2.0
+#define FXAA_QUALITY_P6 2.0
+#define FXAA_QUALITY_P7 2.0
+#define FXAA_QUALITY_P8 4.0
+#define FXAA_QUALITY_P9 8.0
+#endif
+#if (FXAA_QUALITY_PRESET == 28)
+#define FXAA_QUALITY_PS 11
+#define FXAA_QUALITY_P0 1.0
+#define FXAA_QUALITY_P1 1.5
+#define FXAA_QUALITY_P2 2.0
+#define FXAA_QUALITY_P3 2.0
+#define FXAA_QUALITY_P4 2.0
+#define FXAA_QUALITY_P5 2.0
+#define FXAA_QUALITY_P6 2.0
+#define FXAA_QUALITY_P7 2.0
+#define FXAA_QUALITY_P8 2.0
+#define FXAA_QUALITY_P9 4.0
+#define FXAA_QUALITY_P10 8.0
+#endif
+#if (FXAA_QUALITY_PRESET == 29)
+#define FXAA_QUALITY_PS 12
+#define FXAA_QUALITY_P0 1.0
+#define FXAA_QUALITY_P1 1.5
+#define FXAA_QUALITY_P2 2.0
+#define FXAA_QUALITY_P3 2.0
+#define FXAA_QUALITY_P4 2.0
+#define FXAA_QUALITY_P5 2.0
+#define FXAA_QUALITY_P6 2.0
+#define FXAA_QUALITY_P7 2.0
+#define FXAA_QUALITY_P8 2.0
+#define FXAA_QUALITY_P9 2.0
+#define FXAA_QUALITY_P10 4.0
+#define FXAA_QUALITY_P11 8.0
+#endif
+#if (FXAA_QUALITY_PRESET == 39)
+#define FXAA_QUALITY_PS 12
+#define FXAA_QUALITY_P0 1.0
+#define FXAA_QUALITY_P1 1.0
+#define FXAA_QUALITY_P2 1.0
+#define FXAA_QUALITY_P3 1.0
+#define FXAA_QUALITY_P4 1.0
+#define FXAA_QUALITY_P5 1.5
+#define FXAA_QUALITY_P6 2.0
+#define FXAA_QUALITY_P7 2.0
+#define FXAA_QUALITY_P8 2.0
+#define FXAA_QUALITY_P9 2.0
+#define FXAA_QUALITY_P10 4.0
+#define FXAA_QUALITY_P11 8.0
+#endif
+#if (FXAA_GLSL_100 == 1) || (FXAA_GLSL_120 == 1) || (FXAA_GLSL_130 == 1)
+#define FxaaBool bool
+#define FxaaDiscard discard
+#define FxaaFloat float
+#define FxaaFloat2 vec2
+#define FxaaFloat3 vec3
+#define FxaaFloat4 vec4
+#define FxaaHalf float
+#define FxaaHalf2 vec2
+#define FxaaHalf3 vec3
+#define FxaaHalf4 vec4
+#define FxaaInt2 ivec2
+#define FxaaSat(x) clamp(x, 0.0, 1.0)
+#define FxaaTex sampler2D
+#else
+#define FxaaBool bool
+#define FxaaDiscard clip(-1)
+#define FxaaFloat float
+#define FxaaFloat2 float2
+#define FxaaFloat3 float3
+#define FxaaFloat4 float4
+#define FxaaHalf half
+#define FxaaHalf2 half2
+#define FxaaHalf3 half3
+#define FxaaHalf4 half4
+#define FxaaSat(x) saturate(x)
+#endif
+#if (FXAA_GLSL_100 == 1)
+#define FxaaTexTop(t, p) texture2D(t, p, 0.0)
+#define FxaaTexOff(t, p, o, r) texture2D(t, p + (o * r), 0.0)
+#endif
+#if (FXAA_GLSL_120 == 1)
+#define FxaaTexTop(t, p) texture2DLod(t, p, 0.0)
+#if (FXAA_FAST_PIXEL_OFFSET == 1)
+#define FxaaTexOff(t, p, o, r) texture2DLodOffset(t, p, 0.0, o)
+#else
+#define FxaaTexOff(t, p, o, r) texture2DLod(t, p + (o * r), 0.0)
+#endif
+#if (FXAA_GATHER4_ALPHA == 1)
+#define FxaaTexAlpha4(t, p) textureGather(t, p, 3)
+#define FxaaTexOffAlpha4(t, p, o) textureGatherOffset(t, p, o, 3)
+#define FxaaTexGreen4(t, p) textureGather(t, p, 1)
+#define FxaaTexOffGreen4(t, p, o) textureGatherOffset(t, p, o, 1)
+#endif
+#endif
+#if (FXAA_GLSL_130 == 1)
+#define FxaaTexTop(t, p) textureLod(t, p, 0.0)
+#define FxaaTexOff(t, p, o, r) textureLodOffset(t, p, 0.0, o)
+#if (FXAA_GATHER4_ALPHA == 1)
+#define FxaaTexAlpha4(t, p) textureGather(t, p, 3)
+#define FxaaTexOffAlpha4(t, p, o) textureGatherOffset(t, p, o, 3)
+#define FxaaTexGreen4(t, p) textureGather(t, p, 1)
+#define FxaaTexOffGreen4(t, p, o) textureGatherOffset(t, p, o, 1)
+#endif
+#endif
+#if (FXAA_HLSL_3 == 1)
+#define FxaaInt2 float2
+#define FxaaTex sampler2D
+#define FxaaTexTop(t, p) tex2Dlod(t, float4(p, 0.0, 0.0))
+#define FxaaTexOff(t, p, o, r) tex2Dlod(t, float4(p + (o * r), 0, 0))
+#endif
+#if (FXAA_HLSL_4 == 1)
+#define FxaaInt2 int2
+struct FxaaTex { SamplerState smpl; Texture2D tex; };
+#define FxaaTexTop(t, p) t.tex.SampleLevel(t.smpl, p, 0.0)
+#define FxaaTexOff(t, p, o, r) t.tex.SampleLevel(t.smpl, p, 0.0, o)
+#endif
+#if (FXAA_HLSL_5 == 1)
+#define FxaaInt2 int2
+struct FxaaTex { SamplerState smpl; Texture2D tex; };
+#define FxaaTexTop(t, p) t.tex.SampleLevel(t.smpl, p, 0.0)
+#define FxaaTexOff(t, p, o, r) t.tex.SampleLevel(t.smpl, p, 0.0, o)
+#define FxaaTexAlpha4(t, p) t.tex.GatherAlpha(t.smpl, p)
+#define FxaaTexOffAlpha4(t, p, o) t.tex.GatherAlpha(t.smpl, p, o)
+#define FxaaTexGreen4(t, p) t.tex.GatherGreen(t.smpl, p)
+#define FxaaTexOffGreen4(t, p, o) t.tex.GatherGreen(t.smpl, p, o)
+#endif
+#if (FXAA_GREEN_AS_LUMA == 0)
+FxaaFloat FxaaLuma(FxaaFloat4 rgba) { return rgba.w; }
+#else
+FxaaFloat FxaaLuma(FxaaFloat4 rgba) { return rgba.y; }
+#endif
+#if (FXAA_PC == 1)
+FxaaFloat4 FxaaPixelShader(
+FxaaFloat2 pos,
+FxaaFloat4 fxaaConsolePosPos,
+FxaaTex tex,
+FxaaTex fxaaConsole360TexExpBiasNegOne,
+FxaaTex fxaaConsole360TexExpBiasNegTwo,
+FxaaFloat2 fxaaQualityRcpFrame,
+FxaaFloat4 fxaaConsoleRcpFrameOpt,
+FxaaFloat4 fxaaConsoleRcpFrameOpt2,
+FxaaFloat4 fxaaConsole360RcpFrameOpt2,
+FxaaFloat fxaaQualitySubpix,
+FxaaFloat fxaaQualityEdgeThreshold,
+FxaaFloat fxaaQualityEdgeThresholdMin,
+FxaaFloat fxaaConsoleEdgeSharpness,
+FxaaFloat fxaaConsoleEdgeThreshold,
+FxaaFloat fxaaConsoleEdgeThresholdMin,
+FxaaFloat4 fxaaConsole360ConstDir
+) {
+FxaaFloat2 posM;
+posM.x = pos.x;
+posM.y = pos.y;
+#if (FXAA_GATHER4_ALPHA == 1)
+#if (FXAA_DISCARD == 0)
+FxaaFloat4 rgbyM = FxaaTexTop(tex, posM);
+#if (FXAA_GREEN_AS_LUMA == 0)
+#define lumaM rgbyM.w
+#else
+#define lumaM rgbyM.y
+#endif
+#endif
+#if (FXAA_GREEN_AS_LUMA == 0)
+FxaaFloat4 luma4A = FxaaTexAlpha4(tex, posM);
+FxaaFloat4 luma4B = FxaaTexOffAlpha4(tex, posM, FxaaInt2(-1, -1));
+#else
+FxaaFloat4 luma4A = FxaaTexGreen4(tex, posM);
+FxaaFloat4 luma4B = FxaaTexOffGreen4(tex, posM, FxaaInt2(-1, -1));
+#endif
+#if (FXAA_DISCARD == 1)
+#define lumaM luma4A.w
+#endif
+#define lumaE luma4A.z
+#define lumaS luma4A.x
+#define lumaSE luma4A.y
+#define lumaNW luma4B.w
+#define lumaN luma4B.z
+#define lumaW luma4B.x
+#else
+FxaaFloat4 rgbyM = FxaaTexTop(tex, posM);
+#if (FXAA_GREEN_AS_LUMA == 0)
+#define lumaM rgbyM.w
+#else
+#define lumaM rgbyM.y
+#endif
+#if (FXAA_GLSL_100 == 1)
+FxaaFloat lumaS = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2( 0.0, 1.0), fxaaQualityRcpFrame.xy));
+FxaaFloat lumaE = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2( 1.0, 0.0), fxaaQualityRcpFrame.xy));
+FxaaFloat lumaN = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2( 0.0,-1.0), fxaaQualityRcpFrame.xy));
+FxaaFloat lumaW = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2(-1.0, 0.0), fxaaQualityRcpFrame.xy));
+#else
+FxaaFloat lumaS = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2( 0, 1), fxaaQualityRcpFrame.xy));
+FxaaFloat lumaE = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2( 1, 0), fxaaQualityRcpFrame.xy));
+FxaaFloat lumaN = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2( 0,-1), fxaaQualityRcpFrame.xy));
+FxaaFloat lumaW = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2(-1, 0), fxaaQualityRcpFrame.xy));
+#endif
+#endif
+FxaaFloat maxSM = max(lumaS, lumaM);
+FxaaFloat minSM = min(lumaS, lumaM);
+FxaaFloat maxESM = max(lumaE, maxSM);
+FxaaFloat minESM = min(lumaE, minSM);
+FxaaFloat maxWN = max(lumaN, lumaW);
+FxaaFloat minWN = min(lumaN, lumaW);
+FxaaFloat rangeMax = max(maxWN, maxESM);
+FxaaFloat rangeMin = min(minWN, minESM);
+FxaaFloat rangeMaxScaled = rangeMax * fxaaQualityEdgeThreshold;
+FxaaFloat range = rangeMax - rangeMin;
+FxaaFloat rangeMaxClamped = max(fxaaQualityEdgeThresholdMin, rangeMaxScaled);
+FxaaBool earlyExit = range < rangeMaxClamped;
+if(earlyExit)
+#if (FXAA_DISCARD == 1)
+FxaaDiscard;
+#else
+return rgbyM;
+#endif
+#if (FXAA_GATHER4_ALPHA == 0)
+#if (FXAA_GLSL_100 == 1)
+FxaaFloat lumaNW = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2(-1.0,-1.0), fxaaQualityRcpFrame.xy));
+FxaaFloat lumaSE = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2( 1.0, 1.0), fxaaQualityRcpFrame.xy));
+FxaaFloat lumaNE = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2( 1.0,-1.0), fxaaQualityRcpFrame.xy));
+FxaaFloat lumaSW = FxaaLuma(FxaaTexOff(tex, posM, FxaaFloat2(-1.0, 1.0), fxaaQualityRcpFrame.xy));
+#else
+FxaaFloat lumaNW = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2(-1,-1), fxaaQualityRcpFrame.xy));
+FxaaFloat lumaSE = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2( 1, 1), fxaaQualityRcpFrame.xy));
+FxaaFloat lumaNE = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2( 1,-1), fxaaQualityRcpFrame.xy));
+FxaaFloat lumaSW = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2(-1, 1), fxaaQualityRcpFrame.xy));
+#endif
+#else
+FxaaFloat lumaNE = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2(1, -1), fxaaQualityRcpFrame.xy));
+FxaaFloat lumaSW = FxaaLuma(FxaaTexOff(tex, posM, FxaaInt2(-1, 1), fxaaQualityRcpFrame.xy));
+#endif
+FxaaFloat lumaNS = lumaN + lumaS;
+FxaaFloat lumaWE = lumaW + lumaE;
+FxaaFloat subpixRcpRange = 1.0/range;
+FxaaFloat subpixNSWE = lumaNS + lumaWE;
+FxaaFloat edgeHorz1 = (-2.0 * lumaM) + lumaNS;
+FxaaFloat edgeVert1 = (-2.0 * lumaM) + lumaWE;
+FxaaFloat lumaNESE = lumaNE + lumaSE;
+FxaaFloat lumaNWNE = lumaNW + lumaNE;
+FxaaFloat edgeHorz2 = (-2.0 * lumaE) + lumaNESE;
+FxaaFloat edgeVert2 = (-2.0 * lumaN) + lumaNWNE;
+FxaaFloat lumaNWSW = lumaNW + lumaSW;
+FxaaFloat lumaSWSE = lumaSW + lumaSE;
+FxaaFloat edgeHorz4 = (abs(edgeHorz1) * 2.0) + abs(edgeHorz2);
+FxaaFloat edgeVert4 = (abs(edgeVert1) * 2.0) + abs(edgeVert2);
+FxaaFloat edgeHorz3 = (-2.0 * lumaW) + lumaNWSW;
+FxaaFloat edgeVert3 = (-2.0 * lumaS) + lumaSWSE;
+FxaaFloat edgeHorz = abs(edgeHorz3) + edgeHorz4;
+FxaaFloat edgeVert = abs(edgeVert3) + edgeVert4;
+FxaaFloat subpixNWSWNESE = lumaNWSW + lumaNESE;
+FxaaFloat lengthSign = fxaaQualityRcpFrame.x;
+FxaaBool horzSpan = edgeHorz >= edgeVert;
+FxaaFloat subpixA = subpixNSWE * 2.0 + subpixNWSWNESE;
+if(!horzSpan) lumaN = lumaW;
+if(!horzSpan) lumaS = lumaE;
+if(horzSpan) lengthSign = fxaaQualityRcpFrame.y;
+FxaaFloat subpixB = (subpixA * (1.0/12.0)) - lumaM;
+FxaaFloat gradientN = lumaN - lumaM;
+FxaaFloat gradientS = lumaS - lumaM;
+FxaaFloat lumaNN = lumaN + lumaM;
+FxaaFloat lumaSS = lumaS + lumaM;
+FxaaBool pairN = abs(gradientN) >= abs(gradientS);
+FxaaFloat gradient = max(abs(gradientN), abs(gradientS));
+if(pairN) lengthSign = -lengthSign;
+FxaaFloat subpixC = FxaaSat(abs(subpixB) * subpixRcpRange);
+FxaaFloat2 posB;
+posB.x = posM.x;
+posB.y = posM.y;
+FxaaFloat2 offNP;
+offNP.x = (!horzSpan) ? 0.0 : fxaaQualityRcpFrame.x;
+offNP.y = ( horzSpan) ? 0.0 : fxaaQualityRcpFrame.y;
+if(!horzSpan) posB.x += lengthSign * 0.5;
+if( horzSpan) posB.y += lengthSign * 0.5;
+FxaaFloat2 posN;
+posN.x = posB.x - offNP.x * FXAA_QUALITY_P0;
+posN.y = posB.y - offNP.y * FXAA_QUALITY_P0;
+FxaaFloat2 posP;
+posP.x = posB.x + offNP.x * FXAA_QUALITY_P0;
+posP.y = posB.y + offNP.y * FXAA_QUALITY_P0;
+FxaaFloat subpixD = ((-2.0)*subpixC) + 3.0;
+FxaaFloat lumaEndN = FxaaLuma(FxaaTexTop(tex, posN));
+FxaaFloat subpixE = subpixC * subpixC;
+FxaaFloat lumaEndP = FxaaLuma(FxaaTexTop(tex, posP));
+if(!pairN) lumaNN = lumaSS;
+FxaaFloat gradientScaled = gradient * 1.0/4.0;
+FxaaFloat lumaMM = lumaM - lumaNN * 0.5;
+FxaaFloat subpixF = subpixD * subpixE;
+FxaaBool lumaMLTZero = lumaMM < 0.0;
+lumaEndN -= lumaNN * 0.5;
+lumaEndP -= lumaNN * 0.5;
+FxaaBool doneN = abs(lumaEndN) >= gradientScaled;
+FxaaBool doneP = abs(lumaEndP) >= gradientScaled;
+if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P1;
+if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P1;
+FxaaBool doneNP = (!doneN) || (!doneP);
+if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P1;
+if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P1;
+if(doneNP) {
+if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));
+if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));
+if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;
+if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;
+doneN = abs(lumaEndN) >= gradientScaled;
+doneP = abs(lumaEndP) >= gradientScaled;
+if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P2;
+if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P2;
+doneNP = (!doneN) || (!doneP);
+if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P2;
+if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P2;
+#if (FXAA_QUALITY_PS > 3)
+if(doneNP) {
+if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));
+if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));
+if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;
+if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;
+doneN = abs(lumaEndN) >= gradientScaled;
+doneP = abs(lumaEndP) >= gradientScaled;
+if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P3;
+if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P3;
+doneNP = (!doneN) || (!doneP);
+if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P3;
+if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P3;
+#if (FXAA_QUALITY_PS > 4)
+if(doneNP) {
+if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));
+if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));
+if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;
+if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;
+doneN = abs(lumaEndN) >= gradientScaled;
+doneP = abs(lumaEndP) >= gradientScaled;
+if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P4;
+if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P4;
+doneNP = (!doneN) || (!doneP);
+if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P4;
+if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P4;
+#if (FXAA_QUALITY_PS > 5)
+if(doneNP) {
+if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));
+if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));
+if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;
+if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;
+doneN = abs(lumaEndN) >= gradientScaled;
+doneP = abs(lumaEndP) >= gradientScaled;
+if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P5;
+if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P5;
+doneNP = (!doneN) || (!doneP);
+if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P5;
+if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P5;
+#if (FXAA_QUALITY_PS > 6)
+if(doneNP) {
+if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));
+if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));
+if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;
+if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;
+doneN = abs(lumaEndN) >= gradientScaled;
+doneP = abs(lumaEndP) >= gradientScaled;
+if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P6;
+if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P6;
+doneNP = (!doneN) || (!doneP);
+if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P6;
+if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P6;
+#if (FXAA_QUALITY_PS > 7)
+if(doneNP) {
+if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));
+if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));
+if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;
+if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;
+doneN = abs(lumaEndN) >= gradientScaled;
+doneP = abs(lumaEndP) >= gradientScaled;
+if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P7;
+if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P7;
+doneNP = (!doneN) || (!doneP);
+if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P7;
+if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P7;
+#if (FXAA_QUALITY_PS > 8)
+if(doneNP) {
+if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));
+if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));
+if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;
+if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;
+doneN = abs(lumaEndN) >= gradientScaled;
+doneP = abs(lumaEndP) >= gradientScaled;
+if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P8;
+if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P8;
+doneNP = (!doneN) || (!doneP);
+if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P8;
+if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P8;
+#if (FXAA_QUALITY_PS > 9)
+if(doneNP) {
+if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));
+if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));
+if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;
+if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;
+doneN = abs(lumaEndN) >= gradientScaled;
+doneP = abs(lumaEndP) >= gradientScaled;
+if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P9;
+if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P9;
+doneNP = (!doneN) || (!doneP);
+if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P9;
+if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P9;
+#if (FXAA_QUALITY_PS > 10)
+if(doneNP) {
+if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));
+if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));
+if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;
+if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;
+doneN = abs(lumaEndN) >= gradientScaled;
+doneP = abs(lumaEndP) >= gradientScaled;
+if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P10;
+if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P10;
+doneNP = (!doneN) || (!doneP);
+if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P10;
+if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P10;
+#if (FXAA_QUALITY_PS > 11)
+if(doneNP) {
+if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));
+if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));
+if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;
+if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;
+doneN = abs(lumaEndN) >= gradientScaled;
+doneP = abs(lumaEndP) >= gradientScaled;
+if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P11;
+if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P11;
+doneNP = (!doneN) || (!doneP);
+if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P11;
+if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P11;
+#if (FXAA_QUALITY_PS > 12)
+if(doneNP) {
+if(!doneN) lumaEndN = FxaaLuma(FxaaTexTop(tex, posN.xy));
+if(!doneP) lumaEndP = FxaaLuma(FxaaTexTop(tex, posP.xy));
+if(!doneN) lumaEndN = lumaEndN - lumaNN * 0.5;
+if(!doneP) lumaEndP = lumaEndP - lumaNN * 0.5;
+doneN = abs(lumaEndN) >= gradientScaled;
+doneP = abs(lumaEndP) >= gradientScaled;
+if(!doneN) posN.x -= offNP.x * FXAA_QUALITY_P12;
+if(!doneN) posN.y -= offNP.y * FXAA_QUALITY_P12;
+doneNP = (!doneN) || (!doneP);
+if(!doneP) posP.x += offNP.x * FXAA_QUALITY_P12;
+if(!doneP) posP.y += offNP.y * FXAA_QUALITY_P12;
+}
+#endif
+}
+#endif
+}
+#endif
+}
+#endif
+}
+#endif
+}
+#endif
+}
+#endif
+}
+#endif
+}
+#endif
+}
+#endif
+}
+FxaaFloat dstN = posM.x - posN.x;
+FxaaFloat dstP = posP.x - posM.x;
+if(!horzSpan) dstN = posM.y - posN.y;
+if(!horzSpan) dstP = posP.y - posM.y;
+FxaaBool goodSpanN = (lumaEndN < 0.0) != lumaMLTZero;
+FxaaFloat spanLength = (dstP + dstN);
+FxaaBool goodSpanP = (lumaEndP < 0.0) != lumaMLTZero;
+FxaaFloat spanLengthRcp = 1.0/spanLength;
+FxaaBool directionN = dstN < dstP;
+FxaaFloat dst = min(dstN, dstP);
+FxaaBool goodSpan = directionN ? goodSpanN : goodSpanP;
+FxaaFloat subpixG = subpixF * subpixF;
+FxaaFloat pixelOffset = (dst * (-spanLengthRcp)) + 0.5;
+FxaaFloat subpixH = subpixG * fxaaQualitySubpix;
+FxaaFloat pixelOffsetGood = goodSpan ? pixelOffset : 0.0;
+FxaaFloat pixelOffsetSubpix = max(pixelOffsetGood, subpixH);
+if(!horzSpan) posM.x += pixelOffsetSubpix * lengthSign;
+if( horzSpan) posM.y += pixelOffsetSubpix * lengthSign;
+#if (FXAA_DISCARD == 1)
+return FxaaTexTop(tex, posM);
+#else
+return FxaaFloat4(FxaaTexTop(tex, posM).xyz, lumaM);
+#endif
+}
+#endif
+void main() {
+gl_FragColor = FxaaPixelShader(
+vUv,
+vec4(0.0),
+tDiffuse,
+tDiffuse,
+tDiffuse,
+resolution,
+vec4(0.0),
+vec4(0.0),
+vec4(0.0),
+0.75,
+0.166,
+0.0833,
+0.0,
+0.0,
+0.0,
+vec4(0.0)
+);
+gl_FragColor.a = texture2D(tDiffuse, vUv).a;
+}`;
+/* 1) resolución por escalón: [máximo, alta, media, media-baja, baja, mínima] */
+if(typeof QLV!=='undefined'){const PR=[9,2,1.6,1.35,1.1,.9];for(let i=0;i<QLV.length&&i<PR.length;i++)QLV[i].pr=Math.max(QLV[i].pr<9?QLV[i].pr:0,PR[i]);
+  if(QLV[2]){QLV[2].post=1;QLV[2].soft=1;QLV[2].sh=Math.max(QLV[2].sh,1536);}
+  if(QLV[3]&&!QLV[3].sh)QLV[3].sh=1024;}
+/* 2) modelos más redondos: más caras en cilindros, conos y esferas */
+segK=function(n){if(n<6)return n;const t=typeof DEV_TIER==='undefined'?2:DEV_TIER;const m=t<=1?2:t===2?1.7:t===3?1.45:1.2;return Math.min(64,Math.round(n*m));};
+/* 3) texturas finas */
+function vxAniso(){try{return Math.max(4,Math.min(16,R3.renderer.capabilities.getMaxAnisotropy()));}catch(_){return 4;}}
+function vxFixTextures(){if(!USE3D||!R3||!R3.scene)return 0;VX.aniso=vxAniso();let n=0;const seen=new Set();
+  const fix=t=>{if(!t||seen.has(t)||!t.isTexture||t.isDataTexture||t.isRenderTargetTexture)return;seen.add(t);
+    if(t.minFilter===THREE.LinearMipmapLinearFilter||t.minFilter===THREE.LinearMipMapLinearFilter||t.generateMipmaps){if(t.anisotropy<VX.aniso){t.anisotropy=VX.aniso;t.needsUpdate=true;n++;}}};
+  R3.scene.traverse(o=>{const ms=o.material?(Array.isArray(o.material)?o.material:[o.material]):[];for(const m of ms){if(!m)continue;fix(m.map);fix(m.bumpMap);fix(m.normalMap);fix(m.roughnessMap);fix(m.emissiveMap);fix(m.alphaMap);}});
+  return n;}
+{const _ct=canvasTex;canvasTex=function(N,draw,rep){const t=_ct.apply(this,arguments);try{if(VX.aniso>t.anisotropy)t.anisotropy=VX.aniso;}catch(_){}return t;};}
+/* 4) suavizado de bordes: FXAA cuando el teléfono no trae MSAA */
+function vxMat(){if(VX.mat)return VX.mat;VX.mat=new THREE.ShaderMaterial({toneMapped:false,depthTest:false,depthWrite:false,
+  uniforms:{tDiffuse:{value:null},resolution:{value:new THREE.Vector2(1/1024,1/1024)}},
+  vertexShader:'varying vec2 vUv;void main(){vUv=uv;gl_Position=vec4(position.xy,0.0,1.0);}',fragmentShader:VX_FXAA});return VX.mat;}
+function vxQuad(){if(VX.q)return VX.q;const quad=new THREE.Mesh(new THREE.PlaneGeometry(2,2),vxMat());quad.frustumCulled=false;const s=new THREE.Scene();s.add(quad);VX.q={quad,s,c:new THREE.OrthographicCamera(-1,1,1,-1,0,1)};return VX.q;}
+function vxSize(r){const v=r.getDrawingBufferSize(new THREE.Vector2());const w=Math.max(1,v.x|0),h=Math.max(1,v.y|0);if(VX.rt&&VX.w===w&&VX.h===h)return;
+  if(VX.rt)VX.rt.dispose();VX.w=w;VX.h=h;VX.rt=new THREE.WebGLRenderTarget(w,h,{minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter,format:THREE.RGBAFormat,encoding:THREE.sRGBEncoding,depthBuffer:true});
+  VX.rt.texture.encoding=THREE.sRGBEncoding;vxMat().uniforms.resolution.value.set(1/w,1/h);}
+{const _pr=postRender;postRender=function(){try{const r=R3.renderer;VX.frames++;
+    const postOn=POST&&POST.on;
+    if(!VX.on||VX.ctxAA)return _pr.apply(this,arguments);
+    vxSize(r);
+    if(postOn){ // acabado de cine primero, en memoria; luego FXAA a la pantalla
+      const sRT=r.setRenderTarget.bind(r);r.setRenderTarget=function(t){return sRT(t===null?VX.rt:t);};
+      try{_pr.apply(this,arguments);}finally{r.setRenderTarget=sRT;}
+    }else{r.setRenderTarget(VX.rt);r.render(R3.scene,R3.camera);}
+    const Q=vxQuad();Q.quad.material.uniforms.tDiffuse.value=VX.rt.texture;r.setRenderTarget(null);r.render(Q.s,Q.c);
+  }catch(err){VX.on=false;if(typeof console!=='undefined')console.warn('FXAA apagado:',err);return _pr.apply(this,arguments);}};}
+/* al crear el mundo 3D: saber si el teléfono trae MSAA, y afinar todas las texturas */
+{const _i3=init3D;init3D=function(){const r=_i3.apply(this,arguments);try{if(R3&&R3.renderer){const a=R3.renderer.getContext().getContextAttributes();VX.ctxAA=!!(a&&a.antialias);VX.aniso=vxAniso();
+      const big=R3.renderer.capabilities.maxTextureSize>=8192&&(typeof DEV_TIER!=='undefined'&&DEV_TIER===0);if(big&&QLV[0])QLV[0].sh=4096;
+      vxFixTextures();}}catch(_){}return r;};}
+{const _bw=buildWorld3D;buildWorld3D=function(){const r=_bw.apply(this,arguments);try{vxFixTextures();setTimeout(vxFixTextures,1500);}catch(_){}return r;};}
+/* 5) rocas, cerros y peñascos con luz suave: sus caras ya no se ven talladas a cuchillo
+      (solo rocas y piedras sueltas; los cerros y montañas conservan sus caras para que se lea el relieve, y las cajas, como muros y techos, sus esquinas) */
+function vxSmooth(geo){try{if(geo.index)return geo;const p=geo.attributes.position,cnt=p.count;if(cnt<9||cnt%3)return geo;
+    const acc=new Map(),key=i=>Math.round(p.getX(i)*40)+','+Math.round(p.getY(i)*40)+','+Math.round(p.getZ(i)*40);
+    const a=new THREE.Vector3(),b=new THREE.Vector3(),c=new THREE.Vector3(),ab=new THREE.Vector3(),ac=new THREE.Vector3();const keys=new Array(cnt);
+    for(let i=0;i<cnt;i+=3){a.fromBufferAttribute(p,i);b.fromBufferAttribute(p,i+1);c.fromBufferAttribute(p,i+2);ab.subVectors(b,a);ac.subVectors(c,a);ab.cross(ac);
+      for(let k=0;k<3;k++){const kk=keys[i+k]=key(i+k);let v=acc.get(kk);if(!v){v=[0,0,0];acc.set(kk,v);}v[0]+=ab.x;v[1]+=ab.y;v[2]+=ab.z;}}
+    // 72 % luz suave + 28 % de la cara: se ve redondo pero conserva el relieve de la roca
+    const n=new Float32Array(cnt*3),fl=new THREE.Vector3();for(let i=0;i<cnt;i+=3){a.fromBufferAttribute(p,i);b.fromBufferAttribute(p,i+1);c.fromBufferAttribute(p,i+2);ab.subVectors(b,a);ac.subVectors(c,a);fl.crossVectors(ab,ac).normalize();
+      for(let k=0;k<3;k++){const v=acc.get(keys[i+k]);const l=Math.hypot(v[0],v[1],v[2])||1;let x=v[0]/l*.72+fl.x*.28,y=v[1]/l*.72+fl.y*.28,z=v[2]/l*.72+fl.z*.28;const m=Math.hypot(x,y,z)||1;n[(i+k)*3]=x/m;n[(i+k)*3+1]=y/m;n[(i+k)*3+2]=z/m;}}
+    geo.setAttribute('normal',new THREE.BufferAttribute(n,3));}catch(_){}return geo;}
+{const _df=deform;deform=function(geo,amt,seed){const g=_df.apply(this,arguments);try{if(/Dodecahedron|Sphere/.test(geo.type||''))vxSmooth(g);}catch(_){}return g;};}
+window.__HI={get R3(){return R3;},VX,vxFixTextures,addB:(...a)=>addB(...a),addU:(...a)=>addU(...a),centerOn:(x,y)=>centerOn(x,y),get BT(){return BT;},get UT(){return UT;},get cam(){return cam;},MV,HFG,hit:(a,b,c)=>hit(a,b,c),RP_PACKS,rpBank,mvFocusHome,get QUAL(){return QUAL;},hpTip,hpIntro,hpHint,hpIdle,HP,metToday,dmAdd,dmLast,hiSad,evE,evShow,evPick,evAfterTurn,evEraGoal,EVS,chList,chAdd,chOpen,chText,chStats,thToggle,thOn,get CHraw(){return CH;},set CHraw(v){CH=v;},hiTickNow:()=>hiTick(),get clApply(){return clApply;},rk,rkLevel,rkXp,misRoll,misBump,misClaim,misBonus,misReady,misOpen,hiQuick,hiCharge,hiTrackPaint,hiEnemyBase,hiHostOk,hiSig,hiH,get HI_LOCKED(){return HI_LOCKED;},get RKraw(){return RK;},set RKraw(v){RK=v;},ownerOf,countOf,cwTargets,pactOf,trCfg,hacTrade,warE,warRank,genLv,warWin,warAtkMul,warDefMul,overseas,navyCost,navyBonus,advE,advTips,advSay,advRumors,feastNow,feastCost,get cwEval(){return cwEval;},get cwLaunch(){return cwLaunch;},get answerOffer(){return answerOffer;},get doTrade(){return doTrade;},get garDef(){return garDef;},imCe:(a,x)=>imCe(a,x),get selectCountry(){return selectCountry;},hacBalance,hacAutoTax,warFit,stoBring,balTargets,hacE,permOn,stoOn,get funds(){return funds;},get cnRender(){return cnRender;},openCouncil2:()=>openCouncil(),econ,econHacHTML,econWarHTML,econDipHTML,goldBase,get ceCost(){return ceCost;},bombCost,imUpk,cnSk,imAsgTotal,newCampaign,addB,showTitle,get MKQ2(){return MKQ;},get SHQ(){return SHQ;},get MKQ(){return MKQ;},shqPrice,mkTotal,shopAct,refreshTray,giveRes,resAmt,get CAMP(){return CAMP;},TUT,tutStart,tutOffer,tutNeeded,tutTick,v60Sync,dockTarget,orderAt,setSel,selectBuilding,startPlacing,confirmPlace,doAct,get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},get cam(){return cam;},OWN,isOwner,ownCheck,ownOpen,ownAct,giftsClaim,testerGift,webNoPay,ownInfTick,get ON(){return ON;},sepPass,get landOk(){return landOk;},resCap,resAdd,funds,hacFund,stoTotal,gdMaxAfford,get canAffordC(){return canAffordC;},get payC(){return payC;},get ceCap(){return ceCap;},SV,svLoad,get ON(){return ON;},get onAct(){return onAct;},get renderOnlineHTML(){return renderOnlineHTML;},gdProv,gdRest,invChance,get popC(){return popC;},get cePow(){return cePow;},get ceTgtDef(){return ceTgtDef;},get popCap(){return popCap;},shOn,shLeft,shGive,shBuy,shCan,shDealToday,shDealOff,shW,get hit(){return hit;},openShopTab,popC,popWorld,popEmpire,popHurt,puOf,puAvg,puTarget,popTurn,popBomb,bombNow,repCost,popE,gwTick,gwWave,gwStrike,gwPlayerBomb,get imTrib(){return imTrib;},imOpen,imClose,imRender,imE,imMine,imProd,imTrib,imSto,imAsg,imStr,imTurn,cwEval,cwTargets,cwLaunch,cwDeclare,imCouncilOk,imCanRecruit,imRecruitDefend,ceSt,ceDefend,ceConquer,ceAskDefense,ceAskConquer,ceRecruit,ceOpen,ceTurn,get CAMP(){return CAMP;},worldTurn:()=>worldTurn(),campaignEnd:(w,h)=>campaignEnd(w,h),startBattle:(a,b)=>startBattle(a,b),renderCampBar:()=>renderCampBar(),cnTick,cnRecruit,openCouncil,closeCouncil,cnCfg,cnSt,cnHired,dipAnswer,announce,declareWar,setSt:(a,b,v)=>setSt(a,b,v),autoDefend,garChance,garDef,garReinforce,templeLv,templeEraMul,blessNow,blessOn,gardenGather,leaderLabel,leaderTick,lTitle,rushVid,rushLeft,rushMul,musicTick,AUD,faunaEra,STORY,storyTick,atk,buildPort,canExpedite,sendExpedition,expLeft,expLand,expBuy,expDraw,worldPulse,chapters,storyStart,goalProg,stGet,renderStoryCard,setMode:m=>setMode(m),get MODE(){return MODE;},contOf,hasPort,DEV_TIER,setLevel,setQuality,wallet,amber,addAmber,grant,accel,accCost,canAccel,claimDaily,dailyState,freeVideo,buyRes,vidRes,buyEraPack,shopEra,pickBanner,openShop,closeShop,adClose,mon,eraPack,resAmt,BANNERS,get TEAM(){return TEAM;},shopEnd,retryBonus,CBY,COUNTRIES,newGame,endGame,selectCountry,doTrade,proposePact,breakPact,answerOffer,resistOf,incomeOf,tradeQuote,campaignEnd,doAct,get selR(){return selR;},UTT:UT,BTT:BT,get AUD(){return typeof AUD!=="undefined"?AUD:null;},step,get G(){return G;},trainAt,startPlacing,confirmPlace,tap,setSel,orderAt,render,renderMini,refreshTray,drawPortrait,cam,setRunning(v){running=v;},setDiff(k){DK=k;},setNP(n){NP=n;},FAUNA,addB,addU,addAnimal,centerOn,updFog,eraCheck,get PROF(){return PROF;},get USE3D(){return USE3D;},pickScreen,screenToWorld,proj3,get R3(){return R3;},get POST(){return POST;},get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},zoomAt,clampCam,get terrain(){return terrain;},get BASES(){return BASES;},get FORDS(){return FORDS;},get RIVERS(){return RIVERS;},findPath,seaD,setBridge,waterNear:(x,y,r)=>waterNear(x,y,r),riverAt:(x,y)=>riverAt(x,y),guideSay,guideFor,kill,newCampaign,startBattle,reachable,worldTurn,get CAMP(){return CAMP;},countOf,saveGame,loadGame,savedInfo,continueGame,selectBuilding,teamBlock:t=>teamBlock(t),get BLOCKERS(){return BLOCKERS;},get BLOCKV(){return BLOCKV;},lineClear,get PBUDGET(){return PBUDGET;},render3D:dt=>render3D(dt),renderOverlay:dt=>renderOverlay(dt),resize,freeze(v){frozen=v;},get acc(){return acc;},mountainAt:(x,y)=>mountainAt(x,y),heightAt:(x,y)=>heightAt(x,y),reveal(){explored.fill(1);visible.fill(1);G.revealAll=true;updFog();}};
 })();
 
 </script>
