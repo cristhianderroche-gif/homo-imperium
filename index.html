@@ -1286,15 +1286,15 @@ body.th22 #hiIntro h3{color:#F4D58A}
 .mvFeed{display:flex;justify-content:space-between;gap:8px;margin:0;padding:7px 4px;border-bottom:1px solid rgba(255,255,255,.07);font-size:13px}.mvFeed small{opacity:.6;white-space:nowrap}
 .mvDot{display:inline-block;min-width:16px;padding:0 4px;border-radius:9px;background:#e5484d;color:#fff;font-style:normal;font-size:11px;line-height:16px;margin-left:3px}
 .rpPack .sct span .i{width:15px;height:15px;vertical-align:-3px}.rpBank .scb{display:flex;gap:6px;flex-wrap:wrap}.rpH{margin-top:14px}
-#hiFightChip{position:absolute;top:52px;left:50%;transform:translateX(-50%);z-index:30;border:0;border-radius:999px;padding:8px 16px;background:linear-gradient(180deg,#e5484d,#a5262a);color:#fff;font:600 14px/1 'Barlow Condensed',system-ui,sans-serif;letter-spacing:.3px;box-shadow:0 6px 18px rgba(165,38,42,.5);animation:fgPulse 1s ease-in-out infinite}
+#hiFightChip{position:absolute;top:52px;left:50%;transform:translateX(-50%);z-index:30;border:0;border-radius:999px;padding:8px 16px;background:#b8302f;color:#fff;font:600 14px/1 'Barlow Condensed',system-ui,sans-serif;letter-spacing:.3px;box-shadow:0 4px 12px rgba(0,0,0,.35)}
 #hiFightChip span{background:rgba(255,255,255,.2);border-radius:999px;padding:3px 8px;margin-left:6px}
-@keyframes fgPulse{50%{box-shadow:0 6px 26px rgba(229,72,77,.85)}}
+
 /* la batalla manda: menos interfaz encima del campo */
 #app #side{gap:6px}#app #side>button{opacity:.72;transition:opacity .2s,transform .2s}#app #side>button:active,#app #side>button:focus-visible{opacity:1}
 #app #zoom button{opacity:.72}
 @media (max-width:560px){#app #side>button{width:38px;height:38px}#app #zoom #rotL,#app #zoom #rotR{display:none}#app #miniWrap{width:76px;height:76px;opacity:.85}}
-#app.hiFight #side>button,#app.hiFight #zoom,#app.hiFight #miniWrap{opacity:.35}
-#app.hiFight::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:5;box-shadow:inset 0 0 90px rgba(200,30,30,.28);animation:fgPulse 1.4s ease-in-out infinite}
+
+
 #app.hiFight #guide{opacity:0!important;pointer-events:none}
 #app #guide #guideBub{font-size:12.5px;line-height:1.3}
 #app #guide #guideAv{width:40px;height:40px}
@@ -1302,6 +1302,8 @@ body.th22 #hiIntro h3{color:#F4D58A}
 #onBody .sc.mvC>.mvBtns,#onBody .sc.mvC>.mvSay,#onBody .sc.mvC>.mvConq{flex:1 1 100%}
 #onBody .sc.mvC>.big{flex:0 0 auto;align-self:center}
 .mvQuick .mvGo{width:100%;display:block}
+/* v71 · durante la partida se pausan las animaciones de lo que queda detrás (rutas del mapa del mundo, brillos) */
+html.hiPlaying #worldmap .route,html.hiPlaying #worldmap .exproute,html.hiPlaying .ambchip.offer{animation:none!important}
 </style>
 
 <div id="app" class="menu">
@@ -5277,7 +5279,7 @@ function devTier(){
 const DEV_TIER=USE3D?devTier():0;
 function init3D(){
   if(!USE3D)return;
-  const renderer=new THREE.WebGLRenderer({canvas:glc,antialias:DEV_TIER<=3&&QSET!=='baja',powerPreference:'high-performance'});
+  const renderer=new THREE.WebGLRenderer({canvas:glc,antialias:DEV_TIER<=2&&QSET!=='baja',powerPreference:'high-performance'});
   renderer.setPixelRatio(DPR);renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
   renderer.outputEncoding=THREE.sRGBEncoding;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.0;
   const scene=new THREE.Scene();
@@ -8177,7 +8179,7 @@ function frameBody(now){
 function boot(){init3D();resize();applyQuality();showTitle();requestAnimationFrame(frame);}
 boot();
 /* ---------- opiniones de quienes prueban el juego: llegan por WhatsApp al creador ---------- */
-const FB_TO='573044272520',FB_VER='v70';let fbCat='Error',fbFrom=null;
+const FB_TO='573044272520',FB_VER='v72';let fbCat='Error',fbFrom=null;
 function fbContext(){const d=(()=>{const u=navigator.userAgent||'';return /iPhone|iPad/.test(u)?'iPhone/iPad':/Android/.test(u)?'Android':/Mac/.test(u)?'Mac':/Windows/.test(u)?'Windows':'otro';})();
   const g=G&&!$('title').hidden?null:G;const where=g&&PROF?PROF.c.n+' · era '+ROMAN[g.era[0]]+' · '+fmtT(g.t)+(g.camp?' · conquista':''):'menú de inicio';
   return 'Versión '+FB_VER+' · '+d+' '+innerWidth+'×'+innerHeight+' · '+where+(typeof QSET!=='undefined'?' · calidad '+QSET+' nivel '+QUAL.lvl+(QUAL.fps?' · '+QUAL.fps+' fps':'')+(GPU_NAME?' · '+GPU_NAME:''):'');}
@@ -10669,18 +10671,23 @@ const HFG={t:-99,x:0,y:0,n:0,shown:false};
 {const _hit=hit;hit=function(t,dmg,src){const r=_hit.apply(this,arguments);try{if(G&&t&&src&&t.o!==src.o&&(t.o===0||src.o===0)&&(src.k==='u'||t.k==='u')){
       if(G.t-HFG.t>12)HFG.n=0;HFG.n++;HFG.t=G.t;HFG.x=(t.x+src.x)/2;HFG.y=(t.y+src.y)/2;}}catch(_){}return r;};}
 function fgChip(){let d=$('hiFightChip');if(!d){d=document.createElement('button');d.id='hiFightChip';d.type='button';d.hidden=true;d.addEventListener('click',()=>{try{centerOn(HFG.x,HFG.y);if(typeof sfx==='function')sfx('click');}catch(_){}});($('app')||document.body).appendChild(d);}return d;}
-setInterval(()=>{try{const app=$('app'),d=fgChip();const cover=['shop','pause','hiEv','council','cnBody','hiMis','imPanel'].some(id=>{const e=$(id);return e&&!e.hidden&&e.offsetParent!==null;});
+setInterval(()=>{try{const playing=!!(G&&!G.over&&$('title')&&$('title').hidden);if(document.documentElement.classList.contains('hiPlaying')!==playing)document.documentElement.classList.toggle('hiPlaying',playing);}catch(_){}
+  try{const app=$('app'),d=fgChip();const cover=['shop','pause','hiEv','council','cnBody','hiMis','imPanel'].some(id=>{const e=$(id);return e&&!e.hidden&&e.offsetParent!==null;});
     if(!G||G.over||!app||cover||($('title')&&!$('title').hidden)){d.hidden=true;if(app)app.classList.remove('hiFight');return;}
-    const live=G.t-HFG.t<6&&HFG.n>=3;app.classList.toggle('hiFight',live);
-    if(live){d.innerHTML='⚔️ <b>¡Batalla!</b> <span>Ver</span>';d.hidden=false;if(!HFG.shown){HFG.shown=true;if($('guide')&&$('guide').classList&&!$('guide').classList.contains('off'))guideHide();}}
-    else{d.hidden=true;HFG.shown=false;}}catch(_){}},500);
+    const live=G.t-HFG.t<6&&HFG.n>=3;
+    // ¿la pelea ya se ve en pantalla? entonces no hace falta el aviso
+    let onScreen=false;if(live&&typeof footprint==='function'){try{const f=footprint(0);const mx=(f.x1-f.x0)*.08,my=(f.y1-f.y0)*.08;onScreen=HFG.x>f.x0+mx&&HFG.x<f.x1-mx&&HFG.y>f.y0+my&&HFG.y<f.y1-my;}catch(_){}}
+    if(app.classList.contains('hiFight')!==live)app.classList.toggle('hiFight',live);
+    const show=live&&!onScreen;
+    if(show){if(d.hidden){d.innerHTML='⚔️ <b>¡Batalla!</b> <span>Ver</span>';d.hidden=false;}}
+    else if(!d.hidden)d.hidden=true;
+    if(live&&!HFG.shown){HFG.shown=true;if($('guide')&&$('guide').classList&&!$('guide').classList.contains('off'))guideHide();}
+    if(!live)HFG.shown=false;}catch(_){}},700);
 
 /* ================= v70 · VISUAL NÍTIDO: bordes suaves, más resolución, texturas finas y modelos más redondos =================
    - Suavizado de bordes en todos los teléfonos: MSAA del propio teléfono cuando lo tiene, y si no, FXAA.
-   - Más resolución en cada escalón de calidad (el control automático baja solo si el teléfono se calienta o va lento).
-   - Texturas con filtrado anisotrópico al máximo que permita el teléfono: el suelo y los techos no se ven borrosos de lejos.
+   - Un poco más de resolución en los escalones alto, medio y medio-bajo (los más livianos quedan como antes).
    - Cilindros y esferas con más caras: árboles, animales, torres, casas y hospitales más redondos.
-   - Sombras más finas en los teléfonos potentes y acabado de cine también en la gama media.
 
    FXAA 3.11 de NVIDIA, adaptado a WebGL por Agost Biro e incluido en los ejemplos de Three.js r128 (licencia MIT).
    Aviso que exige la licencia del código original de NVIDIA:
@@ -10690,7 +10697,7 @@ setInterval(()=>{try{const app=$('app'),d=fgChip();const cover=['shop','pause','
     * Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.
     * Neither the name of NVIDIA CORPORATION nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.
    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE. */
-const VX={on:true,rt:null,mat:null,w:0,h:0,aniso:4,ctxAA:false,frames:0};
+const VX={on:true,rt:null,mat:null,w:0,h:0,ctxAA:false,chk:null,frames:0};
 const VX_FXAA=`precision highp float;
 uniform sampler2D tDiffuse;
 uniform vec2 resolution;
@@ -11386,19 +11393,13 @@ vec4(0.0)
 gl_FragColor.a = texture2D(tDiffuse, vUv).a;
 }`;
 /* 1) resolución por escalón: [máximo, alta, media, media-baja, baja, mínima] */
-if(typeof QLV!=='undefined'){const PR=[9,2,1.6,1.35,1.1,.9];for(let i=0;i<QLV.length&&i<PR.length;i++)QLV[i].pr=Math.max(QLV[i].pr<9?QLV[i].pr:0,PR[i]);
-  if(QLV[2]){QLV[2].post=1;QLV[2].soft=1;QLV[2].sh=Math.max(QLV[2].sh,1536);}
-  if(QLV[3]&&!QLV[3].sh)QLV[3].sh=1024;}
+/* v71: solo un poco más de resolución en los escalones alto, medio y medio-bajo; los dos más livianos quedan como en la v69
+   (0,85 y 0,7) y la gama media sin acabado de cine ni sombras extra, para que ningún teléfono vaya más pesado que antes */
+if(typeof QLV!=='undefined'){const PR=[9,1.75,1.5,1.15,.85,.7];for(let i=0;i<QLV.length&&i<PR.length;i++)QLV[i].pr=PR[i];}
 /* 2) modelos más redondos: más caras en cilindros, conos y esferas */
-segK=function(n){if(n<6)return n;const t=typeof DEV_TIER==='undefined'?2:DEV_TIER;const m=t<=1?2:t===2?1.7:t===3?1.45:1.2;return Math.min(64,Math.round(n*m));};
-/* 3) texturas finas */
-function vxAniso(){try{return Math.max(4,Math.min(16,R3.renderer.capabilities.getMaxAnisotropy()));}catch(_){return 4;}}
-function vxFixTextures(){if(!USE3D||!R3||!R3.scene)return 0;VX.aniso=vxAniso();let n=0;const seen=new Set();
-  const fix=t=>{if(!t||seen.has(t)||!t.isTexture||t.isDataTexture||t.isRenderTargetTexture)return;seen.add(t);
-    if(t.minFilter===THREE.LinearMipmapLinearFilter||t.minFilter===THREE.LinearMipMapLinearFilter||t.generateMipmaps){if(t.anisotropy<VX.aniso){t.anisotropy=VX.aniso;t.needsUpdate=true;n++;}}};
-  R3.scene.traverse(o=>{const ms=o.material?(Array.isArray(o.material)?o.material:[o.material]):[];for(const m of ms){if(!m)continue;fix(m.map);fix(m.bumpMap);fix(m.normalMap);fix(m.roughnessMap);fix(m.emissiveMap);fix(m.alphaMap);}});
-  return n;}
-{const _ct=canvasTex;canvasTex=function(N,draw,rep){const t=_ct.apply(this,arguments);try{if(VX.aniso>t.anisotropy)t.anisotropy=VX.aniso;}catch(_){}return t;};}
+segK=function(n){if(n<6)return n;const t=typeof DEV_TIER==='undefined'?2:DEV_TIER;const m=t<=1?1.7:t===2?1.4:t===3?1.2:1.1;return Math.min(48,Math.round(n*m));};
+/* 3) texturas: el filtrado queda como en la v69 (máximo 8 en el suelo). Subirlo a 16 dibujaba rayas en el suelo en iPhone. */
+function vxFixTextures(){return 0;}
 /* 4) suavizado de bordes: FXAA cuando el teléfono no trae MSAA */
 function vxMat(){if(VX.mat)return VX.mat;VX.mat=new THREE.ShaderMaterial({toneMapped:false,depthTest:false,depthWrite:false,
   uniforms:{tDiffuse:{value:null},resolution:{value:new THREE.Vector2(1/1024,1/1024)}},
@@ -11408,8 +11409,10 @@ function vxSize(r){const v=r.getDrawingBufferSize(new THREE.Vector2());const w=M
   if(VX.rt)VX.rt.dispose();VX.w=w;VX.h=h;VX.rt=new THREE.WebGLRenderTarget(w,h,{minFilter:THREE.LinearFilter,magFilter:THREE.LinearFilter,format:THREE.RGBAFormat,encoding:THREE.sRGBEncoding,depthBuffer:true});
   VX.rt.texture.encoding=THREE.sRGBEncoding;vxMat().uniforms.resolution.value.set(1/w,1/h);}
 {const _pr=postRender;postRender=function(){try{const r=R3.renderer;VX.frames++;
+    if(VX.chk==null){VX.chk=1;try{const at=r.getContext().getContextAttributes();VX.ctxAA=!!(at&&at.antialias);}catch(_){VX.ctxAA=true;}}
     const postOn=POST&&POST.on;
-    if(!VX.on||VX.ctxAA)return _pr.apply(this,arguments);
+    // FXAA solo si el teléfono no trae suavizado propio y no está en los dos escalones más livianos (ahí manda la velocidad)
+    if(!VX.on||VX.ctxAA||(typeof QUAL!=='undefined'&&QUAL.lvl>=4))return _pr.apply(this,arguments);
     vxSize(r);
     if(postOn){ // acabado de cine primero, en memoria; luego FXAA a la pantalla
       const sRT=r.setRenderTarget.bind(r);r.setRenderTarget=function(t){return sRT(t===null?VX.rt:t);};
@@ -11417,11 +11420,6 @@ function vxSize(r){const v=r.getDrawingBufferSize(new THREE.Vector2());const w=M
     }else{r.setRenderTarget(VX.rt);r.render(R3.scene,R3.camera);}
     const Q=vxQuad();Q.quad.material.uniforms.tDiffuse.value=VX.rt.texture;r.setRenderTarget(null);r.render(Q.s,Q.c);
   }catch(err){VX.on=false;if(typeof console!=='undefined')console.warn('FXAA apagado:',err);return _pr.apply(this,arguments);}};}
-/* al crear el mundo 3D: saber si el teléfono trae MSAA, y afinar todas las texturas */
-{const _i3=init3D;init3D=function(){const r=_i3.apply(this,arguments);try{if(R3&&R3.renderer){const a=R3.renderer.getContext().getContextAttributes();VX.ctxAA=!!(a&&a.antialias);VX.aniso=vxAniso();
-      const big=R3.renderer.capabilities.maxTextureSize>=8192&&(typeof DEV_TIER!=='undefined'&&DEV_TIER===0);if(big&&QLV[0])QLV[0].sh=4096;
-      vxFixTextures();}}catch(_){}return r;};}
-{const _bw=buildWorld3D;buildWorld3D=function(){const r=_bw.apply(this,arguments);try{vxFixTextures();setTimeout(vxFixTextures,1500);}catch(_){}return r;};}
 /* 5) rocas, cerros y peñascos con luz suave: sus caras ya no se ven talladas a cuchillo
       (solo rocas y piedras sueltas; los cerros y montañas conservan sus caras para que se lea el relieve, y las cajas, como muros y techos, sus esquinas) */
 function vxSmooth(geo){try{if(geo.index)return geo;const p=geo.attributes.position,cnt=p.count;if(cnt<9||cnt%3)return geo;
@@ -11434,7 +11432,90 @@ function vxSmooth(geo){try{if(geo.index)return geo;const p=geo.attributes.positi
       for(let k=0;k<3;k++){const v=acc.get(keys[i+k]);const l=Math.hypot(v[0],v[1],v[2])||1;let x=v[0]/l*.72+fl.x*.28,y=v[1]/l*.72+fl.y*.28,z=v[2]/l*.72+fl.z*.28;const m=Math.hypot(x,y,z)||1;n[(i+k)*3]=x/m;n[(i+k)*3+1]=y/m;n[(i+k)*3+2]=z/m;}}
     geo.setAttribute('normal',new THREE.BufferAttribute(n,3));}catch(_){}return geo;}
 {const _df=deform;deform=function(geo,amt,seed){const g=_df.apply(this,arguments);try{if(/Dodecahedron|Sphere/.test(geo.type||''))vxSmooth(g);}catch(_){}return g;};}
-window.__HI={get R3(){return R3;},VX,vxFixTextures,addB:(...a)=>addB(...a),addU:(...a)=>addU(...a),centerOn:(x,y)=>centerOn(x,y),get BT(){return BT;},get UT(){return UT;},get cam(){return cam;},MV,HFG,hit:(a,b,c)=>hit(a,b,c),RP_PACKS,rpBank,mvFocusHome,get QUAL(){return QUAL;},hpTip,hpIntro,hpHint,hpIdle,HP,metToday,dmAdd,dmLast,hiSad,evE,evShow,evPick,evAfterTurn,evEraGoal,EVS,chList,chAdd,chOpen,chText,chStats,thToggle,thOn,get CHraw(){return CH;},set CHraw(v){CH=v;},hiTickNow:()=>hiTick(),get clApply(){return clApply;},rk,rkLevel,rkXp,misRoll,misBump,misClaim,misBonus,misReady,misOpen,hiQuick,hiCharge,hiTrackPaint,hiEnemyBase,hiHostOk,hiSig,hiH,get HI_LOCKED(){return HI_LOCKED;},get RKraw(){return RK;},set RKraw(v){RK=v;},ownerOf,countOf,cwTargets,pactOf,trCfg,hacTrade,warE,warRank,genLv,warWin,warAtkMul,warDefMul,overseas,navyCost,navyBonus,advE,advTips,advSay,advRumors,feastNow,feastCost,get cwEval(){return cwEval;},get cwLaunch(){return cwLaunch;},get answerOffer(){return answerOffer;},get doTrade(){return doTrade;},get garDef(){return garDef;},imCe:(a,x)=>imCe(a,x),get selectCountry(){return selectCountry;},hacBalance,hacAutoTax,warFit,stoBring,balTargets,hacE,permOn,stoOn,get funds(){return funds;},get cnRender(){return cnRender;},openCouncil2:()=>openCouncil(),econ,econHacHTML,econWarHTML,econDipHTML,goldBase,get ceCost(){return ceCost;},bombCost,imUpk,cnSk,imAsgTotal,newCampaign,addB,showTitle,get MKQ2(){return MKQ;},get SHQ(){return SHQ;},get MKQ(){return MKQ;},shqPrice,mkTotal,shopAct,refreshTray,giveRes,resAmt,get CAMP(){return CAMP;},TUT,tutStart,tutOffer,tutNeeded,tutTick,v60Sync,dockTarget,orderAt,setSel,selectBuilding,startPlacing,confirmPlace,doAct,get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},get cam(){return cam;},OWN,isOwner,ownCheck,ownOpen,ownAct,giftsClaim,testerGift,webNoPay,ownInfTick,get ON(){return ON;},sepPass,get landOk(){return landOk;},resCap,resAdd,funds,hacFund,stoTotal,gdMaxAfford,get canAffordC(){return canAffordC;},get payC(){return payC;},get ceCap(){return ceCap;},SV,svLoad,get ON(){return ON;},get onAct(){return onAct;},get renderOnlineHTML(){return renderOnlineHTML;},gdProv,gdRest,invChance,get popC(){return popC;},get cePow(){return cePow;},get ceTgtDef(){return ceTgtDef;},get popCap(){return popCap;},shOn,shLeft,shGive,shBuy,shCan,shDealToday,shDealOff,shW,get hit(){return hit;},openShopTab,popC,popWorld,popEmpire,popHurt,puOf,puAvg,puTarget,popTurn,popBomb,bombNow,repCost,popE,gwTick,gwWave,gwStrike,gwPlayerBomb,get imTrib(){return imTrib;},imOpen,imClose,imRender,imE,imMine,imProd,imTrib,imSto,imAsg,imStr,imTurn,cwEval,cwTargets,cwLaunch,cwDeclare,imCouncilOk,imCanRecruit,imRecruitDefend,ceSt,ceDefend,ceConquer,ceAskDefense,ceAskConquer,ceRecruit,ceOpen,ceTurn,get CAMP(){return CAMP;},worldTurn:()=>worldTurn(),campaignEnd:(w,h)=>campaignEnd(w,h),startBattle:(a,b)=>startBattle(a,b),renderCampBar:()=>renderCampBar(),cnTick,cnRecruit,openCouncil,closeCouncil,cnCfg,cnSt,cnHired,dipAnswer,announce,declareWar,setSt:(a,b,v)=>setSt(a,b,v),autoDefend,garChance,garDef,garReinforce,templeLv,templeEraMul,blessNow,blessOn,gardenGather,leaderLabel,leaderTick,lTitle,rushVid,rushLeft,rushMul,musicTick,AUD,faunaEra,STORY,storyTick,atk,buildPort,canExpedite,sendExpedition,expLeft,expLand,expBuy,expDraw,worldPulse,chapters,storyStart,goalProg,stGet,renderStoryCard,setMode:m=>setMode(m),get MODE(){return MODE;},contOf,hasPort,DEV_TIER,setLevel,setQuality,wallet,amber,addAmber,grant,accel,accCost,canAccel,claimDaily,dailyState,freeVideo,buyRes,vidRes,buyEraPack,shopEra,pickBanner,openShop,closeShop,adClose,mon,eraPack,resAmt,BANNERS,get TEAM(){return TEAM;},shopEnd,retryBonus,CBY,COUNTRIES,newGame,endGame,selectCountry,doTrade,proposePact,breakPact,answerOffer,resistOf,incomeOf,tradeQuote,campaignEnd,doAct,get selR(){return selR;},UTT:UT,BTT:BT,get AUD(){return typeof AUD!=="undefined"?AUD:null;},step,get G(){return G;},trainAt,startPlacing,confirmPlace,tap,setSel,orderAt,render,renderMini,refreshTray,drawPortrait,cam,setRunning(v){running=v;},setDiff(k){DK=k;},setNP(n){NP=n;},FAUNA,addB,addU,addAnimal,centerOn,updFog,eraCheck,get PROF(){return PROF;},get USE3D(){return USE3D;},pickScreen,screenToWorld,proj3,get R3(){return R3;},get POST(){return POST;},get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},zoomAt,clampCam,get terrain(){return terrain;},get BASES(){return BASES;},get FORDS(){return FORDS;},get RIVERS(){return RIVERS;},findPath,seaD,setBridge,waterNear:(x,y,r)=>waterNear(x,y,r),riverAt:(x,y)=>riverAt(x,y),guideSay,guideFor,kill,newCampaign,startBattle,reachable,worldTurn,get CAMP(){return CAMP;},countOf,saveGame,loadGame,savedInfo,continueGame,selectBuilding,teamBlock:t=>teamBlock(t),get BLOCKERS(){return BLOCKERS;},get BLOCKV(){return BLOCKV;},lineClear,get PBUDGET(){return PBUDGET;},render3D:dt=>render3D(dt),renderOverlay:dt=>renderOverlay(dt),resize,freeze(v){frozen=v;},get acc(){return acc;},mountainAt:(x,y)=>mountainAt(x,y),heightAt:(x,y)=>heightAt(x,y),reveal(){explored.fill(1);visible.fill(1);G.revealAll=true;updFog();}};
+
+/* ================= v72 · APP DE GOOGLE PLAY: modo tienda, facturación real y premios sin videos =================
+   La app de Android abre esta misma página con ?app=android (Trusted Web Activity hecha con Bubblewrap).
+   - Modo tienda (HI_STORE='android'): nunca se simulan compras ni videos.
+   - Compras con Google Play Billing a través de la Digital Goods API y la Payment Request API.
+     Todas las compras se CONSUMEN al terminar: así Google las da por confirmadas (si no, las reembolsa a los 3 días)
+     y no hace falta un servidor. Lo que se compra una sola vez queda guardado en la cuenta del jugador.
+   - Registro de compras pendientes: si el teléfono se apaga a mitad de una compra, al volver a abrir el juego
+     la compra se termina y el jugador recibe lo suyo, sin cobrar dos veces ni entregar dos veces.
+   - Mientras no haya cuenta de anuncios, los «videos con premio» son premios gratis con el mismo límite diario,
+     y la pantalla dice «gratis» en vez de «video». «Sin videos» no se vende en la app. */
+const HB={svc:null,price:{},ready:false,busy:false};
+const HB_METHOD='https://play.google.com/billing';
+const HB_PEND='hi_pay_pend',HB_DONE='hi_pay_done';
+/* 1) ¿estamos dentro de la app de Google Play? */
+(function hbDetect(){try{
+    const q=new URLSearchParams(location.search);let app=q.get('app');
+    if(!app&&/^android-app:\/\/com\.homoimperium\.app/.test(document.referrer||''))app='android';
+    if(app==='android'){try{sessionStorage.setItem('hi_app','android');}catch(_){}}
+    if(!app){try{app=sessionStorage.getItem('hi_app');}catch(_){}}
+    if(app==='android'&&!window.HI_STORE)window.HI_STORE='android';
+  }catch(_){}})();
+function hbStore(){return window.HI_STORE==='android';}
+function hbNoAds(){return hbStore()&&!(window.HIAds&&typeof window.HIAds.rewarded==='function');}
+function hbJ(k){try{return JSON.parse(localStorage.getItem(k)||'[]')||[];}catch(_){return [];}}
+function hbJSet(k,v){try{localStorage.setItem(k,JSON.stringify(v.slice(-60)));}catch(_){}}
+function hbIsDone(tok){return hbJ(HB_DONE).indexOf(tok)>=0;}
+function hbMarkDone(tok){const d=hbJ(HB_DONE);if(d.indexOf(tok)<0){d.push(tok);hbJSet(HB_DONE,d);}}
+function hbAddPend(tok,id){const p=hbJ(HB_PEND);if(!p.some(x=>x.t===tok)){p.push({t:tok,id:id,at:Date.now()});hbJSet(HB_PEND,p);}}
+function hbDelPend(tok){hbJSet(HB_PEND,hbJ(HB_PEND).filter(x=>x.t!==tok));}
+function hbFmt(pr){try{return new Intl.NumberFormat(navigator.language||'es',{style:'currency',currency:pr.currency}).format(+pr.value);}catch(_){return pr.currency+' '+pr.value;}}
+/* entrega una compra UNA sola vez por cada token de Google */
+function hbDeliver(tok,id){if(!tok||hbIsDone(tok)){hbDelPend(tok);return false;}
+  hbMarkDone(tok);hbDelPend(tok);
+  if(PRODUCTS[id]){try{grant(id);}catch(err){if(typeof console!=='undefined')console.error(err);}} // grant ya cuenta la compra en las métricas
+  return true;}
+/* consume en Google (= confirma la compra) y luego entrega */
+async function hbFinish(tok,id){try{await HB.svc.consume(tok);}catch(err){return false;} // si falla, queda pendiente y se reintenta
+  return hbDeliver(tok,id);}
+/* compras que quedaron a medias: las que Google aún tiene sin consumir, y las ya consumidas que no alcanzaron a entregarse */
+async function hbRecover(silent){if(!HB.svc)return 0;let n=0;
+  try{const list=await HB.svc.listPurchases();for(const p of list||[]){const id=p.itemId,tok=p.purchaseToken;if(!PRODUCTS[id])continue;
+      if(hbIsDone(tok)){try{await HB.svc.consume(tok);}catch(_){}continue;}
+      hbAddPend(tok,id);if(await hbFinish(tok,id))n++;}}catch(_){}
+  const live=new Set();try{for(const p of await HB.svc.listPurchases()||[])live.add(p.purchaseToken);}catch(_){}
+  for(const x of hbJ(HB_PEND)){if(!live.has(x.t)&&hbDeliver(x.t,x.id))n++;}
+  if(n&&!silent)toast('Se entregaron '+n+' compras pendientes',false,'gold');return n;}
+async function hbInit(){if(!hbStore()||HB.svc||!('getDigitalGoodsService' in window))return;
+  try{HB.svc=await window.getDigitalGoodsService(HB_METHOD);}catch(_){HB.svc=null;return;}
+  if(!HB.svc)return;
+  try{const det=await HB.svc.getDetails(Object.keys(PRODUCTS));for(const d of det||[])if(d&&d.itemId&&d.price)HB.price[d.itemId]=hbFmt(d.price);}catch(_){}
+  window.HIPay={
+    price(id){return HB.price[id]||null;},
+    buy(id,ok,fail){hbBuy(id).then(r=>{if(r==='ok'){/* la entrega ya se hizo */}else if(r==='cancel'){}else if(fail)fail();});},
+    restore(cb){hbRecover(false).then(n=>{if(!n)toast('No hay compras pendientes. Tu Ámbar y tus compras se guardan en tu cuenta de Mundo global.');if(cb)cb([]);});}};
+  HB.ready=true;await hbRecover(false);
+  try{if(typeof renderShop==='function'&&$('shop')&&!$('shop').hidden)renderShop();if(typeof renderShopBar==='function')renderShopBar();}catch(_){}}
+async function hbBuy(id){if(!HB.svc||!PRODUCTS[id])return 'fail';if(HB.busy)return 'busy';HB.busy=true;
+  try{if(!window.PaymentRequest){toast('Actualiza Google Chrome para poder comprar',true);return 'fail';}
+    const pr=new PaymentRequest([{supportedMethods:HB_METHOD,data:{sku:id}}],{total:{label:'Total',amount:{currency:'USD',value:'0'}}});
+    let resp;try{resp=await pr.show();}catch(err){if(err&&err.name==='AbortError')return 'cancel';toast('La compra no se pudo abrir. Intenta de nuevo',true);return 'fail';}
+    const tok=resp&&resp.details&&resp.details.purchaseToken;if(!tok){try{await resp.complete('fail');}catch(_){}toast('La compra no se completó',true);return 'fail';}
+    hbAddPend(tok,id);
+    const ok=await hbFinish(tok,id);
+    try{await resp.complete(ok?'success':'fail');}catch(_){}
+    if(!ok){toast('Google Play aún está confirmando tu compra: te llegará apenas termine',false,'gold');setTimeout(()=>hbRecover(false),15000);return 'pend';}
+    return 'ok';
+  }finally{HB.busy=false;}}
+if(hbStore()){setTimeout(hbInit,300);document.addEventListener('visibilitychange',()=>{if(!document.hidden&&HB.svc)hbRecover(true);});}
+/* métricas: separar la app de Play de la web */
+{const _mp=metPlat;metPlat=function(){return hbStore()?'Android (Play)':_mp.apply(this,arguments);};}
+/* 2) sin cuenta de anuncios: los «videos» son premios gratis (mismos límites) */
+{const _rv=rewardedVideo;rewardedVideo=function(onReward,label){if(hbNoAds()){try{onReward();}catch(err){if(typeof console!=='undefined')console.error(err);}return;}return _rv.apply(this,arguments);};}
+const HB_WORD=[[/\bVideo por Ámbar\b/g,'Regalo de Ámbar'],[/\bpor videos?\b/g,'gratis'],[/\bcon videos?\b/g,'gratis'],[/\bVideos\b/g,'Regalos'],[/\bvideos\b/g,'regalos'],[/\bVideo\b/g,'Regalo'],[/\bvideo\b/g,'gratis']];
+function hbRelabel(root){if(!hbNoAds()||!root||!document.createTreeWalker)return;
+  const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null);let n;
+  while((n=w.nextNode())){const t=n.nodeValue;if(!t||t.indexOf('ideo')<0)continue;let s=t;for(const [re,to] of HB_WORD)s=s.replace(re,to);if(s!==t)n.nodeValue=s;}
+  // «Sin videos» no se vende en la app mientras no haya anuncios
+  try{for(const b of root.querySelectorAll?root.querySelectorAll('[data-sh="buy:novid"]'):[]){const c=b.closest('.sc')||b.parentNode;if(c)c.style.display='none';}}catch(_){}}
+if(hbStore()){try{const mo=new MutationObserver(ms=>{for(const m of ms){if(m.type==='characterData'){const p=m.target.parentNode;if(p&&m.target.nodeValue&&m.target.nodeValue.indexOf('ideo')>=0)hbRelabel(p);}
+      else for(const a of m.addedNodes){if(a.nodeType===3){if(a.nodeValue.indexOf('ideo')>=0&&a.parentNode)hbRelabel(a.parentNode);}else if(a.nodeType===1&&(a.textContent||'').indexOf('ideo')>=0)hbRelabel(a);}}});
+    const start=()=>{mo.observe(document.body,{subtree:true,childList:true,characterData:true});hbRelabel(document.body);};
+    if(document.body)start();else document.addEventListener('DOMContentLoaded',start);}catch(_){}}
+window.__HI={HB,hbRecover:(s)=>hbRecover(s),get PRODUCTS(){return PRODUCTS;},wallet:()=>wallet(),amber:()=>amber(),get DEV_TIER(){return DEV_TIER;},get R3(){return R3;},VX,vxFixTextures,addB:(...a)=>addB(...a),addU:(...a)=>addU(...a),centerOn:(x,y)=>centerOn(x,y),get BT(){return BT;},get UT(){return UT;},get cam(){return cam;},MV,HFG,hit:(a,b,c)=>hit(a,b,c),RP_PACKS,rpBank,mvFocusHome,get QUAL(){return QUAL;},hpTip,hpIntro,hpHint,hpIdle,HP,metToday,dmAdd,dmLast,hiSad,evE,evShow,evPick,evAfterTurn,evEraGoal,EVS,chList,chAdd,chOpen,chText,chStats,thToggle,thOn,get CHraw(){return CH;},set CHraw(v){CH=v;},hiTickNow:()=>hiTick(),get clApply(){return clApply;},rk,rkLevel,rkXp,misRoll,misBump,misClaim,misBonus,misReady,misOpen,hiQuick,hiCharge,hiTrackPaint,hiEnemyBase,hiHostOk,hiSig,hiH,get HI_LOCKED(){return HI_LOCKED;},get RKraw(){return RK;},set RKraw(v){RK=v;},ownerOf,countOf,cwTargets,pactOf,trCfg,hacTrade,warE,warRank,genLv,warWin,warAtkMul,warDefMul,overseas,navyCost,navyBonus,advE,advTips,advSay,advRumors,feastNow,feastCost,get cwEval(){return cwEval;},get cwLaunch(){return cwLaunch;},get answerOffer(){return answerOffer;},get doTrade(){return doTrade;},get garDef(){return garDef;},imCe:(a,x)=>imCe(a,x),get selectCountry(){return selectCountry;},hacBalance,hacAutoTax,warFit,stoBring,balTargets,hacE,permOn,stoOn,get funds(){return funds;},get cnRender(){return cnRender;},openCouncil2:()=>openCouncil(),econ,econHacHTML,econWarHTML,econDipHTML,goldBase,get ceCost(){return ceCost;},bombCost,imUpk,cnSk,imAsgTotal,newCampaign,addB,showTitle,get MKQ2(){return MKQ;},get SHQ(){return SHQ;},get MKQ(){return MKQ;},shqPrice,mkTotal,shopAct,refreshTray,giveRes,resAmt,get CAMP(){return CAMP;},TUT,tutStart,tutOffer,tutNeeded,tutTick,v60Sync,dockTarget,orderAt,setSel,selectBuilding,startPlacing,confirmPlace,doAct,get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},get cam(){return cam;},OWN,isOwner,ownCheck,ownOpen,ownAct,giftsClaim,testerGift,webNoPay,ownInfTick,get ON(){return ON;},sepPass,get landOk(){return landOk;},resCap,resAdd,funds,hacFund,stoTotal,gdMaxAfford,get canAffordC(){return canAffordC;},get payC(){return payC;},get ceCap(){return ceCap;},SV,svLoad,get ON(){return ON;},get onAct(){return onAct;},get renderOnlineHTML(){return renderOnlineHTML;},gdProv,gdRest,invChance,get popC(){return popC;},get cePow(){return cePow;},get ceTgtDef(){return ceTgtDef;},get popCap(){return popCap;},shOn,shLeft,shGive,shBuy,shCan,shDealToday,shDealOff,shW,get hit(){return hit;},openShopTab,popC,popWorld,popEmpire,popHurt,puOf,puAvg,puTarget,popTurn,popBomb,bombNow,repCost,popE,gwTick,gwWave,gwStrike,gwPlayerBomb,get imTrib(){return imTrib;},imOpen,imClose,imRender,imE,imMine,imProd,imTrib,imSto,imAsg,imStr,imTurn,cwEval,cwTargets,cwLaunch,cwDeclare,imCouncilOk,imCanRecruit,imRecruitDefend,ceSt,ceDefend,ceConquer,ceAskDefense,ceAskConquer,ceRecruit,ceOpen,ceTurn,get CAMP(){return CAMP;},worldTurn:()=>worldTurn(),campaignEnd:(w,h)=>campaignEnd(w,h),startBattle:(a,b)=>startBattle(a,b),renderCampBar:()=>renderCampBar(),cnTick,cnRecruit,openCouncil,closeCouncil,cnCfg,cnSt,cnHired,dipAnswer,announce,declareWar,setSt:(a,b,v)=>setSt(a,b,v),autoDefend,garChance,garDef,garReinforce,templeLv,templeEraMul,blessNow,blessOn,gardenGather,leaderLabel,leaderTick,lTitle,rushVid,rushLeft,rushMul,musicTick,AUD,faunaEra,STORY,storyTick,atk,buildPort,canExpedite,sendExpedition,expLeft,expLand,expBuy,expDraw,worldPulse,chapters,storyStart,goalProg,stGet,renderStoryCard,setMode:m=>setMode(m),get MODE(){return MODE;},contOf,hasPort,DEV_TIER,setLevel,setQuality,wallet,amber,addAmber,grant,accel,accCost,canAccel,claimDaily,dailyState,freeVideo,buyRes,vidRes,buyEraPack,shopEra,pickBanner,openShop,closeShop,adClose,mon,eraPack,resAmt,BANNERS,get TEAM(){return TEAM;},shopEnd,retryBonus,CBY,COUNTRIES,newGame,endGame,selectCountry,doTrade,proposePact,breakPact,answerOffer,resistOf,incomeOf,tradeQuote,campaignEnd,doAct,get selR(){return selR;},UTT:UT,BTT:BT,get AUD(){return typeof AUD!=="undefined"?AUD:null;},step,get G(){return G;},trainAt,startPlacing,confirmPlace,tap,setSel,orderAt,render,renderMini,refreshTray,drawPortrait,cam,setRunning(v){running=v;},setDiff(k){DK=k;},setNP(n){NP=n;},FAUNA,addB,addU,addAnimal,centerOn,updFog,eraCheck,get PROF(){return PROF;},get USE3D(){return USE3D;},pickScreen,screenToWorld,proj3,get R3(){return R3;},get POST(){return POST;},get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},zoomAt,clampCam,get terrain(){return terrain;},get BASES(){return BASES;},get FORDS(){return FORDS;},get RIVERS(){return RIVERS;},findPath,seaD,setBridge,waterNear:(x,y,r)=>waterNear(x,y,r),riverAt:(x,y)=>riverAt(x,y),guideSay,guideFor,kill,newCampaign,startBattle,reachable,worldTurn,get CAMP(){return CAMP;},countOf,saveGame,loadGame,savedInfo,continueGame,selectBuilding,teamBlock:t=>teamBlock(t),get BLOCKERS(){return BLOCKERS;},get BLOCKV(){return BLOCKV;},lineClear,get PBUDGET(){return PBUDGET;},render3D:dt=>render3D(dt),renderOverlay:dt=>renderOverlay(dt),resize,freeze(v){frozen=v;},get acc(){return acc;},mountainAt:(x,y)=>mountainAt(x,y),heightAt:(x,y)=>heightAt(x,y),reveal(){explored.fill(1);visible.fill(1);G.revealAll=true;updFog();}};
 })();
 
 </script>
