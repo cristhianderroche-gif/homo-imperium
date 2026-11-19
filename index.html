@@ -1304,6 +1304,37 @@ body.th22 #hiIntro h3{color:#F4D58A}
 .mvQuick .mvGo{width:100%;display:block}
 /* v71 · durante la partida se pausan las animaciones de lo que queda detrás (rutas del mapa del mundo, brillos) */
 html.hiPlaying #worldmap .route,html.hiPlaying #worldmap .exproute,html.hiPlaying .ambchip.offer{animation:none!important}
+
+/* v73 · FRENTE DE GUERRA: lo pendiente va primero, arriba de todo */
+#title #hiFront{order:-1;margin:calc(10px + env(safe-area-inset-top)) 0 2px;padding:12px;border-radius:20px;display:flex;flex-direction:column;gap:9px;position:relative;z-index:4;
+  background:linear-gradient(160deg,rgba(40,26,14,.94),rgba(18,14,12,.94)) padding-box,linear-gradient(120deg,#ffc163,#e0812f 55%,#ffc163) border-box;border:1.5px solid transparent;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+#title #hiFront.hot{background:linear-gradient(160deg,rgba(64,16,14,.95),rgba(24,10,10,.95)) padding-box,linear-gradient(120deg,#ff6b5a,#ffb347 50%,#ff6b5a) border-box;box-shadow:0 10px 34px rgba(220,60,40,.35)}
+#hiFront header{display:flex;align-items:center;gap:8px;padding:0 2px}
+#hiFront header b{font:400 17px/1 var(--f-display,system-ui);letter-spacing:.02em;color:#ffd27a;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+#hiFront.hot header b{color:#ffb4a8}
+#hiFront header small{margin-left:auto;white-space:nowrap;flex:0 0 auto;font:700 11px/1 system-ui,-apple-system,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.62)}
+#hiFront .hfDot{width:10px;height:10px;border-radius:50%;background:#ffc163;flex:0 0 auto;box-shadow:0 0 0 0 rgba(255,193,99,.7);animation:hfPulse 1.6s ease-out infinite}
+#hiFront.hot .hfDot{background:#ff5a4a;box-shadow:0 0 0 0 rgba(255,90,74,.7)}
+@keyframes hfPulse{70%{box-shadow:0 0 0 9px rgba(255,90,74,0)}100%{box-shadow:0 0 0 0 rgba(255,90,74,0)}}
+@media (prefers-reduced-motion:reduce){#hiFront .hfDot{animation:none}}
+#hiFront .hfI{border-radius:16px;padding:10px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);display:flex;flex-direction:column;gap:9px}
+#hiFront .hf-hot{background:rgba(255,80,60,.12);border-color:rgba(255,120,100,.45)}
+#hiFront .hf-warm{background:rgba(255,170,80,.10);border-color:rgba(255,193,99,.4)}
+#hiFront .hfT{display:flex;align-items:flex-start;gap:10px}
+#hiFront .hfIc{font-size:28px;line-height:1;flex:0 0 auto;margin-top:1px}
+#hiFront .hfT>div{flex:1;min-width:0}
+#hiFront .hfT b{display:block;font:700 17px/1.15 'Barlow Condensed',system-ui,sans-serif;color:#fff;overflow-wrap:anywhere}
+#hiFront .hfT small{display:block;margin-top:3px;font:500 13px/1.3 system-ui,-apple-system,sans-serif;color:rgba(255,255,255,.75)}
+#hiFront .hfX{flex:0 0 auto;width:30px;height:30px;border-radius:50%;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:rgba(255,255,255,.7);font-size:13px;line-height:1;padding:0}
+#hiFront .hfB{display:flex;flex-wrap:wrap;gap:7px}
+#hiFront .hfB button{min-height:42px;white-space:nowrap;border-radius:13px;padding:8px 12px;font:700 15px/1.1 'Barlow Condensed',system-ui,sans-serif;cursor:pointer}
+#hiFront .hfGo{flex:1 1 100%;border:0;color:#2a1405;background:linear-gradient(180deg,#ffd27a,#f08a2c);box-shadow:0 5px 14px rgba(224,129,47,.35),inset 0 1px 0 rgba(255,255,255,.5);font-size:17px!important}
+#hiFront .hf-hot .hfGo{color:#fff;background:linear-gradient(180deg,#ff7a5c,#d63a2a);box-shadow:0 5px 16px rgba(214,58,42,.45),inset 0 1px 0 rgba(255,255,255,.35)}
+#hiFront .hfSec{flex:1 1 40%;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);color:#fff}
+#hiFront .hfB button:active,#hiFront .hfX:active{transform:scale(.97)}
+#hiFront .hfMore{align-self:center;border:0;background:none;color:#ffd27a;font:700 13px/1 system-ui,-apple-system,sans-serif;padding:6px 10px;text-decoration:underline}
+@media (min-width:600px){#hiFront .hfGo{flex:1 1 auto}#hiFront .hfSec{flex:0 1 auto}}
+@media (max-width:380px){#hiFront header b{font-size:15px}#hiFront header small{font-size:10px}#hiFront .hfT b{font-size:16px}}
 </style>
 
 <div id="app" class="menu">
@@ -8179,7 +8210,7 @@ function frameBody(now){
 function boot(){init3D();resize();applyQuality();showTitle();requestAnimationFrame(frame);}
 boot();
 /* ---------- opiniones de quienes prueban el juego: llegan por WhatsApp al creador ---------- */
-const FB_TO='573044272520',FB_VER='v72';let fbCat='Error',fbFrom=null;
+const FB_TO='573044272520',FB_VER='v73';let fbCat='Error',fbFrom=null;
 function fbContext(){const d=(()=>{const u=navigator.userAgent||'';return /iPhone|iPad/.test(u)?'iPhone/iPad':/Android/.test(u)?'Android':/Mac/.test(u)?'Mac':/Windows/.test(u)?'Windows':'otro';})();
   const g=G&&!$('title').hidden?null:G;const where=g&&PROF?PROF.c.n+' · era '+ROMAN[g.era[0]]+' · '+fmtT(g.t)+(g.camp?' · conquista':''):'menú de inicio';
   return 'Versión '+FB_VER+' · '+d+' '+innerWidth+'×'+innerHeight+' · '+where+(typeof QSET!=='undefined'?' · calidad '+QSET+' nivel '+QUAL.lvl+(QUAL.fps?' · '+QUAL.fps+' fps':'')+(GPU_NAME?' · '+GPU_NAME:''):'');}
@@ -11515,7 +11546,125 @@ if(hbStore()){try{const mo=new MutationObserver(ms=>{for(const m of ms){if(m.typ
       else for(const a of m.addedNodes){if(a.nodeType===3){if(a.nodeValue.indexOf('ideo')>=0&&a.parentNode)hbRelabel(a.parentNode);}else if(a.nodeType===1&&(a.textContent||'').indexOf('ideo')>=0)hbRelabel(a);}}});
     const start=()=>{mo.observe(document.body,{subtree:true,childList:true,characterData:true});hbRelabel(document.body);};
     if(document.body)start();else document.addEventListener('DOMContentLoaded',start);}catch(_){}}
-window.__HI={HB,hbRecover:(s)=>hbRecover(s),get PRODUCTS(){return PRODUCTS;},wallet:()=>wallet(),amber:()=>amber(),get DEV_TIER(){return DEV_TIER;},get R3(){return R3;},VX,vxFixTextures,addB:(...a)=>addB(...a),addU:(...a)=>addU(...a),centerOn:(x,y)=>centerOn(x,y),get BT(){return BT;},get UT(){return UT;},get cam(){return cam;},MV,HFG,hit:(a,b,c)=>hit(a,b,c),RP_PACKS,rpBank,mvFocusHome,get QUAL(){return QUAL;},hpTip,hpIntro,hpHint,hpIdle,HP,metToday,dmAdd,dmLast,hiSad,evE,evShow,evPick,evAfterTurn,evEraGoal,EVS,chList,chAdd,chOpen,chText,chStats,thToggle,thOn,get CHraw(){return CH;},set CHraw(v){CH=v;},hiTickNow:()=>hiTick(),get clApply(){return clApply;},rk,rkLevel,rkXp,misRoll,misBump,misClaim,misBonus,misReady,misOpen,hiQuick,hiCharge,hiTrackPaint,hiEnemyBase,hiHostOk,hiSig,hiH,get HI_LOCKED(){return HI_LOCKED;},get RKraw(){return RK;},set RKraw(v){RK=v;},ownerOf,countOf,cwTargets,pactOf,trCfg,hacTrade,warE,warRank,genLv,warWin,warAtkMul,warDefMul,overseas,navyCost,navyBonus,advE,advTips,advSay,advRumors,feastNow,feastCost,get cwEval(){return cwEval;},get cwLaunch(){return cwLaunch;},get answerOffer(){return answerOffer;},get doTrade(){return doTrade;},get garDef(){return garDef;},imCe:(a,x)=>imCe(a,x),get selectCountry(){return selectCountry;},hacBalance,hacAutoTax,warFit,stoBring,balTargets,hacE,permOn,stoOn,get funds(){return funds;},get cnRender(){return cnRender;},openCouncil2:()=>openCouncil(),econ,econHacHTML,econWarHTML,econDipHTML,goldBase,get ceCost(){return ceCost;},bombCost,imUpk,cnSk,imAsgTotal,newCampaign,addB,showTitle,get MKQ2(){return MKQ;},get SHQ(){return SHQ;},get MKQ(){return MKQ;},shqPrice,mkTotal,shopAct,refreshTray,giveRes,resAmt,get CAMP(){return CAMP;},TUT,tutStart,tutOffer,tutNeeded,tutTick,v60Sync,dockTarget,orderAt,setSel,selectBuilding,startPlacing,confirmPlace,doAct,get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},get cam(){return cam;},OWN,isOwner,ownCheck,ownOpen,ownAct,giftsClaim,testerGift,webNoPay,ownInfTick,get ON(){return ON;},sepPass,get landOk(){return landOk;},resCap,resAdd,funds,hacFund,stoTotal,gdMaxAfford,get canAffordC(){return canAffordC;},get payC(){return payC;},get ceCap(){return ceCap;},SV,svLoad,get ON(){return ON;},get onAct(){return onAct;},get renderOnlineHTML(){return renderOnlineHTML;},gdProv,gdRest,invChance,get popC(){return popC;},get cePow(){return cePow;},get ceTgtDef(){return ceTgtDef;},get popCap(){return popCap;},shOn,shLeft,shGive,shBuy,shCan,shDealToday,shDealOff,shW,get hit(){return hit;},openShopTab,popC,popWorld,popEmpire,popHurt,puOf,puAvg,puTarget,popTurn,popBomb,bombNow,repCost,popE,gwTick,gwWave,gwStrike,gwPlayerBomb,get imTrib(){return imTrib;},imOpen,imClose,imRender,imE,imMine,imProd,imTrib,imSto,imAsg,imStr,imTurn,cwEval,cwTargets,cwLaunch,cwDeclare,imCouncilOk,imCanRecruit,imRecruitDefend,ceSt,ceDefend,ceConquer,ceAskDefense,ceAskConquer,ceRecruit,ceOpen,ceTurn,get CAMP(){return CAMP;},worldTurn:()=>worldTurn(),campaignEnd:(w,h)=>campaignEnd(w,h),startBattle:(a,b)=>startBattle(a,b),renderCampBar:()=>renderCampBar(),cnTick,cnRecruit,openCouncil,closeCouncil,cnCfg,cnSt,cnHired,dipAnswer,announce,declareWar,setSt:(a,b,v)=>setSt(a,b,v),autoDefend,garChance,garDef,garReinforce,templeLv,templeEraMul,blessNow,blessOn,gardenGather,leaderLabel,leaderTick,lTitle,rushVid,rushLeft,rushMul,musicTick,AUD,faunaEra,STORY,storyTick,atk,buildPort,canExpedite,sendExpedition,expLeft,expLand,expBuy,expDraw,worldPulse,chapters,storyStart,goalProg,stGet,renderStoryCard,setMode:m=>setMode(m),get MODE(){return MODE;},contOf,hasPort,DEV_TIER,setLevel,setQuality,wallet,amber,addAmber,grant,accel,accCost,canAccel,claimDaily,dailyState,freeVideo,buyRes,vidRes,buyEraPack,shopEra,pickBanner,openShop,closeShop,adClose,mon,eraPack,resAmt,BANNERS,get TEAM(){return TEAM;},shopEnd,retryBonus,CBY,COUNTRIES,newGame,endGame,selectCountry,doTrade,proposePact,breakPact,answerOffer,resistOf,incomeOf,tradeQuote,campaignEnd,doAct,get selR(){return selR;},UTT:UT,BTT:BT,get AUD(){return typeof AUD!=="undefined"?AUD:null;},step,get G(){return G;},trainAt,startPlacing,confirmPlace,tap,setSel,orderAt,render,renderMini,refreshTray,drawPortrait,cam,setRunning(v){running=v;},setDiff(k){DK=k;},setNP(n){NP=n;},FAUNA,addB,addU,addAnimal,centerOn,updFog,eraCheck,get PROF(){return PROF;},get USE3D(){return USE3D;},pickScreen,screenToWorld,proj3,get R3(){return R3;},get POST(){return POST;},get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},zoomAt,clampCam,get terrain(){return terrain;},get BASES(){return BASES;},get FORDS(){return FORDS;},get RIVERS(){return RIVERS;},findPath,seaD,setBridge,waterNear:(x,y,r)=>waterNear(x,y,r),riverAt:(x,y)=>riverAt(x,y),guideSay,guideFor,kill,newCampaign,startBattle,reachable,worldTurn,get CAMP(){return CAMP;},countOf,saveGame,loadGame,savedInfo,continueGame,selectBuilding,teamBlock:t=>teamBlock(t),get BLOCKERS(){return BLOCKERS;},get BLOCKV(){return BLOCKV;},lineClear,get PBUDGET(){return PBUDGET;},render3D:dt=>render3D(dt),renderOverlay:dt=>renderOverlay(dt),resize,freeze(v){frozen=v;},get acc(){return acc;},mountainAt:(x,y)=>mountainAt(x,y),heightAt:(x,y)=>heightAt(x,y),reveal(){explored.fill(1);visible.fill(1);G.revealAll=true;updFog();}};
+/* ================= v73 · FRENTE DE GUERRA: al entrar, lo primero que ves es tu guerra pendiente =================
+   Arriba de la portada, antes del globo y en cualquier modo de juego:
+   1. Invasiones a tus países (Conquistar el mundo): defender ya, que se defienda sola o ver opciones.
+   2. Ataques que recibiste en línea desde la última vez: contraatacar.
+   3. La batalla que dejaste a medias: volver a ella.
+   4. Expediciones: desembarcar cuando llegan.
+   5. El siguiente país para conquistar y, en línea, tus ataques disponibles (se pueden ocultar 8 horas). */
+const HF={net:null,netT:0,netBusy:false,saveC:null,more:false,tab:null};
+const HF_SNZ='hi_front_snz',HF_SEEN='hi_front_seen_';
+function hfSnz(){try{return JSON.parse(lsGet(HF_SNZ)||'{}')||{};}catch(_){return {};}}
+function hfSnoozed(k){const s=hfSnz();return s[k]&&s[k]>Date.now();}
+function hfSnooze(k,h){const s=hfSnz();const now=Date.now();for(const x in s)if(s[x]<now)delete s[x];s[k]=now+(h||8)*3600e3;lsSet(HF_SNZ,JSON.stringify(s));}
+function hfSeen(w){return +lsGet(HF_SEEN+w)||0;}
+function hfMarkSeen(w){if(w)lsSet(HF_SEEN+w,String(Date.now()));if(HF.net)HF.net.hits=[];}
+function hfAgo(ms){const m=Math.max(1,Math.round((Date.now()-ms)/60000));return m<60?'hace '+m+' min':m<1440?'hace '+Math.round(m/60)+' h':'hace '+Math.round(m/1440)+' d';}
+function hfMin(ms){const m=Math.ceil(ms/60000);return m<=1?'menos de 1 min':m<60?m+' min':Math.floor(m/60)+' h '+(m%60)+' min';}
+/* la batalla guardada más reciente (se lee una vez por partida guardada) */
+function hfSave(){let L=[];try{L=savedList();}catch(_){return null;}if(!L.length)return null;const x=L[0];
+  if(!HF.saveC||HF.saveC.id!==x.id||HF.saveC.when!==x.when){let camp=null;try{const d=JSON.parse(lsGet('hi_save_'+x.id)||'null');camp=d&&d.g&&d.g.camp||null;}catch(_){camp=null;}
+    HF.saveC={id:x.id,when:x.when,camp:camp?{target:camp.target,defend:!!camp.defend}:null};}
+  return {x,camp:HF.saveC.camp,more:L.length-1};}
+function hfItems(){const L=[];
+  const sv=hfSave(),camp=typeof CAMP!=='undefined'&&CAMP?CAMP:null;
+  /* 1 · invasión en Conquistar el mundo */
+  if(camp&&camp.pending&&CBY[camp.pending.id]){const P=camp.pending,c=CBY[P.id],ch=typeof garChance==='function'?Math.round(garChance(P.id,P.by)*100):null;
+    const resume=sv&&sv.camp&&sv.camp.defend&&sv.camp.target===P.id;
+    L.push({k:'inv',lv:'hot',ic:'🔥',flag:flagOf(P.id),t:'¡'+nationName(P.by)+' invade '+c.n+'!',
+      s:(resume?'Tu defensa quedó a medias. ':'Tu país espera órdenes. ')+(typeof garText==='function'?'Guarnición: '+String(garText(P.id)).replace(/\.+$/,'')+'.':''),
+      b:[resume?{t:'▶ Volver a la defensa',a:'res',cls:'go'}:{t:'⚔ Defender ya',a:'def',cls:'go'},ch!=null?{t:'Que se defienda sola · '+ch+' %',a:'auto'}:null,{t:'Más opciones',a:'opts'}].filter(Boolean)});}
+  /* 2 · ataques que recibiste en línea */
+  const N=HF.net;if(N&&N.hits&&N.hits.length){const n=N.hits.length,lost=N.hits.filter(h=>!h.won).length,last=N.hits[0];
+    L.push({k:'onhit',lv:'hot',ic:'🛡️',t:n===1?esc(last.rival)+' atacó tu imperio':'Te atacaron '+n+' veces',
+      s:(N.world?'En '+esc(N.world)+' · ':'')+(lost?(lost===n?'perdiste '+(n===1?'la defensa':'todas'):'perdiste '+lost+' de '+n):'tus defensas aguantaron')+' · '+hfAgo(Date.parse(last.t)),
+      b:[{t:'⚔ Contraatacar',a:'onrival',cls:'go'}],x:1});}
+  /* 3 · la batalla que dejaste a medias */
+  if(sv&&!(camp&&camp.pending&&sv.camp&&sv.camp.defend&&sv.camp.target===camp.pending.id)){const x=sv.x,cm=sv.camp,tg=cm&&CBY[cm.target];
+    L.push({k:'save',lv:'warm',ic:'⚔️',flag:flagOf(tg?cm.target:x.c),t:tg?(cm.defend?'Tu defensa de '+tg.n+' sigue':'Tu invasión a '+tg.n+' sigue'):'Tu batalla en '+(CBY[x.c]?CBY[x.c].n:'tu país')+' sigue',
+      s:(ERAS[x.era]||'')+' · '+fmtT(x.t)+' jugados · '+hfAgo(x.when)+(sv.more?' · y '+sv.more+' partida'+(sv.more>1?'s':'')+' más abajo':''),
+      b:[{t:'▶ Volver a la batalla',a:'res',cls:'go'}]});}
+  /* 4 · expedición */
+  if(camp&&camp.exp&&CBY[camp.exp.to]&&typeof expLeft==='function'){const E=camp.exp,left=expLeft(),c=CBY[E.to];
+    if(left<=0)L.push({k:'exp',lv:'warm',ic:'⛵',flag:flagOf(E.to),t:'Tu expedición llegó a '+c.n,s:E.n+' aldeanos esperan para desembarcar y colonizar.',b:[{t:'⚓ Desembarcar ya',a:'land',cls:'go'}]});
+    else L.push({k:'exp',lv:'cool',ic:'⛵',flag:flagOf(E.to),t:'Expedición rumbo a '+c.n,s:'Llega en '+hfMin(left)+'. Cuando toque tierra, aquí te aviso.',b:[{t:'Ver en el mapa',a:'map'}]});}
+  /* 5 · el siguiente país para conquistar */
+  if(camp&&!camp.pending&&!hfSnoozed('next')){const T=hfNext();if(T){const c=CBY[T.id];
+    L.push({k:'next',lv:'gold',ic:'🎯',flag:flagOf(T.id),t:'Por conquistar: '+c.n,s:(T.war?'Ya estás en guerra con '+nationName(T.o)+'. ':'')+'Resistencia '+resistName(T.r).toLowerCase()+(T.ch!=null?' · tu Guardia gana con '+T.ch+' %':'')+'.',
+      b:[{t:'⚔ Invadir '+c.n,a:'atk',cls:'go'},{t:'Ver opciones',a:'map'}],x:1,id:T.id});}}
+  /* 6 · en línea: tu ejército puede atacar */
+  if(N&&N.emp&&!hfSnoozed('onready')&&(+N.emp.attacks_left||0)>0&&!(+N.emp.cooldown>0)){
+    L.push({k:'onready',lv:'gold',ic:'🗺️',t:'Tu imperio '+esc(N.emp.name||'')+' puede atacar',s:'En '+esc(N.emp.world_name||'tu mundo')+' · te quedan '+N.emp.attacks_left+' ataques hoy. Ocupa países y gana tierras.',b:[{t:'Ir a conquistar',a:'onworld',cls:'go'}],x:1});}
+  return L;}
+function hfNext(){if(!CAMP||typeof reachable!=='function')return null;let best=null;
+  for(const c of COUNTRIES){const o=ownerOf(c.id);if(o==='P'||!CAMP.nations[o]||!reachable('P',c.id))continue;const pk=pactOf(o);if(pk==='paz'||pk==='alianza')continue;
+    const r=resistOf(o),war=pk==='guerra';let d=99;for(const k in CAMP.own){if(CAMP.own[k]!=='P'||!CBY[k])continue;const m=CBY[k];const g=Math.min(degDist(c,m),typeof bbGap==='function'&&bbGap(c,m)<2.6?0:99);if(g<d)d=g;}
+    const sc=r+Math.min(3,d/15)-(war?.6:0)+((c.a||1)<1?.8:0);if(!best||sc<best.sc)best={id:c.id,o,r,war,sc};}
+  if(!best)return null;
+  try{if(typeof cnHired==='function'&&cnHired('guerra')&&ceSt().guard>0&&typeof cwEval==='function')best.ch=Math.round(cwEval(best.id).chance*100);}catch(_){}
+  return best;}
+function hfBox(){let b=$('hiFront');if(b)return b;const t=$('title');const inner=t&&t.querySelector&&t.querySelector('.screen-inner');if(!inner)return null;
+  b=document.createElement('section');b.id='hiFront';b.setAttribute('aria-live','polite');b.hidden=true;inner.insertBefore(b,inner.firstChild);
+  b.addEventListener('click',hfClick);return b;}
+function hfRender(){const b=hfBox();if(!b)return;try{const th=$('hiTheme'),he=$('hero');if(th&&he&&th.parentNode!==he)he.appendChild(th);}catch(_){}const L=hfItems();
+  if(!L.length){b.hidden=true;b.innerHTML='';document.documentElement.classList.remove('hiFrontOn');return;}
+  const hot=L.some(i=>i.lv==='hot'),show=HF.more?L:L.slice(0,2);
+  b.hidden=false;b.className=hot?'hot':'';document.documentElement.classList.add('hiFrontOn');
+  b.innerHTML=`<header><span class="hfDot"></span><b>${hot?'¡Tu imperio te llama!':'Tu frente de guerra'}</b><small>${L.length===1?'1 pendiente':L.length+' pendientes'}</small></header>`+
+    show.map(i=>`<article class="hfI hf-${i.lv}" data-k="${i.k}"><div class="hfT"><span class="hfIc">${i.flag||i.ic}</span><div><b>${i.t}</b><small>${i.s}</small></div>${i.x?`<button class="hfX" data-a="x" aria-label="Ocultar por ahora">✕</button>`:''}</div>`+
+      `<div class="hfB">${i.b.map(x=>`<button class="${x.cls==='go'?'hfGo':'hfSec'}" data-a="${x.a}">${x.t}</button>`).join('')}</div></article>`).join('')+
+    (L.length>2?`<button class="hfMore" data-a="more">${HF.more?'Ver menos':'Ver '+(L.length-2)+' más'}</button>`:'');}
+function hfClick(ev){const bt=ev.target.closest&&ev.target.closest('button[data-a]');if(!bt)return;const a=bt.dataset.a,art=bt.closest('.hfI'),k=art&&art.dataset.k;
+  if(typeof sfx==='function')try{sfx('sel');}catch(_){}
+  const mundo=()=>{if(MODE!=='mundo')setMode('mundo');};
+  if(a==='more'){HF.more=!HF.more;return hfRender();}
+  if(a==='x'){if(k==='onhit')hfMarkSeen(HF.net&&HF.net.w);else hfSnooze(k==='next'?'next':k==='onready'?'onready':k,8);toast('Oculto por ahora. Lo encuentras en tu imperio.');return hfRender();}
+  if(a==='def'){if(!CAMP||!CAMP.pending)return hfRender();mundo();return startBattle(CAMP.pending.id,true);}
+  if(a==='auto'){if(!CAMP||!CAMP.pending)return hfRender();mundo();autoDefend();renderCampBar();return hfRender();}
+  if(a==='opts'){if(!CAMP||!CAMP.pending)return hfRender();mundo();if(typeof ceAskDefense==='function')ceAskDefense();else{const d=$('campBar');if(d&&d.scrollIntoView)d.scrollIntoView({behavior:'smooth'});}return;}
+  if(a==='res'){const s=hfSave();if(s)return continueGame(s.x.id);return hfRender();}
+  if(a==='land'){mundo();return expLand();}
+  if(a==='map'){mundo();const id=k==='exp'&&CAMP&&CAMP.exp?CAMP.exp.to:k==='next'?(hfNext()||{}).id:null;if(id)selectCountry(id,true);const r=$('regionCard');if(r&&r.scrollIntoView)setTimeout(()=>r.scrollIntoView({behavior:'smooth',block:'center'}),150);return;}
+  if(a==='atk'){const T=hfNext();if(!T)return hfRender();mundo();if(typeof cwDeclare==='function')cwDeclare(T.o);else if(pactOf(T.o)!=='guerra'){setPact(T.o,'guerra');relAdj(T.o,-15);campSave();}return startBattle(T.id,false);}
+  if(a==='onrival'){const w=HF.net&&HF.net.w;hfMarkSeen(w);HF.tab='rivals';hfRender();return openOnline();}
+  if(a==='onworld'){HF.tab='mundo';return openOnline();}
+}
+/* en línea: solo lectura (no marca nada en el servidor) */
+async function hfNet(force){if(HF.netBusy||!ON||!ON.sess)return;const w=curWorld();if(!w){HF.net=null;return;}
+  if(!force&&HF.net&&HF.net.w===w&&Date.now()-HF.netT<180e3)return;HF.netBusy=true;
+  try{const [log,emp]=await Promise.all([rpc('battle_log',{p_world:w}),rpc('my_empire',{p_world:w})]);const seen=hfSeen(w);
+    const hits=(Array.isArray(log)?log:[]).filter(r=>r&&!r.att&&Date.parse(r.t)>seen).sort((a,b)=>Date.parse(b.t)-Date.parse(a.t));
+    HF.net={w,emp:emp||null,world:emp&&emp.world_name||'',hits};HF.netT=Date.now();}
+  catch(_){/* sin internet: el frente sigue con lo de este teléfono */}
+  HF.netBusy=false;if($('title')&&!$('title').hidden)hfRender();}
+/* cuándo se actualiza */
+{const _st=showTitle;showTitle=function(){const r=_st.apply(this,arguments);try{hfRender();const t=$('title');if(t)t.scrollTop=0;if(document.scrollingElement)document.scrollingElement.scrollTop=0;hfNet();}catch(_){}return r;};}
+{const _rc=renderCampBar;renderCampBar=function(){const r=_rc.apply(this,arguments);try{hfRender();}catch(_){}return r;};}
+{const _le=loadEmpire;loadEmpire=async function(){const r=await _le.apply(this,arguments);try{if(ON.emp&&HF.tab){ON.tab=HF.tab;HF.tab=null;}}catch(_){}return r;};}
+{const _co=continueGame;continueGame=function(){HF.saveC=null;return _co.apply(this,arguments);};}
+setInterval(()=>{try{const t=$('title');if(!t||t.hidden||document.hidden)return;hfRender();hfNet();}catch(_){}},30000);
+document.addEventListener('visibilitychange',()=>{try{if(!document.hidden&&$('title')&&!$('title').hidden){hfRender();hfNet(true);}}catch(_){}});
+setTimeout(()=>{try{if($('title')&&!$('title').hidden){hfRender();hfNet();}}catch(_){}},400);
+/* ================= v73 · FRONTERAS REALES =================
+   Antes, los vecinos por tierra se calculaban con la caja que encierra TODO el país.
+   Estados Unidos (con Alaska y sus islas), Rusia, Nueva Zelanda y Francia (con la Guayana)
+   tenían cajas que cruzaban el planeta: desde Estados Unidos se podía «invadir por tierra» Albania.
+   Ahora cada país usa las cajas de sus territorios principales (las partes grandes de su mapa). */
+const FR_MIN=.15;
+function frBoxes(c){if(c._bbs!==undefined)return c._bbs;let L=[];
+  try{const d=String(c.d||'');const parts=d.split('Z');
+    for(const s of parts){const n=s.match(/-?\d+(?:\.\d+)?/g);if(!n||n.length<6)continue;let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9,ar=0;const P=[];
+      for(let i=0;i+1<n.length;i+=2){const x=+n[i],y=+n[i+1];P.push(x,y);if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y;}
+      for(let i=0;i<P.length;i+=2){const j=(i+2)%P.length;ar+=P[i]*P[j+1]-P[j]*P[i+1];}
+      L.push({b:[x0,y0,x1,y1],a:Math.abs(ar)/2});}
+  }catch(_){L=[];}
+  if(!L.length){c._bbs=null;return null;}
+  const mx=Math.max(...L.map(p=>p.a));c._bbs=L.filter(p=>p.a>=mx*FR_MIN||p.a===mx).map(p=>p.b);return c._bbs;}
+function frGap(A,B){const gx=Math.max(0,A[0]-B[2],B[0]-A[2]),gy=Math.max(0,A[1]-B[3],B[1]-A[3]);return Math.max(gx,gy);}
+{const _bg=bbGap;bbGap=function(a,b){if(!a||!b)return _bg.apply(this,arguments);const A=frBoxes(a)||(a.bb?[a.bb]:null),B=frBoxes(b)||(b.bb?[b.bb]:null);if(!A||!B)return _bg.apply(this,arguments);
+  let g=99;for(const x of A)for(const y of B){const v=frGap(x,y);if(v<g)g=v;if(g===0)return 0;}return g;};}
+window.__HI={frBoxes,get bbGap(){return bbGap;},HF,hfItems,hfRender,hfNext,hfSave,hfNet:(f)=>hfNet(f),get continueGame(){return continueGame;},HB,hbRecover:(s)=>hbRecover(s),get PRODUCTS(){return PRODUCTS;},wallet:()=>wallet(),amber:()=>amber(),get DEV_TIER(){return DEV_TIER;},get R3(){return R3;},VX,vxFixTextures,addB:(...a)=>addB(...a),addU:(...a)=>addU(...a),centerOn:(x,y)=>centerOn(x,y),get BT(){return BT;},get UT(){return UT;},get cam(){return cam;},MV,HFG,hit:(a,b,c)=>hit(a,b,c),RP_PACKS,rpBank,mvFocusHome,get QUAL(){return QUAL;},hpTip,hpIntro,hpHint,hpIdle,HP,metToday,dmAdd,dmLast,hiSad,evE,evShow,evPick,evAfterTurn,evEraGoal,EVS,chList,chAdd,chOpen,chText,chStats,thToggle,thOn,get CHraw(){return CH;},set CHraw(v){CH=v;},hiTickNow:()=>hiTick(),get clApply(){return clApply;},rk,rkLevel,rkXp,misRoll,misBump,misClaim,misBonus,misReady,misOpen,hiQuick,hiCharge,hiTrackPaint,hiEnemyBase,hiHostOk,hiSig,hiH,get HI_LOCKED(){return HI_LOCKED;},get RKraw(){return RK;},set RKraw(v){RK=v;},ownerOf,countOf,cwTargets,pactOf,trCfg,hacTrade,warE,warRank,genLv,warWin,warAtkMul,warDefMul,overseas,navyCost,navyBonus,advE,advTips,advSay,advRumors,feastNow,feastCost,get cwEval(){return cwEval;},get cwLaunch(){return cwLaunch;},get answerOffer(){return answerOffer;},get doTrade(){return doTrade;},get garDef(){return garDef;},imCe:(a,x)=>imCe(a,x),get selectCountry(){return selectCountry;},hacBalance,hacAutoTax,warFit,stoBring,balTargets,hacE,permOn,stoOn,get funds(){return funds;},get cnRender(){return cnRender;},openCouncil2:()=>openCouncil(),econ,econHacHTML,econWarHTML,econDipHTML,goldBase,get ceCost(){return ceCost;},bombCost,imUpk,cnSk,imAsgTotal,newCampaign,addB,showTitle,get MKQ2(){return MKQ;},get SHQ(){return SHQ;},get MKQ(){return MKQ;},shqPrice,mkTotal,shopAct,refreshTray,giveRes,resAmt,get CAMP(){return CAMP;},TUT,tutStart,tutOffer,tutNeeded,tutTick,v60Sync,dockTarget,orderAt,setSel,selectBuilding,startPlacing,confirmPlace,doAct,get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},get cam(){return cam;},OWN,isOwner,ownCheck,ownOpen,ownAct,giftsClaim,testerGift,webNoPay,ownInfTick,get ON(){return ON;},sepPass,get landOk(){return landOk;},resCap,resAdd,funds,hacFund,stoTotal,gdMaxAfford,get canAffordC(){return canAffordC;},get payC(){return payC;},get ceCap(){return ceCap;},SV,svLoad,get ON(){return ON;},get onAct(){return onAct;},get renderOnlineHTML(){return renderOnlineHTML;},gdProv,gdRest,invChance,get popC(){return popC;},get cePow(){return cePow;},get ceTgtDef(){return ceTgtDef;},get popCap(){return popCap;},shOn,shLeft,shGive,shBuy,shCan,shDealToday,shDealOff,shW,get hit(){return hit;},openShopTab,popC,popWorld,popEmpire,popHurt,puOf,puAvg,puTarget,popTurn,popBomb,bombNow,repCost,popE,gwTick,gwWave,gwStrike,gwPlayerBomb,get imTrib(){return imTrib;},imOpen,imClose,imRender,imE,imMine,imProd,imTrib,imSto,imAsg,imStr,imTurn,cwEval,cwTargets,cwLaunch,cwDeclare,imCouncilOk,imCanRecruit,imRecruitDefend,ceSt,ceDefend,ceConquer,ceAskDefense,ceAskConquer,ceRecruit,ceOpen,ceTurn,get CAMP(){return CAMP;},worldTurn:()=>worldTurn(),campaignEnd:(w,h)=>campaignEnd(w,h),startBattle:(a,b)=>startBattle(a,b),renderCampBar:()=>renderCampBar(),cnTick,cnRecruit,openCouncil,closeCouncil,cnCfg,cnSt,cnHired,dipAnswer,announce,declareWar,setSt:(a,b,v)=>setSt(a,b,v),autoDefend,garChance,garDef,garReinforce,templeLv,templeEraMul,blessNow,blessOn,gardenGather,leaderLabel,leaderTick,lTitle,rushVid,rushLeft,rushMul,musicTick,AUD,faunaEra,STORY,storyTick,atk,buildPort,canExpedite,sendExpedition,expLeft,expLand,expBuy,expDraw,worldPulse,chapters,storyStart,goalProg,stGet,renderStoryCard,setMode:m=>setMode(m),get MODE(){return MODE;},contOf,hasPort,DEV_TIER,setLevel,setQuality,wallet,amber,addAmber,grant,accel,accCost,canAccel,claimDaily,dailyState,freeVideo,buyRes,vidRes,buyEraPack,shopEra,pickBanner,openShop,closeShop,adClose,mon,eraPack,resAmt,BANNERS,get TEAM(){return TEAM;},shopEnd,retryBonus,CBY,COUNTRIES,newGame,endGame,selectCountry,doTrade,proposePact,breakPact,answerOffer,resistOf,incomeOf,tradeQuote,campaignEnd,doAct,get selR(){return selR;},UTT:UT,BTT:BT,get AUD(){return typeof AUD!=="undefined"?AUD:null;},step,get G(){return G;},trainAt,startPlacing,confirmPlace,tap,setSel,orderAt,render,renderMini,refreshTray,drawPortrait,cam,setRunning(v){running=v;},setDiff(k){DK=k;},setNP(n){NP=n;},FAUNA,addB,addU,addAnimal,centerOn,updFog,eraCheck,get PROF(){return PROF;},get USE3D(){return USE3D;},pickScreen,screenToWorld,proj3,get R3(){return R3;},get POST(){return POST;},get sel(){return sel;},get selB(){return selB;},get placing(){return placing;},zoomAt,clampCam,get terrain(){return terrain;},get BASES(){return BASES;},get FORDS(){return FORDS;},get RIVERS(){return RIVERS;},findPath,seaD,setBridge,waterNear:(x,y,r)=>waterNear(x,y,r),riverAt:(x,y)=>riverAt(x,y),guideSay,guideFor,kill,newCampaign,startBattle,reachable,worldTurn,get CAMP(){return CAMP;},countOf,saveGame,loadGame,savedInfo,continueGame,selectBuilding,teamBlock:t=>teamBlock(t),get BLOCKERS(){return BLOCKERS;},get BLOCKV(){return BLOCKV;},lineClear,get PBUDGET(){return PBUDGET;},render3D:dt=>render3D(dt),renderOverlay:dt=>renderOverlay(dt),resize,freeze(v){frozen=v;},get acc(){return acc;},mountainAt:(x,y)=>mountainAt(x,y),heightAt:(x,y)=>heightAt(x,y),reveal(){explored.fill(1);visible.fill(1);G.revealAll=true;updFog();}};
 })();
 
 </script>
