@@ -1,5 +1,5 @@
 /* Homo Imperium: guarda la app en el teléfono para jugar sin internet */
-const V='hi-v78';
+const V='hi-v79';
 const CORE=['./','./index.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./icon-maskable-512.png','./privacidad.html','./terminos.html'];
 // al instalar una versión nueva, se baja todo fresco (sin copias viejas del navegador)
 self.addEventListener('install',e=>{e.waitUntil(caches.open(V).then(c=>c.addAll(CORE.map(u=>new Request(u,{cache:'reload'})))).then(()=>self.skipWaiting()));});
