@@ -203,4 +203,16 @@ async function funnel(){let box=document.getElementById('fun');if(!box){box=docu
     '<p class="sub" style="margin-top:10px">Acontecimientos decididos: '+(d.acontecimientos||0)+' · Ayudas mostradas: '+(d.ayudas||0)+'</p>'+
     '<p class="sub">Dónde hay una caída grande entre dos filas, ahí se está atascando la gente.</p>';}})();
 </script>
+<script>
+/* v78 · fluidez: qué tan fluido corre el juego en los teléfonos de los jugadores */
+(function(){const _r=render;render=function(d){_r(d);fps();};
+async function fps(){let box=document.getElementById('fpsBox');if(!box){box=document.createElement('div');box.className='card';box.id='fpsBox';document.getElementById('out1').appendChild(box);}
+  box.innerHTML='<h2>Fluidez del juego</h2><p class="muted">Cargando…</p>';
+  try{const r=await fetch(SB_URL+'/rest/v1/rpc/hi_fps_stats',{method:'POST',headers:{'apikey':SB_KEY,'Content-Type':'application/json'},body:JSON.stringify({p_key:document.getElementById('key').value.trim()})});
+    if(!r.ok){box.innerHTML='<h2>Fluidez del juego</h2><p class="muted">Falta activar la medición en el servidor (archivo v78_fluidez.sql).</p>';return;}
+    const d=await r.json();if(!d||!d.muestras){box.innerHTML='<h2>Fluidez del juego</h2><p class="muted">Todavía no hay datos (los últimos 30 días, sin tus teléfonos).</p>';return;}
+    const pc=x=>Math.round(x*100/d.muestras)+' %';const pl=Object.keys(d.por_plataforma||{}).map(k=>k+': '+d.por_plataforma[k]+' cuadros/s').join(' · ');
+    box.innerHTML='<h2>Fluidez del juego</h2><p>Promedio: <b>'+d.promedio+' cuadros por segundo</b> (peor momento promedio: '+d.peor_promedio+').</p><p>Fluido (45 o más): <b>'+pc(d.fluidos)+'</b> · Aceptable (25 a 44): <b>'+pc(d.aceptables)+'</b> · Lento (menos de 25): <b>'+pc(d.lentos)+'</b></p><p class="muted">'+pl+'. '+d.muestras+' días de juego medidos.</p>';
+  }catch(e){box.innerHTML='<h2>Fluidez del juego</h2><p class="muted">No se pudo leer: '+e.message+'</p>';}}})();
+</script>
 </body></html>

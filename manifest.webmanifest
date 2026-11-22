@@ -8,7 +8,7 @@
  "start_url": "./",
  "scope": "./",
  "display": "fullscreen",
- "orientation": "portrait",
+ "orientation": "any",
  "background_color": "#16120e",
  "theme_color": "#16120e",
  "categories": [
